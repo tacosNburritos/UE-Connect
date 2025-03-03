@@ -1,39 +1,42 @@
-import React from 'react';
-import { StyleSheet, ImageBackground, View, Text, TouchableOpacity } from 'react-native';
+import React from 'react'; // Fixed import without curly braces
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-function WelcomeScreen({ navigation }) { // Pass navigation prop
+function PFScreen({ navigation }) { // Receive navigation prop
 
-    const handlePathPress = () => {
-        navigation.navigate('PathFind'); // Navigates to PFScreen
+    const handleGoBack = () => {
+        navigation.navigate('Main'); // Navigates back to WelcomeScreen
     };
 
     return(
         <>
-         <ImageBackground
-            source={require("../images/Placeholder.png")} 
-            style={styles.placeholder}
-        >
         <View style={styles.header}>
-            <Text style={styles.text}>UE Connect</Text>
+            <TouchableOpacity style={styles.button0} onPress={handleGoBack}>
+                <Text style={styles.text}>UE Connect</Text>
+            </TouchableOpacity>
         </View>
 
-        {/* Buttons Side by Side with TouchableOpacity */}
+        {/* Buttons Side by Side */}
         <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button1} onPress={handlePathPress}>
+            <TouchableOpacity style={styles.button1}>
                 <Text style={styles.buttonText}>Find Path</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button2} onPress={() => alert("Free Roam Button Pressed!")}>
+            <TouchableOpacity style={styles.button2}>
                 <Text style={styles.buttonText}>Free Roam</Text>
             </TouchableOpacity>
         </View>
-
-        </ImageBackground>
         </>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
+    button0: {
+        top: 35,
+        width: '100%', 
+        height: '100%', 
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     button1: {
         width: '47%',
         height: 60,
@@ -74,10 +77,6 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
     },
-    placeholder: {
-        height: '100%',
-        width: '100%',
-    },
     text: {
         color: 'white',
         fontSize: 30,
@@ -86,5 +85,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default WelcomeScreen;
-
+export default PFScreen;

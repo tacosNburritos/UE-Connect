@@ -1,12 +1,22 @@
-import { StatusBar, StyleSheet, Text, View, Button, SafeAreaView, Platform} from 'react-native';
+import { StatusBar, StyleSheet, SafeAreaView, Platform } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from './app/screens/WelcomeScreen';
+import LoadingScreen from './app/screens/LoadingScreen';
+import PFScreen from './app/screens/PFScreen';
+import 'react-native-gesture-handler';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={[styles.container ]}>
-      <StatusBar backgroundColor="grey" barStyle="light-content" translucent={true}/>
-      <WelcomeScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Loading" component={LoadingScreen} />
+        <Stack.Screen name="Main" component={WelcomeScreen} />
+        <Stack.Screen name="PathFind" component={PFScreen} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
