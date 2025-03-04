@@ -56,6 +56,17 @@ function PFScreen({ navigation }) {
         />
       </View>
 
+      <View style={styles.dropdownContainer}>
+        <Text style={styles.label}>Testing ng pagbalik.</Text>
+        <SelectList
+          setSelected={handleSelection}
+          data={dropdownData}
+          save="value"
+          placeholder="Select Location"
+          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }}
+        />
+      </View>
+
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button1}>
           <Text style={styles.buttonText} onPress={handleGoBack}>Go Back</Text>
