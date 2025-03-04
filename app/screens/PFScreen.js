@@ -57,7 +57,7 @@ function PFScreen({ navigation }) {
       </View>
 
       <View style={styles.dropdownContainer}>
-        <Text style={styles.label}>Select Destination</Text>
+        <Text style={styles.label}>Select Destination punta ka na</Text>
         <SelectList
           setSelected={handleSelection}
           data={dropdownData}
