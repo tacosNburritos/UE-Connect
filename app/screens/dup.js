@@ -7,70 +7,65 @@ function PFScreen({ navigation }) {
     navigation.navigate('Main');
   };
 
-  const [selectedStart, setSelectedStart] = useState("");
-  const [selectedEnd, setSelectedEnd] = useState("");
-  const [dropdownData, setDropdownData] = useState([
+  const [currentLocation, setCurrentLocation] = useState("");
+  const [destination, setDestination] = useState("");
+
+  const dropdownData = [
     { key: '1', value: 'TYK Building' },
     { key: '2', value: 'Engineering Building (EN)' },
     { key: '3', value: 'LCT Building' },
-  ]);
+  ];
 
   const graph = {
-    'TYK Building': { 'Engineering Building (EN)': 2, 'LCT Building': 2 },
-    'Engineering Building (EN)': { 'TYK Building': 2, 'LCT Building': 1 },
-    'LCT Building': { 'Engineering Building (EN)': 1, 'TYK Building': 2 },
+    'TYK Building': { 'Engineering Building (EN)': 1 },
+    'Engineering Building (EN)': { 'LCT Building': 1 },
+    'LCT Building': { 'TYK Building': 3 }
   };
 
   const dijkstra = (start, end) => {
     let distances = {};
     let visited = {};
-    let previous = {};
-    let nodes = Object.keys(graph);
+    let queue = {};
 
-    nodes.forEach(node => {
+    // Initialize distances and queue
+    for (let node in graph) {
       distances[node] = Infinity;
-      previous[node] = null;
-    });
+      queue[node] = graph[node];
+    }
     distances[start] = 0;
 
-    while (nodes.length > 0) {
-      nodes.sort((a, b) => distances[a] - distances[b]);
-      let current = nodes.shift();
+    while (Object.keys(queue).length > 0) {
+      let minNode = Object.keys(queue).reduce((a, b) => (distances[a] < distances[b] ? a : b));
 
-      if (current === end) break;
-      if (!graph[current]) continue;
+      if (minNode === end) {
+        break;
+      }
 
-      for (let neighbor in graph[current]) {
-        let distance = distances[current] + graph[current][neighbor];
+      for (let neighbor in graph[minNode]) {
+        let distance = distances[minNode] + graph[minNode][neighbor];
         if (distance < distances[neighbor]) {
           distances[neighbor] = distance;
-          previous[neighbor] = current;
         }
       }
-      visited[current] = true;
+      visited[minNode] = true;
+      delete queue[minNode];
     }
 
-    let path = [];
-    let current = end;
-    while (current) {
-      path.unshift(current);
-      current = previous[current];
-    }
-    return { path, distance: distances[end] };
+    return distances[end];
   };
 
   const handleSearch = () => {
-    if (!selectedStart || !selectedEnd) {
-      Alert.alert("Error", "Please select both locations");
+    if (currentLocation === "" || destination === "") {
+      Alert.alert("Error", "Please select both Current Location and Destination");
       return;
     }
-    if (selectedStart === selectedEnd) {
-      Alert.alert("Error", "Current Location and Destination cannot be the same");
+    if (currentLocation === destination) {
+      Alert.alert("Info", "You are already at your destination");
       return;
     }
 
-    const result = dijkstra(selectedStart, selectedEnd);
-    Alert.alert("Shortest Path", `Path: ${result.path.join(" -> ")}\nDistance: ${result.distance}`);
+    const shortestPath = dijkstra(currentLocation, destination);
+    Alert.alert("Shortest Path Found", `The shortest distance from ${currentLocation} to ${destination} is ${shortestPath}`);
   };
 
   return (
@@ -82,7 +77,7 @@ function PFScreen({ navigation }) {
       <View style={styles.dropdownContainer}>
         <Text style={styles.label}>Select Current Location</Text>
         <SelectList
-          setSelected={setSelectedStart}
+          setSelected={setCurrentLocation}
           data={dropdownData}
           save="value"
           placeholder="Select Location"
@@ -93,7 +88,7 @@ function PFScreen({ navigation }) {
       <View style={styles.dropdownContainer}>
         <Text style={styles.label}>Select Destination</Text>
         <SelectList
-          setSelected={setSelectedEnd}
+          setSelected={setDestination}
           data={dropdownData}
           save="value"
           placeholder="Select Location"
@@ -101,11 +96,9 @@ function PFScreen({ navigation }) {
         />
       </View>
 
-      <View>
-        <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
-          <Text style={styles.buttonText}>Search</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
+        <Text style={styles.buttonText}>Search</Text>
+      </TouchableOpacity>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
@@ -133,6 +126,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.55,
     shadowRadius: 4,
     left: 210,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   dropdownContainer: {
     marginTop: 40,
@@ -145,43 +140,11 @@ const styles = StyleSheet.create({
     color: '#DF4242',
     paddingLeft: 10,
   },
-  button1: {
-    width: '47%',
-    height: 60,
-    backgroundColor: '#DF4242',
-    borderRadius: 30,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.55,
-    shadowRadius: 4,
-    left: 7,
-  },
-  button2: {
-    width: '47%',
-    height: 60,
-    backgroundColor: '#DF4242',
-    borderRadius: 30,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.55,
-    shadowRadius: 4,
-    right: 7,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    position: 'absolute',
-    bottom: 45,
-    width: '100%',
-  },
   buttonText: {
     color: 'white',
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: 14,
   },
   header: {
     width: '100%',
@@ -191,17 +154,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 10,
     borderRadius: 30,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.55,
-    shadowRadius: 4,
-  },
-  text: {
-    color: 'white',
-    fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
 });
 
