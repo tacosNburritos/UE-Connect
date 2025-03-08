@@ -23,7 +23,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
