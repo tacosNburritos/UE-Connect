@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center',
         paddingBottom: 10,
-        borderRadius: 30,
+        borderBottomEndRadius: 30,
+        borderBottomStartRadius: 30,
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
     },
     placeholder: {
