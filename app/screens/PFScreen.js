@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 
 function PFScreen({ navigation }) {
@@ -9,16 +9,29 @@ function PFScreen({ navigation }) {
 
   const [selectedStart, setSelectedStart] = useState("");
   const [selectedEnd, setSelectedEnd] = useState("");
-  const [dropdownData, setDropdownData] = useState([
-    { key: '1', value: 'TYK Building' },
-    { key: '2', value: 'Engineering Building (EN)' },
-    { key: '3', value: 'LCT Building' },
-  ]);
+  const [pathResult, setPathResult] = useState([]); // Store computed path as points
 
+  const dropdownData = [
+    { key: '1', value: 'EN 101' },
+    { key: '2', value: 'EN 102' },
+    { key: '3', value: 'EN 103' },
+  ];
+
+  // Define static coordinates for buildings on the map (x, y)
+  const buildingCoordinates = {
+    'EN 101': { x: 500, y: 760 },
+    'EN 102': { x: 320, y: 750 },
+    'EN 103': { x: 370, y: 700 },
+    'U': { x: 430, y: 720 },
+
+  };
+
+  // Graph representation
   const graph = {
-    'TYK Building': { 'Engineering Building (EN)': 2, 'LCT Building': 2 },
-    'Engineering Building (EN)': { 'TYK Building': 2, 'LCT Building': 1 },
-    'LCT Building': { 'Engineering Building (EN)': 1, 'TYK Building': 2 },
+    'EN 101': { 'U': 1},
+    'EN 102': { 'U': 1},
+    'EN 103': { 'U': 1},
+    'U': { 'EN 101': 1, 'EN 102': 1, 'EN 103': 1},
   };
 
   const dijkstra = (start, end) => {
@@ -56,7 +69,7 @@ function PFScreen({ navigation }) {
       path.unshift(current);
       current = previous[current];
     }
-    return { path, distance: distances[end] };
+    return path;
   };
 
   const handleSearch = () => {
@@ -68,13 +81,16 @@ function PFScreen({ navigation }) {
       Alert.alert("Error", "Current Location and Destination cannot be the same");
       return;
     }
-
-    const result = dijkstra(selectedStart, selectedEnd);
-    Alert.alert("Shortest Path", `Path: ${result.path.join(" -> ")}\nDistance: ${result.distance}`);
+  
+    const path = dijkstra(selectedStart, selectedEnd);
+    setPathResult(path);
+  
+    navigation.navigate('Map', { path, buildingCoordinates });
   };
+  
 
   return (
-    <>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.text}>UE Connect</Text>
       </View>
@@ -101,87 +117,67 @@ function PFScreen({ navigation }) {
         />
       </View>
 
-      <View>
-        <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
-          <Text style={styles.buttonText}>Search</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
+        <Text style={styles.buttonText}>Search</Text>
+      </TouchableOpacity>      
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
-          <Text style={styles.buttonText}>Go Back</Text>
+          <Text style={styles.buttonText1}>Go Back</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button2}>
-          <Text style={styles.buttonText}>Free Roam</Text>
+          <Text style={styles.buttonText1}>Free Roam</Text>
         </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
   searchbutton: {
-    marginTop: 45,
+    marginTop: 30,
+    alignSelf: 'center',
     width: '47%',
-    height: 60,
+    height: 50,
     backgroundColor: '#DF4242',
     borderRadius: 30,
     elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.55,
-    shadowRadius: 4,
-    left: 210,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   dropdownContainer: {
-    marginTop: 40,
+    marginTop: 20,
     paddingHorizontal: 20,
   },
   label: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
     color: '#DF4242',
     paddingLeft: 10,
   },
-  button1: {
-    width: '47%',
-    height: 60,
-    backgroundColor: '#DF4242',
-    borderRadius: 30,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.55,
-    shadowRadius: 4,
-    left: 7,
-  },
-  button2: {
-    width: '47%',
-    height: 60,
-    backgroundColor: '#DF4242',
-    borderRadius: 30,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.55,
-    shadowRadius: 4,
-    right: 7,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    position: 'absolute',
-    bottom: 45,
+  mapContainer: {
+    marginTop: 20,
     width: '100%',
+    height: 400,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
   },
-  buttonText: {
-    color: 'white',
-    fontSize: 25,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: 14,
+  map: {
+    width: '90%',
+    height: '100%',
+    resizeMode: 'contain',
+  },
+  svgOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   header: {
     width: '100%',
@@ -192,18 +188,52 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     borderBottomEndRadius: 30,
     borderBottomStartRadius: 30,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.55,
-    shadowRadius: 4,
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
   },
   text: {
     color: 'white',
     fontSize: 30,
     fontWeight: 'bold',
-    textAlign: 'center',
   },
-});
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    position: 'absolute',
+    bottom: 45,
+    width: '100%',
+},
+  button1: {
+    width: '47%',
+    height: 60,
+    backgroundColor: '#DF4242',
+    borderRadius: 30,
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
+    left: 7,
+    bottom: 12,
+  },
+  button2: {
+      width: '47%',
+      height: 60,
+      backgroundColor: '#DF4242',
+      borderRadius: 30,
+      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
+      right: 7,
+      bottom: 12,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 0,
+  },
+  buttonText1: {
+    color: 'white',
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 14,
+  },
+  });
 
 export default PFScreen;
