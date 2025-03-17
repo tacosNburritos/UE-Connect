@@ -1,59 +1,45 @@
 import React from 'react';
 import { StyleSheet, ImageBackground, View, Text, TouchableOpacity, Image, SafeAreaView, Platform, StatusBar } from 'react-native';
 
-
-
 function WelcomeScreen({ navigation }) {
     const handlePathPress = () => {
         navigation.navigate('PathFind'); // Navigate to Pathfinding screen
     };
-
-
-    return(
-        <SafeAreaView styles = {styles.container}>
+    return (
+        <>
             <StatusBar 
                 barStyle="dark-content" // Use 'light-content' for white text/icons
                 backgroundColor="transparent" // Set to transparent if you want the background to show through
                 translucent={true} // Set to true if you want the status bar to be translucent
             />
-        <>
-         <ImageBackground
-            source={require("../images/background.png")} 
-
-            style={styles.placeholder}
-            resizeMode="cover"
-        >
-
-        <View style={styles.header}>
-            <Image 
-                      source={require("../assets/logo_red.png")}
-                      style={styles.logo_header}
-                  />
-            <Text style={styles.text}>UE Connect</Text>
-        </View>
-
-        {/* Buttons Side by Side with TouchableOpacity */}
-        <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button1} onPress={handlePathPress}>
-                <Text style={styles.buttonText}>Find Path</Text>
-            </TouchableOpacity>
-
-
-            {/* Buttons Side by Side */}
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={handlePathPress}>
-                    <Text style={styles.buttonText}>Find Path</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.button} onPress={() => alert("Free Roam Button Pressed!")}>
-                    <Text style={styles.buttonText}>Free Roam</Text>
-                </TouchableOpacity>
-            </View>
-        </ImageBackground>
-
+    
+            <ImageBackground
+                source={require("../images/background.png")} 
+                style={styles.placeholder}
+                resizeMode="cover"
+            >
+                <View style={styles.header}>
+                    <Image 
+                        source={require("../assets/logo_red.png")}
+                        style={styles.logo_header}
+                    />
+                    <Text style={styles.text}>UE Connect</Text>
+                </View>
+    
+                {/* Buttons Side by Side */}
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.button1} onPress={handlePathPress}>
+                        <Text style={styles.buttonText}>Find Path</Text>
+                    </TouchableOpacity>
+    
+                    <TouchableOpacity style={styles.button1} onPress={() => alert("Free Roam Button Pressed!")}>
+                        <Text style={styles.buttonText}>Free Roam</Text>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
         </>
-        </SafeAreaView>
-    )
+    );
+    
 }
 
 const styles = StyleSheet.create({
@@ -69,27 +55,6 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
         left: 7,
-
-    },
-    header: {
-        width: '100%',
-        height: 140,
-        backgroundColor: '#8E0E00',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        paddingBottom: 20,
-        borderBottomEndRadius: 30,
-        borderBottomStartRadius: 30,
-        // iOS shadow
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 4.65,
-        // Android shadow
-        elevation: 8,
     },
     text: {
         color: '#FFFFFF',
@@ -116,7 +81,7 @@ const styles = StyleSheet.create({
     },
     header: {
         width: '100%',
-        height: '13%',
+        height: 120,
         backgroundColor: 'white',
         justifyContent: 'flex-start',
         alignItems: 'flex-end',

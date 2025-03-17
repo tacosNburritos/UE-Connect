@@ -1,47 +1,73 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 
 function PFScreen({ navigation }) {
   const handleGoBack = () => {
-    navigation.navigate('Main');
+    navigation.goBack();
   };
 
   const [selectedStart, setSelectedStart] = useState("");
   const [selectedEnd, setSelectedEnd] = useState("");
   
+  //dropdown labels
   const dropdownData = [
     { key: '1', value: 'EN 101' },
     { key: '2', value: 'EN 102' },
     { key: '3', value: 'EN 103' },
     { key: '4', value: 'EN 104' }, // Trippings muna to
     { key: '5', value: 'ACCREDITATION ROOM' },
+    { key: '6', value: 'ACES PICE OFFICE' },
+    { key: '7', value: 'MALE COMFORT ROOM (CR) - LEFT WING'},
+    { key: '8', value: 'MALE FACULTY COMFORT ROOM (CR) - LEFT WING'},
+    { key: '9', value: 'FEMALE COMFORT ROOM (CR) - LEFT WING'},
+    { key: '10', value:'FEMALE FACULTY COMFORT ROOM (CR) - LEFT WING'},
+    { key: '11', value: 'M.E. LAB'}
   ];
 
+  //nodes
   const buildingCoordinates = {
     'EN 101': { x: 0.55, y: 0.93 },
     'EN 102': { x: 0.45, y: 0.93 }, 
-    'EN 103': { x: 0.8, y: 0.75 }, 
+    'EN 103': { x: 0.50, y: 0.87 }, 
     'EN 104': { x: 0.45, y: 0.82 },
-    'ACCREDITATION ROOM': { x: 0.60, y: 0.82 },
-    'U': { x: 0.54, y: 0.9 },
+    'ACCREDITATION ROOM': { x: 0.6, y: 0.82 },
+    'ACES PICE OFFICE': { x: 0.32, y: 0.94 },
+    'MALE COMFORT ROOM (CR) - LEFT WING': { x: 0.27, y: 0.95 },
+    'MALE FACULTY COMFORT ROOM (CR) - LEFT WING': { x: 0.20, y: 0.94 },
+    'FEMALE COMFORT ROOM (CR) - LEFT WING': { x: 0.79, y: 0.96 },
+    'FEMALE FACULTY COMFORT ROOM (CR) - LEFT WING': { x: 0.70, y: 0.95 },
+    'M.E. LAB': { x: 0.50, y: 0.75 },
+    'V': { x: 0.73, y: 0.92 },
+    'U': { x: 0.54, y: 0.91 },
     'A': { x: 0.54, y: 0.82 },
+    'B': { x: 0.54, y: 0.75 },
+    'T': { x: 0.34, y: 0.90 },
+    'T1': { x: 0.24, y: 0.90 },
+    
   };
 
+  //connections
   const graph = {
     'EN 101': { 'U': 1 },
     'EN 102': { 'U': 1 },
     'EN 103': { 'U': 1 },
     'EN 104': { 'A': 1,},
     'ACCREDITATION ROOM': { 'A': 1,},
-    'LEFT FEMALE CR': { 'V': 1,},
-    'LEFT FEMALE FACULTY CR': { 'V': 1,},
-    'LEFT MALE CR': { 'T': 1,},
-    'LEFT MALE FACULTY CR': { 'T': 1,},
+    'FEMALE COMFORT ROOM (CR) - LEFT WING': { 'V': 1,},
+    'FEMALE FACULTY COMFORT ROOM (CR) - LEFT WING': { 'V': 1,},
+    'MALE COMFORT ROOM (CR) - LEFT WING': { 'T1': 1,},
+    'MALE FACULTY COMFORT ROOM (CR) - LEFT WING': { 'T1': 1,},
     'ACES PICE OFFICE': { 'T': 1,},
+    'M.E. LAB': { 'B': 1,},
     'A': { 'EN 104': 1, 'ACCREDITATION ROOM': 1, 'U': 3 },
-    'T': { 'LEFT MALE CR': 1, 'LEFT MALE FACULTY CR': 1, 'ACES PICE OFFICE': 1, 'U': 2 },
+    'B': { 'A': 2 },
+    'M.E. LAB': { 'B': 1 },
+    'T': { 'ACES PICE OFFICE': 1, 'U': 2, 'T1': 1 },
     'U': { 'EN 101': 1, 'EN 102': 1, 'EN 103': 1, 'T': 2, 'A': 3, 'V': 2 },
+    'V': { 'FEMALE FACULTY COMFORT ROOM (CR) - LEFT WING': 1, 'FEMALE COMFORT ROOM (CR) - LEFT WING': 1, 'U': 2 },
+    'T1': { 'T': 1, 'MALE COMFORT ROOM (CR) - LEFT WING': 1, 'MALE FACULTY COMFORT ROOM (CR) - LEFT WING': 1  },
+
   };
 
   const dijkstra = (start, end) => {
@@ -94,35 +120,52 @@ function PFScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.text}>UE Connect</Text>
-      </View>
+        <View style={styles.header}>
+            <Image 
+                source={require("../assets/logo_red.png")}
+                style={styles.logo_header}
+            />
+            <Text style={styles.text}>UE Connect</Text>
+        </View>
 
-      <View style={styles.dropdownContainer}>
-        <Text style={styles.label}>Select Current Location</Text>
-        <SelectList setSelected={setSelectedStart} data={dropdownData} save="value" placeholder="Select Location" boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} />
-      </View>
+        <View style={styles.dropdownContainer}>
+            <Text style={styles.label}>Select Current Location</Text>
+            <SelectList 
+                setSelected={setSelectedStart} 
+                data={dropdownData} 
+                save="value" 
+                placeholder="Select Location" 
+                boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
+            />
+        </View>
 
-      <View style={styles.dropdownContainer}>
-        <Text style={styles.label}>Select Destination</Text>
-        <SelectList setSelected={setSelectedEnd} data={dropdownData} save="value" placeholder="Select Location" boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} />
-      </View>
+        <View style={styles.dropdownContainer}>
+            <Text style={styles.label}>Select Destination</Text>
+            <SelectList 
+                setSelected={setSelectedEnd} 
+                data={dropdownData} 
+                save="value" 
+                placeholder="Select Location" 
+                boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
+            />
+        </View>
 
-      <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
-        <Text style={styles.buttonText}>Search</Text>
-      </TouchableOpacity>      
+        <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
+            <Text style={styles.buttonText}>Search</Text>
+        </TouchableOpacity>      
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
-          <Text style={styles.buttonText1}>Go Back</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
+                <Text style={styles.buttonText1}>Go Back</Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button2}>
-          <Text style={styles.buttonText1}>Free Roam</Text>
-        </TouchableOpacity>
-      </View>
+            <TouchableOpacity style={styles.button2}>
+                <Text style={styles.buttonText1}>Free Roam</Text>
+            </TouchableOpacity>
+        </View>
     </View>
-  );
+);
+
 }
 
 const styles = StyleSheet.create({
@@ -174,18 +217,22 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 120,
     backgroundColor: '#DF4242',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+    flexDirection: 'row',
+    paddingStart: 20,
     paddingBottom: 10,
     borderBottomEndRadius: 30,
     borderBottomStartRadius: 30,
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.55)',
   },
   text: {
-    color: 'white',
-    fontSize: 30,
+    color: '#FFFFFF',
+    fontSize: 32,
     fontWeight: 'bold',
-  },
+    textAlign: 'center',
+    letterSpacing: 1,
+},
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -225,6 +272,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 14,
   },
+  logo_header: {
+    width: 50,
+    height: 50,
+    marginEnd: 10
+    
+}
   });
 
 export default PFScreen;

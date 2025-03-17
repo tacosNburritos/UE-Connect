@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   pointLabel: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 10, // Adjusted for better visibility
+    fontSize: 1, // Adjusted for better visibility
   },
   buttonContainer: {
     flexDirection: 'row',
