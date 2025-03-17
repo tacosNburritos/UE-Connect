@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, ImageBackground, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, ImageBackground, View, Text, TouchableOpacity, Image, SafeAreaView, Platform, StatusBar } from 'react-native';
+
+
 
 function WelcomeScreen({ navigation }) { // Pass navigation prop
 
@@ -8,12 +10,22 @@ function WelcomeScreen({ navigation }) { // Pass navigation prop
     };
 
     return(
+        <SafeAreaView styles = {styles.container}>
+            <StatusBar 
+                barStyle="dark-content" // Use 'light-content' for white text/icons
+                backgroundColor="transparent" // Set to transparent if you want the background to show through
+                translucent={true} // Set to true if you want the status bar to be translucent
+            />
         <>
          <ImageBackground
-            source={require("../images/Placeholder.png")} 
+            source={require("../images/background.png")} 
             style={styles.placeholder}
         >
         <View style={styles.header}>
+            <Image 
+                      source={require("../assets/logo_red.png")}
+                      style={styles.logo_header}
+                  />
             <Text style={styles.text}>UE Connect</Text>
         </View>
 
@@ -30,10 +42,16 @@ function WelcomeScreen({ navigation }) { // Pass navigation prop
 
         </ImageBackground>
         </>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex:1,
+        backgroundColor: '#fff',
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    },
     button1: {
         width: '47%',
         height: 60,
@@ -66,24 +84,33 @@ const styles = StyleSheet.create({
     },
     header: {
         width: '100%',
-        height: 120,
-        backgroundColor: '#DF4242',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
+        height: '13%',
+        backgroundColor: 'white',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-end',
+        flexDirection: 'row',
+        paddingStart: 20,
         paddingBottom: 10,
-        borderRadius: 30,
-        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
+        borderBottomEndRadius: 30,
+        borderBottomStartRadius: 30,
+        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.55)',
     },
     placeholder: {
         height: '100%',
         width: '100%',
     },
     text: {
-        color: 'white',
+        color: '#DF4242',
         fontSize: 30,
         fontWeight: 'bold',
-        textAlign: 'center',
+        textAlign: 'left',
     },
+    logo_header: {
+        width: 50,
+        height: 50,
+        marginEnd: 10
+        
+    }
 });
 
 export default WelcomeScreen;
