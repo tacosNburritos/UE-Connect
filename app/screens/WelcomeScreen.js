@@ -3,11 +3,11 @@ import { StyleSheet, ImageBackground, View, Text, TouchableOpacity, Image, SafeA
 
 
 
-function WelcomeScreen({ navigation }) { // Pass navigation prop
-
+function WelcomeScreen({ navigation }) {
     const handlePathPress = () => {
-        navigation.navigate('PathFind'); // Navigates to PFScreen
+        navigation.navigate('PathFind'); // Navigate to Pathfinding screen
     };
+
 
     return(
         <SafeAreaView styles = {styles.container}>
@@ -19,8 +19,11 @@ function WelcomeScreen({ navigation }) { // Pass navigation prop
         <>
          <ImageBackground
             source={require("../images/background.png")} 
+
             style={styles.placeholder}
+            resizeMode="cover"
         >
+
         <View style={styles.header}>
             <Image 
                       source={require("../assets/logo_red.png")}
@@ -35,12 +38,19 @@ function WelcomeScreen({ navigation }) { // Pass navigation prop
                 <Text style={styles.buttonText}>Find Path</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button2} onPress={() => alert("Free Roam Button Pressed!")}>
-                <Text style={styles.buttonText}>Free Roam</Text>
-            </TouchableOpacity>
-        </View>
 
+            {/* Buttons Side by Side */}
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.button} onPress={handlePathPress}>
+                    <Text style={styles.buttonText}>Find Path</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button} onPress={() => alert("Free Roam Button Pressed!")}>
+                    <Text style={styles.buttonText}>Free Roam</Text>
+                </TouchableOpacity>
+            </View>
         </ImageBackground>
+
         </>
         </SafeAreaView>
     )
@@ -59,22 +69,44 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
         left: 7,
+
     },
-    button2: {
-        width: '47%',
-        height: 60,
-        backgroundColor: '#DF4242',
-        borderRadius: 30,
-        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
-        right: 7,
+    header: {
+        width: '100%',
+        height: 140,
+        backgroundColor: '#8E0E00',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingBottom: 20,
+        borderBottomEndRadius: 30,
+        borderBottomStartRadius: 30,
+        // iOS shadow
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4.65,
+        // Android shadow
+        elevation: 8,
+    },
+    text: {
+        color: '#FFFFFF',
+        fontSize: 32,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        letterSpacing: 1,
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         position: 'absolute',
-        bottom: 45,
-        width: '100%',
+        bottom: 60,
+        width: '90%',
+        alignSelf: 'center',
     },
+
     buttonText: {
         color: 'white',
         fontSize: 25,
@@ -114,4 +146,3 @@ const styles = StyleSheet.create({
 });
 
 export default WelcomeScreen;
-

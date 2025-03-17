@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 const LoadingScreen = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('Main'); // Navigate to Main Screen after 3 seconds
+      navigation.replace('OnBoard'); // Navigate to Main Screen after 3 seconds
     }, 3000);
   }, []);
 
