@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 
 function PFScreen({ navigation }) {
@@ -9,47 +9,55 @@ function PFScreen({ navigation }) {
 
   const [selectedStart, setSelectedStart] = useState("");
   const [selectedEnd, setSelectedEnd] = useState("");
-  const [pathResult, setPathResult] = useState([]); // Store computed path as points
-
+  
   const dropdownData = [
     { key: '1', value: 'EN 101' },
     { key: '2', value: 'EN 102' },
     { key: '3', value: 'EN 103' },
+    { key: '4', value: 'EN 104' }, // Trippings muna to
+    { key: '5', value: 'ACCREDITATION ROOM' },
   ];
 
-  // Define static coordinates for buildings on the map (x, y)
   const buildingCoordinates = {
-    'EN 101': { x: 500, y: 760 },
-    'EN 102': { x: 320, y: 750 },
-    'EN 103': { x: 370, y: 700 },
-    'U': { x: 430, y: 720 },
-
+    'EN 101': { x: 0.55, y: 0.93 },
+    'EN 102': { x: 0.45, y: 0.93 }, 
+    'EN 103': { x: 0.8, y: 0.75 }, 
+    'EN 104': { x: 0.45, y: 0.82 },
+    'ACCREDITATION ROOM': { x: 0.60, y: 0.82 },
+    'U': { x: 0.54, y: 0.9 },
+    'A': { x: 0.54, y: 0.82 },
   };
 
-  // Graph representation
   const graph = {
-    'EN 101': { 'U': 1},
-    'EN 102': { 'U': 1},
-    'EN 103': { 'U': 1},
-    'U': { 'EN 101': 1, 'EN 102': 1, 'EN 103': 1},
+    'EN 101': { 'U': 1 },
+    'EN 102': { 'U': 1 },
+    'EN 103': { 'U': 1 },
+    'EN 104': { 'A': 1,},
+    'ACCREDITATION ROOM': { 'A': 1,},
+    'LEFT FEMALE CR': { 'V': 1,},
+    'LEFT FEMALE FACULTY CR': { 'V': 1,},
+    'LEFT MALE CR': { 'T': 1,},
+    'LEFT MALE FACULTY CR': { 'T': 1,},
+    'ACES PICE OFFICE': { 'T': 1,},
+    'A': { 'EN 104': 1, 'ACCREDITATION ROOM': 1, 'U': 3 },
+    'T': { 'LEFT MALE CR': 1, 'LEFT MALE FACULTY CR': 1, 'ACES PICE OFFICE': 1, 'U': 2 },
+    'U': { 'EN 101': 1, 'EN 102': 1, 'EN 103': 1, 'T': 2, 'A': 3, 'V': 2 },
   };
 
   const dijkstra = (start, end) => {
     let distances = {};
-    let visited = {};
     let previous = {};
     let nodes = Object.keys(graph);
-
+    
     nodes.forEach(node => {
       distances[node] = Infinity;
       previous[node] = null;
     });
     distances[start] = 0;
-
+    
     while (nodes.length > 0) {
       nodes.sort((a, b) => distances[a] - distances[b]);
       let current = nodes.shift();
-
       if (current === end) break;
       if (!graph[current]) continue;
 
@@ -60,9 +68,8 @@ function PFScreen({ navigation }) {
           previous[neighbor] = current;
         }
       }
-      visited[current] = true;
     }
-
+    
     let path = [];
     let current = end;
     while (current) {
@@ -81,13 +88,9 @@ function PFScreen({ navigation }) {
       Alert.alert("Error", "Current Location and Destination cannot be the same");
       return;
     }
-  
     const path = dijkstra(selectedStart, selectedEnd);
-    setPathResult(path);
-  
     navigation.navigate('Map', { path, buildingCoordinates });
   };
-  
 
   return (
     <View style={styles.container}>
@@ -97,24 +100,12 @@ function PFScreen({ navigation }) {
 
       <View style={styles.dropdownContainer}>
         <Text style={styles.label}>Select Current Location</Text>
-        <SelectList
-          setSelected={setSelectedStart}
-          data={dropdownData}
-          save="value"
-          placeholder="Select Location"
-          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }}
-        />
+        <SelectList setSelected={setSelectedStart} data={dropdownData} save="value" placeholder="Select Location" boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} />
       </View>
 
       <View style={styles.dropdownContainer}>
         <Text style={styles.label}>Select Destination</Text>
-        <SelectList
-          setSelected={setSelectedEnd}
-          data={dropdownData}
-          save="value"
-          placeholder="Select Location"
-          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }}
-        />
+        <SelectList setSelected={setSelectedEnd} data={dropdownData} save="value" placeholder="Select Location" boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} />
       </View>
 
       <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>

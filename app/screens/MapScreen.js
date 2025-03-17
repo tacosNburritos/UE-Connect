@@ -11,17 +11,16 @@ function MapScreen({ route, navigation }) {
     navigation.goBack();
   };
 
-  // Reference dimensions (original image size used for coordinates)
-  const referenceWidth = 800;  // Example width of the original image
-  const referenceHeight = 800; // Example height of the original image
-
-  // Scale coordinates to match the actual displayed image size
-  const scaleX = imageSize.width / referenceWidth;
-  const scaleY = imageSize.height / referenceHeight;
+  // Function to scale coordinates relative to the actual image size
+  const getScaledCoordinates = (point) => {
+    return {
+      x: point.x * imageSize.width,  // Directly scale using percentage-based values
+      y: point.y * imageSize.height,
+    };
+  };
 
   return (
     <View style={styles.container}>
-
       <View
         style={styles.mapContainer}
         onLayout={(event) => {
@@ -36,16 +35,17 @@ function MapScreen({ route, navigation }) {
         <Svg style={StyleSheet.absoluteFill}>
           {path.map((location, index) => {
             if (index === path.length - 1) return null;
-            const start = buildingCoordinates[path[index]];
-            const end = buildingCoordinates[path[index + 1]];
+            const start = getScaledCoordinates(buildingCoordinates[path[index]]);
+            const end = getScaledCoordinates(buildingCoordinates[path[index + 1]]);
+            if (!start || !end) return null;
 
             return (
               <Line
                 key={index}
-                x1={start.x * scaleX}
-                y1={start.y * scaleY}
-                x2={end.x * scaleX}
-                y2={end.y * scaleY}
+                x1={start.x}
+                y1={start.y}
+                x2={end.x}
+                y2={end.y}
                 stroke="red"
                 strokeWidth="4"
               />
@@ -55,13 +55,15 @@ function MapScreen({ route, navigation }) {
 
         {/* Render path nodes on the map */}
         {path.map((location, index) => {
-          const point = buildingCoordinates[location];
+          const point = getScaledCoordinates(buildingCoordinates[location]);
+          if (!point) return null;
+
           return (
             <View
               key={index}
               style={[
                 styles.point,
-                { left: point.x * scaleX - 5, top: point.y * scaleY - 5 },
+                { left: point.x - 5, top: point.y - 5 },
               ]}
             >
               <Text style={styles.pointLabel}>{location}</Text>
@@ -76,7 +78,6 @@ function MapScreen({ route, navigation }) {
           <Text style={styles.buttonText1}>Go Back</Text>
         </TouchableOpacity>
       </View>
-
     </View>
   );
 }
@@ -88,14 +89,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
   mapContainer: {
     width: '90%',
-    height: 700,
+    height: '90%', // Make it flexible for different screens
     position: 'relative',
   },
   map: {
@@ -115,7 +111,7 @@ const styles = StyleSheet.create({
   pointLabel: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 1,
+    fontSize: 10, // Adjusted for better visibility
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -132,6 +128,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     justifyContent: 'center',
     alignItems: 'center',
+    opacity: 0.8,
   },
   buttonText1: {
     color: 'white',
