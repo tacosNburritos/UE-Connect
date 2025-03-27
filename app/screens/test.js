@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
-import { dropdowndata, buildingCoordinates, graph } from '../screens/EN1STFLOOR';
-
-console.log(dropdowndata, buildingCoordinates, graph);
-
 
 function PFScreen({ navigation }) {
   const handleGoBack = () => {
@@ -14,17 +10,89 @@ function PFScreen({ navigation }) {
   const [selectedStart, setSelectedStart] = useState("");
   const [selectedEnd, setSelectedEnd] = useState("");
   
-  const dijkstra = (start, end) => {
+  //dropdown labels
+  const dropdownData = [
+    { key: '1', value: 'NEAREST MALE CR'},
+    { key: '2', value: 'NEAREST FEMALE CR'},
+    { key: '3', value: 'EN 101' },
+    { key: '4', value: 'EN 118'},
+    { key: '5', value: 'CAS Faculty Room' },
+  ];
+
+  //Room Coordinates
+  const buildingCoordinates = {
+    'EN 101': { x: 0.55, y: 0.93 },
+    'EN 118': { x: 0.50, y: 0.06 },
+    'MALE COMFORT ROOM (CR) - LEFT WING': { x: 0.24, y: 0.95 },
+    'FEMALE COMFORT ROOM (CR) - LEFT WING': { x: 0.79, y: 0.96 },
+    'CAS Faculty Room': { x: 0.32, y: 0.05 },
+    'MALE COMFORT ROOM (CR) - RIGHT WING': { x: 0.29, y: 0.05 },
+
+    //Hallway Nodes (not actual rooms) 
+    'V': { x: 0.73, y: 0.92 },
+    'U': { x: 0.54, y: 0.91 },
+    'T': { x: 0.34, y: 0.90 },
+    'T1': { x: 0.25, y: 0.9 },
+
+    'A': { x: 0.55, y: 0.82 },
+    'B': { x: 0.55, y: 0.75 },
+    'C': { x: 0.55, y: 0.66 },
+    'D': { x: 0.55, y: 0.58 },
+    'E': { x: 0.55, y: 0.53 },
+    'F': { x: 0.55, y: 0.43 },
+    'G': { x: 0.55, y: 0.38 },
+    'H': { x: 0.55, y: 0.32 },
+    'I': { x: 0.55, y: 0.25 },
+    'J': { x: 0.55, y: 0.16 },
+
+    'X': { x: 0.27, y: 0.08 },
+    'Y': { x: 0.55, y: 0.08 },
+    
+  };
+
+  //connections (EN 1ST FLOOR)
+  const graph = {
+    'EN 101': { 'U': 1 },
+    'EN 118': { 'Y': 1},
+
+    
+    'FEMALE COMFORT ROOM (CR) - LEFT WING': { 'V': 1,},
+    'MALE COMFORT ROOM (CR) - LEFT WING': { 'T1': 1,},
+    'CAS Faculty Room': { 'X': 1},
+    
+    'A': { 'EN 104': 1, 'ACCREDITATION ROOM': 1, 'U': 3, 'B': 2 },
+    'B': { 'A': 2, 'Faculty Training & Briefing Room' : 1, 'C': 2},
+    'C': { 'B': 2, 'D': 2,'Deans Office': 1, 'Fluid Mechanics & Hydraulics Room': 1,  'COE (Deans Office)': 1},
+    'D': { 'C': 2, 'E': 2, 'COE (Deans Office)': 1, 'CE Tool Room': 1 },
+    'E': { 'D': 2, 'F': 2, 'Structural Material & Testing Lab': 1, 'Soil Mechanics Laboratory': 1, 'EN 112': 1 },
+    'F': { 'E': 2, 'G': 2, 'EN 113': 1 , 'EN 111B': 1},
+    'G': { 'F': 2, 'H': 2, 'ME TOOL ROOM': 1, 'CE Faculty Room': 1 },
+    'H': { 'G': 2, 'I': 2, 'ME Lab': 1, 'CPE Faculty Room': 1 },
+    'I': { 'H': 2, 'J': 2, 'Y': 2, 'ECE Faculty Room': 1, 'Machine Fabrication Room': 1, 'EE Faculty Room': 1 },
+    'J': { 'I': 2, 'ME Faculty Room': 1, 'Electrical Room': 1 },
+
+    'T': { 'ACES PICE OFFICE': 1, 'U': 2, 'T1': 1 },
+    'U': { 'EN 101': 1, 'EN 102': 1, 'EN 103': 1, 'T': 2, 'A': 3, 'V': 2 },
+    'V': { 'FEMALE COMFORT ROOM (CR) - LEFT WING': 1, 'U': 2 },
+    'T1': { 'T': 1, 'MALE COMFORT ROOM (CR) - LEFT WING': 1},
+    
+    'X': { 'CAS Faculty Room': 1, 'Y': 2 },
+    'Y': { 'I': 2, 'X':2, 'EN 118': 1 },
+
+
+  };
+
+  const dijkstra = (start, end) =>{
     let distances = {};
     let previous = {};
     let nodes = Object.keys(graph);
-
+    
     nodes.forEach(node => {
       distances[node] = Infinity;
       previous[node] = null;
     });
     distances[start] = 0;
-
+    
     while (nodes.length > 0) {
       nodes.sort((a, b) => distances[a] - distances[b]);
       let current = nodes.shift();
@@ -39,7 +107,7 @@ function PFScreen({ navigation }) {
         }
       }
     }
-
+    
     let path = [];
     let current = end;
     while (current) {
@@ -54,77 +122,26 @@ function PFScreen({ navigation }) {
       Alert.alert("Error", "Please select both locations");
       return;
     }
-
+    
     if (selectedStart === selectedEnd) {
       Alert.alert("Error", "Current Location and Destination cannot be the same");
       return;
     }
-
+  
     let actualEnd = selectedEnd;
-
-    // Determine the nearest male CR, prioritizing LEFT WING
+    
+    // If the user selects "NEAREST MALE CR" or "NEAREST FEMALE CR", map it to the correct location
     if (selectedEnd === "NEAREST MALE CR") {
-      const startCoord = buildingCoordinates[selectedStart];
-      const leftWingCoord = buildingCoordinates['MALE COMFORT ROOM (CR) - LEFT WING'];
-      const rightWingCoord = buildingCoordinates['MALE COMFORT ROOM (CR) - RIGHT WING'];
-
-      if (startCoord && leftWingCoord && rightWingCoord) {
-        const distLeft = calculateDistance(startCoord, { x: leftWingCoord.x, y: leftWingCoord.y });
-        const distRight = calculateDistance(startCoord, { x: rightWingCoord.x, y: rightWingCoord.y });
-
-        console.log("Start Coord:", startCoord);
-        console.log("Left Wing Coord:", leftWingCoord);
-        console.log("Right Wing Coord:", rightWingCoord);
-        console.log("Distance to Left:", distLeft);
-        console.log("Distance to Right:", distRight);
-
-        if (distRight < distLeft - 0.1) { // Adjust the threshold (0.1) as needed
-          actualEnd = "MALE COMFORT ROOM (CR) - RIGHT WING";
-        } else {
-          actualEnd = "MALE COMFORT ROOM (CR) - LEFT WING";
-        }
-        console.log("Selected Nearest CR (Prioritized Left):", actualEnd);
-      } else {
-        Alert.alert("Error", "Could not determine the nearest male CR due to missing coordinates.");
-        return;
-      }
+      actualEnd = "MALE COMFORT ROOM (CR) - LEFT WING";
     } else if (selectedEnd === "NEAREST FEMALE CR") {
-      const startCoord = buildingCoordinates[selectedStart];
-      const leftWingCoord = buildingCoordinates['FEMALE COMFORT ROOM (CR) - LEFT WING'];
-      const rightWingCoord = buildingCoordinates['FEMALE COMFORT ROOM (CR) - RIGHT WING'];
-
-      if (startCoord && leftWingCoord && rightWingCoord) {
-        const distLeft = calculateDistance(startCoord, { x: leftWingCoord.x, y: leftWingCoord.y });
-        const distRight = calculateDistance(startCoord, { x: rightWingCoord.x, y: rightWingCoord.y });
-
-        console.log("Start Coord:", startCoord);
-        console.log("Left Wing Coord (Female):", leftWingCoord);
-        console.log("Right Wing Coord (Female):", rightWingCoord);
-        console.log("Distance to Left (Female):", distLeft);
-        console.log("Distance to Right (Female):", distRight);
-
-        // Prioritize Left Wing unless Right Wing is significantly closer
-        if (distRight < distLeft - 0.1) { // Adjust the threshold (0.1) as needed
-          actualEnd = "FEMALE COMFORT ROOM (CR) - RIGHT WING";
-        } else {
-          actualEnd = "FEMALE COMFORT ROOM (CR) - LEFT WING";
-        }
-        console.log("Selected Nearest CR (Female, Prioritized Left):", actualEnd);
-      } else {
-        Alert.alert("Error", "Could not determine the nearest female CR due to missing coordinates.");
-        return;
-      }
+      actualEnd = "FEMALE COMFORT ROOM (CR) - LEFT WING";
     }
-
+  
+    
     const path = dijkstra(selectedStart, actualEnd);
-    console.log("Path:", path);
     navigation.navigate('Map', { path, buildingCoordinates });
   };
-
-  const calculateDistance = (coord1, coord2) => {
-    if (!coord1 || !coord2) return Infinity;
-    return Math.sqrt(Math.pow(coord1.x - coord2.x, 2) + Math.pow(coord1.y - coord2.y, 2));
-  };
+  
 
   return (
     <View style={styles.container}>
@@ -140,7 +157,7 @@ function PFScreen({ navigation }) {
             <Text style={styles.label}>Select Current Location</Text>
             <SelectList 
                 setSelected={setSelectedStart} 
-                data={dropdowndata} 
+                data={dropdownData} 
                 save="value" 
                 placeholder="Select Location" 
                 boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
@@ -151,7 +168,7 @@ function PFScreen({ navigation }) {
             <Text style={styles.label}>Select Destination</Text>
             <SelectList 
                 setSelected={setSelectedEnd} 
-                data={dropdowndata} 
+                data={dropdownData} 
                 save="value" 
                 placeholder="Select Location" 
                 boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 

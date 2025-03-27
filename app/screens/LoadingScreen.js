@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 const LoadingScreen = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('OnBoard'); // Navigate to Main Screen after 3 seconds
+      navigation.replace('OnBoard'); // Navigate to OnBoard Screen after 3 seconds
     }, 3000);
   }, []);
 
@@ -19,7 +19,6 @@ const LoadingScreen = ({ navigation }) => {
           style={styles.logo}
       />
       <Text style={styles.text}>CONNECT</Text>
-      <ActivityIndicator size="medium" color="#ffffff" />
       </SafeAreaView>
     </LinearGradient>
   );

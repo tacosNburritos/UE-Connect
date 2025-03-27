@@ -83,7 +83,7 @@ function WelcomeScreen({ navigation }) {
                 <Animated.View style={styles.imageContainer}>
                     <PanGestureHandler onGestureEvent={onPanEvent} onHandlerStateChange={onPanStateChange}>
                         <Animated.Image
-                            source={require("../images/background.png")}
+                            source={require("../images/background v2.png")}
                             style={[
                                 styles.placeholder,
                                 {
@@ -116,7 +116,7 @@ function WelcomeScreen({ navigation }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button1} onPress={() => alert("Free Roam Button Pressed!")}>
-                    <Text style={styles.buttonText}>Free Roam</Text>
+                    <Text style={styles.buttonText}> 3D Map </Text>
                 </TouchableOpacity>
             </View>
         </GestureHandlerRootView>
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         position: 'absolute',
-        bottom: 60,
+        bottom: 50,
         width: '90%',
         alignSelf: 'center',
     },
