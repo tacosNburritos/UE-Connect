@@ -59,6 +59,14 @@ export const dropdowndata = [
   { key: '54', value: 'Electrical Power Engineering Lab 3' },
   { key: '53', value: 'EN 205' },
   { key: '54', value: 'Electrical Power Engineering Lab 4' },
+  { key: '55', value: 'EE Tool Room' },
+  { key: '56', value: 'Physics Stock Room' },
+  { key: '57', value: 'EN 201' },
+  { key: '58', value: 'Electrical Room (2nd Floor)' },
+  { key: '59', value: 'NET LAB' },
+  { key: '60', value: 'EN 219' },
+  { key: '61', value: 'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)' },
+  
 ];
 
 //Room Coordinates
@@ -124,7 +132,7 @@ export const buildingCoordinates = {
   'EN 217': { x: 0.35, y: 0.93 },
   'CHEM LABORATORY STOCK ROOM': { x: 0.48, y: 0.93 },
   'EN 215': { x: 0.63, y: 0.94 },
-  'MALE COMFORT ROOM (CR) - LEFT WING (2nd)': { x: 0.29, y: 0.05 },
+  'MALE COMFORT ROOM (CR) - LEFT WING (2nd)': { x: 0.29, y: 0.95 },
   'FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)': { x: 0.73, y: 0.94 },
   'DCSS Faculty Room': { x: 0.50, y: 0.79 },
   'BIO LAB Stock Room': { x: 0.60, y: 0.79 },
@@ -138,6 +146,8 @@ export const buildingCoordinates = {
   'CLR 8': { x: 0.60, y: 0.35 },
   'EN 206': { x: 0.60, y: 0.28 },
   'EN 205': { x: 0.60, y: 0.20 },
+  'EN 201': { x: 0.60, y: 0.08 },
+  'EN 219': { x: 0.39, y: 0.08 },
 
   'ECE LAB 1': { x: 0.50, y: 0.70 },
   'ECE LAB 2': { x: 0.50, y: 0.68 },
@@ -149,7 +159,13 @@ export const buildingCoordinates = {
   'Electrical Power Engineering Lab 2': { x: 0.50, y: 0.35 },
   'Electrical Power Engineering Lab 3': { x: 0.50, y: 0.28 },
   'Electrical Power Engineering Lab 4': { x: 0.50, y: 0.20 },
+  'EE Tool Room': { x: 0.50, y: 0.15 },
+  'Physics Stock Room': { x: 0.54, y: 0.08 },
+  'Electrical Room (2nd Floor)': { x: 0.59, y: 0.15 },
+  'FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)': { x: 0.76, y: 0.07 },
+  'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)': { x: 0.23, y: 0.07 },
 
+  'NET LAB': { x: 0.39, y: 0.13 },
 
   'T2': { x: 0.25, y: 0.89 },
   'U2': { x: 0.53, y: 0.90 },
@@ -165,7 +181,12 @@ export const buildingCoordinates = {
   'G2': { x: 0.54, y: 0.35 },
   'H2': { x: 0.54, y: 0.28 },
   'I2': { x: 0.54, y: 0.20 },
+  'J2': { x: 0.54, y: 0.15 },
 
+  'X21': { x: 0.23, y: 0.11 },
+  'X2': { x: 0.39, y: 0.11 },
+  'Y2': { x: 0.54, y: 0.11 },
+  'Z2': { x: 0.74, y: 0.11 },
 
 };
 
@@ -259,7 +280,19 @@ export const graph = {
   'Electrical Power Engineering Lab 3': { 'H2': 1 },
   'EN 205': { 'I2': 1 },
   'Electrical Power Engineering Lab 4': { 'I2': 1 },
+  'EE Tool Room': { 'J2': 1 },
+  'Physics Stock Room': { 'Y2': 1 },
+  'EN 201': { 'Y2': 1 },
+  'Electrical Room (2nd Floor)': { 'Y2': 1 },
+  'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)': { 'X21': 1 },
+  'FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)': { 'Z2': 1 },
+  'NET LAB': { 'X2': 1 },
+  'EN 219': { 'X2': 1 },
 
+  'X21': { 'X2': 2, 'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)': 1 },
+  'X2': { 'Y2': 2, 'X21': 1, 'NET LAB': 1, 'EN 219': 1 },
+  'Y2': { 'J2': 3, 'Z2':2, 'X2': 2, 'Physics Stock Room': 1, 'EN 201': 1, 'Electrical Room (2nd Floor)': 1 },
+  'Z2': { 'Y2':2, 'FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)':1 },
   
   'A2': { 'U2': 3, 'B2': 2, 'DCSS Faculty Room': 1, 'BIO LAB Stock Room': 1, 'CLR 1': 1, 'CLR 2': 1 },
   'B2': { 'A2': 2, 'C2': 2 , 'ECE LAB 1': 1, 'CLR 3': 1, 'ECE LAB 2': 1 },
@@ -270,7 +303,7 @@ export const graph = {
   'G2': { 'F2': 2, 'H2': 2 , 'Electrical Power Engineering Lab 2': 1, 'CLR 8': 1 },
   'H2': { 'G2': 2, 'I2': 2 , 'Electrical Power Engineering Lab 3': 1, 'EN 206': 1},
   'I2': { 'H2': 2, 'J2': 2 , 'Electrical Power Engineering Lab 4': 1, 'EN 205': 1},
-  'J2': { 'I2': 2, 'Y2': 2 },
+  'J2': { 'I2': 2, 'Y2': 2 , 'EE Tool Room': 1 },
 
   'T2': { 'U2': 2,'EN - STAIRS': 1, 'MALE COMFORT ROOM (CR) - LEFT WING (2nd)': 1 },
   'U2': { 'A2':3 , 'T2': 2, 'V2': 2, 'EN 217': 1, 'CHEM LABORATORY STOCK ROOM': 1 },
