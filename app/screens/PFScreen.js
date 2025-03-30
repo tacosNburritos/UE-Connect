@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
-import { dropdowndata, buildingCoordinates, graph } from '../screens/EN1STFLOOR';
+import { dropdowndata, buildingCoordinates, graph } from '../screens/MapData';
 
 console.log(dropdowndata, buildingCoordinates, graph);
 
@@ -118,7 +118,7 @@ function PFScreen({ navigation }) {
 
     const path = dijkstra(selectedStart, actualEnd);
     console.log("Path:", path);
-    navigation.navigate('Map', { path, buildingCoordinates });
+    navigation.navigate('EN2NDFLOORScreen', { path, buildingCoordinates });
   };
 
   const calculateDistance = (coord1, coord2) => {
