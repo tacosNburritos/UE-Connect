@@ -1,23 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, Image, TouchableOpacity, Text, Button } from "react-native";
+import { View, Image, TouchableOpacity, Text } from "react-native";
 import { Svg, Circle, Line } from "react-native-svg";
-import Animated, { useSharedValue, withTiming, useAnimatedProps, Easing } from "react-native-reanimated";
+import Animated, {
+    useSharedValue,
+    withTiming,
+    useAnimatedProps,
+    Easing,
+} from "react-native-reanimated";
 
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 const EN1STFLOORScreen = ({ route, navigation }) => {
-    const { path, buildingCoordinates } = route.params;
+    const { path = [], buildingCoordinates = {} } = route.params || {};
     const containerRef = useRef(null);
     const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
     const [showNextButton, setShowNextButton] = useState(false);
 
-    // Find "EN - STAIRS" and adjust the path
-    const stairsIndex = path.indexOf("EN - STAIRS");
-    const adjustedPath = stairsIndex !== -1 ? path.slice(0, stairsIndex + 1) : path; // Trimmed path for 1st floor
-    const remainingPath = stairsIndex !== -1 ? path.slice(stairsIndex) : []; // Path for 1st floor
+    const stairNodes = [
+        "EN - STAIRS RIGHT WING1",
+        "EN - STAIRS LEFT WING1",
+        "EN - STAIRS RIGHT WING2",
+        "EN - STAIRS LEFT WING2",
+    ];
 
-    // Animation progress for each segment
+    const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
+    const adjustedPath = stairsIndex !== -1 ? path.slice(0, stairsIndex + 1) : path;
+    const remainingPath = stairsIndex !== -1 ? path.slice(stairsIndex + 1) : [];
+
     const lineProgress = adjustedPath.slice(0, -1).map(() => useSharedValue(0));
 
     useEffect(() => {
@@ -31,7 +41,6 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             }, index * 270);
         });
 
-        // Show "Next Floor" button only if we reach "EN - STAIRS"
         if (stairsIndex !== -1) {
             setTimeout(() => setShowNextButton(true), stairsIndex * 270);
         }
@@ -44,7 +53,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
 
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            {/* Buttons Row */}
+            {/* Buttons */}
             <View
                 style={{
                     position: "absolute",
@@ -54,11 +63,10 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    paddingHorizontal: 20, // Adjust padding for spacing
+                    paddingHorizontal: 20,
                     zIndex: 10,
                 }}
             >
-                {/* Back Button */}
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
                     style={{
@@ -70,13 +78,12 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                 >
                     <Text style={{ color: "white", fontSize: 16 }}>Back</Text>
                 </TouchableOpacity>
-    
-                {/* Show "Next Floor" button only when reaching "EN - STAIRS" */}
+
                 {showNextButton && (
                     <TouchableOpacity
                         onPress={() =>
                             navigation.navigate("EN2NDFLOORScreen", {
-                                path: remainingPath, // Send the remaining path for 2nd floor
+                                path: remainingPath,
                                 buildingCoordinates,
                             })
                         }
@@ -91,13 +98,13 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                     </TouchableOpacity>
                 )}
             </View>
-    
+
             {/* Title */}
             <Text style={{ color: "black", fontSize: 16, marginTop: 50 }}>
                 Engineering Building - First Floor
             </Text>
-    
-            {/* Map and Path Visualization */}
+
+            {/* Map & Path */}
             <View
                 ref={containerRef}
                 onLayout={onLayout}
@@ -107,23 +114,24 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                     source={require("../images/EN1STFLR.png")}
                     style={{ width: "100%", height: "100%", resizeMode: "contain" }}
                 />
+
                 <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
-                    {/* Animated Lines */}
+                    {/* Lines */}
                     {adjustedPath.slice(0, -1).map((node, index) => {
                         const startCoords = buildingCoordinates[node];
                         const endCoords = buildingCoordinates[adjustedPath[index + 1]];
                         if (!startCoords || !endCoords) return null;
-    
+
                         const x1 = startCoords.x * containerSize.width;
                         const y1 = startCoords.y * containerSize.height;
                         const x2 = endCoords.x * containerSize.width;
                         const y2 = endCoords.y * containerSize.height;
-    
+
                         const animatedProps = useAnimatedProps(() => ({
                             strokeDasharray: [300, 300],
                             strokeDashoffset: (1 - lineProgress[index].value) * 300,
                         }));
-    
+
                         return (
                             <AnimatedLine
                                 key={`line-${index}`}
@@ -137,21 +145,20 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                             />
                         );
                     })}
-    
-                    {/* Animated Nodes */}
+
+                    {/* Intermediate Nodes */}
                     {adjustedPath.map((node, index) => {
                         if (index === 0 || index === adjustedPath.length - 1) return null;
-    
                         const coords = buildingCoordinates[node];
                         if (!coords) return null;
-    
+
                         const cx = coords.x * containerSize.width;
                         const cy = coords.y * containerSize.height;
-    
+
                         const animatedProps = useAnimatedProps(() => ({
                             opacity: lineProgress[index - 1].value,
                         }));
-    
+
                         return (
                             <AnimatedCircle
                                 key={`node-${index}`}
@@ -163,7 +170,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                             />
                         );
                     })}
-    
+
                     {/* Start Node */}
                     {buildingCoordinates[adjustedPath[0]] && (
                         <>
@@ -172,15 +179,19 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                                 cy={buildingCoordinates[adjustedPath[0]].y * containerSize.height}
                                 r={5}
                                 fill="blue"
-                                animatedProps={useAnimatedProps(() => ({
-                                    opacity: 1,
-                                }))}
+                                animatedProps={useAnimatedProps(() => ({ opacity: 1 }))}
                             />
                             <Text
                                 style={{
                                     position: "absolute",
-                                    left: buildingCoordinates[adjustedPath[0]].x * containerSize.width - 30,
-                                    top: buildingCoordinates[adjustedPath[0]].y * containerSize.height - 25,
+                                    left:
+                                        buildingCoordinates[adjustedPath[0]].x *
+                                            containerSize.width -
+                                        30,
+                                    top:
+                                        buildingCoordinates[adjustedPath[0]].y *
+                                            containerSize.height -
+                                        25,
                                     color: "blue",
                                     paddingHorizontal: 37,
                                     paddingVertical: 16,
@@ -192,12 +203,18 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                             </Text>
                         </>
                     )}
-    
+
                     {/* End Node */}
                     {buildingCoordinates[adjustedPath[adjustedPath.length - 1]] && (
                         <AnimatedCircle
-                            cx={buildingCoordinates[adjustedPath[adjustedPath.length - 1]].x * containerSize.width}
-                            cy={buildingCoordinates[adjustedPath[adjustedPath.length - 1]].y * containerSize.height}
+                            cx={
+                                buildingCoordinates[adjustedPath[adjustedPath.length - 1]].x *
+                                containerSize.width
+                            }
+                            cy={
+                                buildingCoordinates[adjustedPath[adjustedPath.length - 1]].y *
+                                containerSize.height
+                            }
                             r={5}
                             fill="red"
                             animatedProps={useAnimatedProps(() => ({
@@ -209,8 +226,6 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             </View>
         </View>
     );
-    
-    
 };
 
 export default EN1STFLOORScreen;

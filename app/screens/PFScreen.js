@@ -5,7 +5,6 @@ import { dropdowndata, buildingCoordinates, graph } from '../screens/MapData';
 
 console.log(dropdowndata, buildingCoordinates, graph);
 
-
 function PFScreen({ navigation }) {
   const handleGoBack = () => {
     navigation.goBack();
@@ -13,7 +12,7 @@ function PFScreen({ navigation }) {
 
   const [selectedStart, setSelectedStart] = useState("");
   const [selectedEnd, setSelectedEnd] = useState("");
-  
+
   const dijkstra = (start, end) => {
     let distances = {};
     let previous = {};
@@ -62,63 +61,56 @@ function PFScreen({ navigation }) {
 
     let actualEnd = selectedEnd;
 
-    // Determine the nearest male CR, prioritizing LEFT WING
+    // Determine the nearest male CR
     if (selectedEnd === "NEAREST MALE CR") {
       const startCoord = buildingCoordinates[selectedStart];
       const leftWingCoord = buildingCoordinates['MALE COMFORT ROOM (CR) - LEFT WING'];
       const rightWingCoord = buildingCoordinates['MALE COMFORT ROOM (CR) - RIGHT WING'];
 
       if (startCoord && leftWingCoord && rightWingCoord) {
-        const distLeft = calculateDistance(startCoord, { x: leftWingCoord.x, y: leftWingCoord.y });
-        const distRight = calculateDistance(startCoord, { x: rightWingCoord.x, y: rightWingCoord.y });
+        const distLeft = calculateDistance(startCoord, leftWingCoord);
+        const distRight = calculateDistance(startCoord, rightWingCoord);
 
-        console.log("Start Coord:", startCoord);
-        console.log("Left Wing Coord:", leftWingCoord);
-        console.log("Right Wing Coord:", rightWingCoord);
-        console.log("Distance to Left:", distLeft);
-        console.log("Distance to Right:", distRight);
-
-        if (distRight < distLeft - 0.1) { // Adjust the threshold (0.1) as needed
-          actualEnd = "MALE COMFORT ROOM (CR) - RIGHT WING";
-        } else {
-          actualEnd = "MALE COMFORT ROOM (CR) - LEFT WING";
-        }
-        console.log("Selected Nearest CR (Prioritized Left):", actualEnd);
+        actualEnd = distRight < distLeft - 0.1 ? 
+                    "MALE COMFORT ROOM (CR) - RIGHT WING" : 
+                    "MALE COMFORT ROOM (CR) - LEFT WING";
       } else {
-        Alert.alert("Error", "Could not determine the nearest male CR due to missing coordinates.");
+        Alert.alert("Error", "Could not determine the nearest male CR.");
         return;
       }
-    } else if (selectedEnd === "NEAREST FEMALE CR") {
+    } 
+    
+    // Nearest female CR
+    else if (selectedEnd === "NEAREST FEMALE CR") {
       const startCoord = buildingCoordinates[selectedStart];
       const leftWingCoord = buildingCoordinates['FEMALE COMFORT ROOM (CR) - LEFT WING'];
       const rightWingCoord = buildingCoordinates['FEMALE COMFORT ROOM (CR) - RIGHT WING'];
 
       if (startCoord && leftWingCoord && rightWingCoord) {
-        const distLeft = calculateDistance(startCoord, { x: leftWingCoord.x, y: leftWingCoord.y });
-        const distRight = calculateDistance(startCoord, { x: rightWingCoord.x, y: rightWingCoord.y });
+        const distLeft = calculateDistance(startCoord, leftWingCoord);
+        const distRight = calculateDistance(startCoord, rightWingCoord);
 
-        console.log("Start Coord:", startCoord);
-        console.log("Left Wing Coord (Female):", leftWingCoord);
-        console.log("Right Wing Coord (Female):", rightWingCoord);
-        console.log("Distance to Left (Female):", distLeft);
-        console.log("Distance to Right (Female):", distRight);
-
-        // Prioritize Left Wing unless Right Wing is significantly closer
-        if (distRight < distLeft - 0.1) { // Adjust the threshold (0.1) as needed
-          actualEnd = "FEMALE COMFORT ROOM (CR) - RIGHT WING";
-        } else {
-          actualEnd = "FEMALE COMFORT ROOM (CR) - LEFT WING";
-        }
-        console.log("Selected Nearest CR (Female, Prioritized Left):", actualEnd);
+        actualEnd = distRight < distLeft - 0.1 ?
+                    "FEMALE COMFORT ROOM (CR) - RIGHT WING" :
+                    "FEMALE COMFORT ROOM (CR) - LEFT WING";
       } else {
-        Alert.alert("Error", "Could not determine the nearest female CR due to missing coordinates.");
+        Alert.alert("Error", "Could not determine the nearest female CR.");
         return;
       }
     }
 
+    // Run pathfinding
     const path = dijkstra(selectedStart, actualEnd);
     console.log("Path:", path);
-    navigation.navigate('EN2NDFLOORScreen', { path, buildingCoordinates });
+
+    // Determine the starting floor and navigate accordingly
+    const startFloor = buildingCoordinates[selectedStart]?.ENfloor;
+
+    if (startFloor === 2) {
+      navigation.navigate('EN2NDFLOORScreen', { path, buildingCoordinates });
+    } else {
+      navigation.navigate('EN1STFLOORScreen', { path, buildingCoordinates });
+    }
   };
 
   const calculateDistance = (coord1, coord2) => {
@@ -172,8 +164,7 @@ function PFScreen({ navigation }) {
             </TouchableOpacity>
         </View>
     </View>
-);
-
+  );
 }
 
 const styles = StyleSheet.create({
@@ -240,14 +231,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     letterSpacing: 1,
-},
+  },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     position: 'absolute',
     bottom: 50,
     width: '100%',
-},
+  },
   button1: {
     width: '47%',
     height: 60,
@@ -258,13 +249,13 @@ const styles = StyleSheet.create({
     bottom: 12,
   },
   button2: {
-      width: '47%',
-      height: 60,
-      backgroundColor: '#DF4242',
-      borderRadius: 30,
-      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
-      right: 7,
-      bottom: 12,
+    width: '47%',
+    height: 60,
+    backgroundColor: '#DF4242',
+    borderRadius: 30,
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
+    right: 7,
+    bottom: 12,
   },
   buttonText: {
     color: 'white',
@@ -283,9 +274,8 @@ const styles = StyleSheet.create({
   logo_header: {
     width: 50,
     height: 50,
-    marginEnd: 10
-    
-}
-  });
+    marginEnd: 10,
+  },
+});
 
 export default PFScreen;
