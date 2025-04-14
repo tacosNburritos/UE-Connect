@@ -3,8 +3,6 @@ import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-na
 import { SelectList } from 'react-native-dropdown-select-list';
 import { dropdowndata, buildingCoordinates, graph } from '../screens/MapData';
 
-console.log(dropdowndata, buildingCoordinates, graph);
-
 function PFScreen({ navigation }) {
   const handleGoBack = () => {
     navigation.goBack();
@@ -104,7 +102,7 @@ function PFScreen({ navigation }) {
     console.log("Path:", path);
 
     // Determine the starting floor and navigate accordingly
-    const startFloor = buildingCoordinates[selectedStart]?.ENfloor;
+    const startFloor = buildingCoordinates[selectedStart]?.floor;
 
     if (startFloor === 2) {
       navigation.navigate('EN2NDFLOORScreen', { path, buildingCoordinates });
