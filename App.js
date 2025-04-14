@@ -6,6 +6,7 @@ import LoadingScreen from './app/screens/LoadingScreen';
 import PFScreen from './app/screens/PFScreen';
 import EN1STFLOORScreen from './app/screens/EN1STFLOORScreen';
 import EN2NDFLOORScreen from './app/screens/EN2NDFLOORScreen';
+import EN3RDFLOORScreen from './app/screens/EN3RDFLOORScreen';
 import OnBoardScreen from './app/screens/OnBoardScreen';
 import 'react-native-gesture-handler';
 
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name="PathFind" component={PFScreen} options={{ headerShown: false }} />
         <Stack.Screen name="EN1STFLOORScreen" component={EN1STFLOORScreen} />
         <Stack.Screen name="EN2NDFLOORScreen" component={EN2NDFLOORScreen} />
+        <Stack.Screen name="EN3RDFLOORScreen" component={EN3RDFLOORScreen} />
         <Stack.Screen name="OnBoard" component={OnBoardScreen} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -94,7 +94,10 @@ function PFScreen({ navigation }) {
         "MALE COMFORT ROOM (CR) - LEFT WING",
         "MALE COMFORT ROOM (CR) - RIGHT WING",
         "MALE COMFORT ROOM (CR) - LEFT WING (2nd)",
-        "MALE COMFORT ROOM (CR) - RIGHT WING (2nd)"
+        "MALE COMFORT ROOM (CR) - RIGHT WING (2nd)",
+        "MALE COMFORT ROOM (CR) - LEFT WING (3rd)",
+        "MALE COMFORT ROOM (CR) - RIGHT WING (3rd)"
+        
       ];
 
       const nearest = getNearestCR(startCoord, maleOptions);
@@ -113,7 +116,10 @@ function PFScreen({ navigation }) {
         "FEMALE COMFORT ROOM (CR) - LEFT WING",
         "FEMALE COMFORT ROOM (CR) - RIGHT WING",
         "FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)",
-        "FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)"
+        "FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)",
+        "FEMALE COMFORT ROOM (CR) - LEFT WING (3rd)",
+        "FEMALE COMFORT ROOM (CR) - RIGHT WING (3rd)"
+
       ];
 
       const nearest = getNearestCR(startCoord, femaleOptions);
@@ -133,7 +139,9 @@ function PFScreen({ navigation }) {
 
     if (startFloor === 2) {
       navigation.navigate('EN2NDFLOORScreen', { path, buildingCoordinates });
-    } else {
+    } else if (startFloor === 3) {
+      navigation.navigate('EN3RDFLOORScreen', { path, buildingCoordinates });
+    }else {
       navigation.navigate('EN1STFLOORScreen', { path, buildingCoordinates });
     }
   };

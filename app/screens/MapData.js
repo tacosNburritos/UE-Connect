@@ -65,9 +65,29 @@ export const dropdowndata = [
   { key: '60', value: 'Electrical Room (2nd Floor)' },
   { key: '61', value: 'NET LAB' },
   { key: '62', value: 'EN 219' },
-  { key: '63', value: 'Y1' },
-  { key: '64', value: 'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)' },
   
+  //ENGINEERING BUILDING 3RD FLOOR------------------------------
+  { key: '63', value: 'EN 318' },
+  { key: '64', value: 'EN 317' },
+  { key: '65', value: 'EN 319' },
+  { key: '66', value: 'Drawing Area' },
+  { key: '67', value: 'Electrical Room (3rd Floor)' },
+  { key: '68', value: 'EN 302' },
+  { key: '69', value: 'EN 301' },
+  { key: '70', value: 'EN 312' },
+  { key: '71', value: 'EN 313' },
+  { key: '72', value: 'EN 311' },
+  { key: '73', value: 'EN 310' },
+  { key: '74', value: 'EN 309' },
+  { key: '75', value: 'EN 308' },
+  { key: '76', value: 'EN 307' },
+  { key: '77', value: 'EN 306' },
+  { key: '78', value: 'EN 304' },
+  { key: '79', value: 'EN 305' },
+  { key: '80', value: 'Engineering Library' },
+  { key: '81', value: 'MPH 1' },
+  { key: '82', value: 'MPH 2' },
+
 ];
 
 //Room Coordinates
@@ -133,8 +153,6 @@ export const buildingCoordinates = {
   'EN - STAIRS RIGHT WING1': { x: 0.24, y: 0.11 }, //Transition to 2nd Floor
   'EN - STAIRS RIGHT WING2': { x: 0.79, y: 0.11 }, //Transition to 2nd Floor
 
-
-
   //ENGINEERING BUILDING 2ND FLOOR------------------------------
   'EN 217': { x: 0.35, y: 0.93, floor: 2 },
   'CHEM LABORATORY STOCK ROOM': { x: 0.48, y: 0.93, floor: 2 },
@@ -195,7 +213,48 @@ export const buildingCoordinates = {
   'Y2': { x: 0.54, y: 0.11 },
   'Z2': { x: 0.74, y: 0.11 },
 
-};
+   //ENGINEERING BUILDING 3RD FLOOR------------------------------
+   'EN 301': { x: 0.63, y: 0.06, floor: 3 },
+   'EN 302': { x: 0.55, y: 0.06, floor: 3 },
+
+   'EN 304': { x: 0.61, y: 0.20, floor: 3 },
+   'EN 305': { x: 0.61, y: 0.24, floor: 3 },
+   'EN 306': { x: 0.61, y: 0.35, floor: 3 },
+   'EN 307': { x: 0.61, y: 0.39, floor: 3 },
+   'EN 308': { x: 0.61, y: 0.48, floor: 3 },
+   'EN 309': { x: 0.61, y: 0.52, floor: 3 },
+   'EN 310': { x: 0.61, y: 0.61, floor: 3 },
+   'EN 311': { x: 0.62, y: 0.66, floor: 3 },
+   'EN 313': { x: 0.62, y: 0.79, floor: 3 },
+   'EN 312': { x: 0.62, y: 0.76, floor: 3 },
+   'EN 317': { x: 0.60, y: 0.94, floor: 3 },
+   'EN 318': { x: 0.53, y: 0.94, floor: 3 },
+   'EN 319': { x: 0.30, y: 0.93, floor: 3 },
+   'Drawing Area': { x: 0.31, y: 0.87, floor: 3 },
+   'Electrical Room (3rd Floor)': { x: 0.63, y: 0.88, floor: 3 },
+   'Engineering Library': { x: 0.50, y: 0.52, floor: 3 },
+   'MPH 2': { x: 0.50, y: 0.40, floor: 3 },
+   'MPH 1': { x: 0.50, y: 0.20, floor: 3 },
+
+   'MALE COMFORT ROOM (CR) - LEFT WING (3rd)': { x: 0.22, y: 0.92, floor: 3 },
+   'FEMALE COMFORT ROOM (CR) - LEFT WING (3rd)': { x: 0.75, y: 0.95, floor: 3 },
+   'MALE COMFORT ROOM (CR) - RIGHT WING (3rd)': { x: 0.22, y: 0.06, floor: 3 },
+   'FEMALE COMFORT ROOM (CR) - RIGHT WING (3rd)': { x: 0.75, y: 0.06, floor: 3 },
+
+   'A3': { x: 0.55, y: 0.79 },
+   'B3': { x: 0.55, y: 0.66 },
+   'C3': { x: 0.55, y: 0.52 },
+   'D3': { x: 0.55, y: 0.35 },
+   'E3': { x: 0.55, y: 0.20 },
+
+   'T3': { x: 0.30, y: 0.90 },
+   'U3': { x: 0.54, y: 0.91 },
+   'V3': { x: 0.73, y: 0.92 },
+   'X3': { x: 0.23, y: 0.09 },
+   'Y3': { x: 0.55, y: 0.09 },
+   'Z3': { x: 0.74, y: 0.09 },
+
+  };
 
 //Connections 
 export const graph = {
@@ -235,7 +294,6 @@ export const graph = {
   'MALE COMFORT ROOM (CR) - RIGHT WING': { 'X': 1},
   'FEMALE COMFORT ROOM (CR) - RIGHT WING': { 'Z': 1},
 
-  
   'A': { 'EN 104': 1, 'ACCREDITATION ROOM': 1, 'U': 3, 'B': 2 },
   'B': { 'A': 2, 'Faculty Training & Briefing Room' : 1, 'C': 2},
   'C': { 'B': 2, 'D': 2,'Deans Office': 1, 'Fluid Mechanics & Hydraulics Room': 1,  'COE (Deans Office)': 1},
@@ -256,7 +314,6 @@ export const graph = {
   'Y': { 'X':1 , 'Y1': 4, 'EN 118': 4},
   'Y1': { 'Y': 4, 'J': 2, 'I':3, 'Z':0.2, 'EN 118': 4, 'EN 117': 1},
   'Z': { 'FEMALE COMFORT ROOM (CR) - RIGHT WING': 1, 'EN - STAIRS RIGHT WING2':1, 'Y1':1,},
-  
 
   'EN - STAIRS LEFT WING1': { 'T1': 1, 'T2': 1},
   'EN - STAIRS LEFT WING2': { 'V': 1, 'V21': 1},
@@ -321,5 +378,46 @@ export const graph = {
   'V2': { 'U2': 2, 'V21': 2, 'EN 215': 1},
   'V21': { 'V2': 2, 'FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)': 1},
 
- 
+  //ENGINEERING BUILDING 3RD FLOOR------------------------------
+  'EN 301': { 'Y3': 1 },
+  'EN 302': { 'Y3': 1 },
+
+  'EN 304': { 'E3': 1 },
+  'EN 305': { 'E3': 1 },
+  'EN 306': { 'D3': 1 },
+  'EN 307': { 'D3': 1 },
+  'EN 308': { 'C3': 1 },
+  'EN 309': { 'C3': 1 },
+  'EN 310': { 'B3': 1 },
+  'EN 311': { 'B3': 1 },
+  'EN 312': { 'A3': 1 },
+  'EN 313': { 'A3': 1 },
+  'EN 318': { 'U3': 1 },
+  'EN 317': { 'U3': 1 },
+  'EN 319': { 'T3': 1 },
+  'Drawing Area': { 'T3': 1 },
+  'Electrical Room (3rd Floor)': { 'U3': 1 },
+  'Engineering Library': { 'C3': 1 },
+  'MPH 2': { 'D3': 1 },
+  'MPH 1': { 'E3': 1 },
+
+
+  'MALE COMFORT ROOM (CR) - LEFT WING (3rd)': { 'T3': 1 },
+  'FEMALE COMFORT ROOM (CR) - LEFT WING (3rd)': { 'V3': 1 },
+  'FEMALE COMFORT ROOM (CR) - RIGHT WING (3rd)': { 'Z3': 1 },
+  'MALE COMFORT ROOM (CR) - RIGHT WING (3rd)': { 'X3': 1 },
+
+  'A3': { 'U3': 3, 'B3': 2, 'EN 313': 1, 'EN 312': 1},
+  'B3': { 'A3': 2, 'C3': 2, 'EN 311': 1, 'EN 310': 1 },
+  'C3': { 'B3': 2, 'D3': 2, 'EN 309': 1, 'EN 308': 1, 'Engineering Library':1 },
+  'D3': { 'C3': 2, 'E3': 2, 'EN 306': 1, 'EN 307': 1, 'MPH 2': 1 },
+  'E3': { 'D3': 2, 'Y3': 3, 'EN 304': 1, 'EN 305': 1, 'MPH 1': 1 },
+
+  'X3': {  'Y3': 2, 'MALE COMFORT ROOM (CR) - RIGHT WING (3rd)': 1 },
+  'Y3': { 'E3': 3, 'X3': 2, 'Z3': 2, 'EN 302': 1, 'EN 301': 1 },
+  'Z3': { 'Y3': 2, 'FEMALE COMFORT ROOM (CR) - RIGHT WING (3rd)': 1, 'EN - STAIRS RIGHT WING2': 1 },
+
+  'T3': { 'U3':2, 'EN 319': 1, 'Drawing Area': 1,  'MALE COMFORT ROOM (CR) - LEFT WING (3rd)': 1, 'EN - STAIRS LEFT WING1': 1 },
+  'U3': { 'T3':2, 'A3': 3, 'V3':2, 'EN 318': 1, 'EN 317': 1, 'Electrical Room (3rd Floor)': 1, },
+  'V3': { 'U3':2, 'FEMALE COMFORT ROOM (CR) - LEFT WING (3rd)': 1, 'EN - STAIRS LEFT WING2': 1 },
 };
