@@ -66,7 +66,7 @@ export const dropdowndata = [
   { key: '61', value: 'NET LAB' },
   { key: '62', value: 'EN 219' },
   { key: '63', value: 'Y1' },
-  { key: '64', value: 'EN - STAIRS RIGHT WING1' },
+  { key: '64', value: 'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)' },
   
 ];
 
@@ -260,7 +260,7 @@ export const graph = {
 
   'EN - STAIRS LEFT WING1': { 'T1': 1, 'T2': 1},
   'EN - STAIRS LEFT WING2': { 'V': 1, 'V21': 1},
-  'EN - STAIRS RIGHT WING1': { 'X': 1, 'X2': 1},
+  'EN - STAIRS RIGHT WING1': { 'X': 1, 'X21': 10},
   'EN - STAIRS RIGHT WING2': { 'Z': 1, 'Z2': 1},
 
   //ENGINEERING BUILDING 2ND FLOOR------------------------------
@@ -300,8 +300,8 @@ export const graph = {
   'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)': { 'X21': 1 },
   'FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)': { 'Z2': 1 },
 
-  'X21': { 'X2': 2, 'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)': 1 },
-  'X2': { 'Y2': 2, 'X21': 1, 'NET LAB': 1, 'EN 219': 1, 'EN - STAIRS RIGHT WING1': 1 },
+  'X21': { 'X2': 1, 'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)': 1, 'EN - STAIRS RIGHT WING1': 10 },
+  'X2': { 'Y2': 2, 'X21': 1, 'NET LAB': 1, 'EN 219': 1, },
   'Y2': { 'J2': 3, 'Z2':2, 'X2': 2, 'Physics Stock Room': 1, 'EN 201': 1, 'Electrical Room (2nd Floor)': 1 },
   'Z2': { 'Y2':2, 'FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)':1},
   

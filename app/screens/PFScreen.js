@@ -46,6 +46,29 @@ function PFScreen({ navigation }) {
     return path;
   };
 
+  const calculateDistance = (coord1, coord2) => {
+    if (!coord1 || !coord2) return Infinity;
+    return Math.sqrt(Math.pow(coord1.x - coord2.x, 2) + Math.pow(coord1.y - coord2.y, 2));
+  };
+
+  const getNearestCR = (startCoord, crOptions) => {
+    let minDist = Infinity;
+    let nearestCR = null;
+
+    crOptions.forEach(cr => {
+      const crCoord = buildingCoordinates[cr];
+      if (crCoord && crCoord.floor === startCoord.floor) {
+        const dist = calculateDistance(startCoord, crCoord);
+        if (dist < minDist) {
+          minDist = dist;
+          nearestCR = cr;
+        }
+      }
+    });
+
+    return nearestCR;
+  };
+
   const handleSearch = () => {
     if (!selectedStart || !selectedEnd) {
       Alert.alert("Error", "Please select both locations");
@@ -58,51 +81,55 @@ function PFScreen({ navigation }) {
     }
 
     let actualEnd = selectedEnd;
+    const startCoord = buildingCoordinates[selectedStart];
 
-    // Determine the nearest male CR
+    if (!startCoord) {
+      Alert.alert("Error", "Starting location data is missing.");
+      return;
+    }
+
+    // Nearest Male CR
     if (selectedEnd === "NEAREST MALE CR") {
-      const startCoord = buildingCoordinates[selectedStart];
-      const leftWingCoord = buildingCoordinates['MALE COMFORT ROOM (CR) - LEFT WING'];
-      const rightWingCoord = buildingCoordinates['MALE COMFORT ROOM (CR) - RIGHT WING'];
+      const maleOptions = [
+        "MALE COMFORT ROOM (CR) - LEFT WING",
+        "MALE COMFORT ROOM (CR) - RIGHT WING",
+        "MALE COMFORT ROOM (CR) - LEFT WING (2nd)",
+        "MALE COMFORT ROOM (CR) - RIGHT WING (2nd)"
+      ];
 
-      if (startCoord && leftWingCoord && rightWingCoord) {
-        const distLeft = calculateDistance(startCoord, leftWingCoord);
-        const distRight = calculateDistance(startCoord, rightWingCoord);
+      const nearest = getNearestCR(startCoord, maleOptions);
 
-        actualEnd = distRight < distLeft - 0.1 ? 
-                    "MALE COMFORT ROOM (CR) - RIGHT WING" : 
-                    "MALE COMFORT ROOM (CR) - LEFT WING";
+      if (nearest) {
+        actualEnd = nearest;
       } else {
         Alert.alert("Error", "Could not determine the nearest male CR.");
         return;
       }
-    } 
-    
-    // Nearest female CR
+    }
+
+    // Nearest Female CR
     else if (selectedEnd === "NEAREST FEMALE CR") {
-      const startCoord = buildingCoordinates[selectedStart];
-      const leftWingCoord = buildingCoordinates['FEMALE COMFORT ROOM (CR) - LEFT WING'];
-      const rightWingCoord = buildingCoordinates['FEMALE COMFORT ROOM (CR) - RIGHT WING'];
+      const femaleOptions = [
+        "FEMALE COMFORT ROOM (CR) - LEFT WING",
+        "FEMALE COMFORT ROOM (CR) - RIGHT WING",
+        "FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)",
+        "FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)"
+      ];
 
-      if (startCoord && leftWingCoord && rightWingCoord) {
-        const distLeft = calculateDistance(startCoord, leftWingCoord);
-        const distRight = calculateDistance(startCoord, rightWingCoord);
+      const nearest = getNearestCR(startCoord, femaleOptions);
 
-        actualEnd = distRight < distLeft - 0.1 ?
-                    "FEMALE COMFORT ROOM (CR) - RIGHT WING" :
-                    "FEMALE COMFORT ROOM (CR) - LEFT WING";
+      if (nearest) {
+        actualEnd = nearest;
       } else {
         Alert.alert("Error", "Could not determine the nearest female CR.");
         return;
       }
     }
 
-    // Run pathfinding
     const path = dijkstra(selectedStart, actualEnd);
     console.log("Path:", path);
 
-    // Determine the starting floor and navigate accordingly
-    const startFloor = buildingCoordinates[selectedStart]?.floor;
+    const startFloor = startCoord.floor;
 
     if (startFloor === 2) {
       navigation.navigate('EN2NDFLOORScreen', { path, buildingCoordinates });
@@ -111,60 +138,53 @@ function PFScreen({ navigation }) {
     }
   };
 
-  const calculateDistance = (coord1, coord2) => {
-    if (!coord1 || !coord2) return Infinity;
-    return Math.sqrt(Math.pow(coord1.x - coord2.x, 2) + Math.pow(coord1.y - coord2.y, 2));
-  };
-
   return (
     <View style={styles.container}>
-        <View style={styles.header}>
-            <Image 
-                source={require("../assets/logo_red.png")}
-                style={styles.logo_header}
-            />
-            <Text style={styles.text}>UE Connect</Text>
-        </View>
+      <View style={styles.header}>
+        <Image source={require("../assets/logo_red.png")} style={styles.logo_header} />
+        <Text style={styles.text}>UE Connect</Text>
+      </View>
 
-        <View style={styles.dropdownContainer}>
-            <Text style={styles.label}>Select Current Location</Text>
-            <SelectList 
-                setSelected={setSelectedStart} 
-                data={dropdowndata} 
-                save="value" 
-                placeholder="Select Location" 
-                boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
-            />
-        </View>
+      <View style={styles.dropdownContainer}>
+        <Text style={styles.label}>Select Current Location</Text>
+        <SelectList 
+          setSelected={setSelectedStart} 
+          data={dropdowndata} 
+          save="value" 
+          placeholder="Select Location"
+          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
+        />
+      </View>
 
-        <View style={styles.dropdownContainer}>
-            <Text style={styles.label}>Select Destination</Text>
-            <SelectList 
-                setSelected={setSelectedEnd} 
-                data={dropdowndata} 
-                save="value" 
-                placeholder="Select Location" 
-                boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
-            />
-        </View>
+      <View style={styles.dropdownContainer}>
+        <Text style={styles.label}>Select Destination</Text>
+        <SelectList 
+          setSelected={setSelectedEnd} 
+          data={dropdowndata} 
+          save="value" 
+          placeholder="Select Location"
+          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
+        />
+      </View>
 
-        <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
-            <Text style={styles.buttonText}>Search</Text>
-        </TouchableOpacity>      
+      <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
+        <Text style={styles.buttonText}>Search</Text>
+      </TouchableOpacity>
 
-        <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
-                <Text style={styles.buttonText1}>Go Back</Text>
-            </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
+          <Text style={styles.buttonText1}>Go Back</Text>
+        </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button2}>
-                <Text style={styles.buttonText1}>Free Roam</Text>
-            </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.button2}>
+          <Text style={styles.buttonText1}>Free Roam</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
+// --- styles remain unchanged
 const styles = StyleSheet.create({
   container: {
     flex: 1,
