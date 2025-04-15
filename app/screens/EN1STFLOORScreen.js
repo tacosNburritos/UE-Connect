@@ -102,6 +102,8 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
           
             if (nextFloor === 2) nextScreen = "EN2NDFLOORScreen";
             else if (nextFloor === 3) nextScreen = "EN3RDFLOORScreen";
+            else if (nextFloor === 4) nextScreen = "EN4THFLOORScreen";
+
             else nextScreen = "EN1STFLOORScreen"; // fallback or stay
           
             navigation.navigate(nextScreen, {

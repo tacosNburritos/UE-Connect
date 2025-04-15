@@ -11,7 +11,7 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const EN2NDFLOORScreen = ({ route, navigation }) => {
+const EN4THFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -19,7 +19,6 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
   const getFloorFromNode = (nodeName) => {
     return buildingCoordinates[nodeName]?.floor;
   };
-  
 
   const stairNodes = [
     "EN - STAIRS RIGHT WING1",
@@ -125,7 +124,7 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
 
       {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50 }}>
-        Engineering Building - Second Floor
+        Engineering Building - Fourth Floor
       </Text>
 
       {/* Map & Path */}
@@ -135,8 +134,8 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/EN2NDFLR.png")}
-          style={{ width: "100%", height: "105%", resizeMode: "contain" }}
+          source={require("../images/EN4THFLR.png")}
+          style={{ width: "101%", height: "102%", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
@@ -345,4 +344,4 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default EN2NDFLOORScreen;
+export default EN4THFLOORScreen;
