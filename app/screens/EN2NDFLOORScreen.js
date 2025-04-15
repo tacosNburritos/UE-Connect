@@ -16,6 +16,10 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [showNextButton, setShowNextButton] = useState(false);
+  const getFloorFromNode = (nodeName) => {
+    return buildingCoordinates[nodeName]?.floor;
+  };
+  
 
   const stairNodes = [
     "EN - STAIRS RIGHT WING1",
@@ -25,8 +29,14 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
-  const adjustedPath = stairsIndex !== -1 ? path.slice(0, stairsIndex + 1) : path;
-  const remainingPath = stairsIndex !== -1 ? path.slice(stairsIndex + 1) : [];
+  const adjustedPath =
+    stairsIndex !== -1 && stairsIndex < path.length - 1
+      ? path.slice(0, stairsIndex + 1)
+      : path;
+  const remainingPath =
+    stairsIndex !== -1 && stairsIndex < path.length - 1
+      ? path.slice(stairsIndex + 1)
+      : [];
 
   const lineProgress = adjustedPath.slice(0, -1).map(() => useSharedValue(0));
 
@@ -41,13 +51,12 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
       }, index * 270);
     });
 
-    if (stairsIndex !== -1) {
+   if (stairsIndex !== -1) {
       setTimeout(() => setShowNextButton(true), adjustedPath.length * 270);
     }
-
-    if (remainingPath.length > 0) {
-      setTimeout(() => setShowNextButton(true), adjustedPath.length * 270);
-    }
+  if (remainingPath.length > 0) {
+    setTimeout(() => setShowNextButton(true), adjustedPath.length * 270);
+  }
   }, []);
 
   const onLayout = (event) => {
@@ -57,6 +66,7 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      {/* Buttons */}
       <View
         style={{
           position: "absolute",
@@ -82,14 +92,24 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
           <Text style={{ color: "white", fontSize: 16 }}>Back</Text>
         </TouchableOpacity>
 
-        {showNextButton && remainingPath.length > 0 && (
+        {showNextButton && (
           <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("EN1STFLOORScreen", {
-                path: remainingPath, // Ensure this path leads to the 1st floor
-                buildingCoordinates,
-              })
-            }
+          onPress={() => {
+            const nextNode = remainingPath[0];
+            const nextFloor = getFloorFromNode(nextNode);
+          
+            let nextScreen = "";
+          
+            if (nextFloor === 2) nextScreen = "EN2NDFLOORScreen";
+            else if (nextFloor === 3) nextScreen = "EN3RDFLOORScreen";
+            else nextScreen = "EN1STFLOORScreen"; // fallback or stay
+          
+            navigation.navigate(nextScreen, {
+              path: remainingPath,
+              buildingCoordinates,
+            });
+          }}
+          
             style={{
               backgroundColor: "#007bff",
               paddingVertical: 8,
@@ -102,10 +122,12 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
         )}
       </View>
 
+      {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50 }}>
         Engineering Building - Second Floor
       </Text>
 
+      {/* Map & Path */}
       <View
         ref={containerRef}
         onLayout={onLayout}
@@ -113,11 +135,11 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
       >
         <Image
           source={require("../images/EN2NDFLR.png")}
-          style={{ width: "100%", height: "106%", resizeMode: "contain" }}
+          style={{ width: "100%", height: "105%", resizeMode: "contain" }}
         />
 
-        {/* First SVG (Path up to the stairs, stops at EN - STAIRS) */}
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
+          {/* Lines */}
           {adjustedPath.slice(0, -1).map((node, index) => {
             const startCoords = buildingCoordinates[node];
             const endCoords = buildingCoordinates[adjustedPath[index + 1]];
@@ -130,7 +152,7 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
 
             const animatedProps = useAnimatedProps(() => ({
               strokeDasharray: [300, 300],
-              strokeDashoffset: (1 - lineProgress[index]?.value) * 300,
+              strokeDashoffset: (1 - lineProgress[index].value) * 300,
             }));
 
             return (
@@ -147,6 +169,7 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
             );
           })}
 
+          {/* Intermediate Nodes */}
           {adjustedPath.map((node, index) => {
             if (index === 0 || index === adjustedPath.length - 1) return null;
             const coords = buildingCoordinates[node];
@@ -156,7 +179,7 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
             const cy = coords.y * containerSize.height;
 
             const animatedProps = useAnimatedProps(() => ({
-              opacity: lineProgress[index - 1]?.value,
+              opacity: lineProgress[index - 1].value,
             }));
 
             return (
@@ -171,6 +194,7 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
             );
           })}
 
+          {/* Start Node */}
           {buildingCoordinates[adjustedPath[0]] && (
             <>
               <AnimatedCircle
@@ -178,15 +202,15 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
                 cy={buildingCoordinates[adjustedPath[0]].y * containerSize.height}
                 r={5}
                 fill="blue"
-                animatedProps={useAnimatedProps(() => ({
-                  opacity: 1,
-                }))}
+                animatedProps={useAnimatedProps(() => ({ opacity: 1 }))}
               />
               <Text
                 style={{
                   position: "absolute",
-                  left: buildingCoordinates[adjustedPath[0]].x * containerSize.width - 30,
-                  top: buildingCoordinates[adjustedPath[0]].y * containerSize.height - 25,
+                  left:
+                    buildingCoordinates[adjustedPath[0]].x * containerSize.width - 30,
+                  top:
+                    buildingCoordinates[adjustedPath[0]].y * containerSize.height - 25,
                   color: "blue",
                   paddingHorizontal: 37,
                   paddingVertical: 16,
@@ -199,20 +223,124 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
             </>
           )}
 
+          {/* End Node */}
           {buildingCoordinates[adjustedPath[adjustedPath.length - 1]] && (
             <AnimatedCircle
-              cx={buildingCoordinates[adjustedPath[adjustedPath.length - 1]].x * containerSize.width}
-              cy={buildingCoordinates[adjustedPath[adjustedPath.length - 1]].y * containerSize.height}
+              cx={
+                buildingCoordinates[adjustedPath[adjustedPath.length - 1]].x *
+                containerSize.width
+              }
+              cy={
+                buildingCoordinates[adjustedPath[adjustedPath.length - 1]].y *
+                containerSize.height
+              }
               r={5}
               fill="red"
               animatedProps={useAnimatedProps(() => ({
-                opacity: lineProgress[lineProgress.length - 1]?.value,
+                opacity: lineProgress[lineProgress.length - 1].value,
               }))}
             />
           )}
         </Svg>
-      </View>
-    </View>
+
+       {/* Second SVG (Animated Path up to Stairs) */}
+              <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
+                {adjustedPath.slice(0, -1).map((node, index) => {
+                  const startCoords = buildingCoordinates[node];
+                  const endCoords = buildingCoordinates[adjustedPath[index + 1]];
+                  if (!startCoords || !endCoords) return null;
+      
+                  const x1 = startCoords.x * containerSize.width;
+                  const y1 = startCoords.y * containerSize.height;
+                  const x2 = endCoords.x * containerSize.width;
+                  const y2 = endCoords.y * containerSize.height;
+      
+                  const animatedProps = useAnimatedProps(() => ({
+                    strokeDasharray: [300, 300],
+                    strokeDashoffset: (1 - lineProgress[index]?.value) * 300,
+                  }));
+      
+                  return (
+                    <AnimatedLine
+                      key={`adj-line-${index}`}
+                      x1={x1}
+                      y1={y1}
+                      x2={x2}
+                      y2={y2}
+                      stroke="red"
+                      strokeWidth={3}
+                      animatedProps={animatedProps}
+                    />
+                  );
+                })}
+      
+                {adjustedPath.map((node, index) => {
+                  if (index === 0 || index === adjustedPath.length - 1) return null;
+      
+                  const coords = buildingCoordinates[node];
+                  if (!coords) return null;
+      
+                  const cx = coords.x * containerSize.width;
+                  const cy = coords.y * containerSize.height;
+      
+                  const animatedProps = useAnimatedProps(() => ({
+                    opacity: lineProgress[index - 1]?.value,
+                  }));
+      
+                  return (
+                    <AnimatedCircle
+                      key={`adj-node-${index}`}
+                      cx={cx}
+                      cy={cy}
+                      r={1.5}
+                      fill="red"
+                      animatedProps={animatedProps}
+                    />
+                  );
+                })}
+      
+                {buildingCoordinates[adjustedPath[0]] && (
+                  <>
+                    <AnimatedCircle
+                      cx={buildingCoordinates[adjustedPath[0]].x * containerSize.width}
+                      cy={buildingCoordinates[adjustedPath[0]].y * containerSize.height}
+                      r={5}
+                      fill="blue"
+                      animatedProps={useAnimatedProps(() => ({
+                        opacity: 1,
+                      }))}
+                    />
+                    <Text
+                      style={{
+                        position: "absolute",
+                        left: buildingCoordinates[adjustedPath[0]].x * containerSize.width - 30,
+                        top: buildingCoordinates[adjustedPath[0]].y * containerSize.height - 25,
+                        color: "blue",
+                        paddingHorizontal: 37,
+                        paddingVertical: 16,
+                        fontSize: 12,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      You
+                    </Text>
+                  </>
+                )}
+      
+                {buildingCoordinates[adjustedPath[adjustedPath.length - 1]] && (
+                  <AnimatedCircle
+                    cx={buildingCoordinates[adjustedPath[adjustedPath.length - 1]].x * containerSize.width}
+                    cy={buildingCoordinates[adjustedPath[adjustedPath.length - 1]].y * containerSize.height}
+                    r={5}
+                    fill="red"
+                    animatedProps={useAnimatedProps(() => ({
+                      opacity: lineProgress[lineProgress.length - 1]?.value,
+                    }))}
+                  />
+                )}
+              </Svg>
+            </View>
+          </View>
   );
 };
 

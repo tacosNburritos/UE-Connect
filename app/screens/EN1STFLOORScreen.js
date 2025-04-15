@@ -16,6 +16,10 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [showNextButton, setShowNextButton] = useState(false);
+  const getFloorFromNode = (nodeName) => {
+    return buildingCoordinates[nodeName]?.floor;
+  };
+  
 
   const stairNodes = [
     "EN - STAIRS RIGHT WING1",
@@ -90,12 +94,22 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
 
         {showNextButton && (
           <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("EN2NDFLOORScreen", {
-                path: remainingPath,
-                buildingCoordinates,
-              })
-            }
+          onPress={() => {
+            const nextNode = remainingPath[0];
+            const nextFloor = getFloorFromNode(nextNode);
+          
+            let nextScreen = "";
+          
+            if (nextFloor === 2) nextScreen = "EN2NDFLOORScreen";
+            else if (nextFloor === 3) nextScreen = "EN3RDFLOORScreen";
+            else nextScreen = "EN1STFLOORScreen"; // fallback or stay
+          
+            navigation.navigate(nextScreen, {
+              path: remainingPath,
+              buildingCoordinates,
+            });
+          }}
+          
             style={{
               backgroundColor: "#007bff",
               paddingVertical: 8,
