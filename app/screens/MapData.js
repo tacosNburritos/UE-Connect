@@ -130,8 +130,21 @@ export const dropdowndata = [
   { key: '', value: 'EN D4' },
   { key: '', value: 'EN D5' },
   { key: '', value: 'EN D6' },
-  { key: '', value: 'MALE COMFORT ROOM (CR) - RIGHT WING (4th)' },
-  
+
+  //UNIVERSITY OF THE EAST - GENERAL
+  { key: '', value: 'Entrance (Front)' },
+  { key: '', value: 'Security Office' },
+  { key: '', value: 'GYM' },
+  { key: '', value: 'Old Academic Building' },
+  { key: '', value: 'Playground' },
+  { key: '', value: 'LCT Building' },
+  { key: '', value: 'EN Building (Right Wing)' },
+  { key: '', value: 'EN Building (Left Wing)' },
+  { key: '', value: 'HRM Mock Hotel' },
+  { key: '', value: 'TYK Building' },
+  { key: '', value: 'Administration Building' },
+  { key: '', value: 'EN - ENT LEFT WING' },
+
 
 ];
 
@@ -171,6 +184,7 @@ export const buildingCoordinates = {
   'CAS Faculty Room': { x: 0.32, y: 0.05, floor: 1 },
   'MALE COMFORT ROOM (CR) - RIGHT WING': { x: 0.29, y: 0.05, floor: 1 },
   'FEMALE COMFORT ROOM (CR) - RIGHT WING': { x: 0.79, y: 0.06, floor: 1 },
+  'EN - EXT LEFT WING': { x: 0.16, y: 0.90, floor: 1},
   
   'V': { x: 0.73, y: 0.91, floor: 1 },
   'U': { x: 0.54, y: 0.91, floor: 1 },
@@ -372,9 +386,45 @@ export const buildingCoordinates = {
     'Y4': { x: 0.50, y: 0.08, floor: 4 },
     'Z4': { x: 0.63, y: 0.08, floor: 4 },
     'Z41': { x: 0.72, y: 0.08, floor: 4 },
+
+  //UE BUILDINGS ENTRANCE/EXIT------------------------------
+    'EN - ENT LEFT WING': { x: 0.80, y: 0.14, floor: 5 },
     
+  //UNIVERSITY OF THE EAST - GENERAL
+    'Entrance (Front)': { x: 0.89, y: 0.80, floor: 5 },
+    'Security Office': { x: 0.83, y: 0.80, floor: 5 },
+    'GYM': { x: 0.64, y: 0.91, floor: 5 },
+    'Old Academic Building': { x: 0.27, y: 0.75, floor: 5 },
+    'Playground': { x: 0.20, y: 0.67, floor: 5 },
+    'LCT Building': { x: 0.17, y: 0.35, floor: 5 },
+    'EN Building (Right Wing)': { x: 0.16, y: 0.17, floor: 5 },
+    'EN Building (Left Wing)': { x: 0.80, y: 0.14, floor: 5 },
+    'HRM Mock Hotel': { x: 0.80, y: 0.23, floor: 5 },
+    'TYK Building': { x: 0.80, y: 0.50, floor: 5 },
+    'Administration Building': { x: 0.61, y: 0.76, floor: 5 },
 
-
+    'A5': { x: 0.82, y: 0.85, floor: 5 },
+    'B5': { x: 0.76, y: 0.90, floor: 5 },
+    'C5': { x: 0.66, y: 0.88, floor: 5 },  
+    'D5': { x: 0.43, y: 0.84, floor: 5 },
+    'E5': { x: 0.37, y: 0.79, floor: 5 },
+    'F5': { x: 0.31, y: 0.74, floor: 5 },
+    'G5': { x: 0.23, y: 0.66, floor: 5 },
+    'H5': { x: 0.23, y: 0.55, floor: 5 },
+    'I5': { x: 0.23, y: 0.35, floor: 5 },
+    'J5': { x: 0.23, y: 0.21, floor: 5 },
+    'W5': { x: 0.16, y: 0.21, floor: 5 },
+    'K5': { x: 0.37, y: 0.18, floor: 5 },
+    'L5': { x: 0.60, y: 0.18, floor: 5 },
+    'M5': { x: 0.80, y: 0.18, floor: 5 },
+    'N5': { x: 0.77, y: 0.20, floor: 5 },
+    'O5': { x: 0.77, y: 0.31, floor: 5 },
+    'P5': { x: 0.73, y: 0.32, floor: 5 },
+    'Q5': { x: 0.73, y: 0.50, floor: 5 },
+    'R5': { x: 0.73, y: 0.64, floor: 5 },
+    'S5': { x: 0.65, y: 0.68, floor: 5 },
+    'T5': { x: 0.67, y: 0.69, floor: 5 },
+    'U5': { x: 0.56, y: 0.73, floor: 5 },
 
   };
 
@@ -398,6 +448,7 @@ export const graph = {
   'CE Faculty Room': { 'G': 1}, 'ME Lab': { 'H': 1}, 'CPE Faculty Room': { 'H': 1}, 'ECE Faculty Room': { 'I': 1},
   'Machine Fabrication Room': { 'I': 1}, 'EE Faculty Room': { 'I': 1}, 'ME Faculty Room': { 'J': 1},
   'Electrical Room': { 'J': 1}, 'CAS Faculty Room': { 'X': 1},
+  'EN - EXT LEFT WING': { 'M5': 1, 'T1': 1},
 
   'FEMALE COMFORT ROOM (CR) - LEFT WING': { 'V': 1,},
   'MALE COMFORT ROOM (CR) - LEFT WING': { 'T1': 1,},
@@ -415,10 +466,10 @@ export const graph = {
   'I': { 'H': 2, 'J': 2, 'Y1': 3, 'ECE Faculty Room': 1, 'Machine Fabrication Room': 1, 'EE Faculty Room': 1 },
   'J': { 'I': 2, 'Y1': 2, 'ME Faculty Room': 1, 'Electrical Room': 1 },
   
-  'T': { 'ACES PICE OFFICE': 1, 'U': 2, 'T1': 1, 'EN 102': 1 },
-  'U': { 'EN 101': 1, 'EN 102': 1, 'EN 103': 1, 'T': 2, 'A': 3, 'V': 1 },
+  'T': { 'ACES PICE OFFICE': 1,'U': 2, 'T1': 1, 'EN 102': 1},
+  'U': { 'EN 101': 1, 'EN 102': 1, 'EN 103': 1,  'T': 2, 'A': 3, 'V': 1 },
   'V': { 'FEMALE COMFORT ROOM (CR) - LEFT WING': 1, 'U': 1, 'EN - STAIRS LEFT WING2': 1 },
-  'T1': { 'T': 1, 'MALE COMFORT ROOM (CR) - LEFT WING': 1, 'EN - STAIRS LEFT WING1': 1 },
+  'T1': { 'T': 1, 'MALE COMFORT ROOM (CR) - LEFT WING': 1, 'EN - STAIRS LEFT WING1': 1, "EN - ENT LEFT WING": 1, 'EN - EXT LEFT WING': 1,  },
   
   'X': { 'CAS Faculty Room': 2, 'Y': 1, 'MALE COMFORT ROOM (CR) - RIGHT WING': 2, 'EN - STAIRS RIGHT WING1': 1 },
   'Y': { 'X':1 , 'Y1': 4, 'EN 118': 4},
@@ -527,5 +578,43 @@ export const graph = {
   'T4': {  'U4': 2, 'T41': 2, 'T40': 2, 'EN 432': 1, 'AEES': 1 },
   'T40': { 'A4': 3, 'T4': 2, 'U4': 2, 'EN 431': 1},
   'T41': { 'T4': 2, 'EN 434': 1, 'EN - STAIRS LEFT WING1': 1 },
+
+  //UNIVERSITY OF THE EAST - GENERAL
+  'Entrance (Front)': { 'A5': 1 , 'Security Office': 1},
+  'Security Office': { 'Entrance (Front)': 1},
+  'GYM': { 'C5': 1},
+  'Old Academic Building': { 'F5': 1 },
+  'Playground': { 'G5': 1 },
+  'LCT Building': { 'I5': 1 },
+  'EN Building (Right Wing)': { 'W5': 1 },
+  'EN Building (Left Wing)': { 'M5': 1 },
+  'HRM Mock Hotel': { 'M5': 1 },
+  'TYK Building': { 'O5': 5, 'Q5': 5 },
+  'Administration Building': { 'U5': 1 },
+  'EN - ENT LEFT WING': { 'M5': 1, 'T1': 1 },
+
+
+  'A5': { 'Entrance (Front)': 1, 'B5': 2 },
+  'B5': { 'A5': 2, 'C5': 2 },
+  'C5': { 'B5': 2, 'D5': 2, 'GYM': 1 },
+  'D5': { 'C5': 2, 'E5': 2 },
+  'E5': { 'D5': 2, 'F5': 2, 'U5': 2 },
+  'F5': { 'E5': 2, 'G5': 2, 'Old Academic Building': 1 },
+  'G5': { 'F5': 2, 'H5': 2, 'Playground': 1 },
+  'H5': { 'G5': 2, 'I5': 2 },
+  'I5': { 'H5': 2, 'J5': 2, 'LCT Building': 1 },
+  'J5': { 'I5': 2, 'K5': 4, 'W5': 2 },
+  'W5': { 'J5': 2, 'EN Building (Right Wing)': 1 },
+  'K5': { 'J5': 4, 'L5': 4 },
+  'L5': { 'K5': 4, 'M5': 2 },
+  'M5': { 'L5': 2, 'N5': 2, 'EN Building (Left Wing)': 1, 'HRM Mock Hotel': 1, 'EN - ENT LEFT WING': 1, 'EN - EXT LEFT WING': 1 },
+  'N5': { 'M5': 2, 'O5': 2 },
+  'O5': { 'N5': 2, 'P5': 2, 'TYK Building': 5 },
+  'P5': { 'O5': 2, 'Q5': 2 },
+  'Q5': { 'P5': 2, 'R5': 2, 'TYK Building': 5 },
+  'R5': { 'Q5': 2, 'S5': 2 },
+  'S5': { 'R5': 2, 'T5': 2 },
+  'T5': { 'S5': 2, 'U5': 2 },
+  'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1 },
   
 };

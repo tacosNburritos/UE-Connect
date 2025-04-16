@@ -8,6 +8,8 @@ import EN1STFLOORScreen from './app/screens/EN1STFLOORScreen';
 import EN2NDFLOORScreen from './app/screens/EN2NDFLOORScreen';
 import EN3RDFLOORScreen from './app/screens/EN3RDFLOORScreen';
 import EN4THFLOORScreen from './app/screens/EN4THFLOORScreen';
+import UEScreen from './app/screens/UEScreen';
+
 
 import OnBoardScreen from './app/screens/OnBoardScreen';
 import 'react-native-gesture-handler';
@@ -25,6 +27,8 @@ export default function App() {
         <Stack.Screen name="EN2NDFLOORScreen" component={EN2NDFLOORScreen} />
         <Stack.Screen name="EN3RDFLOORScreen" component={EN3RDFLOORScreen} />
         <Stack.Screen name="EN4THFLOORScreen" component={EN4THFLOORScreen} />
+        <Stack.Screen name="UEScreen" component={UEScreen} />
+
 
         <Stack.Screen name="OnBoard" component={OnBoardScreen} />
       </Stack.Navigator>

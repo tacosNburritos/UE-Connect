@@ -11,7 +11,7 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const EN4THFLOORScreen = ({ route, navigation }) => {
+const UEScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -19,6 +19,7 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
   const getFloorFromNode = (nodeName) => {
     return buildingCoordinates[nodeName]?.floor;
   };
+  
 
   const stairNodes = [
     "EN - STAIRS RIGHT WING1",
@@ -26,8 +27,8 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
     "EN - STAIRS RIGHT WING2",
     "EN - STAIRS LEFT WING2",
     "EN - ENT LEFT WING",
-    "EN - EXT LEFT WING",
-
+    "EN - EX LEFT WING",
+   
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -103,9 +104,11 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
             let nextScreen = "";
           
             if (nextFloor === 2) nextScreen = "EN2NDFLOORScreen";
+            else if (nextFloor === 1) nextScreen = "EN1STFLOORScreen";
             else if (nextFloor === 3) nextScreen = "EN3RDFLOORScreen";
             else if (nextFloor === 4) nextScreen = "EN4THFLOORScreen";
             else if (nextFloor === 5) nextScreen = "UEScreen";
+
             else nextScreen = "EN1STFLOORScreen"; // fallback or stay
           
             navigation.navigate(nextScreen, {
@@ -128,7 +131,7 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
 
       {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50 }}>
-        Engineering Building - Fourth Floor
+        University of the East - Campus
       </Text>
 
       {/* Map & Path */}
@@ -138,8 +141,8 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/EN4THFLR.png")}
-          style={{ width: "101%", height: "102%", resizeMode: "contain" }}
+          source={require("../images/UE MAP.png")}
+          style={{ width: "100%", height: "105%", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
@@ -348,4 +351,4 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default EN4THFLOORScreen;
+export default UEScreen;

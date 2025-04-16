@@ -144,6 +144,8 @@ function PFScreen({ navigation }) {
       navigation.navigate('EN3RDFLOORScreen', { path, buildingCoordinates });
     }else if (startFloor === 4) {
       navigation.navigate('EN4THFLOORScreen', { path, buildingCoordinates });
+    }else if (startFloor === 5) {
+      navigation.navigate('UEScreen', { path, buildingCoordinates });
     }else {
       navigation.navigate('EN1STFLOORScreen', { path, buildingCoordinates });
     }
