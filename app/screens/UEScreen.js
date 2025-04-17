@@ -26,8 +26,7 @@ const UEScreen = ({ route, navigation }) => {
     "EN - STAIRS LEFT WING1",
     "EN - STAIRS RIGHT WING2",
     "EN - STAIRS LEFT WING2",
-    "EN - ENT LEFT WING",
-    "EN - EX LEFT WING",
+    "EN - E",
    
   ];
 
