@@ -11,7 +11,7 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const TYK2NDFLOORScreen = ({ route, navigation }) => {
+const TYK4THFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -63,12 +63,12 @@ const TYK2NDFLOORScreen = ({ route, navigation }) => {
     if (nextFloor === 2) nextScreen = "EN2NDFLOORScreen";
     else if (nextFloor === 3) nextScreen = "EN3RDFLOORScreen";
     else if (nextFloor === 4) nextScreen = "EN4THFLOORScreen";
-    else if (nextFloor === 5) nextScreen = "UEScreen";
     else if (nextFloor === 6) nextScreen = "TYK1STFLOORScreen";
     else if (nextFloor === 7) nextScreen = "TYK2NDFLOORScreen";
     else if (nextFloor === 8) nextScreen = "TYK3RDFLOORScreen";
     else if (nextFloor === 9) nextScreen = "TYK4THFLOORScreen";
     else if (nextFloor === 10) nextScreen = "TYK5THFLOORScreen";
+
     else nextScreen = "TYK1STFLOORScreen"; // fallback
 
     navigation.navigate(nextScreen, {
@@ -161,7 +161,7 @@ const TYK2NDFLOORScreen = ({ route, navigation }) => {
 
       {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
-        Tan Yan Kee Building - Second Floor
+        Tan Yan Kee Building - Fifth Floor
         
       </Text>
 
@@ -172,8 +172,8 @@ const TYK2NDFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/TYK2NDFLR.png")}
-          style={{ width: "100%", height: "100%", resizeMode: "contain" }}
+          source={require("../images/TYK5THFLR.png")}
+          style={{ width: "97%", height: "102%", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
@@ -200,7 +200,7 @@ const TYK2NDFLOORScreen = ({ route, navigation }) => {
             return renderAnimatedCircle(
               coords.x * containerSize.width,
               coords.y * containerSize.height,
-              1.5,
+              5,
               "red",
               lineProgress[index - 1],
               `circle-${index}`
@@ -257,4 +257,4 @@ const TYK2NDFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default TYK2NDFLOORScreen;
+export default TYK4THFLOORScreen;

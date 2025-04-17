@@ -1,7 +1,7 @@
 //dropdown labels
 export const dropdowndata = [
   //ENGINEERING BUILDING 1ST FLOOR------------------------------
-  // { key: '1', value: 'NEAREST MALE CR'}, { key: '2', value: 'NEAREST FEMALE CR'}, { key: '3', value: 'EN 101' }, { key: '4', value: 'EN 102' },
+  { key: '1', value: 'NEAREST MALE CR'}, { key: '2', value: 'NEAREST FEMALE CR'}, { key: '3', value: 'EN 101' }, { key: '4', value: 'EN 102' },
   // { key: '5', value: 'EN 103' }, { key: '6', value: 'EN 104' }, { key: '7', value: 'EN 111B'}, { key: '8', value: 'EN 112'}, { key: '9', value: 'EN 113'},
   // { key: '10', value: 'EN 117'}, { key: '11', value: 'EN 118'}, { key: '12', value: 'ME Lab'}, { key: '13', value: 'Structural Material & Testing Lab' },
   // { key: '14', value: 'Machine Fabrication Room'}, { key: '15', value: 'Soil Mechanics Laboratory' }, { key: '16', value: 'Faculty Briefing & Training Room' }, { key: '17', value: 'Fluid Mechanics & Hydraulics Room'},
@@ -48,20 +48,20 @@ export const dropdowndata = [
   // { key: '133', value: 'TYK 201' }, { key: '134', value: 'TYK 203' }, { key: '135', value: 'TYK 205' }, { key: '136', value: 'TYK 204' }, { key: '137', value: 'TYK 202' },
   // { key: '138', value: 'TYK 200' }, { key: '139', value: 'TYK 210' }, { key: '140', value: 'TYK 211' }, { key: '141', value: 'TYK 212' }, { key: '142', value: 'TYK 213' },
   // { key: '143', value: 'TYK 214' }, { key: '144', value: 'TYK 215' }, { key: '145', value: 'TYK 215' }, { key: '146', value: 'TYK 216' }, { key: '147', value: 'TYK 217' },
-  { key: '148', value: 'TYK 218' }, { key: '149', value: 'TYK 219' }, { key: '150', value: 'TYK 220' },
+  // { key: '148', value: 'TYK 218' }, { key: '149', value: 'TYK 219' }, { key: '150', value: 'TYK 220' },
 
   //TYK BUILDING 3RD FLOOR------------------------------
   //WALA PA
 
   //TYK BUILDING 4TH FLOOR------------------------------
-  // { key: '', value: 'TYK 400' },
-  // { key: '', value: 'TYK 401' },
-  // { key: '', value: 'TYK 402' },
-  // { key: '', value: 'TYK 403' },
-  // { key: '', value: 'TYK 404' },
-  // { key: '', value: 'TYK 405' },
-  // { key: '', value: 'TYK 406' },
-  // { key: '', value: 'TYK 407' },
+  { key: '', value: 'TYK 400' },
+  { key: '', value: 'TYK 401' },
+  { key: '', value: 'TYK 402' },
+  { key: '', value: 'TYK 403' },
+  { key: '', value: 'TYK 404' },
+  { key: '', value: 'TYK 405' },
+  { key: '', value: 'TYK 406' },
+  { key: '', value: 'TYK 407' },
   { key: '', value: 'CAS Faculty' },
   { key: '', value: 'TYK 408' },
   { key: '', value: 'TYK 409' },
@@ -72,6 +72,17 @@ export const dropdowndata = [
   { key: '', value: 'TYK 414' },
   { key: '', value: 'TYK 415' },
 
+  //TYK BUILDING 5TH FLOOR------------------------------
+  { key: '', value: 'TYK Reception' },
+  { key: '', value: 'CFA Faculty Room' },
+  { key: '', value: 'TYK 501' },
+  { key: '', value: 'TYK 502' },
+  { key: '', value: 'TYK 503' },
+  { key: '', value: 'TYK 504' },
+  { key: '', value: 'TYK 505' },
+  { key: '', value: 'Art Gallery' },
+
+    
 ];
 
 //Room Coordinates
@@ -388,8 +399,8 @@ export const buildingCoordinates = {
 
     'FEMALE COMFORT ROOM (CR) - TYK (2nd)': { x: 0.66, y: 0.51, floor: 7 },
     'MALE COMFORT ROOM (CR) - TYK (2nd)': { x: 0.66, y: 0.40, floor: 7 },
-    'ELEVATOR L': { x: 0.57, y: 0.81, floor: 7 },
-    'ELEVATOR R': { x: 0.54, y: 0.30, floor: 7 },
+    'ELEVATOR L': { x: 0.57, y: 0.79 },
+    'ELEVATOR R': { x: 0.54, y: 0.30 },
   
     'A6': { x: 0.44, y: 0.93, floor: 7 },
     'B6': { x: 0.51, y: 0.90, floor: 7 },
@@ -421,7 +432,7 @@ export const buildingCoordinates = {
   //WALA PA
   //TYK 101: { x: 0.80, y: 0.50, floor: 8 },
 
-  //TYK BUILDING 4TH FLOOR
+  //TYK BUILDING 4TH FLOOR----------------------------
     'FEMALE COMFORT ROOM (CR) - TYK (4th)': { x: 0.66, y: 0.51, floor: 9 },
     'MALE COMFORT ROOM (CR) - TYK (4th)': { x: 0.66, y: 0.40, floor: 9 },
 
@@ -468,6 +479,31 @@ export const buildingCoordinates = {
     'S7': { x: 0.52, y: 0.05, floor: 9 },
     'T7': { x: 0.52, y: 0.15, floor: 9 },
     'U7': { x: 0.52, y: 0.23, floor: 9 },
+
+    //TYK 5TH FLOOR---------------------------
+    'FEMALE COMFORT ROOM (CR) - TYK (5th)': { x: 0.63, y: 0.53, floor: 10 },
+    'MALE COMFORT ROOM (CR) - TYK (5th)': { x: 0.63, y: 0.40, floor: 10 },
+    
+    'CFA Faculty Room': {x: 0.51, y: 0.74, floor: 10},
+    'TYK Reception': {x: 0.51, y: 0.52, floor: 10},
+    'TYK 500': {x: 0.51, y: 0.74, floor: 10},
+    'TYK 501': {x: 0.65, y: 0.74, floor: 10},
+    'TYK 502': {x: 0.65, y: 0.68, floor: 10},
+    'TYK 503': {x: 0.65, y: 0.62, floor: 10},
+    'TYK 504': {x: 0.65, y: 0.37, floor: 10},
+    'TYK 505': {x: 0.65, y: 0.30, floor: 10},
+    'Art Gallery': {x: 0.55, y: 0.87, floor: 10},
+
+    'H8': {x: 0.60, y: 0.83, floor: 10},
+    'A8': {x: 0.57, y: 0.74, floor: 10},
+    'B8': {x: 0.57, y: 0.68, floor: 10},
+    'C8': {x: 0.57, y: 0.62, floor: 10},
+    'D8': {x: 0.57, y: 0.52, floor: 10},
+    'E8': {x: 0.57, y: 0.47, floor: 10},
+    'E88': {x: 0.63, y: 0.47, floor: 10},
+    'F8': {x: 0.57, y: 0.37, floor: 10},
+    'G8': {x: 0.57, y: 0.30, floor: 10},
+
 
   };
 
@@ -664,12 +700,9 @@ export const graph = {
   'T5': { 'S5': 2, 'U5': 2 },
   'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1 },
 
-
   //TYK ELEVATOR----------------------------
-  'ELEVATOR L': { 'H6': 1, 'H7': 1},
-  'ELEVATOR R': { 'O6': 1, 'O7': 1},
-
-
+  'ELEVATOR L': { 'H6': 1, 'G7': 1, 'H8': 1},
+  'ELEVATOR R': { 'O6': 1, 'O7': 1, 'G8': 1},
 
   //TYK BUILDING 1ST FLOOR----------------------------
   //WALA PA
@@ -728,8 +761,8 @@ export const graph = {
   'C7': { 'B7': 2, 'D7': 2, 'TYK 405': 1, 'G7': 2 },
   'D7': { 'C7': 2, 'E7': 2, 'TYK 404': 1, 'G7': 2 },
   'E7': { 'D7': 2, 'F7': 2, 'TYK 402': 1 },
-  'G7': { 'C7': 2, 'D7': 2, 'H7': 2 },
-  'H7': { 'G7': 2, 'I7': 2, 'ELEVATOR L': 1, 'TYK 406': 1 },
+  'G7': { 'C7': 2, 'D7': 2, 'H7': 2, 'ELEVATOR L': 1, },
+  'H7': { 'G7': 2, 'I7': 2, 'TYK 406': 1 },
   'I7': { 'H7': 2, 'J7': 2 ,'TYK 407': 1 },
   'J7': { 'I7': 2, 'K7': 2 , 'CAS Faculty': 1, },
   'K7': { 'J7': 2, 'L7': 2 , },
@@ -744,5 +777,29 @@ export const graph = {
   'S7': { 'R7': 2, 'T7': 2, 'TYK 414': 1 },
   'T7': { 'S7': 2, 'U7': 2, 'TYK 412': 1  },
   'U7': { 'T7': 2, 'V7': 2, 'P7': 2, 'TYK 410': 1 },
+
+  //TYK 5TH FLOOR------------------------------
+  'TYK 501': { 'A8': 1,}, 
+  'TYK 502': { 'B8': 1,}, 
+  'TYK 503': { 'C8': 1,}, 
+  'TYK 504': { 'F8': 1,}, 
+  'TYK 505': { 'G8': 1,}, 
+  'TYK Reception': { 'D8': 1},
+  'Art Gallery': { 'H8': 1},
+
+  'CFA Faculty Room': { 'A8': 1},
+  'FEMALE COMFORT ROOM (CR) - TYK (5th)': { 'E88': 1},
+  'MALE COMFORT ROOM (CR) - TYK (5th)': { 'E88': 1},
+
+
+  'A8': { 'B8': 1 ,'501': 1, 'CFA Faculty Room': 1, 'H8': 1}, 
+  'B8': { 'C8': 1, 'A8': 1, 'TYK 502': 1 },
+  'C8': { 'D8': 1, 'B8': 1, 'TYK 503': 1 },
+  'D8': { 'E8': 1, 'C8': 1 , 'TYK Reception': 1},
+  'E8': { 'C8': 1, 'F8': 1, 'E88': 1 },
+  'E88': { 'C8': 1, 'F8': 1, 'FEMALE COMFORT ROOM (CR) - TYK (5th)': 1, 'MALE COMFORT ROOM (CR) - TYK (5th)': 1 },
+  'F8': { 'E8': 1, 'G8': 1, 'TYK 504': 1  },
+  'G8': { 'F8': 1, 'ELEVATOR R': 1, 'TYK 505': 1 },
+  'H8': { 'A8': 1, 'Art Gallery': 1, 'ELEVATOR L': 1,}
 
 };
