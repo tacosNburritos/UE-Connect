@@ -68,6 +68,8 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
     else if (nextFloor === 8) nextScreen = "TYK3RDFLOORScreen";
     else if (nextFloor === 9) nextScreen = "TYK4THFLOORScreen";
     else if (nextFloor === 10) nextScreen = "TYK5THFLOORScreen";
+    else if (nextFloor === 11) nextScreen = "TYK6THFLOORScreen";
+    else if (nextFloor === 12) nextScreen = "TYK7THFLOORScreen";
 
     else nextScreen = "TYK1STFLOORScreen"; // fallback
 
@@ -200,7 +202,7 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
             return renderAnimatedCircle(
               coords.x * containerSize.width,
               coords.y * containerSize.height,
-              5,
+              1.5,
               "red",
               lineProgress[index - 1],
               `circle-${index}`

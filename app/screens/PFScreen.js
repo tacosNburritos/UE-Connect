@@ -101,6 +101,7 @@ function PFScreen({ navigation }) {
         "MALE COMFORT ROOM (CR) - TYK (2nd)",
         "MALE COMFORT ROOM (CR) - TYK (4th)",
         "MALE COMFORT ROOM (CR) - TYK (5th)",
+        "MALE COMFORT ROOM (CR) - TYK (7th)",
 
       ];
 
@@ -127,6 +128,7 @@ function PFScreen({ navigation }) {
         "FEMALE COMFORT ROOM (CR) - TYK (2nd)",
         "FEMALE COMFORT ROOM (CR) - TYK (4th)",
         "FEMALE COMFORT ROOM (CR) - TYK (5th)",
+        "FEMALE COMFORT ROOM (CR) - TYK (7th)",
 
       ];
 
@@ -163,6 +165,10 @@ function PFScreen({ navigation }) {
       navigation.navigate('TYK4THFLOORScreen', { path, buildingCoordinates });
     }else if (startFloor === 10) {
       navigation.navigate('TYK5THFLOORScreen', { path, buildingCoordinates });
+    }else if (startFloor === 11) {
+      navigation.navigate('', { path, buildingCoordinates });
+    }else if (startFloor === 12) {
+      navigation.navigate('TYK7THFLOORScreen', { path, buildingCoordinates });
     }
     else {
       navigation.navigate('EN1STFLOORScreen', { path, buildingCoordinates });

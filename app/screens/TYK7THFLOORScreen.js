@@ -70,6 +70,7 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
     else if (nextFloor === 10) nextScreen = "TYK5THFLOORScreen";
     else if (nextFloor === 11) nextScreen = "TYK6THFLOORScreen";
     else if (nextFloor === 12) nextScreen = "TYK7THFLOORScreen";
+
     else nextScreen = "TYK1STFLOORScreen"; // fallback
 
     navigation.navigate(nextScreen, {
@@ -162,7 +163,7 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
 
       {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
-        Tan Yan Kee Building - Fourth Floor
+        Tan Yan Kee Building - Seventh Floor
         
       </Text>
 
@@ -173,8 +174,8 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/TYK4THFLR.png")}
-          style={{ width: "97%", height: "108%", resizeMode: "contain" }}
+          source={require("../images/TYK7TH.png")}
+          style={{ width: "97%", height: "104%", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
