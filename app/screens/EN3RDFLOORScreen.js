@@ -127,7 +127,7 @@ const EN3RDFLOORScreen = ({ route, navigation }) => {
       </View>
 
       {/* Title */}
-      <Text style={{ color: "black", fontSize: 16, marginTop: 50 }}>
+      <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
         Engineering Building - Third Floor
       </Text>
 

@@ -33,7 +33,7 @@ export const dropdowndata = [
   { key: '30', value: 'Deans Office' },
   { key: '31', value: 'M.E. LAB'},
 
-  //ENGINEERING BUILDING 2ND FLOOR------------------------------
+  // //ENGINEERING BUILDING 2ND FLOOR------------------------------
   { key: '32', value: 'EN 201' },
   { key: '33', value: 'EN 205' },
   { key: '34', value: 'EN 206' },
@@ -66,7 +66,7 @@ export const dropdowndata = [
   { key: '61', value: 'Electrical Room (2nd Floor)' },
   { key: '62', value: 'NET LAB' },
   
-  //ENGINEERING BUILDING 3RD FLOOR------------------------------
+  // //ENGINEERING BUILDING 3RD FLOOR------------------------------
   { key: '63', value: 'EN 301' },
   { key: '64', value: 'EN 302' },
   { key: '65', value: 'EN 311' },
@@ -88,7 +88,7 @@ export const dropdowndata = [
   { key: '81', value: 'MPH 1' },
   { key: '82', value: 'MPH 2' },
 
-  //ENGINEERING BUILDING 4TH FLOOR------------------------------
+  // //ENGINEERING BUILDING 4TH FLOOR------------------------------
   { key: '83', value: 'EN 428' },
   { key: '84', value: 'EN 430' },
   { key: '', value: 'EN 431' },
@@ -131,7 +131,7 @@ export const dropdowndata = [
   { key: '', value: 'EN D5' },
   { key: '', value: 'EN D6' },
 
-  //UNIVERSITY OF THE EAST - GENERAL
+  // //UNIVERSITY OF THE EAST - GENERAL
   { key: '', value: 'Entrance (Front)' },
   { key: '', value: 'Security Office' },
   { key: '', value: 'GYM' },
@@ -143,11 +143,30 @@ export const dropdowndata = [
   { key: '', value: 'HRM Mock Hotel' },
   { key: '', value: 'TYK Building' },
   { key: '', value: 'Administration Building' },
-  { key: '', value: 'EN - E' },
-  { key: '', value: 'T1' },
+  
+  //TYK BUILDING 1ST FLOOR------------------------------
+  //WALA PA
 
-
-
+  //TYK BUILDING 2ND FLOOR------------------------------
+  { key: '', value: 'TYK 201' },
+  { key: '', value: 'TYK 203' },
+  { key: '', value: 'TYK 205' },
+  { key: '', value: 'TYK 204' },
+  { key: '', value: 'TYK 202' },
+  { key: '', value: 'TYK 200' },
+  { key: '', value: 'TYK 210' },
+  { key: '', value: 'TYK 211' },
+  { key: '', value: 'TYK 212' },
+  { key: '', value: 'TYK 213' },
+  { key: '', value: 'TYK 214' },
+  { key: '', value: 'TYK 215' },
+  { key: '', value: 'TYK 215' },
+  { key: '', value: 'TYK 216' },
+  { key: '', value: 'TYK 217' },
+  { key: '', value: 'TYK 218' },
+  { key: '', value: 'TYK 219' },
+  { key: '', value: 'TYK 220' },
+  
 ];
 
 //Room Coordinates
@@ -206,6 +225,7 @@ export const buildingCoordinates = {
   'J': { x: 0.55, y: 0.16, floor: 1 },
 
   'X': { x: 0.27, y: 0.08, floor: 1 },
+  'X1':{ x: 0.20, y: 0.08, floor: 1 },
   'Y': { x: 0.50, y: 0.08, floor: 1 },
   'Y1': { x: 0.55, y: 0.08, floor: 1 },
   'Z': { x: 0.72, y: 0.08, floor: 1 },
@@ -390,8 +410,6 @@ export const buildingCoordinates = {
     'Z4': { x: 0.63, y: 0.08, floor: 4 },
     'Z41': { x: 0.72, y: 0.08, floor: 4 },
 
-   
-    
   //UNIVERSITY OF THE EAST - GENERAL
     'Entrance (Front)': { x: 0.89, y: 0.80, floor: 5 },
     'Security Office': { x: 0.83, y: 0.80, floor: 5 },
@@ -416,6 +434,7 @@ export const buildingCoordinates = {
     'I5': { x: 0.23, y: 0.35, floor: 5 },
     'J5': { x: 0.23, y: 0.21, floor: 5 },
     'W5': { x: 0.16, y: 0.21, floor: 5 },
+    'W55': { x: 0.16, y: 0.18, floor: 5 },
     'K5': { x: 0.37, y: 0.18, floor: 5 },
     'L5': { x: 0.60, y: 0.18, floor: 5 },
     'M5': { x: 0.80, y: 0.18, floor: 5 },
@@ -428,6 +447,72 @@ export const buildingCoordinates = {
     'S5': { x: 0.65, y: 0.68, floor: 5 },
     'T5': { x: 0.67, y: 0.69, floor: 5 },
     'U5': { x: 0.56, y: 0.73, floor: 5 },
+
+    //TYK BUILDING 1ST FLOOR----------------------------
+    //WALA PA
+    //TYK 101: { x: 0.80, y: 0.50, floor: 6 },
+
+    //TYK BUILDING 2ND FLOOR----------------------------
+    'TYK 200': { x: 0.36, y: 0.90, floor: 7 },
+    'TYK 201': { x: 0.48, y: 0.95, floor: 7 },
+    'TYK 202': { x: 0.44, y: 0.84, floor: 7 },
+    'TYK 203': { x: 0.55, y: 0.92, floor: 7 },
+    'TYK 204': { x: 0.54, y: 0.82, floor: 7 },
+    'TYK 205': { x: 0.65, y: 0.88, floor: 7 },
+
+    'TYK 206': { x: 0.55, y: 0.73, floor: 7 },
+    'TYK 207': { x: 0.65, y: 0.73, floor: 7 },
+
+    'TYK 208': { x: 0.55, y: 0.66, floor: 7 },
+    'TYK 209': { x: 0.65, y: 0.66, floor: 7 },
+
+    'TYK 210': { x: 0.55, y: 0.60, floor: 7 },
+    'TYK 211': { x: 0.65, y: 0.60, floor: 7 },
+
+    'TYK 212': { x: 0.55, y: 0.55, floor: 7 },
+    'TYK 213': { x: 0.65, y: 0.36, floor: 7 },
+
+    'TYK 214': { x: 0.65, y: 0.30, floor: 7 },
+
+    'TYK 215': { x: 0.65, y: 0.23, floor: 7 },
+    'TYK 216': { x: 0.48, y: 0.23, floor: 7 },
+    'TYK 217': { x: 0.65, y: 0.17, floor: 7 },
+    'TYK 218': { x: 0.48, y: 0.17, floor: 7 },
+    'TYK 219': { x: 0.65, y: 0.07, floor: 7 },
+    'TYK 220': { x: 0.48, y: 0.07, floor: 7 },
+
+    'FEMALE COMFORT ROOM (CR) - TYK (2nd)': { x: 0.66, y: 0.51, floor: 7 },
+    'MALE COMFORT ROOM (CR) - TYK (2nd)': { x: 0.66, y: 0.40, floor: 7 },
+    'ELEVATOR L': { x: 0.57, y: 0.81, floor: 7 },
+    'ELEVATOR R': { x: 0.54, y: 0.30, floor: 7 },
+  
+    'A6': { x: 0.44, y: 0.93, floor: 7 },
+    'B6': { x: 0.51, y: 0.90, floor: 7 },
+    'C6': { x: 0.61, y: 0.85, floor: 7 },
+    'D6': { x: 0.56, y: 0.83, floor: 7 },
+    'E6': { x: 0.49, y: 0.86, floor: 7 },
+    'F6': { x: 0.38, y: 0.91, floor: 7 },
+
+    'G6': { x: 0.60, y: 0.84, floor: 7 },
+    'H6': { x: 0.60, y: 0.79, floor: 7 },
+    'I6': { x: 0.60, y: 0.73, floor: 7 },
+    'J6': { x: 0.60, y: 0.66, floor: 7 },
+    'K6': { x: 0.60, y: 0.60, floor: 7 },
+    'L6': { x: 0.60, y: 0.55, floor: 7 },
+    'M6': { x: 0.60, y: 0.46, floor: 7 },
+    'M66': { x: 0.66, y: 0.46, floor: 7 },
+
+    'N6': { x: 0.60, y: 0.36, floor: 7 },
+    'O6': { x: 0.60, y: 0.30, floor: 7 },
+    'P6': { x: 0.60, y: 0.23, floor: 7 },
+    'Q6': { x: 0.60, y: 0.17, floor: 7 },
+    'R6': { x: 0.60, y: 0.07, floor: 7 },
+
+    'S6': { x: 0.52, y: 0.07, floor: 7 },
+    'T6': { x: 0.52, y: 0.17, floor: 7 },
+    'U6': { x: 0.52, y: 0.23, floor: 7 },
+
+
 
   };
 
@@ -472,9 +557,10 @@ export const graph = {
   'U': { 'EN 101': 1, 'EN 102': 1, 'EN 103': 1,  'T': 2, 'A': 3, 'V': 1 },
   'V': { 'FEMALE COMFORT ROOM (CR) - LEFT WING': 1, 'U': 1, 'EN - STAIRS LEFT WING2': 1 },
   'T1': { 'T': 1, 'MALE COMFORT ROOM (CR) - LEFT WING': 1, 'EN - STAIRS LEFT WING1': 1, 'T11': 1 },
-  'T11': { 'T1': 1 ,'EN - E': 1,},
+  'T11': { 'T1': 1 ,'EN - EL': 1,}, 
   
-  'X': { 'CAS Faculty Room': 2, 'Y': 1, 'MALE COMFORT ROOM (CR) - RIGHT WING': 2, 'EN - STAIRS RIGHT WING1': 1 },
+  'X': { 'CAS Faculty Room': 2, 'Y': 1, 'MALE COMFORT ROOM (CR) - RIGHT WING': 2, 'EN - STAIRS RIGHT WING1': 1, 'X1': 1 },
+  'X1': { 'X': 1, 'EN - ER': 1},
   'Y': { 'X':1 , 'Y1': 4, 'EN 118': 4},
   'Y1': { 'Y': 4, 'J': 2, 'I':3, 'Z':0.2, 'EN 118': 4, 'EN 117': 1},
   'Z': { 'FEMALE COMFORT ROOM (CR) - RIGHT WING': 1, 'EN - STAIRS RIGHT WING2':1, 'Y1':1,},
@@ -594,8 +680,8 @@ export const graph = {
   'HRM Mock Hotel': { 'M5': 1 },
   'TYK Building': { 'O5': 5, 'Q5': 5 },
   'Administration Building': { 'U5': 1 },
-  'EN - E': { 'M55': 1, 'T11': 1 },
-
+  'EN - EL': { 'M55': 1, 'T11': 1 },
+  'EN - ER': { 'W55': 1, 'X1': 1 },
 
   'A5': { 'Entrance (Front)': 1, 'B5': 2 },
   'B5': { 'A5': 2, 'C5': 2 },
@@ -607,11 +693,13 @@ export const graph = {
   'H5': { 'G5': 2, 'I5': 2 },
   'I5': { 'H5': 2, 'J5': 2, 'LCT Building': 1 },
   'J5': { 'I5': 2, 'K5': 4, 'W5': 2 },
-  'W5': { 'J5': 2, 'EN Building (Right Wing)': 1 },
+  'W5': { 'J5': 2, 'EN Building (Right Wing)': 1, 'W55': 2 },
+  'W55': { 'W5': 2, 'EN - ER': 1 },
+
   'K5': { 'J5': 4, 'L5': 4 },
   'L5': { 'K5': 4, 'M5': 2 },
   'M5': { 'L5': 2, 'N5': 2, 'EN Building (Left Wing)': 1, 'HRM Mock Hotel': 1, 'M55': 2 },
-  'M55': { 'M5': 2, 'EN - E': 1 },
+  'M55': { 'M5': 2, 'EN - EL': 1 },
   'N5': { 'M5': 2, 'O5': 2 },
   'O5': { 'N5': 2, 'P5': 2, 'TYK Building': 5 },
   'P5': { 'O5': 2, 'Q5': 2 },
@@ -620,5 +708,47 @@ export const graph = {
   'S5': { 'R5': 2, 'T5': 2 },
   'T5': { 'S5': 2, 'U5': 2 },
   'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1 },
-  
+
+
+  //TYK ELEVATOR----------------------------
+  'ELEVATOR L': { 'H6': 1,},
+  'ELEVATOR R': { 'O6': 1, 'TYK 300': 1},
+  'TYK 300': { 'ELEVATOR R': 1,},
+
+
+  //TYK BUILDING 1ST FLOOR----------------------------
+  //WALA PA
+
+  //TYK BUILDING 2ND FLOOR----------------------------
+  'TYK 200': { 'F6': 1,}, 'TYK 201': { 'A6': 1,}, 'TYK 202': { 'E6': 1,}, 'TYK 203': { 'B6': 1,}, 'TYK 204': { 'D6': 1,}, 'TYK 205': { 'C6': 1,},
+  'TYK 206': { 'I6': 1,}, 'TYK 207': { 'I6': 1,}, 'TYK 208': { 'J6': 1,}, 'TYK 209': { 'J6': 1,}, 'TYK 210': { 'K6': 1,}, 'TYK 211': { 'K6': 1,},
+  'TYK 212': { 'L6': 1,}, 'TYK 213': { 'N6': 1,}, 'TYK 214': { 'O6': 1,}, 'TYK 215': { 'P6': 1,}, 'TYK 216': { 'U6': 1,}, 'TYK 217': { 'Q6': 1,},
+  'TYK 218': { 'T6': 1,}, 'TYK 219': { 'R6': 1,}, 'TYK 220': { 'S6': 1,},
+  "MALE COMFORT ROOM (CR) - TYK (2nd)": { 'M66': 1,},
+  "FEMALE COMFORT ROOM (CR) - TYK (2nd)": { 'M66': 1,},
+
+
+  'F6': { 'E6': 2, 'A6': 2, 'TYK 200': 1 },
+  'A6': { 'B6': 2, 'F6': 2, 'TYK 201': 1 },
+  'B6': { 'A6': 2, 'C6': 2, 'TYK 203': 1 },
+  'C6': { 'B6': 2, 'D6': 2, 'TYK 205': 1, 'G6': 2 },
+  'D6': { 'C6': 2, 'E6': 2, 'TYK 204': 1, 'G6': 2 },
+  'E6': { 'D6': 2, 'F6': 2, 'TYK 202': 1 },
+  'G6': { 'C6': 2, 'D6': 2, 'H6': 2 },
+  'H6': { 'G6': 2, 'I6': 2, 'ELEVATOR L': 1 },
+  'I6': { 'H6': 2, 'J6': 2 ,'TYK 207': 1, 'TYK 206': 1 },
+  'J6': { 'I6': 2, 'K6': 2 , 'TYK 208': 1, 'TYK 209': 1 },
+  'K6': { 'J6': 2, 'L6': 2 , 'TYK 210': 1, 'TYK 211': 1 },
+  'L6': { 'K6': 2, 'M6': 2 , 'TYK 212': 1 },
+  'M6': { 'L6': 2, 'N6': 2, 'M66': 2 },
+  'M66':{ 'M66': 2 ,'FEMALE COMFORT ROOM (CR) - TYK (2nd)': 1, 'MALE COMFORT ROOM (CR) - TYK (2nd)': 1 },
+  'N6': { 'M6': 2, 'O6': 2, 'TYK 213': 1 },
+  'O6': { 'N6': 2, 'P6': 2, 'TYK 214': 1, 'ELEVATOR R': 1 },
+  'P6': { 'O6': 2, 'Q6': 2, 'U6': 2, 'TYK 215': 1 },
+  'Q6': { 'P6': 2, 'R6': 2, 'TYK 217': 1 },
+  'R6': { 'Q6': 2, 'S6': 2, 'TYK 219': 1 },
+  'S6': { 'R6': 2, 'T6': 2, 'TYK 220': 1},
+  'T6': { 'S6': 2, 'U6': 2, 'TYK 218': 1 },
+  'U6': { 'T6': 2, 'V6': 2, 'P6': 2, 'TYK 216': 1 },
+
 };

@@ -26,8 +26,9 @@ const UEScreen = ({ route, navigation }) => {
     "EN - STAIRS LEFT WING1",
     "EN - STAIRS RIGHT WING2",
     "EN - STAIRS LEFT WING2",
-    "EN - E",
-   
+    "EN - EL",
+    "EN - ER",
+
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -107,6 +108,8 @@ const UEScreen = ({ route, navigation }) => {
             else if (nextFloor === 3) nextScreen = "EN3RDFLOORScreen";
             else if (nextFloor === 4) nextScreen = "EN4THFLOORScreen";
             else if (nextFloor === 5) nextScreen = "UEScreen";
+            else if (nextFloor === 6) nextScreen = "TYK1STFLOORScreen";
+            else if (nextFloor === 7) nextScreen = "TYK2NDFLOORScreen";
 
             else nextScreen = "EN1STFLOORScreen"; // fallback or stay
           

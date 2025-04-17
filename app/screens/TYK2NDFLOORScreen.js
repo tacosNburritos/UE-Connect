@@ -11,19 +11,15 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const EN1STFLOORScreen = ({ route, navigation }) => {
+const TYK2NDFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [showNextButton, setShowNextButton] = useState(false);
 
   const stairNodes = [
-    "EN - STAIRS RIGHT WING1",
-    "EN - STAIRS LEFT WING1",
-    "EN - STAIRS RIGHT WING2",
-    "EN - STAIRS LEFT WING2",
-    "EN - EL",
-    "EN - ER",
+    "ELEVATOR L",
+    "ELEVATOR R",
 
   ];
 
@@ -160,7 +156,8 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
 
       {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
-        Engineering Building - First Floor
+        Tan Yan Kee Building - Second Floor
+        
       </Text>
 
       {/* Map and Path Drawing */}
@@ -170,7 +167,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/EN1STFLR.png")}
+          source={require("../images/TYK2NDFLR.png")}
           style={{ width: "100%", height: "100%", resizeMode: "contain" }}
         />
 
@@ -198,7 +195,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             return renderAnimatedCircle(
               coords.x * containerSize.width,
               coords.y * containerSize.height,
-              1.5,
+              5,
               "red",
               lineProgress[index - 1],
               `circle-${index}`
@@ -255,4 +252,4 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default EN1STFLOORScreen;
+export default TYK2NDFLOORScreen;

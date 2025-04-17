@@ -8,6 +8,7 @@ import EN1STFLOORScreen from './app/screens/EN1STFLOORScreen';
 import EN2NDFLOORScreen from './app/screens/EN2NDFLOORScreen';
 import EN3RDFLOORScreen from './app/screens/EN3RDFLOORScreen';
 import EN4THFLOORScreen from './app/screens/EN4THFLOORScreen';
+import TYK2NDFLOORScreen from './app/screens/TYK2NDFLOORScreen';
 import UEScreen from './app/screens/UEScreen';
 
 
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Screen name="EN2NDFLOORScreen" component={EN2NDFLOORScreen} />
         <Stack.Screen name="EN3RDFLOORScreen" component={EN3RDFLOORScreen} />
         <Stack.Screen name="EN4THFLOORScreen" component={EN4THFLOORScreen} />
+        <Stack.Screen name="TYK2NDFLOORScreen" component={TYK2NDFLOORScreen} />
         <Stack.Screen name="UEScreen" component={UEScreen} />
 
 

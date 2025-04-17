@@ -28,7 +28,6 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
     "EN - STAIRS LEFT WING2",
     "EN - ENT LEFT WING",
     "EN - EXT LEFT WING",
-
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -128,7 +127,7 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
       </View>
 
       {/* Title */}
-      <Text style={{ color: "black", fontSize: 16, marginTop: 50 }}>
+      <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
         Engineering Building - Second Floor
       </Text>
 
