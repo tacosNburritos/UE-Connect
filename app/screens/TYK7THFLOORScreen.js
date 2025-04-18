@@ -11,7 +11,7 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const TYK4THFLOORScreen = ({ route, navigation }) => {
+const TYK7THFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -39,6 +39,7 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
     adjustedPath.forEach((_, index) => {
       if (index === 0) return;
       setTimeout(() => {
+
         lineProgress[index - 1].value = withTiming(1, {
           duration: 270,
           easing: Easing.linear,
@@ -70,6 +71,7 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
     else if (nextFloor === 10) nextScreen = "TYK5THFLOORScreen";
     else if (nextFloor === 11) nextScreen = "TYK6THFLOORScreen";
     else if (nextFloor === 12) nextScreen = "TYK7THFLOORScreen";
+    else if (nextFloor === 13) nextScreen = "TYK8THFLOORScreen";
 
     else nextScreen = "TYK1STFLOORScreen"; // fallback
 
@@ -174,7 +176,7 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/TYK7TH.png")}
+          source={require("../images/TYK7THFLR.png")}
           style={{ width: "97%", height: "104%", resizeMode: "contain" }}
         />
 
@@ -259,4 +261,4 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default TYK4THFLOORScreen;
+export default TYK7THFLOORScreen;
