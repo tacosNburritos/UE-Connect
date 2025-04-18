@@ -2,44 +2,44 @@
 export const dropdowndata = [
   //ENGINEERING BUILDING 1ST FLOOR------------------------------
   { key: '1', value: 'NEAREST MALE CR'}, { key: '2', value: 'NEAREST FEMALE CR'}, { key: '3', value: 'EN 101' }, { key: '4', value: 'EN 102' },
-  { key: '5', value: 'EN 103' }, { key: '6', value: 'EN 104' }, { key: '7', value: 'EN 111B'}, { key: '8', value: 'EN 112'}, { key: '9', value: 'EN 113'},
-  { key: '10', value: 'EN 117'}, { key: '11', value: 'EN 118'}, { key: '12', value: 'ME Lab'}, { key: '13', value: 'Structural Material & Testing Lab' },
-  { key: '14', value: 'Machine Fabrication Room'}, { key: '15', value: 'Soil Mechanics Laboratory' }, { key: '16', value: 'Faculty Briefing & Training Room' }, { key: '17', value: 'Fluid Mechanics & Hydraulics Room'},
-  { key: '18', value: 'CPE Faculty Room'}, { key: '19', value: 'CE Faculty Room'}, { key: '20', value: 'ME TOOL ROOM'}, { key: '21', value: 'ACCREDITATION ROOM' },
-  { key: '22', value: 'EE Faculty Room'}, { key: '23', value: 'ECE Faculty Room'}, { key: '24', value: 'ME Faculty Room'}, { key: '25', value: 'Electrical Room'}, { key: '26', value: 'CAS Faculty Room' },
-  { key: '27', value: 'CE Tool Room' }, { key: '28', value: 'ACES PICE OFFICE' }, { key: '29', value: 'COE (Deans Office)' }, { key: '30', value: 'Deans Office' }, { key: '31', value: 'M.E. LAB'},
+  // { key: '5', value: 'EN 103' }, { key: '6', value: 'EN 104' }, { key: '7', value: 'EN 111B'}, { key: '8', value: 'EN 112'}, { key: '9', value: 'EN 113'},
+  // { key: '10', value: 'EN 117'}, { key: '11', value: 'EN 118'}, { key: '12', value: 'ME Lab'}, { key: '13', value: 'Structural Material & Testing Lab' },
+  // { key: '14', value: 'Machine Fabrication Room'}, { key: '15', value: 'Soil Mechanics Laboratory' }, { key: '16', value: 'Faculty Briefing & Training Room' }, { key: '17', value: 'Fluid Mechanics & Hydraulics Room'},
+  // { key: '18', value: 'CPE Faculty Room'}, { key: '19', value: 'CE Faculty Room'}, { key: '20', value: 'ME TOOL ROOM'}, { key: '21', value: 'ACCREDITATION ROOM' },
+  // { key: '22', value: 'EE Faculty Room'}, { key: '23', value: 'ECE Faculty Room'}, { key: '24', value: 'ME Faculty Room'}, { key: '25', value: 'Electrical Room'}, { key: '26', value: 'CAS Faculty Room' },
+  // { key: '27', value: 'CE Tool Room' }, { key: '28', value: 'ACES PICE OFFICE' }, { key: '29', value: 'COE (Deans Office)' }, { key: '30', value: 'Deans Office' }, { key: '31', value: 'M.E. LAB'},
 
   // // //ENGINEERING BUILDING 2ND FLOOR------------------------------
-  { key: '32', value: 'EN 201' }, { key: '33', value: 'EN 205' }, { key: '34', value: 'EN 206' }, { key: '35', value: 'EN 217' }, { key: '36', value: 'EN 215' },
-  { key: '37', value: 'EN 219' }, { key: '38', value: 'CHEM LABORATORY STOCK ROOM' }, { key: '39', value: 'DCSS Faculty Room' }, { key: '40', value: 'BIO LAB Stock Room' },
-  { key: '41', value: 'CLR 1' }, { key: '42', value: 'CLR 2' }, { key: '43', value: 'CLR 3' }, { key: '44', value: 'CLR 4' }, { key: '45', value: 'CLR 5' },
-  { key: '46', value: 'CLR 6' }, { key: '47', value: 'CLR 7' }, { key: '48', value: 'CLR 8' }, { key: '49', value: 'ECE LAB 1' }, { key: '50', value: 'ECE LAB 2' },
-  { key: '51', value: 'ECE LAB 3' }, { key: '52', value: 'ECE LAB 4' }, { key: '53', value: 'Satellite Repair Room' }, { key: '54', value: 'ECE/COE Tool Room' },
-  { key: '55', value: 'Electrical Power Engineering Lab 1' }, { key: '56', value: 'Electrical Power Engineering Lab 2' },
-  { key: '57', value: 'Electrical Power Engineering Lab 3' }, { key: '58', value: 'Electrical Power Engineering Lab 4' },
-  { key: '59', value: 'EE Tool Room' }, { key: '60', value: 'Physics Stock Room' }, { key: '61', value: 'Electrical Room (2nd Floor)' }, { key: '62', value: 'NET LAB' },
+  // { key: '32', value: 'EN 201' }, { key: '33', value: 'EN 205' }, { key: '34', value: 'EN 206' }, { key: '35', value: 'EN 217' }, { key: '36', value: 'EN 215' },
+  // { key: '37', value: 'EN 219' }, { key: '38', value: 'CHEM LABORATORY STOCK ROOM' }, { key: '39', value: 'DCSS Faculty Room' }, { key: '40', value: 'BIO LAB Stock Room' },
+  // { key: '41', value: 'CLR 1' }, { key: '42', value: 'CLR 2' }, { key: '43', value: 'CLR 3' }, { key: '44', value: 'CLR 4' }, { key: '45', value: 'CLR 5' },
+  // { key: '46', value: 'CLR 6' }, { key: '47', value: 'CLR 7' }, { key: '48', value: 'CLR 8' }, { key: '49', value: 'ECE LAB 1' }, { key: '50', value: 'ECE LAB 2' },
+  // { key: '51', value: 'ECE LAB 3' }, { key: '52', value: 'ECE LAB 4' }, { key: '53', value: 'Satellite Repair Room' }, { key: '54', value: 'ECE/COE Tool Room' },
+  // { key: '55', value: 'Electrical Power Engineering Lab 1' }, { key: '56', value: 'Electrical Power Engineering Lab 2' },
+  // { key: '57', value: 'Electrical Power Engineering Lab 3' }, { key: '58', value: 'Electrical Power Engineering Lab 4' },
+  // { key: '59', value: 'EE Tool Room' }, { key: '60', value: 'Physics Stock Room' }, { key: '61', value: 'Electrical Room (2nd Floor)' }, { key: '62', value: 'NET LAB' },
   
   // // //ENGINEERING BUILDING 3RD FLOOR------------------------------
-  { key: '63', value: 'EN 301' }, { key: '64', value: 'EN 302' }, { key: '65', value: 'EN 311' }, { key: '66', value: 'EN 312' }, { key: '67', value: 'EN 313' },
-  { key: '68', value: 'EN 317' }, { key: '69', value: 'EN 318' }, { key: '70', value: 'EN 319' }, { key: '71', value: 'EN 304' }, { key: '72', value: 'EN 305' },
-  { key: '73', value: 'EN 306' }, { key: '74', value: 'EN 307' }, { key: '75', value: 'EN 308' }, { key: '76', value: 'EN 309' }, { key: '77', value: 'EN 310' },
-  { key: '78', value: 'Drawing Area' }, { key: '79', value: 'Electrical Room (3rd Floor)' }, { key: '80', value: 'Engineering Library' }, { key: '81', value: 'MPH 1' }, { key: '82', value: 'MPH 2' },
+  // { key: '63', value: 'EN 301' }, { key: '64', value: 'EN 302' }, { key: '65', value: 'EN 311' }, { key: '66', value: 'EN 312' }, { key: '67', value: 'EN 313' },
+  // { key: '68', value: 'EN 317' }, { key: '69', value: 'EN 318' }, { key: '70', value: 'EN 319' }, { key: '71', value: 'EN 304' }, { key: '72', value: 'EN 305' },
+  // { key: '73', value: 'EN 306' }, { key: '74', value: 'EN 307' }, { key: '75', value: 'EN 308' }, { key: '76', value: 'EN 309' }, { key: '77', value: 'EN 310' },
+  // { key: '78', value: 'Drawing Area' }, { key: '79', value: 'Electrical Room (3rd Floor)' }, { key: '80', value: 'Engineering Library' }, { key: '81', value: 'MPH 1' }, { key: '82', value: 'MPH 2' },
 
   // // //ENGINEERING BUILDING 4TH FLOOR------------------------------
-  { key: '83', value: 'EN 401' }, { key: '84', value: 'EN 402' }, { key: '85', value: 'EN 403' }, { key: '86', value: 'EN 404' }, { key: '87', value: 'EN 405' },
-  { key: '88', value: 'EN 406' }, { key: '89', value: 'EN 407' }, { key: '90', value: 'EN 408' }, { key: '91', value: 'EN 409' }, { key: '92', value: 'EN 410' },
-  { key: '93', value: 'EN 411' }, { key: '94', value: 'EN 412' }, { key: '95', value: 'EN 413' }, { key: '96', value: 'EN 414' }, { key: '97', value: 'EN 415' },
-  { key: '98', value: 'EN 416' }, { key: '99', value: 'EN 417' }, { key: '100', value: 'EN 418' }, { key: '101', value: 'EN 419' }, { key: '102', value: 'EN 420' },
-  { key: '103', value: 'EN 421' }, { key: '104', value: 'EN 422' }, { key: '105', value: 'EN 423' }, { key: '106', value: 'EN 424' }, { key: '107', value: 'EN 425' },
-  { key: '108', value: 'EN 426' }, { key: '109', value: 'EN 427' }, { key: '110', value: 'EN 428' }, { key: '111', value: 'EN 429' }, { key: '112', value: 'EN 430' },
-  { key: '113', value: 'EN 431' }, { key: '114', value: 'EN 432' }, { key: '115', value: 'EN 433' }, { key: '116', value: 'EN 434' },
-  { key: '117', value: 'EN D1' }, { key: '118', value: 'EN D2' }, { key: '119', value: 'EN D3' }, { key: '120', value: 'EN D4' }, { key: '121', value: 'EN D5' },
-  { key: '122', value: 'EN D6' }, { key: '123', value: 'AEES' },
+  // { key: '83', value: 'EN 401' }, { key: '84', value: 'EN 402' }, { key: '85', value: 'EN 403' }, { key: '86', value: 'EN 404' }, { key: '87', value: 'EN 405' },
+  // { key: '88', value: 'EN 406' }, { key: '89', value: 'EN 407' }, { key: '90', value: 'EN 408' }, { key: '91', value: 'EN 409' }, { key: '92', value: 'EN 410' },
+  // { key: '93', value: 'EN 411' }, { key: '94', value: 'EN 412' }, { key: '95', value: 'EN 413' }, { key: '96', value: 'EN 414' }, { key: '97', value: 'EN 415' },
+  // { key: '98', value: 'EN 416' }, { key: '99', value: 'EN 417' }, { key: '100', value: 'EN 418' }, { key: '101', value: 'EN 419' }, { key: '102', value: 'EN 420' },
+  // { key: '103', value: 'EN 421' }, { key: '104', value: 'EN 422' }, { key: '105', value: 'EN 423' }, { key: '106', value: 'EN 424' }, { key: '107', value: 'EN 425' },
+  // { key: '108', value: 'EN 426' }, { key: '109', value: 'EN 427' }, { key: '110', value: 'EN 428' }, { key: '111', value: 'EN 429' }, { key: '112', value: 'EN 430' },
+  // { key: '113', value: 'EN 431' }, { key: '114', value: 'EN 432' }, { key: '115', value: 'EN 433' }, { key: '116', value: 'EN 434' },
+  // { key: '117', value: 'EN D1' }, { key: '118', value: 'EN D2' }, { key: '119', value: 'EN D3' }, { key: '120', value: 'EN D4' }, { key: '121', value: 'EN D5' },
+  // { key: '122', value: 'EN D6' }, { key: '123', value: 'AEES' },
 
   // // //UNIVERSITY OF THE EAST - GENERAL
-  { key: '122', value: 'Entrance (Front)' }, { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
-  { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' }, { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
-  { key: '130', value: 'HRM Mock Hotel' }, { key: '131', value: 'TYK Building' }, { key: '132', value: 'Administration Building' },
+  // { key: '122', value: 'Entrance (Front)' }, { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
+  // { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' }, { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
+  // { key: '130', value: 'HRM Mock Hotel' }, { key: '131', value: 'TYK Building' }, { key: '132', value: 'Administration Building' },
   
   // //TYK BUILDING 1ST FLOOR------------------------------
   // //WALA PA
@@ -120,17 +120,39 @@ export const dropdowndata = [
   // { key: '', value: 'TYK 814' },
   // { key: '', value: 'TYK 815' },
   // { key: '', value: 'TYK 816' },
-  // { key: '', value: 'TYK 817' },
+  { key: '', value: 'TYK 817' },
   // { key: '', value: 'TYK 818' },
   // { key: '', value: 'TYK 819' },
 
 
   //TYK BUILDING 9TH FLOOR :)---------------------------
-  // { key: '', value: '11A' },
-  // { key: '', value: '11K' },
+  { key: '', value: '11A' },
+  { key: '', value: '11N' },
+  { key: '', value: 'TYK 900' },
+  { key: '', value: 'TYK 901' },
+  { key: '', value: 'TYK 902' },
+  { key: '', value: 'TYK 903' },
+  { key: '', value: 'TYK 904' },
+  { key: '', value: 'TYK 905' },
+  { key: '', value: 'TYK 906' },
+  { key: '', value: 'TYK 907' },
+  { key: '', value: 'TYK 908' },
+  { key: '', value: 'TYK 909' },
+  { key: '', value: 'TYK 910' },
+  { key: '', value: 'TYK 911' },
+  { key: '', value: 'TYK 912' },
+  { key: '', value: 'TYK 913' },
+  { key: '', value: 'TYK 914' },
+  { key: '', value: 'TYK 915' },
+  { key: '', value: 'TYK 916' },
+  { key: '', value: 'TYK 917' },
+  { key: '', value: 'TYK 918' },
+  { key: '', value: 'TYK 919' },
 
-  // { key: '', value: 'ELEVATOR R' },
-  // { key: '', value: 'ELEVATOR L' },
+
+
+  { key: '', value: 'ELEVATOR R' },
+  { key: '', value: 'ELEVATOR L' },
   
 
 
@@ -651,18 +673,49 @@ export const buildingCoordinates = {
     'T10': { x: 0.53, y: 0.24, floor: 13 },
 
 //TYK 9TH FLOOR-------------------------
+    'FEMALE COMFORT ROOM (CR) - TYK (9th)': { x: 0.66, y: 0.50, floor: 14 },
+    'MALE COMFORT ROOM (CR) - TYK (9th)': { x: 0.66, y: 0.40, floor: 14 },
+
+    'TYK 900': {x: 0.33, y: 0.93, floor: 14},
+    'TYK 901': {x: 0.46, y: 0.99, floor: 14},
+    'TYK 902': {x: 0.42, y: 0.88, floor: 14},
+    'TYK 903': {x: 0.53, y: 0.94, floor: 14},
+    'TYK 904': {x: 0.51, y: 0.82, floor: 14},
+    'TYK 905': {x: 0.64, y: 0.89, floor: 14},
+
+    'TYK 906': {x: 0.53, y: 0.71, floor: 14},
+    'TYK 907': {x: 0.65, y: 0.71, floor: 14},
+    'TYK 908': {x: 0.55, y: 0.63, floor: 14},
+    'TYK 909': {x: 0.65, y: 0.63, floor: 14},
+    'TYK 910': {x: 0.55, y: 0.57, floor: 14},
+    'TYK 911': {x: 0.65, y: 0.57, floor: 14},
+
+    'TYK 912': {x: 0.65, y: 0.35, floor: 14},
+    'TYK 913': {x: 0.65, y: 0.29, floor: 14},
+    'TYK 915': {x: 0.65, y: 0.21, floor: 14},
+    'TYK 917': {x: 0.65, y: 0.15, floor: 14},
+    'TYK 919': {x: 0.65, y: 0.09, floor: 14},
+    
+    'TYK 918': {x: 0.48, y: 0.09, floor: 14},
+    'TYK 916': {x: 0.48, y: 0.15, floor: 14},
+    'TYK 914': {x: 0.48, y: 0.21, floor: 14},
+
     '11A': {x: 0.39, y: 0.96, floor: 14},
-    '11B': {x: 0.47, y: 0.91, floor: 14},
-    '11C': {x: 0.57, y: 0.85, floor: 14},
-    '11D': {x: 0.65, y: 0.80, floor: 14},
-    '11E': {x: 0.65, y: 0.77, floor: 14},
-    '11F': {x: 0.65, y: 0.46, floor: 14},
-    '1111F': {x: 0.65, y: 0.46, floor: 14},
-    '11G': {x: 0.65, y: 0.33, floor: 14},
-    '11H': {x: 0.65, y: 0.27, floor: 14},
-    '11I': {x: 0.65, y: 0.24, floor: 14},
-    '11J': {x: 0.65, y: 0.16, floor: 14},
-    '11K': {x: 0.65, y: 0.10, floor: 14},
+    '11B': {x: 0.48, y: 0.91, floor: 14},
+    '11C': {x: 0.59, y: 0.85, floor: 14},
+    '11D': {x: 0.66, y: 0.80, floor: 14},
+    '11E': {x: 0.61, y: 0.77, floor: 14},
+    '11F': {x: 0.61, y: 0.71, floor: 14},
+    '11G': {x: 0.61, y: 0.63, floor: 14},
+    '11H': {x: 0.61, y: 0.57, floor: 14},
+    '11I': {x: 0.61, y: 0.45, floor: 14},
+    '1111I': {x: 0.66, y: 0.45, floor: 14},
+    '11J': {x: 0.58, y: 0.35, floor: 14},
+    '11K': {x: 0.58, y: 0.29, floor: 14},
+    '11L': {x: 0.57, y: 0.21, floor: 14},
+    '11M': {x: 0.57, y: 0.15, floor: 14},
+    '11N': {x: 0.57, y: 0.09, floor: 14},
+
 
   };
 
@@ -860,8 +913,8 @@ export const graph = {
   'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1 },
 
 //TYK ELEVATOR----------------------------
-  'ELEVATOR L': { 'H6': 1, 'G7': 3, 'H8': 5, 'D9': 7, 'G10': 9, },
-  'ELEVATOR R': { 'O6': 1, 'O7': 3, 'G8': 5, 'G9': 7, 'N10': 9, '11A': 11},
+  'ELEVATOR L': { 'H6': 1, 'G7': 3, 'H8': 5, 'D9': 7, 'G10': 9, '11E': 11 },
+  'ELEVATOR R': { 'O6': 1, 'O7': 3, 'G8': 5, 'G9': 7, 'N10': 9, '11K': 11},
 
 //TYK BUILDING 1ST FLOOR----------------------------
   //WALA PA
@@ -1048,17 +1101,49 @@ export const graph = {
   'T10': { 'S10': 2, 'O10': 2, 'TYK 814': 1 },
  
 //TYK 9TH FLOOR---------------------
-  '11A': { '11B': 1, }, 
-  '11B': { '11A': 1, '11C': 1,  },
-  '11C': { '11B': 1, '11D': 1 , },
-  '11D': { '11C': 1, '11E': 1, 'ELEVATOR L': 7 },
-  '11E': { '11D': 1, '11F': 1},
-  '11F': { '11E': 1, '11G': 1, '1111F': 1},
-  '1111F': { '11F': 1, 'MALE COMFORT ROOM (CR) - TYK (9th)': 1, 'FEMALE COMFORT ROOM (CR) - TYK (9th)': 1},
-  '11G': { '11F': 1, '11H': 1, 'ELEVATOR R': 11, },
-  '11H': { '11G': 1, '11I': 1, },
-  '11I': { '11H': 1, '11J': 1, },
-  '11J': { '11K': 1, '11I': 1, '11L': 1, },
-  '11K': { '11J': 1, },
+  'MALE COMFORT ROOM (CR) - TYK (9th)': { '1111I': 1 }, 
+  'FEMALE COMFORT ROOM (CR) - TYK (9th)': { '1111I': 1 }, 
+
+  'TYK 900': { '11A': 1 }, 
+  'TYK 901': { '11A': 1 }, 
+  'TYK 902': { '11B': 1 }, 
+  'TYK 903': { '11B': 1 }, 
+  'TYK 904': { '11C': 1 }, 
+  'TYK 905': { '11C': 1 }, 
+  
+
+  'TYK 906': { '11F': 1 }, 
+  'TYK 907': { '11F': 1 }, 
+  'TYK 908': { '11G': 1 }, 
+  'TYK 909': { '11G': 1 }, 
+  'TYK 910': { '11H': 1 }, 
+  'TYK 911': { '11H': 1 }, 
+
+  'TYK 912': { '11J': 1 }, 
+  'TYK 913': { '11K': 1 }, 
+  'TYK 914': { '11L': 1 }, 
+  'TYK 915': { '11L': 1 }, 
+  'TYK 916': { '11M': 1 }, 
+  'TYK 917': { '11M': 1 }, 
+  'TYK 918': { '11N': 1 }, 
+  'TYK 919': { '11N': 1 }, 
+
+  '11A': { '11B': 1, 'TYK 900': 1, 'TYK 901': 1 }, 
+  '11B': { '11A': 1, '11C': 1, 'TYK 902': 1, 'TYK 903': 1  },
+  '11C': { '11B': 1, '11D': 1 , 'TYK 904': 1, 'TYK 905': 1},
+  '11D': { '11C': 1, '11E': 1, },
+  '11E': { '11D': 1, '11F': 1, 'ELEVATOR L': 7 },
+  '11F': { '11E': 1, '11G': 1, 'TYK 906': 1, 'TYK 907': 1},
+  '11G': { '11F': 1, '11H': 1, 'TYK 908': 1, 'TYK 909': 1 },
+  '11H': { '11G': 1, '11I': 1, 'TYK 910': 1, 'TYK 911': 1},
+  '11I': { '11H': 1, '11J': 1, '1111I': 1},
+  '1111I': { '11I': 1, 'MALE COMFORT ROOM (CR) - TYK (9th)': 1, 'FEMALE COMFORT ROOM (CR) - TYK (9th)': 1},
+  '11J': { '11K': 1, '11I': 1, 'TYK 912': 1 },
+  '11K': { '11J': 1, '11L': 1, 'TYK 913': 1, 'ELEVATOR R': 11 },
+  '11L': { '11K': 1, '11M': 1, 'TYK 914': 1, 'TYK 915': 1},
+  '11M': { '11L': 1, '11N': 1, 'TYK 916': 1, 'TYK 917': 1},
+  '11N': { '11M': 1, 'TYK 918': 1, 'TYK 919': 1},
+
+
 
 };
