@@ -14,6 +14,7 @@ import TYK5THFLOORScreen from './app/screens/TYK5THFLOORScreen';
 import TYK7THFLOORScreen from './app/screens/TYK7THFLOORScreen';
 import TYK8THFLOORScreen from './app/screens/TYK8THFLOORScreen';
 import TYK9THFLOORScreen from './app/screens/TYK9THFLOORScreen';
+import TYK10THFLOORScreen from './app/screens/TYK10THFLOORScreen';
 
 import UEScreen from './app/screens/UEScreen';
 
@@ -40,6 +41,7 @@ export default function App() {
         <Stack.Screen name="TYK7THFLOORScreen" component={TYK7THFLOORScreen} />
         <Stack.Screen name="TYK8THFLOORScreen" component={TYK8THFLOORScreen} />
         <Stack.Screen name="TYK9THFLOORScreen" component={TYK9THFLOORScreen} />
+        <Stack.Screen name="TYK10THFLOORScreen" component={TYK10THFLOORScreen} />
         <Stack.Screen name="UEScreen" component={UEScreen} />
         <Stack.Screen name="OnBoard" component={OnBoardScreen} />
       </Stack.Navigator>

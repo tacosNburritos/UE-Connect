@@ -11,7 +11,7 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const TYK8THFLOORScreen = ({ route, navigation }) => {
+const TYK10THFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -166,7 +166,7 @@ const TYK8THFLOORScreen = ({ route, navigation }) => {
 
       {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
-        Tan Yan Kee Building - Eighth Floor
+        Tan Yan Kee Building - Tenth Floor
         
       </Text>
 
@@ -177,8 +177,8 @@ const TYK8THFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/TYK8THFLR.png")}
-          style={{ width: "97%", height: "104%", resizeMode: "contain" }}
+          source={require("../images/TYK10THFLR.png")}
+          style={{ width: "97%", height: "100%", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
@@ -262,4 +262,4 @@ const TYK8THFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default TYK8THFLOORScreen;
+export default TYK10THFLOORScreen;

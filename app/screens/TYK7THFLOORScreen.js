@@ -73,6 +73,7 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     else if (nextFloor === 12) nextScreen = "TYK7THFLOORScreen";
     else if (nextFloor === 13) nextScreen = "TYK8THFLOORScreen";
     else if (nextFloor === 14) nextScreen = "TYK9THFLOORScreen";
+    else if (nextFloor === 15) nextScreen = "TYK10THFLOORScreen";
 
     else nextScreen = "TYK1STFLOORScreen"; // fallback
 
