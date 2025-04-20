@@ -28,6 +28,8 @@ const UEScreen = ({ route, navigation }) => {
     "EN - STAIRS LEFT WING2",
     "EN - EL",
     "EN - ER",
+    "LCT - EL",
+    "LCT - ER",
 
   ];
 
@@ -109,6 +111,7 @@ const UEScreen = ({ route, navigation }) => {
             else if (nextFloor === 4) nextScreen = "EN4THFLOORScreen";
             else if (nextFloor === 5) nextScreen = "UEScreen";
             else if (nextFloor === 6) nextScreen = "TYK1STFLOORScreen";
+            else if (nextFloor === 17) nextScreen = "LCT1STFLOORScreen";
             
             else nextScreen = "EN1STFLOORScreen"; // fallback or stay
           
