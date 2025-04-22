@@ -30,7 +30,8 @@ const UEScreen = ({ route, navigation }) => {
     "EN - ER",
     "LCT - EL",
     "LCT - ER",
-
+    "TYK E1"
+    
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));

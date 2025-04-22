@@ -98,6 +98,8 @@ function PFScreen({ navigation }) {
         "MALE COMFORT ROOM (CR) - LEFT WING (3rd)",
         "MALE COMFORT ROOM (CR) - RIGHT WING (3rd)",
         "MALE COMFORT ROOM (CR) - RIGHT WING (4th)",
+        "MALE COMFORT ROOM (CR) - TYK1 (1st)",
+        "MALE COMFORT ROOM (CR) - TYK2 (1st)",
         "MALE COMFORT ROOM (CR) - TYK (2nd)",
         "MALE COMFORT ROOM (CR) - TYK (4th)",
         "MALE COMFORT ROOM (CR) - TYK (5th)",
@@ -129,6 +131,8 @@ function PFScreen({ navigation }) {
         "FEMALE COMFORT ROOM (CR) - LEFT WING (3rd)",
         "FEMALE COMFORT ROOM (CR) - RIGHT WING (3rd)",
         "FEMALE COMFORT ROOM (CR) - RIGHT WING (4th)",
+        "FEMALE COMFORT ROOM (CR) - TYK1 (1st)",
+        "FEMALE COMFORT ROOM (CR) - TYK2 (1st)",
         "FEMALE COMFORT ROOM (CR) - TYK (2nd)",
         "FEMALE COMFORT ROOM (CR) - TYK (4th)",
         "FEMALE COMFORT ROOM (CR) - TYK (5th)",
@@ -163,7 +167,7 @@ function PFScreen({ navigation }) {
     }else if (startFloor === 5) {
       navigation.navigate('UEScreen', { path, buildingCoordinates });
     }else if (startFloor === 6) {
-      navigation.navigate('', { path, buildingCoordinates });
+      navigation.navigate('TYK1STFLOORScreen', { path, buildingCoordinates });
     }else if (startFloor === 7) {
       navigation.navigate('TYK2NDFLOORScreen', { path, buildingCoordinates });
     }else if (startFloor === 8) {

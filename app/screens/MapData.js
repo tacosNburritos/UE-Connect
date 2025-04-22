@@ -38,13 +38,20 @@ export const dropdowndata = [
   // { key: '122', value: 'EN D6' }, { key: '123', value: 'AEES' },
   
   // // //UNIVERSITY OF THE EAST - GENERAL
-  { key: '122', value: 'MAIN ENTRANCE' }, { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
+  { key: '122', value: 'MAIN ENTRANCE' }, 
+  { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
   { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' }, { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
   { key: '130', value: 'HRM Mock Hotel' }, { key: '131', value: 'TYK Building' }, { key: '132', value: 'Administration Building' },
   { key: '133', value: 'SECOND ENTRANCE' }, { key: '134', value: 'Clinic' }, { key: '135', value: 'Chapel' },
   
   // //TYK BUILDING 1ST FLOOR------------------------------
-  // //WALA PA
+    { key: '', value: 'CBA Faculty' }, 
+    { key: '', value: 'Alumni Marketing' }, 
+    { key: '', value: 'CBA Office' }, 
+    { key: '', value: 'Department Chair Office (TYK - 1ST)' }, 
+    { key: '', value: 'TYK Canteen' }, 
+    { key: '', value: 'EF17' }, 
+    { key: '', value: 'TYK E1' }, 
 
   // //TYK BUILDING 2ND FLOOR------------------------------
   // { key: '133', value: 'TYK 201' }, { key: '134', value: 'TYK 203' }, { key: '135', value: 'TYK 205' }, { key: '136', value: 'TYK 204' }, { key: '137', value: 'TYK 202' },
@@ -76,7 +83,7 @@ export const dropdowndata = [
 
   //TYK BUILDING 5TH FLOOR------------------------------
   // { key: '', value: 'TYK Reception' },
-  // { key: '', value: 'CFA Faculty Room' },
+  { key: '', value: 'CFA Faculty Room' },
   // { key: '', value: 'TYK 501' },
   // { key: '', value: 'TYK 502' },
   // { key: '', value: 'TYK 503' },
@@ -91,7 +98,7 @@ export const dropdowndata = [
   // { key: '', value: 'A9' },
   // { key: '', value: 'TYK 700' },
   // { key: '', value: 'TYK 701' },
-  // { key: '', value: 'TYK 702' },
+  { key: '', value: 'TYK 702' },
   // { key: '', value: 'TYK 703' },
   // { key: '', value: 'TYK 704' },
   // { key: '', value: 'TYK 705' },
@@ -174,12 +181,12 @@ export const dropdowndata = [
 //TYK BUILDING 11TH FLOOR :)--------------------------
 
 //LCT BUILDING 1ST FLOOR :)---------------------------
-  { key: '', value: 'A16' },
-  { key: '', value: 'LCT 101' },
-  { key: '', value: 'LCT 102' },
-  { key: '', value: 'Student Coordinator Office' },
-  { key: '', value: 'TLE/Practice House' },
-  { key: '', value: 'LCT Canteen' },
+  // { key: '', value: 'A16' },
+  // { key: '', value: 'LCT 101' },
+  // { key: '', value: 'LCT 102' },
+  // { key: '', value: 'Student Coordinator Office' },
+  // { key: '', value: 'TLE/Practice House' },
+  // { key: '', value: 'LCT Canteen' },
 
 ];
 
@@ -468,8 +475,32 @@ export const buildingCoordinates = {
   'U5': { x: 0.56, y: 0.74, floor: 5 },
 
 //TYK BUILDING 1ST FLOOR----------------------------
-  //WALA PA
-  //U13: { x: 0.80, y: 0.50, floor: 6 },
+  'FEMALE COMFORT ROOM (CR) - TYK1 (1st)': {x: 0.39, y: 0.86, floor: 6},
+  'MALE COMFORT ROOM (CR) - TYK1 (1st)': {x: 0.39, y: 0.86, floor: 6},
+  'FEMALE COMFORT ROOM (CR) - TYK2 (1st)': {x: 0.63, y: 0.43, floor: 6},
+  'MALE COMFORT ROOM (CR) - TYK2 (1st)': {x: 0.63, y: 0.52, floor: 6},
+
+  'CBA Faculty': { x: 0.52, y: 0.73, floor: 6 },
+  'Alumni Marketing': { x: 0.62, y: 0.67, floor: 6 },
+  'CBA Office': { x: 0.52, y: 0.62, floor: 6 },
+  'Department Chair Office (TYK - 1ST)': { x: 0.62, y: 0.62, floor: 6 },
+  'TYK Canteen': { x: 0.48, y: 0.12, floor: 6 },
+
+  'B17': {x: 0.47, y: 0.91, floor: 6},
+  'C17': {x: 0.57, y: 0.85, floor: 6},
+  'D17': {x: 0.61, y: 0.80, floor: 6},
+  'D171': {x: 0.57, y: 0.73, floor: 6},
+  'D172': {x: 0.57, y: 0.67, floor: 6},
+  'D173': {x: 0.57, y: 0.62, floor: 6},
+  'E17': {x: 0.57, y: 0.57, floor: 6},
+  'F17': {x: 0.58, y: 0.46, floor: 6},
+  'EF17': {x: 0.50, y: 0.50, floor: 6},
+  'EF171': {x: 0.42, y: 0.50, floor: 6},
+  'F1717': {x: 0.63, y: 0.46, floor: 6},
+  'G17': {x: 0.56, y: 0.33, floor: 6},
+  'J17': {x: 0.56, y: 0.16, floor: 6},
+  'K17': {x: 0.56, y: 0.12, floor: 6},
+
 
 //TYK BUILDING 2ND FLOOR----------------------------
   'TYK 200': { x: 0.36, y: 0.90, floor: 7 },
@@ -502,7 +533,7 @@ export const buildingCoordinates = {
 
   'FEMALE COMFORT ROOM (CR) - TYK (2nd)': { x: 0.66, y: 0.51, floor: 7 },
   'MALE COMFORT ROOM (CR) - TYK (2nd)': { x: 0.66, y: 0.40, floor: 7 },
-  'ELEVATOR L': { x: 0.57, y: 0.79 },
+  'ELEVATOR L': { x: 0.57, y: 0.83 },
   'ELEVATOR R': { x: 0.54, y: 0.30 },
   
   'A6': { x: 0.44, y: 0.93, floor: 7 },
@@ -977,7 +1008,7 @@ export const graph = {
   'EN Building (Right Wing)': { 'W5': 1 },
   'EN Building (Left Wing)': { 'M5': 1 },
   'HRM Mock Hotel': { 'M5': 1 },
-  'TYK Building': { 'O5': 5, 'Q5': 5 },
+  'TYK Building': { 'O5': 5, 'Q5': 5, 'TYK E1': 1 },
   'Administration Building': { 'U5': 1 },
   'Clinic': { 'E5': 1 },
   'EN - EL': { 'M55': 1, 'T11': 1 },
@@ -1018,11 +1049,41 @@ export const graph = {
   'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1 },
 
 //TYK ELEVATOR----------------------------
-  'ELEVATOR L': { 'H6': 1, 'G7': 3, 'H8': 5, 'D9': 7, 'G10': 9, '11E': 11, 'H12': 13 },
-  'ELEVATOR R': { 'O6': 1, 'O7': 3, 'G8': 5, 'G9': 7, 'N10': 9, '11K': 11, 'O12': 13},
+  'ELEVATOR L': { 'D17': 1, 'H6': 1, 'G7': 3, 'H8': 5, 'D9': 7, 'G10': 9, '11E': 11, 'H12': 13 },
+  'ELEVATOR R': { 'G17': 1, 'O6': 1, 'O7': 3, 'G8': 5, 'G9': 7, 'N10': 9, '11K': 11, 'O12': 13},
 
 //TYK BUILDING 1ST FLOOR----------------------------
-  //WALA PA
+  'FEMALE COMFORT ROOM (CR) - TYK1 (1st)': { 'B17': 1, }, 
+  'MALE COMFORT ROOM (CR) - TYK1 (1st)': { 'B17': 1, },
+  'FEMALE COMFORT ROOM (CR) - TYK2 (1st)': { 'B17': 1, }, 
+  'MALE COMFORT ROOM (CR) - TYK2 (1st)': { 'B17': 1, },  
+
+  'TYK E1': { 'EF171': 1, 'TYK Building': 1},
+
+  'CBA Faculty': { 'D171': 1 },
+  'Alumni Marketing': { 'D172': 1 },
+  'CBA Office': { 'D173': 1 },
+  'Department Chair Office (TYK - 1ST)': { 'D173': 1 },
+  'TYK Canteen': { 'K17': 1 },
+
+  'B17': { 'C17': 1,'MALE COMFORT ROOM (CR) - TYK1 (1st)': 1, 'FEMALE COMFORT ROOM (CR) - TYK1 (1st)': 1 },
+  'C17': { 'B17': 1, 'D17': 1 ,},
+  'D17': { 'C17': 1, 'D171': 1, 'ELEVATOR L': 1 },
+
+  'D171': { 'D17': 1, 'D172': 1, 'CBA Faculty': 1 },
+  'D172': { 'D171': 1, 'D173': 1, 'Alumni Marketing': 1 },
+  'D173': { 'D172': 1, 'E17': 1, 'CBA Office': 1, 'Department Chair Office (TYK - 1ST)': 1  },
+
+  'E17': { 'D173': 1, 'F17': 1, 'EF17': 1},
+  'EF17': { 'E17': 1, 'F17': 1, 'EF171': 1},
+  'EF171': { 'EF17': 1, 'TYK E1': 1},
+
+  'F17': { 'E17': 1, 'G17': 1, 'F1717': 1, 'EF17': 1},
+  'F1717': { 'F17': 1, 'MALE COMFORT ROOM (CR) - TYK2 (1st)': 1, 'FEMALE COMFORT ROOM (CR) - TYK2 (1st)': 1},
+  'G17': { 'F17': 1, 'J17': 1, 'ELEVATOR R': 1, },
+  'J17': { 'G17': 1, 'K17': 1, },
+  'K17': { 'J17': 1, 'TYK Canteen': 1 },
+  
 
 //TYK BUILDING 2ND FLOOR----------------------------
   'TYK 200': { 'F6': 1,}, 'TYK 201': { 'A6': 1,}, 'TYK 202': { 'E6': 1,}, 'TYK 203': { 'B6': 1,}, 'TYK 204': { 'D6': 1,}, 'TYK 205': { 'C6': 1,},
