@@ -60,7 +60,34 @@ export const dropdowndata = [
   // { key: '148', value: 'TYK 218' }, { key: '149', value: 'TYK 219' }, { key: '150', value: 'TYK 220' },
 
   //TYK BUILDING 3RD FLOOR------------------------------
-  //WALA PA
+  { key: '', value: 'A19' },
+  { key: '', value: 'B19' },
+  { key: '', value: 'C19' },
+  { key: '', value: 'D19' },
+  { key: '', value: 'E19' },
+  { key: '', value: 'F19' },
+  { key: '', value: 'M19' },
+  { key: '', value: 'U19' },
+  { key: '', value: 'T19' },
+  { key: '', value: 'S19' },
+  { key: '', value: 'TYK 300' },
+  { key: '', value: 'TYK 301' },
+  { key: '', value: 'TYK 302' },
+  { key: '', value: 'TYK 303' },
+  { key: '', value: 'TYK 304' },
+  { key: '', value: 'TYK 305' },
+  { key: '', value: 'Student Council Office' },
+  { key: '', value: 'Department Chair Office (TYK - 2ND)' },
+  { key: '', value: 'Computer Room 3A' },
+  { key: '', value: 'Computer Room 3B' },
+  { key: '', value: 'College of Arts and Science' },
+  { key: '', value: 'Multimedia Room 3A' },
+  { key: '', value: 'Multimedia Room 3B' },
+  { key: '', value: 'CAS Studio' },
+  { key: '', value: 'CAS Research and Consultation Room' },
+  { key: '', value: 'TYK 309' },
+  { key: '', value: 'TYK Speech Laboratory Room 1' },
+  { key: '', value: 'TYK Speech Laboratory Room 2' },
 
   //TYK BUILDING 4TH FLOOR------------------------------
   // { key: '', value: 'TYK 400' },
@@ -92,11 +119,11 @@ export const dropdowndata = [
   // { key: '', value: 'Art Gallery' },
 
   //TYK BUILDING 6TH FLOOR-----------------------------
-  { key: '', value: 'TYK Library' },
-  { key: '', value: 'Animation Studio' },
-  { key: '', value: 'Art & Design Open Studio' },
-  { key: '', value: 'Video Editing Room' },
-  { key: '', value: 'Workshop and Tool Room' },
+  // { key: '', value: 'TYK Library' },
+  // { key: '', value: 'Animation Studio' },
+  // { key: '', value: 'Art & Design Open Studio' },
+  // { key: '', value: 'Video Editing Room' },
+  // { key: '', value: 'Workshop and Tool Room' },
   
 
   //TYK BUILDING 7TH FLOOR-----------------------------
@@ -119,7 +146,7 @@ export const dropdowndata = [
   //TYK BUILDING 8TH FLOOR :)---------------------------
   // { key: '', value: 'TYK 800' },
   // { key: '', value: 'TYK 801' },
-  // { key: '', value: 'TYK 802' },
+  { key: '', value: 'TYK 802' },
   // { key: '', value: 'TYK 803' },
   // { key: '', value: 'TYK 804' },
   // { key: '', value: 'TYK 805' },
@@ -538,7 +565,7 @@ export const buildingCoordinates = {
 
   'FEMALE COMFORT ROOM (CR) - TYK (2nd)': { x: 0.66, y: 0.51, floor: 7 },
   'MALE COMFORT ROOM (CR) - TYK (2nd)': { x: 0.66, y: 0.40, floor: 7 },
-  'ELEVATOR L': { x: 0.57, y: 0.83 },
+  'ELEVATOR L': { x: 0.57, y: 0.80 },
   'ELEVATOR R': { x: 0.54, y: 0.30 },
   
   'A6': { x: 0.44, y: 0.93, floor: 7 },
@@ -568,8 +595,52 @@ export const buildingCoordinates = {
   'U6': { x: 0.52, y: 0.23, floor: 7 },
 
 //TYK BUILDING 3RD FLOOR----------------------------
-  //WALA PA
-  //U14: { x: 0.80, y: 0.50, floor: 8 },
+  'TYK 300': { x: 0.60, y: 0.90, floor: 8 },
+  'TYK 301': { x: 0.48, y: 0.84, floor: 8 },
+  'TYK 302': { x: 0.53, y: 0.94, floor: 8 },
+  'TYK 303': { x: 0.39, y: 0.87, floor: 8 },
+  'TYK 304': { x: 0.44, y: 0.98, floor: 8 },
+  'TYK 305': { x: 0.29, y: 0.91, floor: 8 },
+  'Student Council Office': { x: 0.52, y: 0.75, floor: 8 },
+  'Department Chair Office (TYK - 2ND)': { x: 0.52, y: 0.70, floor: 8 },
+  'Computer Room 3B': { x: 0.60, y: 0.73, floor: 8 },
+  'College of Arts and Science': { x: 0.52, y: 0.64, floor: 8 },
+  'Computer Room 3A': { x: 0.60, y: 0.64, floor: 8 },
+
+  'Multimedia Room 3A': { x: 0.62, y: 0.34, floor: 8 },
+  'Multimedia Room 3B': { x: 0.62, y: 0.30, floor: 8 },
+  'CAS Studio': { x: 0.62, y: 0.24, floor: 8 },
+  'CAS Research and Consultation Room': { x: 0.62, y: 0.15, floor: 8 },
+  'TYK 309': { x: 0.62, y: 0.08, floor: 8 },
+  'TYK Speech Laboratory Room 1': { x: 0.46, y: 0.08, floor: 8, },
+  'TYK Speech Laboratory Room 2': { x: 0.46, y: 0.24, floor: 8, },
+
+
+  'F19': { x: 0.34, y: 0.93, floor: 8 },
+  'A19': { x: 0.39, y: 0.96, floor: 8 },
+  'B19': { x: 0.48, y: 0.92, floor: 8 },
+  'C19': { x: 0.57, y: 0.88, floor: 8 },
+  'D19': { x: 0.51, y: 0.85, floor: 8 },
+  'E19': { x: 0.43, y: 0.89, floor: 8 },
+  'G19': { x: 0.60, y: 0.85, floor: 8 },
+
+  'H19': { x: 0.56, y: 0.77, floor: 8 },
+  'I19': { x: 0.56, y: 0.73, floor: 8 },
+  'J19': { x: 0.56, y: 0.64, floor: 8 },
+  'K19': { x: 0.56, y: 0.60, floor: 8 },
+  'L19': { x: 0.56, y: 0.48, floor: 8 },
+  'M19': { x: 0.56, y: 0.48, floor: 8 },
+  'M1919': { x: 0.60, y: 0.48, floor: 8 },
+
+  'N19': { x: 0.56, y: 0.34, floor: 8 },
+  'O19': { x: 0.56, y: 0.30, floor: 8 },
+  'P19': { x: 0.56, y: 0.24, floor: 8 },
+  'Q19': { x: 0.58, y: 0.15, floor: 8 },
+  'R19': { x: 0.58, y: 0.08, floor: 8 },
+
+  'S19': { x: 0.50, y: 0.08, floor: 8 },
+  'T19': { x: 0.50, y: 0.15, floor: 8 },
+  'U19': { x: 0.50, y: 0.24, floor: 8 },
 
 //TYK BUILDING 4TH FLOOR----------------------------
   'FEMALE COMFORT ROOM (CR) - TYK (4th)': { x: 0.66, y: 0.51, floor: 9 },
@@ -1066,8 +1137,8 @@ export const graph = {
   'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1 },
 
 //TYK ELEVATOR----------------------------
-  'ELEVATOR L': { 'D17': 1, 'H6': 1, 'G7': 3, 'H8': 5, 'D9': 7, 'G10': 9, 'B18': 10, '11E': 11, 'H12': 13 },
-  'ELEVATOR R': { 'G17': 1, 'O6': 1, 'O7': 3, 'G8': 5, 'G9': 7, 'N10': 9, 'E18': 10, '11K': 11, 'O12': 13},
+  'ELEVATOR L': { 'D17': 1, 'H6': 1, 'H19':3, 'G7': 3, 'H8': 5, 'D9': 7, 'G10': 9, 'B18': 10, '11E': 11, 'H12': 13 },
+  'ELEVATOR R': { 'G17': 1, 'O6': 1, 'O19':3, 'O7': 3, 'G8': 5, 'G9': 7, 'N10': 9, 'E18': 10, '11K': 11, 'O12': 13},
 
 //TYK BUILDING 1ST FLOOR----------------------------
   'FEMALE COMFORT ROOM (CR) - TYK1 (1st)': { 'B17': 1, }, 
@@ -1134,7 +1205,48 @@ export const graph = {
   'U6': { 'T6': 2, 'V6': 2, 'P6': 2, 'TYK 216': 1 },
 
 //TYK BUILDING 3RD FLOOR----------------------------
-  //WALA PA
+  'TYK 304': { 'A19': 2, },
+  'TYK 302': { 'B19': 2, },
+  'TYK 300': { 'C19': 2, },
+  'TYK 301': { 'D19': 2, },
+  'TYK 303': { 'E19': 2, },
+  'TYK 305': { 'F19': 2, },
+  'Student Council Office': { 'I19': 1, },
+  'Department Chair Office (TYK - 2ND)': { 'I19': 1, },
+  'Computer Room 3B': { 'I19': 1, },
+  'Computer Room 3A': { 'J19': 1, },
+  'College of Arts and Science': { 'J19': 1, },
+  'Multimedia Room 3A': { 'N19': 1, },
+  'Multimedia Room 3B': { 'O19': 1, },
+  'CAS Studio': { 'P19': 1, },
+  'CAS Research and Consultation Room': { 'Q19': 1, },
+  'TYK 309': { 'R19': 1, },
+  'TYK Speech Laboratory Room 1': { 'S19': 1, },
+  'TYK Speech Laboratory Room 2': { 'U19': 1, },
+
+  'F19': { 'E19': 2, 'A19': 2, 'TYK 305': 1 },
+  'A19': { 'B19': 2, 'F19': 2, 'TYK 304': 1},
+  'B19': { 'A19': 2, 'C19': 2, 'TYK 302': 1 },
+  'C19': { 'B19': 2, 'D19': 2, 'G19': 2, 'TYK 300': 1 },
+  'D19': { 'C19': 2, 'E19': 2,  'G19': 2, 'TYK 301': 1 },
+  'E19': { 'D19': 2, 'F19': 2, 'TYK 303': 1 },
+  'G19': { 'C19': 2, 'D19': 2, 'H19': 2, 'ELEVATOR L': 3, },
+
+  'H19': { 'G19': 2, 'I19': 2,},
+  'I19': { 'H19': 2, 'J19': 2, 'Student Council Office': 1, 'Department Chair Office (TYK - 2ND)': 1, 'Computer Room 3B': 1 },
+  'J19': { 'I19': 2, 'K19': 2 ,  'Computer Room 3A': 1, 'College of Arts and Science':1},
+  'K19': { 'J19': 2, 'L19': 2 , },
+  'L19': { 'K19': 2, 'M19': 2 , },
+  'M19': { 'L19': 2, 'N19': 2, 'M1919': 2 },
+  'M1919':{ 'M19': 2 ,'FEMALE COMFORT ROOM (CR) - TYK (4th)': 1, 'MALE COMFORT ROOM (CR) - TYK (4th)': 1 },
+  'N19': { 'M19': 2, 'O19': 2, 'Multimedia Room 3A': 1},
+  'O19': { 'N19': 2, 'P19': 2, 'ELEVATOR R': 3, 'Multimedia Room 3B': 1 },
+  'P19': { 'O19': 2, 'Q19': 2, 'U19': 2, 'CAS Studio': 1}, 
+  'Q19': { 'P19': 2, 'R19': 2, 'CAS Research and Consultation Room': 1 },
+  'R19': { 'Q19': 2, 'S19': 2, 'TYK 309': 1},
+  'S19': { 'R19': 2, 'T19': 2, 'TYK Speech Laboratory Room 1': 1 },
+  'T19': { 'S19': 2, 'U19': 2, },
+  'U19': { 'T19': 2, 'V19': 2, 'P19': 2, 'TYK Speech Laboratory Room 2': 1},
 
 //TYK BUILDING 4TH FLOOR----------------------------
   'TYK 400': { 'F7': 1,}, 'TYK 401': { 'A7': 1,}, 
