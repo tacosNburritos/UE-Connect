@@ -12,6 +12,7 @@ import TYK1STFLOORScreen from './app/screens/TYK1STFLOORScreen';
 import TYK2NDFLOORScreen from './app/screens/TYK2NDFLOORScreen';
 import TYK4THFLOORScreen from './app/screens/TYK4THFLOORScreen';
 import TYK5THFLOORScreen from './app/screens/TYK5THFLOORScreen';
+import TYK6THFLOORScreen from './app/screens/TYK6THFLOORScreen';
 import TYK7THFLOORScreen from './app/screens/TYK7THFLOORScreen';
 import TYK8THFLOORScreen from './app/screens/TYK8THFLOORScreen';
 import TYK9THFLOORScreen from './app/screens/TYK9THFLOORScreen';
@@ -42,7 +43,7 @@ export default function App() {
         {/* <Stack.Screen name="TYK3RDFLOORScreen" component={TYK3RDFLOORScreen} /> */}
         <Stack.Screen name="TYK4THFLOORScreen" component={TYK4THFLOORScreen} />
         <Stack.Screen name="TYK5THFLOORScreen" component={TYK5THFLOORScreen} />
-        {/* <Stack.Screen name="TYK6THFLOORScreen" component={TYK6THFLOORScreen} /> */}
+        <Stack.Screen name="TYK6THFLOORScreen" component={TYK6THFLOORScreen} />
         <Stack.Screen name="TYK7THFLOORScreen" component={TYK7THFLOORScreen} />
         <Stack.Screen name="TYK8THFLOORScreen" component={TYK8THFLOORScreen} />
         <Stack.Screen name="TYK9THFLOORScreen" component={TYK9THFLOORScreen} />

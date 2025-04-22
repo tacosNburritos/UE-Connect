@@ -39,19 +39,19 @@ export const dropdowndata = [
   
   // // //UNIVERSITY OF THE EAST - GENERAL
   { key: '122', value: 'MAIN ENTRANCE' }, 
-  { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
-  { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' }, { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
-  { key: '130', value: 'HRM Mock Hotel' }, { key: '131', value: 'TYK Building' }, { key: '132', value: 'Administration Building' },
-  { key: '133', value: 'SECOND ENTRANCE' }, { key: '134', value: 'Clinic' }, { key: '135', value: 'Chapel' },
+  // { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
+  // { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' }, { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
+  // { key: '130', value: 'HRM Mock Hotel' }, { key: '131', value: 'TYK Building' }, { key: '132', value: 'Administration Building' },
+  // { key: '133', value: 'SECOND ENTRANCE' }, { key: '134', value: 'Clinic' }, { key: '135', value: 'Chapel' },
   
   // //TYK BUILDING 1ST FLOOR------------------------------
-    { key: '', value: 'CBA Faculty' }, 
-    { key: '', value: 'Alumni Marketing' }, 
-    { key: '', value: 'CBA Office' }, 
-    { key: '', value: 'Department Chair Office (TYK - 1ST)' }, 
-    { key: '', value: 'TYK Canteen' }, 
-    { key: '', value: 'EF17' }, 
-    { key: '', value: 'TYK E1' }, 
+  // { key: '', value: 'CBA Faculty' }, 
+  // { key: '', value: 'Alumni Marketing' }, 
+  // { key: '', value: 'CBA Office' }, 
+  // { key: '', value: 'Department Chair Office (TYK - 1ST)' }, 
+  // { key: '', value: 'TYK Canteen' }, 
+  // { key: '', value: 'EF17' }, 
+  // { key: '', value: 'TYK E1' }, 
 
   // //TYK BUILDING 2ND FLOOR------------------------------
   // { key: '133', value: 'TYK 201' }, { key: '134', value: 'TYK 203' }, { key: '135', value: 'TYK 205' }, { key: '136', value: 'TYK 204' }, { key: '137', value: 'TYK 202' },
@@ -83,7 +83,7 @@ export const dropdowndata = [
 
   //TYK BUILDING 5TH FLOOR------------------------------
   // { key: '', value: 'TYK Reception' },
-  { key: '', value: 'CFA Faculty Room' },
+  // { key: '', value: 'CFA Faculty Room' },
   // { key: '', value: 'TYK 501' },
   // { key: '', value: 'TYK 502' },
   // { key: '', value: 'TYK 503' },
@@ -92,13 +92,18 @@ export const dropdowndata = [
   // { key: '', value: 'Art Gallery' },
 
   //TYK BUILDING 6TH FLOOR-----------------------------
-  //WALA PA
+  { key: '', value: 'TYK Library' },
+  { key: '', value: 'Animation Studio' },
+  { key: '', value: 'Art & Design Open Studio' },
+  { key: '', value: 'Video Editing Room' },
+  { key: '', value: 'Workshop and Tool Room' },
+  
 
   //TYK BUILDING 7TH FLOOR-----------------------------
   // { key: '', value: 'A9' },
   // { key: '', value: 'TYK 700' },
   // { key: '', value: 'TYK 701' },
-  { key: '', value: 'TYK 702' },
+  // { key: '', value: 'TYK 702' },
   // { key: '', value: 'TYK 703' },
   // { key: '', value: 'TYK 704' },
   // { key: '', value: 'TYK 705' },
@@ -175,8 +180,8 @@ export const dropdowndata = [
   // { key: '', value: 'TYK 1013' },
   // { key: '', value: 'TYK 1014' },
 
-  // { key: '', value: 'ELEVATOR R' },
-  // { key: '', value: 'ELEVATOR L' },
+  { key: '', value: 'ELEVATOR R' },
+  { key: '', value: 'ELEVATOR L' },
   
 //TYK BUILDING 11TH FLOOR :)--------------------------
 
@@ -639,9 +644,21 @@ export const buildingCoordinates = {
   'G8': {x: 0.57, y: 0.30, floor: 10},
 
 //TYK 6TH FLOOR-------------------------
-  //WALA PA
-  // 'FEMALE COMFORT ROOM (CR) - TYK (7th)': { x: 0.63, y: 0.53, floor: 11 },
-  // 'MALE COMFORT ROOM (CR) - TYK (7th)': { x: 0.63, y: 0.40, floor: 11 }, 
+  'TYK Library': {x: 0.56, y: 0.55, floor: 11},
+  'Animation Studio': {x: 0.63, y: 0.23, floor: 11 },
+  'Art & Design Open Studio': { x: 0.46, y: 0.23, floor: 11},
+  'TYK 600': { x: 0.63, y: 0.17, floor: 11 },
+  'Video Editing Room': { x: 0.63, y: 0.12, floor: 11 },
+  'Workshop and Tool Room': { x: 0.46, y: 0.12, floor: 11 },
+
+  'B18': {x: 0.56, y: 0.80, floor: 11},
+  'D18': {x: 0.56, y: 0.37, floor: 11},
+  'E18': {x: 0.56, y: 0.32, floor: 11},
+
+  'F18': {x: 0.56, y: 0.23, floor: 11},
+  'G18': {x: 0.56, y: 0.17, floor: 11},
+  'J18': {x: 0.56, y: 0.12, floor: 11},
+ 
 
 //TYK 7TH FLOOR-------------------------
   'FEMALE COMFORT ROOM (CR) - TYK (7th)': { x: 0.63, y: 0.53, floor: 12 },
@@ -1049,8 +1066,8 @@ export const graph = {
   'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1 },
 
 //TYK ELEVATOR----------------------------
-  'ELEVATOR L': { 'D17': 1, 'H6': 1, 'G7': 3, 'H8': 5, 'D9': 7, 'G10': 9, '11E': 11, 'H12': 13 },
-  'ELEVATOR R': { 'G17': 1, 'O6': 1, 'O7': 3, 'G8': 5, 'G9': 7, 'N10': 9, '11K': 11, 'O12': 13},
+  'ELEVATOR L': { 'D17': 1, 'H6': 1, 'G7': 3, 'H8': 5, 'D9': 7, 'G10': 9, 'B18': 10, '11E': 11, 'H12': 13 },
+  'ELEVATOR R': { 'G17': 1, 'O6': 1, 'O7': 3, 'G8': 5, 'G9': 7, 'N10': 9, 'E18': 10, '11K': 11, 'O12': 13},
 
 //TYK BUILDING 1ST FLOOR----------------------------
   'FEMALE COMFORT ROOM (CR) - TYK1 (1st)': { 'B17': 1, }, 
@@ -1181,7 +1198,23 @@ export const graph = {
   'H8': { 'A8': 1, 'Art Gallery': 1, 'ELEVATOR L': 5,},
 
 //TYK 6TH FLOOR-----------------------------
-  //WALA PA
+  'Animation Studio': { 'F18': 1 },
+  'Art & Design Open Studio': { 'F18': 1},
+  'TYK 600': { 'G18': 1 },
+  'Video Editing Room': { 'J18': 1 },
+  'Workshop and Tool Room': { 'J18': 1 },
+
+  'B18': { 'TYK Library': 1, 'ELEVATOR L': 1 },
+  'TYK Library': { 'B18': 1, 'D18': 1 ,},
+  'D18': { 'TYK Library': 1, 'E18': 1,  },
+
+  'E18': { 'D18': 1, 'F18': 1, 'ELEVATOR R': 1},
+
+  'F18': { 'E18': 1, 'G18': 1, 'F1818': 1, 'Animation Studio': 1, 'Art & Design Open Studio': 1},
+  'F1818': { 'F18': 1, 'MALE COMFORT ROOM (CR) - TYK (6th)': 1, 'FEMALE COMFORT ROOM (CR) - TYK (6th)': 1},
+  'G18': { 'F18': 1, 'J18': 1, 'TYK 600': 1},
+  'J18': { 'G18': 1, 'K18': 1, 'Video Editing Room' : 1, 'Workshop and Tool Room': 1},
+
 
 //TYK 7TH FLOOR-----------------------------
   'TYK 700': { 'A9': 1 }, 
