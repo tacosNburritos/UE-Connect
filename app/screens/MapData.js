@@ -1,8 +1,8 @@
 //dropdown labels
 export const dropdowndata = [
   //ENGINEERING BUILDING 1ST FLOOR------------------------------
-  { key: '1', value: 'NEAREST MALE CR'}, { key: '2', value: 'NEAREST FEMALE CR'}, 
-  { key: '3', value: 'EN 101' }, { key: '4', value: 'EN 102' },
+  // { key: '1', value: 'NEAREST MALE CR'}, { key: '2', value: 'NEAREST FEMALE CR'}, 
+  // { key: '3', value: 'EN 101' }, { key: '4', value: 'EN 102' },
   // { key: '5', value: 'EN 103' }, { key: '6', value: 'EN 104' }, { key: '7', value: 'EN 111B'}, { key: '8', value: 'EN 112'}, { key: '9', value: 'EN 113'},
   // { key: '10', value: 'EN 117'}, { key: '11', value: 'EN 118'}, { key: '12', value: 'ME Lab'}, { key: '13', value: 'Structural Material & Testing Lab' },
   // { key: '14', value: 'Machine Fabrication Room'}, { key: '15', value: 'Soil Mechanics Laboratory' }, { key: '16', value: 'Faculty Briefing & Training Room' }, { key: '17', value: 'Fluid Mechanics & Hydraulics Room'},
@@ -38,31 +38,29 @@ export const dropdowndata = [
   // { key: '122', value: 'EN D6' }, { key: '123', value: 'AEES' },
   
   // // //UNIVERSITY OF THE EAST - GENERAL
-  { key: '122', value: 'MAIN ENTRANCE' }, 
+  // { key: '122', value: 'MAIN ENTRANCE' }, 
   // { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
   // { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' }, { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
   // { key: '130', value: 'HRM Mock Hotel' }, { key: '131', value: 'TYK Building' }, { key: '132', value: 'Administration Building' },
   // { key: '133', value: 'SECOND ENTRANCE' }, { key: '134', value: 'Clinic' }, { key: '135', value: 'Chapel' },
   
   // //TYK BUILDING 1ST FLOOR------------------------------
-  { key: '', value: 'CBA Faculty' }, 
+  // { key: '', value: 'CBA Faculty' }, 
   // { key: '', value: 'Alumni Marketing' }, 
   // { key: '', value: 'CBA Office' }, 
   // { key: '', value: 'Department Chair Office (TYK - 1ST)' }, 
   // { key: '', value: 'TYK Canteen' }, 
-  // { key: '', value: 'EF17' }, 
-  // { key: '', value: 'TYK E1' }, 
 
   // //TYK BUILDING 2ND FLOOR------------------------------
-  { key: '133', value: 'TYK 201' },
+  // { key: '133', value: 'TYK 201' },
   //  { key: '134', value: 'TYK 203' }, { key: '135', value: 'TYK 205' }, { key: '136', value: 'TYK 204' }, { key: '137', value: 'TYK 202' },
   // { key: '138', value: 'TYK 200' }, { key: '139', value: 'TYK 210' }, { key: '140', value: 'TYK 211' }, { key: '141', value: 'TYK 212' }, { key: '142', value: 'TYK 213' },
   // { key: '143', value: 'TYK 214' }, { key: '144', value: 'TYK 215' }, { key: '145', value: 'TYK 215' }, { key: '146', value: 'TYK 216' }, { key: '147', value: 'TYK 217' },
   // { key: '148', value: 'TYK 218' }, { key: '149', value: 'TYK 219' }, 
-  { key: '150', value: 'TYK 220' },
+  // { key: '150', value: 'TYK 220' },
 
   //TYK BUILDING 3RD FLOOR------------------------------
-  { key: '', value: 'TYK 300' },
+  // { key: '', value: 'TYK 300' },
   // { key: '', value: 'TYK 301' },
   // { key: '', value: 'TYK 302' },
   // { key: '', value: 'TYK 303' },
@@ -75,14 +73,14 @@ export const dropdowndata = [
   // { key: '', value: 'College of Arts and Science' },
   // { key: '', value: 'Multimedia Room 3A' },
   // { key: '', value: 'Multimedia Room 3B' },
-  { key: '', value: 'CAS Studio' },
+  // { key: '', value: 'CAS Studio' },
   // { key: '', value: 'CAS Research and Consultation Room' },
   // { key: '', value: 'TYK 309' },
   // { key: '', value: 'TYK Speech Laboratory Room 1' },
   // { key: '', value: 'TYK Speech Laboratory Room 2' },
 
   //TYK BUILDING 4TH FLOOR------------------------------
-  { key: '', value: 'TYK 400' },
+  // { key: '', value: 'TYK 400' },
   // { key: '', value: 'TYK 401' },
   // { key: '', value: 'TYK 402' },
   // { key: '', value: 'TYK 403' },
@@ -101,7 +99,7 @@ export const dropdowndata = [
   // { key: '', value: 'TYK 415' },
 
   //TYK BUILDING 5TH FLOOR------------------------------
-  { key: '', value: 'TYK Reception' },
+  // { key: '', value: 'TYK Reception' },
   // { key: '', value: 'CFA Faculty Room' },
   // { key: '', value: 'TYK 501' },
   // { key: '', value: 'TYK 502' },
@@ -111,7 +109,7 @@ export const dropdowndata = [
   // { key: '', value: 'Art Gallery' },
 
   //TYK BUILDING 6TH FLOOR-----------------------------
-  { key: '', value: 'TYK Library' },
+  // { key: '', value: 'TYK Library' },
   // { key: '', value: 'Animation Studio' },
   // { key: '', value: 'Art & Design Open Studio' },
   // { key: '', value: 'Video Editing Room' },
@@ -119,7 +117,7 @@ export const dropdowndata = [
   
 
   //TYK BUILDING 7TH FLOOR-----------------------------
-  { key: '', value: 'TYK 700' },
+  // { key: '', value: 'TYK 700' },
   // { key: '', value: 'TYK 701' },
   // { key: '', value: 'TYK 702' },
   // { key: '', value: 'TYK 703' },
@@ -137,7 +135,7 @@ export const dropdowndata = [
   //TYK BUILDING 8TH FLOOR :)---------------------------
   // { key: '', value: 'TYK 800' },
   // { key: '', value: 'TYK 801' },
-  { key: '', value: 'TYK 802' },
+  // { key: '', value: 'TYK 802' },
   // { key: '', value: 'TYK 803' },
   // { key: '', value: 'TYK 804' },
   // { key: '', value: 'TYK 805' },
@@ -158,7 +156,7 @@ export const dropdowndata = [
 
 
   //TYK BUILDING 9TH FLOOR :)---------------------------
-  { key: '', value: 'TYK 900' },
+  // { key: '', value: 'TYK 900' },
   // { key: '', value: 'TYK 901' },
   // { key: '', value: 'TYK 902' },
   // { key: '', value: 'TYK 903' },
@@ -181,7 +179,7 @@ export const dropdowndata = [
 
 
 //TYK BUILDING 10TH FLOOR :)---------------------------
-  { key: '', value: 'TYK 1000' },
+  // { key: '', value: 'TYK 1000' },
   // { key: '', value: 'TYK 1001' },
   // { key: '', value: 'TYK 1002' },
   // { key: '', value: 'TYK 1003' },
@@ -197,8 +195,8 @@ export const dropdowndata = [
   // { key: '', value: 'TYK 1013' },
   // { key: '', value: 'TYK 1014' },
 
-  { key: '', value: 'ELEVATOR R' },
-  { key: '', value: 'ELEVATOR L' },
+  // { key: '', value: 'ELEVATOR R' },
+  // { key: '', value: 'ELEVATOR L' },
   
 //TYK BUILDING 11TH FLOOR :)--------------------------
 
@@ -451,25 +449,25 @@ export const buildingCoordinates = {
   'Z41': { x: 0.72, y: 0.08, floor: 4 },
 
 //UNIVERSITY OF THE EAST - GENERAL
-  'MAIN ENTRANCE': { x: 0.80, y: 0.92, floor: 5 },
-  'Security Office': { x: 0.72, y: 0.84, floor: 5 },
+  'MAIN ENTRANCE': { x: 0.91, y: 0.87, floor: 5 },
+  'Security Office': { x: 0.89, y: 0.77, floor: 5 },
   'GYM': { x: 0.64, y: 0.91, floor: 5 },
   'Old Academic Building': { x: 0.27, y: 0.75, floor: 5 },
-  'Playground': { x: 0.20, y: 0.67, floor: 5 },
+  'Playground': { x: 0.22, y: 0.68, floor: 5 },
   'LCT Building': { x: 0.17, y: 0.35, floor: 5 },
   'EN Building (Right Wing)': { x: 0.16, y: 0.17, floor: 5 },
   'EN Building (Left Wing)': { x: 0.80, y: 0.14, floor: 5 },
-  'HRM Mock Hotel': { x: 0.80, y: 0.23, floor: 5 },
+  'HRM Mock Hotel': { x: 0.82, y: 0.23, floor: 5 },
   'TYK Building': { x: 0.80, y: 0.50, floor: 5 },
   'Administration Building': { x: 0.61, y: 0.76, floor: 5 },
-  'SECOND ENTRANCE': { x: 0.39, y: 0.99, floor: 5 },
-  'Clinic': { x: 0.35, y: 0.81, floor: 5 },
-  'Chapel': { x: 0.39, y: 0.87, floor: 5 },
+  'SECOND ENTRANCE': { x: 0.37, y: 1, floor: 5 },
+  'Clinic': { x: 0.70, y: 0.74, floor: 5 },
+  'Chapel': { x: 0.30, y: 0.99, floor: 5 },
   'GYM': { x: 0.24, y: 0.92, floor: 5 },
 
-  'A5': { x: 0.63, y: 0.90, floor: 5 },
-  'B5': { x: 0.53, y: 0.88, floor: 5 },
-  'C5': { x: 0.46, y: 0.86, floor: 5 },  
+  'A5': { x: 0.80, y: 0.78, floor: 5 },
+  'B5': { x: 0.74, y: 0.73, floor: 5 },
+
   'D5': { x: 0.41, y: 0.83, floor: 5 },
   'D51': { x: 0.36, y: 0.84, floor: 5 },
   'D52': { x: 0.24, y: 0.88, floor: 5 },
@@ -1110,23 +1108,22 @@ export const graph = {
   'HRM Mock Hotel': { 'M5': 1 },
   'TYK Building': { 'O5': 5, 'Q5': 5, 'TYK E1': 1 },
   'Administration Building': { 'U5': 1 },
-  'Clinic': { 'E5': 1 },
+  'Clinic': { 'B5': 1 },
   'EN - EL': { 'M55': 1, 'T11': 1 },
   'EN - ER': { 'W55': 1, 'X1': 1 },
   'SECOND ENTRANCE': { 'D54': 2,},
-  'Chapel': { 'D51': 1,},
+  'Chapel': { 'D54': 1,},
   'GYM': { 'D53': 1,},
 
   'A5': { 'MAIN ENTRANCE': 1, 'B5': 2, 'Security Office': 1 },
-  'B5': { 'A5': 2, 'C5': 2, 'Security Office': 1 },
-  'C5': { 'B5': 2, 'D5': 2, },
+  'B5': { 'A5': 2, 'T5': 2, 'Security Office': 1, 'Clinic': 1 },
   'D5': { 'C5': 2, 'E5': 2, 'D51': 2 },
-  'D51': { 'D5': 2, 'D52': 2, 'Chapel': 1 },
+  'D51': { 'D5': 2, 'D52': 2,  },
   'D52': { 'D51': 2, 'D53': 2 },
   'D53': { 'D52': 2, 'D54': 2, 'GYM': 1 },
-  'D54': { 'D53': 2, 'SECOND ENTRANCE': 2 },
+  'D54': { 'D53': 2, 'SECOND ENTRANCE': 2, 'Chapel': 1 },
 
-  'E5': { 'D5': 2, 'F5': 2, 'U5': 2, 'Clinic': 1 },
+  'E5': { 'D5': 2, 'F5': 2, 'U5': 1, },
   'F5': { 'E5': 2, 'G5': 2, 'Old Academic Building': 1 },
   'G5': { 'F5': 2, 'H5': 2, 'Playground': 1 },
   'H5': { 'G5': 2, 'I5': 2 },
@@ -1145,8 +1142,8 @@ export const graph = {
   'Q5': { 'P5': 2, 'R5': 2, 'TYK Building': 5 },
   'R5': { 'Q5': 2, 'S5': 2 },
   'S5': { 'R5': 2, 'T5': 2 },
-  'T5': { 'S5': 2, 'U5': 2 },
-  'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1 },
+  'T5': { 'S5': 2, 'U5': 2,  'B5': 2 },
+  'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1, },
 
 //TYK ELEVATOR----------------------------
   'ELEVATOR L': { 'XD17': 4, 'XH6': 6, 'XH19':8, 'XG7': 10, 'XH8': 12, 'XB18': 14, 'XD9': 16, 'XG10': 18, 'X11E': 20, 'XH12': 22 },
