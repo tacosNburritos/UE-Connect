@@ -116,6 +116,7 @@ function PFScreen({ navigation }) {
         "MALE COMFORT ROOM (CR) - LCT (5th)",
         "MALE COMFORT ROOM (CR) - LCT (6th)",
         "MALE COMFORT ROOM (CR) - LCT (7th)",
+        "MALE COMFORT ROOM (CR) - LCT (8th)",
 
       ];
 
@@ -156,6 +157,7 @@ function PFScreen({ navigation }) {
         "FEMALE COMFORT ROOM (CR) - LCT (5th)",
         "FEMALE COMFORT ROOM (CR) - LCT (6th)",
         "FEMALE COMFORT ROOM (CR) - LCT (7th)",
+        "FEMALE COMFORT ROOM (CR) - LCT (8th)",
 
       ];
 
@@ -219,7 +221,7 @@ function PFScreen({ navigation }) {
     }else if (startFloor === 23) {
       navigation.navigate('LCT7THFLOORScreen', { path, buildingCoordinates });
     }else if (startFloor === 24) {
-      navigation.navigate('', { path, buildingCoordinates });
+      navigation.navigate('LCT8THFLOORScreen', { path, buildingCoordinates });
     }
     else {
       navigation.navigate('EN1STFLOORScreen', { path, buildingCoordinates });

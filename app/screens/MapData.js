@@ -201,14 +201,16 @@ export const dropdowndata = [
 //TYK BUILDING 11TH FLOOR :)--------------------------
 
 //LCT BUILDING 1ST FLOOR :)---------------------------
-  // { key: '', value: 'LCT 101' },
-  // { key: '', value: 'LCT 102' },
-  // { key: '', value: 'Student Coordinator Office' },
-  // { key: '', value: 'TLE/Practice House' },
-  // { key: '', value: 'LCT Canteen' },
+  { key: '', value: 'LCT 101' },
+  { key: '', value: 'LCT 102' },
+  { key: '', value: 'Student Coordinator Office' },
+  { key: '', value: 'TLE/Practice House' },
+  { key: '', value: 'Industrial Arts' },
+  { key: '', value: 'Practice Arts' },
+  { key: '', value: 'LCT Canteen' },
 
 //LCT BUILDING 2ND FLOOR :)---------------------------
-  // { key: '', value: 'Elementary Computer Lab' }, 
+  { key: '', value: 'Elementary Computer Lab' }, 
   // { key: '', value: 'LCT Multimedia Room20' },
   // { key: '', value: 'Highschool Faculty Room' },
   // { key: '', value: 'Highschool Computer Lab' },
@@ -223,7 +225,7 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 205' },
 
 //LCT BUILDING 3RD FLOOR :)---------------------------
-  // { key: '', value: 'LCT 300' },
+  { key: '', value: 'LCT 300' },
   // { key: '', value: 'LCT 301' },
   // { key: '', value: 'LCT 302' },
   // { key: '', value: 'LCT 303' },
@@ -239,7 +241,7 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 313' },
 
 //LCT BUILDING 4TH FLOOR :)---------------------------
-  // { key: '', value: 'Chemistry Laboratory' },
+  { key: '', value: 'Chemistry Laboratory' },
   // { key: '', value: 'Biology Laboratory' },
   // { key: '', value: 'Physical Laboratory' },
   // { key: '', value: 'LCT 400' },
@@ -253,7 +255,7 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 408' },
   
 //LCT BUILDING 5TH FLOOR :)---------------------------
-  // { key: '', value: 'LCT MPH' },
+  { key: '', value: 'LCT MPH' },
   // { key: '', value: 'LCT Library' },
 
 //LCT BUILDING 6TH FLOOR :)---------------------------
@@ -272,21 +274,36 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 612' },
   // { key: '', value: 'LCT 613' },
 
-//LCT BUILDING 6TH FLOOR :)---------------------------
+//LCT BUILDING 7TH FLOOR :)---------------------------
   { key: '', value: 'LCT 700' },
-  { key: '', value: 'LCT 701' },
-  { key: '', value: 'LCT 702' },
-  { key: '', value: 'LCT 703' },
-  { key: '', value: 'LCT 704' },
-  { key: '', value: 'LCT 705' },
-  { key: '', value: 'LCT 706' },
-  { key: '', value: 'LCT 707' },
-  { key: '', value: 'LCT 708' },
-  { key: '', value: 'LCT 709' },
-  { key: '', value: 'LCT 710' },
-  { key: '', value: 'LCT 711' },
-  { key: '', value: 'LCT 712' },
-  { key: '', value: 'LCT 713' },
+  // { key: '', value: 'LCT 701' },
+  // { key: '', value: 'LCT 702' },
+  // { key: '', value: 'LCT 703' },
+  // { key: '', value: 'LCT 704' },
+  // { key: '', value: 'LCT 705' },
+  // { key: '', value: 'LCT 706' },
+  // { key: '', value: 'LCT 707' },
+  // { key: '', value: 'LCT 708' },
+  // { key: '', value: 'LCT 709' },
+  // { key: '', value: 'LCT 710' },
+  // { key: '', value: 'LCT 711' },
+  // { key: '', value: 'LCT 712' },
+  // { key: '', value: 'LCT 713' },
+
+//LCT BUILDING 8TH FLOOR :)---------------------------
+  { key: '', value: 'LCT Multipurpose Room' },
+  { key: '', value: 'LCT 800' },
+  { key: '', value: 'LCT 801' },
+  { key: '', value: 'LCT 802' },
+  { key: '', value: 'LCT 803' },
+  { key: '', value: 'LCT 804' },
+  { key: '', value: 'LCT 805' },
+  { key: '', value: 'LCT 806' },
+  { key: '', value: 'LCT 807' },
+  { key: '', value: 'LCT 808' },
+  { key: '', value: 'LCT 809' },
+  { key: '', value: 'LCT 810' },
+  { key: '', value: 'LCT 811' },
 
 ];
 
@@ -1008,6 +1025,8 @@ export const buildingCoordinates = {
   'LCT - ELEVATOR': { x: 0.37, y: 0.57},
 
   'TLE/Practice House': { x: 0.64, y: 0.32, floor: 17 },
+  'Practice Arts': { x: 0.64, y: 0.25, floor: 17 },
+  'Industrial Arts': { x: 0.64, y: 0.16, floor: 17 },
   'LCT Canteen': { x: 0.44, y: 0.69, floor: 17 },
   'Student Coordinator Office': { x: 0.44, y: 0.47, floor: 17 },
   'LCT 101': { x: 0.44, y: 0.44, floor: 17 },
@@ -1021,6 +1040,8 @@ export const buildingCoordinates = {
   'E16': { x: 0.48, y: 0.44, floor: 17 },
   'F16': { x: 0.68, y: 0.57, floor: 17 },
   'G16': { x: 0.68, y: 0.32, floor: 17 },
+  'H16': { x: 0.68, y: 0.25, floor: 17 },
+  'I16': { x: 0.68, y: 0.16, floor: 17 },
 
 //LCT 2ND FLOOR--------------------------
   'FEMALE COMFORT ROOM (CR) - LCT (2nd)': { x: 0.46, y: 0.08, floor: 18 },
@@ -1184,8 +1205,43 @@ export const buildingCoordinates = {
   'LCT 708': { x: 0.46, y: 0.42, floor: 23 },
   'LCT 710': { x: 0.46, y: 0.33, floor: 23 },
   'LCT 712': { x: 0.46, y: 0.23, floor: 23 },
+
+  //LCT 8TH FLOOR--------------------------
+  'FEMALE COMFORT ROOM (CR) - LCT (8th)': { x: 0.46, y: 0.08, floor: 24 },
+  'MALE COMFORT ROOM (CR) - LCT (8th)': { x: 0.46, y: 0.87, floor: 24 },
+
+  'A26': { x: 0.51, y: 0.87, floor: 24 },
+  'B26': { x: 0.51, y: 0.80, floor: 24 },
+  'C26': { x: 0.51, y: 0.63, floor: 24 },
+  'D26': { x: 0.51, y: 0.57, floor: 24 },
+  'E26': { x: 0.51, y: 0.52, floor: 24 },
+  'F26': { x: 0.51, y: 0.42, floor: 24 },
+  'G26': { x: 0.51, y: 0.33, floor: 24 },
+  'H26': { x: 0.51, y: 0.23, floor: 24 },
+  'I26': { x: 0.51, y: 0.08, floor: 24 },
+  'J26': { x: 0.46, y: 0.57, floor: 24 },
+  
+  'LCT 800': { x: 0.56, y: 0.87, floor: 24 },
+
+  'LCT 801': { x: 0.56, y: 0.80, floor: 24 },
+  'LCT 802': { x: 0.56, y: 0.63, floor: 24 },
+  'LCT 803': { x: 0.56, y: 0.52, floor: 24 },
+  'LCT 805': { x: 0.56, y: 0.42, floor: 24 },
+  'LCT 807': { x: 0.56, y: 0.33, floor: 24 },
+  'LCT 809': { x: 0.56, y: 0.23, floor: 24 },
+  'LCT 811': { x: 0.56, y: 0.08, floor: 24 },
+
+  'LCT 804': { x: 0.46, y: 0.52, floor: 24 },
+  'LCT 806': { x: 0.46, y: 0.42, floor: 24 },
+  'LCT 808': { x: 0.46, y: 0.33, floor: 24 },
+  'LCT 810': { x: 0.46, y: 0.23, floor: 24 },
+
+  'LCT Multipurpose Room': { x: 0.46, y: 0.63, floor: 24 },
+
+  
   };
 
+  
 //Connections 
 export const graph = {
 
@@ -1772,12 +1828,14 @@ export const graph = {
 
 //LCT 1ST FLOOR-----------------------------
   'LCT - EL': { 'F16': 2, 'LCT Building': 2 },
-  'LCT - ELEVATOR': { 'C16': 2, 'J20': 4, 'J21': 6, 'J22': 8, 'F23': 10, 'J24': 12, 'J25': 14},
+  'LCT - ELEVATOR': { 'C16': 2, 'J20': 4, 'J21': 6, 'J22': 8, 'F23': 10, 'J24': 12, 'J25': 14, 'J26': 16},
 
   'MALE COMFORT ROOM (CR) - LCT (1st)': { 'Z16': 1 }, 
   'FEMALE COMFORT ROOM (CR) - LCT (1st)': { 'Z16': 1 }, 
 
   'TLE/Practice House': { 'G16': 1 },
+  'Practice Arts': { 'H16': 1 },
+  'Industrial Arts': { 'I16': 1 },
   'LCT Canteen': { 'B16': 1 },
   'Student Coordinator Office': { 'D16': 1 },
   'LCT 101': { 'E16': 1 },
@@ -1790,7 +1848,9 @@ export const graph = {
   'D16': { 'C16': 2, 'E16': 2, 'Student Coordinator Office': 1},
   'E16': { 'D16': 2, 'E16': 2, 'LCT 101': 1, 'LCT 102': 1},
   'F16': { 'C16': 2, 'G16': 2, 'LCT - EL': 2},
-  'G16': { 'F16': 2, 'TLE/Practice House': 2},
+  'G16': { 'F16': 2, 'H16': 2, 'TLE/Practice House': 1},
+  'H16': { 'G16': 2, 'I16': 2, 'Practice Arts': 1},
+  'I16': { 'H16': 2, 'Industrial Arts': 1},
 
 //LCT 2ND FLOOR-----------------------------
   'MALE COMFORT ROOM (CR) - LCT (2nd)': { 'A20': 1, },
@@ -1814,7 +1874,7 @@ export const graph = {
   'A20': { 'B20': 2, 'MALE COMFORT ROOM (CR) - LCT (2nd)': 1},
   'B20': { 'A20': 2, 'C20': 2, 'LCT Multimedia Room': 1, 'Elementary Computer Lab': 1  },
   'C20': { 'B20': 2, 'D20': 2, 'Highschool Faculty Room': 1, 'Highschool Computer Lab': 1},
-  'D20': { 'C20': 2, 'E20': 2, },
+  'D20': { 'C20': 2, 'E20': 2, 'J20': 2 },
   'E20': { 'D20': 2, 'F20': 2, 'Speech Laboratory': 1, 'Guidance Office': 1 },
   'F20': { 'E20': 2, 'G20': 2, 'Elementary Faculty Room': 1, 'LCT 200': 1 },
   'G20': { 'F20': 2, 'H20': 2, 'LCT 201': 1, 'LCT 202': 1 },
@@ -1923,8 +1983,8 @@ export const graph = {
   'J24': { 'D24': 2, 'LCT - ELEVATOR': 12, },
 
 //LCT 7TH FLOOR-----------------------------
-  'MALE COMFORT ROOM (CR) - LCT (7th)': { 'A24': 1, },
-  'FEMALE COMFORT ROOM (CR) - LCT (7th)': { 'I24': 1, },
+  'MALE COMFORT ROOM (CR) - LCT (7th)': { 'A25': 1, },
+  'FEMALE COMFORT ROOM (CR) - LCT (7th)': { 'I25': 1, },
 
   'LCT 700': { 'A25': 1 },
   'LCT 701': { 'B25': 1 },
@@ -1951,5 +2011,34 @@ export const graph = {
   'H25': { 'G25': 2, 'I25': 2,'LCT 711': 1, 'LCT 712': 1 },
   'I25': { 'H25': 2, 'LCT 713': 1, 'FEMALE COMFORT ROOM (CR) - LCT (7th)': 1, },
   'J25': { 'D25': 2, 'LCT - ELEVATOR': 14, },
+
+//LCT 8TH FLOOR-----------------------------
+  'MALE COMFORT ROOM (CR) - LCT (8th)': { 'A26': 1, },
+  'FEMALE COMFORT ROOM (CR) - LCT (8th)': { 'I26': 1, },
+
+  'LCT 800': { 'A26': 1 },
+  'LCT 801': { 'B26': 1 },
+  'LCT 802': { 'C26': 1 },
+  'LCT Multipurpose Room': { 'C26': 1 },
+  'LCT 803': { 'E26': 1 },
+  'LCT 804': { 'E26': 1 },
+  'LCT 805': { 'F26': 1 },
+  'LCT 806': { 'F26': 1 },
+  'LCT 807': { 'G26': 1 },
+  'LCT 808': { 'G26': 1 },
+  'LCT 809': { 'H26': 1 },
+  'LCT 810': { 'H26': 1 },
+  'LCT 811': { 'I26': 1 },
+
+  'A26': { 'B26': 2, 'MALE COMFORT ROOM (CR) - LCT (8th)': 1, 'LCT 800': 1},
+  'B26': { 'A26': 2, 'C26': 2, 'LCT 801': 1,},
+  'C26': { 'B26': 2, 'D26': 2, 'LCT Multipurpose Room': 1, 'LCT 802': 1 },
+  'D26': { 'C26': 2, 'E26': 2, 'J26': 2 },
+  'E26': { 'D26': 2, 'F26': 2, 'LCT 803': 1, 'LCT 804': 1  },
+  'F26': { 'E26': 2, 'G26': 2, 'LCT 805': 1, 'LCT 806': 1 },
+  'G26': { 'F26': 2, 'H26': 2, 'LCT 807': 1, 'LCT 808': 1},
+  'H26': { 'G26': 2, 'I26': 2,'LCT 809': 1, 'LCT 810': 1 },
+  'I26': { 'H26': 2, 'LCT 811': 1, 'FEMALE COMFORT ROOM (CR) - LCT (8th)': 1, },
+  'J26': { 'D26': 2, 'LCT - ELEVATOR': 16, },
 
 };

@@ -11,15 +11,13 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const LCT1STFLOORScreen = ({ route, navigation }) => {
+const LCT8THFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [showNextButton, setShowNextButton] = useState(false);
 
   const stairNodes = [
-    "LCT - EL",
-    "LCT - ER",
     "LCT - ELEVATOR"
   ];
 
@@ -164,7 +162,7 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
 
       {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
-        LCT Building - First Floor
+        LCT Building - Eighth Floor
       </Text>
 
       {/* Map and Path Drawing */}
@@ -174,7 +172,7 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/LCT1STFLR.png")}
+          source={require("../images/LCT8THFLR.png")}
           style={{ width: "100%", height: "100%", resizeMode: "contain" }}
         />
 
@@ -259,4 +257,4 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default LCT1STFLOORScreen;
+export default LCT8THFLOORScreen;
