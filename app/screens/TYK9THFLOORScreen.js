@@ -205,7 +205,7 @@ const TYK9THFLOORScreen = ({ route, navigation }) => {
             return renderAnimatedCircle(
               coords.x * containerSize.width,
               coords.y * containerSize.height,
-              5,
+              1.5,
               "red",
               lineProgress[index - 1],
               `circle-${index}`
