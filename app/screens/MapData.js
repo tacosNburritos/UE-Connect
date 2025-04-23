@@ -201,27 +201,46 @@ export const dropdowndata = [
 //TYK BUILDING 11TH FLOOR :)--------------------------
 
 //LCT BUILDING 1ST FLOOR :)---------------------------
-  { key: '', value: 'LCT - ELEVATOR' },
-  { key: '', value: 'LCT 101' },
-  { key: '', value: 'LCT 102' },
-  { key: '', value: 'Student Coordinator Office' },
-  { key: '', value: 'TLE/Practice House' },
-  { key: '', value: 'LCT Canteen' },
+  // { key: '', value: 'LCT - ELEVATOR' },
+  // { key: '', value: 'LCT 101' },
+  // { key: '', value: 'LCT 102' },
+  // { key: '', value: 'Student Coordinator Office' },
+  // { key: '', value: 'TLE/Practice House' },
+  // { key: '', value: 'LCT Canteen' },
 
-//LCT BUILDING 1ST FLOOR :)---------------------------
+//LCT BUILDING 2ND FLOOR :)---------------------------
   { key: '', value: 'Elementary Computer Lab' },
-  { key: '', value: 'LCT Multimedia Room20' },
-  { key: '', value: 'Highschool Faculty Room' },
-  { key: '', value: 'Highschool Computer Lab' },
-  { key: '', value: 'Speech Laboratory' },
-  { key: '', value: 'Guidance Office' },
-  { key: '', value: 'LCT 200' },
-  { key: '', value: 'Elementary Faculty Room' },
-  { key: '', value: 'LCT 201' },
-  { key: '', value: 'LCT 202' },
-  { key: '', value: 'LCT 203' },
-  { key: '', value: 'LCT 204' },
-  { key: '', value: 'LCT 205' },
+  // { key: '', value: 'LCT Multimedia Room20' },
+  // { key: '', value: 'Highschool Faculty Room' },
+  // { key: '', value: 'Highschool Computer Lab' },
+  // { key: '', value: 'Speech Laboratory' },
+  // { key: '', value: 'Guidance Office' },
+  // { key: '', value: 'LCT 200' },
+  // { key: '', value: 'Elementary Faculty Room' },
+  // { key: '', value: 'LCT 201' },
+  // { key: '', value: 'LCT 202' },
+  // { key: '', value: 'LCT 203' },
+  // { key: '', value: 'LCT 204' },
+  // { key: '', value: 'LCT 205' },
+
+//LCT BUILDING 3RD FLOOR :)---------------------------
+  { key: '', value: 'LCT 300' },
+  { key: '', value: 'LCT 301' },
+  { key: '', value: 'LCT 302' },
+  { key: '', value: 'LCT 303' },
+  { key: '', value: 'LCT 304' },
+  { key: '', value: 'LCT 305' },
+  { key: '', value: 'LCT 306' },
+  { key: '', value: 'LCT 307' },
+  { key: '', value: 'LCT 308' },
+  { key: '', value: 'LCT 309' },
+  { key: '', value: 'LCT 310' },
+  { key: '', value: 'LCT 311' },
+  { key: '', value: 'LCT 312' },
+  { key: '', value: 'LCT 313' },
+  
+
+
 
 ];
 
@@ -985,6 +1004,36 @@ export const buildingCoordinates = {
   'H20': { x: 0.51, y: 0.23, floor: 18 },
   'I20': { x: 0.51, y: 0.08, floor: 18 },
 
+//LCT 3RD FLOOR--------------------------
+  'FEMALE COMFORT ROOM (CR) - LCT (3rd)': { x: 0.46, y: 0.08, floor: 19 },
+  'MALE COMFORT ROOM (CR) - LCT (3rd)': { x: 0.46, y: 0.87, floor: 19 },
+  'LCT 301': { x: 0.54, y: 0.80, floor: 19 },
+  'LCT 303': { x: 0.54, y: 0.63, floor: 19 },
+  'LCT 305': { x: 0.54, y: 0.52, floor: 19 },
+  'LCT 307': { x: 0.54, y: 0.42, floor: 19 },
+  'LCT 309': { x: 0.54, y: 0.33, floor: 19 },
+  'LCT 311': { x: 0.54, y: 0.23, floor: 19 },
+  'LCT 313': { x: 0.54, y: 0.08, floor: 19 },
+
+  'LCT 300': { x: 0.54, y: 0.87, floor: 19 },
+  'LCT 302': { x: 0.46, y: 0.80, floor: 19 },
+  'LCT 304': { x: 0.46, y: 0.63, floor: 19 },
+  'LCT 306': { x: 0.46, y: 0.52, floor: 19 },
+  'LCT 308': { x: 0.46, y: 0.42, floor: 19 },
+  'LCT 310': { x: 0.46, y: 0.33, floor: 19 },
+  'LCT 312': { x: 0.46, y: 0.23, floor: 19 },
+
+
+  'A21': { x: 0.51, y: 0.87, floor: 19 },
+  'B21': { x: 0.51, y: 0.80, floor: 19 },
+  'C21': { x: 0.51, y: 0.63, floor: 19 },
+  'D21': { x: 0.51, y: 0.57, floor: 19 },
+  'E21': { x: 0.51, y: 0.52, floor: 19 },
+  'F21': { x: 0.51, y: 0.42, floor: 19 },
+  'G21': { x: 0.51, y: 0.33, floor: 19 },
+  'H21': { x: 0.51, y: 0.23, floor: 19 },
+  'I21': { x: 0.51, y: 0.08, floor: 19 },
+
   };
 
 //Connections 
@@ -1195,8 +1244,8 @@ export const graph = {
 //TYK BUILDING 1ST FLOOR----------------------------
   'FEMALE COMFORT ROOM (CR) - TYK1 (1st)': { 'B17': 1, }, 
   'MALE COMFORT ROOM (CR) - TYK1 (1st)': { 'B17': 1, },
-  'FEMALE COMFORT ROOM (CR) - TYK2 (1st)': { 'B17': 1, }, 
-  'MALE COMFORT ROOM (CR) - TYK2 (1st)': { 'B17': 1, },  
+  'FEMALE COMFORT ROOM (CR) - TYK2 (1st)': { 'F1717': 1, }, 
+  'MALE COMFORT ROOM (CR) - TYK2 (1st)': { 'F1717': 1, },  
 
   'TYK E1': { 'EF171': 1, 'TYK Building': 1},
 
@@ -1573,7 +1622,7 @@ export const graph = {
 
 //LCT 1ST FLOOR-----------------------------
   'LCT - EL': { 'F16': 2, 'LCT Building': 2 },
-  'LCT - ELEVATOR': { 'C16': 2, 'D20': 4},
+  'LCT - ELEVATOR': { 'C16': 2, 'D20': 4, 'D21': 6},
 
   'MALE COMFORT ROOM (CR) - LCT (1st)': { 'Z16': 1 }, 
   'FEMALE COMFORT ROOM (CR) - LCT (1st)': { 'Z16': 1 }, 
@@ -1621,6 +1670,34 @@ export const graph = {
   'G20': { 'F20': 2, 'H20': 2, 'LCT 201': 1, 'LCT 202': 1 },
   'H20': { 'G20': 2, 'I20': 2, 'LCT 203': 1, 'LCT 204': 1},
   'I20': { 'H20': 2, 'FEMALE COMFORT ROOM (CR) - LCT (2nd)': 1, 'LCT 205': 1 },
+
+//LCT 3RD FLOOR-----------------------------
+  'LCT 300': { 'A21': 1 },
+  'LCT 301': { 'B21': 1 },
+  'LCT 302': { 'B21': 1 },
+  'LCT 303': { 'C21': 1 },
+  'LCT 304': { 'C21': 1 },
+  'LCT 305': { 'E21': 1 },
+  'LCT 306': { 'E21': 1 },
+  'LCT 307': { 'F21': 1 },
+  'LCT 308': { 'F21': 1 },
+  'LCT 309': { 'G21': 1 },
+  'LCT 310': { 'G21': 1 },
+  'LCT 311': { 'H21': 1 },
+  'LCT 312': { 'H21': 1 },
+  'LCT 313': { 'I21': 1 },
+
+  'A21': { 'B21': 2, 'MALE COMFORT ROOM (CR) - LCT (3rd)': 1, 'LCT 300': 1},
+  'B21': { 'A21': 2, 'C21': 2, 'LCT 301': 1, 'LCT 302': 1},
+  'C21': { 'B21': 2, 'D21': 2, 'LCT 303': 1, 'LCT 304': 1},
+  'D21': { 'C21': 2, 'E21': 2, 'LCT - ELEVATOR': 6 },
+  'E21': { 'D21': 2, 'F21': 2, 'Speech Laboratory': 1, 'Guidance Office': 1, 'LCT 305': 1, 'LCT 306': 1},
+  'F21': { 'E21': 2, 'G21': 2, 'LCT 307': 1, 'LCT 308': 1 },
+  'G21': { 'F21': 2, 'H21': 2, 'LCT 309': 1, 'LCT 310': 1 },
+  'H21': { 'G21': 2, 'I21': 2, 'LCT 311': 1, 'LCT 312': 1},
+  'I21': { 'H21': 2, 'LCT 313': 1, 'FEMALE COMFORT ROOM (CR) - LCT (3rd)': 1, },
+
+
 
 
 

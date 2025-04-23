@@ -200,7 +200,7 @@ function PFScreen({ navigation }) {
     }else if (startFloor === 18) {
       navigation.navigate('LCT2NDFLOORScreen', { path, buildingCoordinates });
     }else if (startFloor === 19) {
-      navigation.navigate('', { path, buildingCoordinates });
+      navigation.navigate('LCT3RDFLOORScreen', { path, buildingCoordinates });
     }else if (startFloor === 20) {
       navigation.navigate('', { path, buildingCoordinates });
     }else if (startFloor === 21) {
