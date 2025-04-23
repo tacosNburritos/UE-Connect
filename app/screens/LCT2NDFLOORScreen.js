@@ -18,8 +18,6 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
   const [showNextButton, setShowNextButton] = useState(false);
 
   const stairNodes = [
-    "LCT - EL",
-    "LCT - ER",
     "LCT - ELEVATOR"
   ];
 

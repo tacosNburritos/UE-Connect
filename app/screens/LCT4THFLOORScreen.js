@@ -11,7 +11,7 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const LCT3RDFLOORScreen = ({ route, navigation }) => {
+const LCT4THFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -162,7 +162,7 @@ const LCT3RDFLOORScreen = ({ route, navigation }) => {
 
       {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
-        LCT Building - Third Floor
+        LCT Building - Fourth Floor
       </Text>
 
       {/* Map and Path Drawing */}
@@ -172,7 +172,7 @@ const LCT3RDFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/LCT3RDFLR.png")}
+          source={require("../images/LCT4THFLR.png")}
           style={{ width: "100%", height: "100%", resizeMode: "contain" }}
         />
 
@@ -257,4 +257,4 @@ const LCT3RDFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default LCT3RDFLOORScreen;
+export default LCT4THFLOORScreen;

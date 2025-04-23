@@ -21,6 +21,7 @@ import TYK10THFLOORScreen from './app/screens/TYK10THFLOORScreen';
 import LCT1STFLOORScreen from './app/screens/LCT1STFLOORScreen';
 import LCT2NDFLOORScreen from './app/screens/LCT2NDFLOORScreen';
 import LCT3RDFLOORScreen from './app/screens/LCT3RDFLOORScreen';
+import LCT4THFLOORScreen from './app/screens/LCT4THFLOORScreen';
 
 
 import UEScreen from './app/screens/UEScreen';
@@ -55,6 +56,7 @@ export default function App() {
         <Stack.Screen name="LCT1STFLOORScreen" component={LCT1STFLOORScreen} />
         <Stack.Screen name="LCT2NDFLOORScreen" component={LCT2NDFLOORScreen} />
         <Stack.Screen name="LCT3RDFLOORScreen" component={LCT3RDFLOORScreen} />
+        <Stack.Screen name="LCT4THFLOORScreen" component={LCT4THFLOORScreen} />
 
         <Stack.Screen name="UEScreen" component={UEScreen} />
         <Stack.Screen name="OnBoard" component={OnBoardScreen} />
