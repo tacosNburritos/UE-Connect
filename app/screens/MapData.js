@@ -240,20 +240,23 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 313' },
 
 //LCT BUILDING 4TH FLOOR :)---------------------------
-  { key: '', value: 'Chemistry Laboratory' },
-  { key: '', value: 'Biology Laboratory' },
-  { key: '', value: 'Physical Laboratory' },
-  { key: '', value: 'LCT 400' },
-  { key: '', value: 'LCT 401' },
-  { key: '', value: 'LCT 402' },
-  { key: '', value: 'LCT 403' },
-  { key: '', value: 'LCT 404' },
-  { key: '', value: 'LCT 405' },
-  { key: '', value: 'LCT 406' },
-  { key: '', value: 'LCT 407' },
-  { key: '', value: 'LCT 408' },
+  // { key: '', value: 'Chemistry Laboratory' },
+  // { key: '', value: 'Biology Laboratory' },
+  // { key: '', value: 'Physical Laboratory' },
+  // { key: '', value: 'LCT 400' },
+  // { key: '', value: 'LCT 401' },
+  // { key: '', value: 'LCT 402' },
+  // { key: '', value: 'LCT 403' },
+  // { key: '', value: 'LCT 404' },
+  // { key: '', value: 'LCT 405' },
+  // { key: '', value: 'LCT 406' },
+  // { key: '', value: 'LCT 407' },
+  // { key: '', value: 'LCT 408' },
   
-
+//LCT BUILDING 4TH FLOOR :)---------------------------
+  { key: '', value: 'LCT MPH' },
+  { key: '', value: 'LCT Library' },
+  { key: '', value: 'B23' },
 
 
 ];
@@ -1079,6 +1082,18 @@ export const buildingCoordinates = {
   'I22': { x: 0.51, y: 0.08, floor: 20 },
   'J22': { x: 0.46, y: 0.57, floor: 20 },
 
+//LCT 5TH FLOOR--------------------------
+  'MALE COMFORT ROOM (CR) - LCT (5th)': { x: 0.38, y: 0.82, floor: 21 },
+  'FEMALE COMFORT ROOM (CR) - LCT (5th)': { x: 0.38, y: 0.88, floor: 21 },
+
+  'LCT Library': { x: 0.51, y: 0.70, floor: 21 },
+  'B23': { x: 0.42, y: 0.85, floor: 21 },
+  'C23': { x: 0.42, y: 0.65, floor: 21 },
+  'D23': { x: 0.51, y: 0.65, floor: 21 },
+  'E23': { x: 0.51, y: 0.57, floor: 21 },
+  'F23': { x: 0.40, y: 0.57, floor: 21 },
+  'LCT MPH': { x: 0.51, y: 0.50, floor: 21 },
+
   };
 
 //Connections 
@@ -1667,7 +1682,7 @@ export const graph = {
 
 //LCT 1ST FLOOR-----------------------------
   'LCT - EL': { 'F16': 2, 'LCT Building': 2 },
-  'LCT - ELEVATOR': { 'C16': 2, 'J20': 4, 'J21': 6, 'J22': 8},
+  'LCT - ELEVATOR': { 'C16': 2, 'J20': 4, 'J21': 6, 'J22': 8, 'F23': 10},
 
   'MALE COMFORT ROOM (CR) - LCT (1st)': { 'Z16': 1 }, 
   'FEMALE COMFORT ROOM (CR) - LCT (1st)': { 'Z16': 1 }, 
@@ -1764,18 +1779,29 @@ export const graph = {
   'LCT 407': { 'H22': 1, },
   'LCT 408': { 'I22': 1, },
 
-
   'A22': { 'B22': 2, 'MALE COMFORT ROOM (CR) - LCT (4th)': 1, 'Chemistry Laboratory': 1},
   'B22': { 'A22': 2, 'C22': 2, },
   'C22': { 'B22': 2, 'D22': 2, 'Biology Laboratory': 1, 'Physical Laboratory': 1},
   'D22': { 'C22': 2, 'E22': 2, 'J22': 2 },
-  'E22': { 'D22': 2, 'F22': 2, 'Speech Laboratory': 1, 'Guidance Office': 1, 'LCT 400': 1, 'LCT 401': 1},
+  'E22': { 'D22': 2, 'F22': 2, 'LCT 400': 1, 'LCT 401': 1},
   'F22': { 'E22': 2, 'G22': 2, 'LCT 402': 1, 'LCT 403': 1 },
   'G22': { 'F22': 2, 'H22': 2, 'LCT 404': 1, 'LCT 405': 1 },
   'H22': { 'G22': 2, 'I22': 2, 'LCT 406': 1, 'LCT 407': 1},
   'I22': { 'H22': 2, 'LCT 408': 1, 'FEMALE COMFORT ROOM (CR) - LCT (4th)': 1, },
   'J22': { 'D22': 2, 'LCT - ELEVATOR': 8, },
 
+//LCT 5TH FLOOR-----------------------------
+  'MALE COMFORT ROOM (CR) - LCT (5th)': { 'B23': 1, },
+  'FEMALE COMFORT ROOM (CR) - LCT (5th)': { 'B23': 1, },
+
+  'LCT Library': { 'D23': 2, },
+  'B23': {'C23': 2, 'MALE COMFORT ROOM (CR) - LCT (5th)': 2, 'FEMALE COMFORT ROOM (CR) - LCT (5th)': 2},
+  'C23': {'D23': 2, 'B23': 2},
+  'D23': { 'LCT Library': 2, 'C23': 2, 'E23': 2},
+  'E23': { 'D23': 2, 'LCT MPH': 2, 'F23': 2},
+  'F23': { 'E23': 2, 'LCT - ELEVATOR': 10 },
+  'LCT MPH': { 'E23': 2, },
+ 
 
 
 };
