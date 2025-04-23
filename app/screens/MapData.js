@@ -201,7 +201,6 @@ export const dropdowndata = [
 //TYK BUILDING 11TH FLOOR :)--------------------------
 
 //LCT BUILDING 1ST FLOOR :)---------------------------
-  // { key: '', value: 'LCT - ELEVATOR' },
   // { key: '', value: 'LCT 101' },
   // { key: '', value: 'LCT 102' },
   // { key: '', value: 'Student Coordinator Office' },
@@ -224,7 +223,7 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 205' },
 
 //LCT BUILDING 3RD FLOOR :)---------------------------
-  { key: '', value: 'LCT 300' },
+  // { key: '', value: 'LCT 300' },
   // { key: '', value: 'LCT 301' },
   // { key: '', value: 'LCT 302' },
   // { key: '', value: 'LCT 303' },
@@ -253,11 +252,25 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 407' },
   // { key: '', value: 'LCT 408' },
   
-//LCT BUILDING 4TH FLOOR :)---------------------------
-  { key: '', value: 'LCT MPH' },
+//LCT BUILDING 5TH FLOOR :)---------------------------
+  // { key: '', value: 'LCT MPH' },
   { key: '', value: 'LCT Library' },
-  { key: '', value: 'B23' },
 
+//LCT BUILDING 6TH FLOOR :)---------------------------
+  { key: '', value: 'LCT 600' },
+  { key: '', value: 'LCT 601' },
+  { key: '', value: 'LCT 602' },
+  { key: '', value: 'LCT 603' },
+  { key: '', value: 'LCT 604' },
+  { key: '', value: 'LCT 605' },
+  { key: '', value: 'LCT 606' },
+  { key: '', value: 'LCT 607' },
+  { key: '', value: 'LCT 608' },
+  { key: '', value: 'LCT 609' },
+  { key: '', value: 'LCT 610' },
+  { key: '', value: 'LCT 611' },
+  { key: '', value: 'LCT 612' },
+  { key: '', value: 'LCT 613' },
 
 ];
 
@@ -1094,6 +1107,36 @@ export const buildingCoordinates = {
   'F23': { x: 0.40, y: 0.57, floor: 21 },
   'LCT MPH': { x: 0.51, y: 0.50, floor: 21 },
 
+//LCT 6TH FLOOR--------------------------
+  'FEMALE COMFORT ROOM (CR) - LCT (6th)': { x: 0.46, y: 0.08, floor: 22 },
+  'MALE COMFORT ROOM (CR) - LCT (6th)': { x: 0.46, y: 0.87, floor: 22 },
+
+  'A24': { x: 0.51, y: 0.87, floor: 22 },
+  'B24': { x: 0.51, y: 0.80, floor: 22 },
+  'C24': { x: 0.51, y: 0.63, floor: 22 },
+  'D24': { x: 0.51, y: 0.57, floor: 22 },
+  'E24': { x: 0.51, y: 0.52, floor: 22 },
+  'F24': { x: 0.51, y: 0.42, floor: 22 },
+  'G24': { x: 0.51, y: 0.33, floor: 22 },
+  'H24': { x: 0.51, y: 0.23, floor: 22 },
+  'I24': { x: 0.51, y: 0.08, floor: 22 },
+  'J24': { x: 0.46, y: 0.57, floor: 22 },
+
+  'LCT 601': { x: 0.54, y: 0.80, floor: 22 },
+  'LCT 603': { x: 0.54, y: 0.63, floor: 22 },
+  'LCT 605': { x: 0.54, y: 0.52, floor: 22 },
+  'LCT 607': { x: 0.54, y: 0.42, floor: 22 },
+  'LCT 609': { x: 0.54, y: 0.33, floor: 22 },
+  'LCT 611': { x: 0.54, y: 0.23, floor: 22 },
+  'LCT 613': { x: 0.54, y: 0.08, floor: 22 },
+
+  'LCT 600': { x: 0.54, y: 0.87, floor: 22 },
+  'LCT 602': { x: 0.46, y: 0.80, floor: 22 },
+  'LCT 604': { x: 0.46, y: 0.63, floor: 22 },
+  'LCT 606': { x: 0.46, y: 0.52, floor: 22 },
+  'LCT 608': { x: 0.46, y: 0.42, floor: 22 },
+  'LCT 610': { x: 0.46, y: 0.33, floor: 22 },
+  'LCT 612': { x: 0.46, y: 0.23, floor: 22 },
   };
 
 //Connections 
@@ -1682,7 +1725,7 @@ export const graph = {
 
 //LCT 1ST FLOOR-----------------------------
   'LCT - EL': { 'F16': 2, 'LCT Building': 2 },
-  'LCT - ELEVATOR': { 'C16': 2, 'J20': 4, 'J21': 6, 'J22': 8, 'F23': 10},
+  'LCT - ELEVATOR': { 'C16': 2, 'J20': 4, 'J21': 6, 'J22': 8, 'F23': 10, 'J24': 12},
 
   'MALE COMFORT ROOM (CR) - LCT (1st)': { 'Z16': 1 }, 
   'FEMALE COMFORT ROOM (CR) - LCT (1st)': { 'Z16': 1 }, 
@@ -1802,6 +1845,34 @@ export const graph = {
   'F23': { 'E23': 2, 'LCT - ELEVATOR': 10 },
   'LCT MPH': { 'E23': 2, },
  
+//LCT 6TH FLOOR-----------------------------
+  'MALE COMFORT ROOM (CR) - LCT (6th)': { 'A24': 1, },
+  'FEMALE COMFORT ROOM (CR) - LCT (6th)': { 'I24': 1, },
 
+  'LCT 600': { 'A24': 1 },
+  'LCT 601': { 'B24': 1 },
+  'LCT 602': { 'B24': 1 },
+  'LCT 603': { 'C24': 1 },
+  'LCT 604': { 'C24': 1 },
+  'LCT 605': { 'E24': 1 },
+  'LCT 606': { 'E24': 1 },
+  'LCT 607': { 'F24': 1 },
+  'LCT 608': { 'F24': 1 },
+  'LCT 609': { 'G24': 1 },
+  'LCT 610': { 'G24': 1 },
+  'LCT 611': { 'H24': 1 },
+  'LCT 612': { 'H24': 1 },
+  'LCT 613': { 'I24': 1 },
+
+  'A24': { 'B24': 2, 'MALE COMFORT ROOM (CR) - LCT (6th)': 1, 'LCT 600': 1},
+  'B24': { 'A24': 2, 'C24': 2, 'LCT 601': 1, 'LCT 602': 1 },
+  'C24': { 'B24': 2, 'D24': 2, 'LCT 603': 1, 'LCT 604': 1 },
+  'D24': { 'C24': 2, 'E24': 2, 'J22': 2 },
+  'E24': { 'D24': 2, 'F24': 2, 'LCT 605': 1, 'LCT 606': 1 },
+  'F24': { 'E24': 2, 'G24': 2, 'LCT 607': 1, 'LCT 608': 1 },
+  'G24': { 'F24': 2, 'H24': 2, 'LCT 609': 1, 'LCT 610': 1},
+  'H24': { 'G24': 2, 'I24': 2,'LCT 611': 1, 'LCT 612': 1 },
+  'I24': { 'H24': 2, 'LCT 613': 1, 'FEMALE COMFORT ROOM (CR) - LCT (6th)': 1, },
+  'J24': { 'D24': 2, 'LCT - ELEVATOR': 12, },
 
 };
