@@ -38,7 +38,7 @@ export const dropdowndata = [
   // { key: '122', value: 'EN D6' }, { key: '123', value: 'AEES' },
   
   // // //UNIVERSITY OF THE EAST - GENERAL
-  // { key: '122', value: 'MAIN ENTRANCE' }, 
+  { key: '122', value: 'MAIN ENTRANCE' }, 
   // { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
   // { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' }, { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
   // { key: '130', value: 'HRM Mock Hotel' }, { key: '131', value: 'TYK Building' }, { key: '132', value: 'Administration Building' },
@@ -194,20 +194,17 @@ export const dropdowndata = [
   // { key: '', value: 'TYK 1012' },
   // { key: '', value: 'TYK 1013' },
   // { key: '', value: 'TYK 1014' },
-
-  // { key: '', value: 'ELEVATOR R' },
-  // { key: '', value: 'ELEVATOR L' },
   
 //TYK BUILDING 11TH FLOOR :)--------------------------
 
 //LCT BUILDING 1ST FLOOR :)---------------------------
   { key: '', value: 'LCT 101' },
-  { key: '', value: 'LCT 102' },
-  { key: '', value: 'Student Coordinator Office' },
-  { key: '', value: 'TLE/Practice House' },
-  { key: '', value: 'Industrial Arts' },
-  { key: '', value: 'Practice Arts' },
-  { key: '', value: 'LCT Canteen' },
+  // { key: '', value: 'LCT 102' },
+  // { key: '', value: 'Student Coordinator Office' },
+  // { key: '', value: 'TLE/Practice House' },
+  // { key: '', value: 'Industrial Arts' },
+  // { key: '', value: 'Practice Arts' },
+  // { key: '', value: 'LCT Canteen' },
 
 //LCT BUILDING 2ND FLOOR :)---------------------------
   { key: '', value: 'Elementary Computer Lab' }, 
@@ -292,18 +289,23 @@ export const dropdowndata = [
 
 //LCT BUILDING 8TH FLOOR :)---------------------------
   { key: '', value: 'LCT Multipurpose Room' },
-  { key: '', value: 'LCT 800' },
-  { key: '', value: 'LCT 801' },
-  { key: '', value: 'LCT 802' },
-  { key: '', value: 'LCT 803' },
-  { key: '', value: 'LCT 804' },
-  { key: '', value: 'LCT 805' },
-  { key: '', value: 'LCT 806' },
-  { key: '', value: 'LCT 807' },
-  { key: '', value: 'LCT 808' },
-  { key: '', value: 'LCT 809' },
-  { key: '', value: 'LCT 810' },
-  { key: '', value: 'LCT 811' },
+  // { key: '', value: 'LCT 800' },
+  // { key: '', value: 'LCT 801' },
+  // { key: '', value: 'LCT 802' },
+  // { key: '', value: 'LCT 803' },
+  // { key: '', value: 'LCT 804' },
+  // { key: '', value: 'LCT 805' },
+  // { key: '', value: 'LCT 806' },
+  // { key: '', value: 'LCT 807' },
+  // { key: '', value: 'LCT 808' },
+  // { key: '', value: 'LCT 809' },
+  // { key: '', value: 'LCT 810' },
+  // { key: '', value: 'LCT 811' },
+
+//OA BLDG FLOOR :)---------------------------
+  { key: '', value: 'IT Department' },
+  { key: '', value: 'SAO (Student Affairs Office)' },
+  { key: '', value: 'Guidance Counseling' },
 
 ];
 
@@ -572,8 +574,12 @@ export const buildingCoordinates = {
   'D54': { x: 0.35, y: 0.98, floor: 5 },
   'E5': { x: 0.39, y: 0.80, floor: 5 },
   'F5': { x: 0.33, y: 0.74, floor: 5 },
+
   'G5': { x: 0.25, y: 0.67, floor: 5 },
-  'H5': { x: 0.25, y: 0.55, floor: 5 },
+  'G55': { x: 0.21, y: 0.65, floor: 5 },
+  'H55': { x: 0.21, y: 0.51, floor: 5 },
+  'H5': { x: 0.25, y: 0.49, floor: 5 },
+
   'I5': { x: 0.25, y: 0.35, floor: 5 },
   'J5': { x: 0.25, y: 0.21, floor: 5 },
   'W5': { x: 0.18, y: 0.21, floor: 5 },
@@ -1238,7 +1244,17 @@ export const buildingCoordinates = {
 
   'LCT Multipurpose Room': { x: 0.46, y: 0.63, floor: 24 },
 
-  
+//OA BUILDING--------------------------
+  'Guidance Counseling': { x: 0.48, y: 0.05, floor: 25 },
+  'SAO (Student Affairs Office)': { x: 0.48, y: 0.37, floor: 25 },
+  'IT Department': { x: 0.48, y: 0.54, floor: 25 },
+
+  'A27': { x: 0.54, y: 0.94, floor: 25 },
+  'B27': { x: 0.54, y: 0.54, floor: 25 },
+  'C27': { x: 0.54, y: 0.37, floor: 25 },
+  'D27': { x: 0.54, y: 0.05, floor: 25 },
+  'E27': { x: 0.54, y: 0.02, floor: 25 },
+
   };
 
   
@@ -1423,8 +1439,15 @@ export const graph = {
 
   'E5': { 'D5': 2, 'F5': 2, 'U5': 1, },
   'F5': { 'E5': 2, 'G5': 2, 'Old Academic Building': 1 },
-  'G5': { 'F5': 2, 'H5': 2, 'Playground': 1 },
-  'H5': { 'G5': 2, 'I5': 2 },
+  
+  'OA - E': { 'G55': 1, 'A27': 1},
+  'OA - E2': { 'H55': 1, 'E27': 1},
+
+  'G5': { 'F5': 2, 'G55': 2, },
+  'G55': { 'G5': 2, 'H55': 4, 'OA - E': 1 },
+  'H55': { 'H5': 2, 'G55': 4, 'OA - E2': 1 },
+  'H5': { 'H55': 2, 'I5': 2 },
+
   'I5': { 'H5': 2, 'J5': 2, 'LCT Building': 1, },
   'J5': { 'I5': 2, 'K5': 5, 'W5': 2 },
   'W5': { 'J5': 2, 'EN Building (Right Wing)': 1, 'W55': 2 },
@@ -2040,5 +2063,20 @@ export const graph = {
   'H26': { 'G26': 2, 'I26': 2,'LCT 809': 1, 'LCT 810': 1 },
   'I26': { 'H26': 2, 'LCT 811': 1, 'FEMALE COMFORT ROOM (CR) - LCT (8th)': 1, },
   'J26': { 'D26': 2, 'LCT - ELEVATOR': 16, },
+
+//OA BUILDING-----------------------------
+'IT Department': { 'B27': 1 },
+'SAO (Student Affairs Office)': { 'C27': 1 }, 
+'Guidance Counseling': { 'D27': 1 },
+
+
+'A27': { 'B27': 8, 'OA - E': 1,},
+'B27': { 'A27': 8, 'C27': 2, 'IT Department': 1},
+'C27': { 'B27': 2, 'D27': 2, 'SAO (Student Affairs Office)': 1},
+'D27': { 'C27': 2, 'E27': 2, 'Guidance Counseling': 1 },
+'E27': { 'D27': 2, 'OA - E2': 1, },
+
+
+
 
 };

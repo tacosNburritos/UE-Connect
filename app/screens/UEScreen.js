@@ -19,19 +19,17 @@ const UEScreen = ({ route, navigation }) => {
   const getFloorFromNode = (nodeName) => {
     return buildingCoordinates[nodeName]?.floor;
   };
-  
+
+
 
   const stairNodes = [
-    "EN - STAIRS RIGHT WING1",
-    "EN - STAIRS LEFT WING1",
-    "EN - STAIRS RIGHT WING2",
-    "EN - STAIRS LEFT WING2",
     "EN - EL",
     "EN - ER",
     "LCT - EL",
     "LCT - ER",
-    "TYK E1"
-    
+    "TYK E1",
+    'OA - E',
+    'OA - E2',
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -113,9 +111,10 @@ const UEScreen = ({ route, navigation }) => {
             else if (nextFloor === 5) nextScreen = "UEScreen";
             else if (nextFloor === 6) nextScreen = "TYK1STFLOORScreen";
             else if (nextFloor === 17) nextScreen = "LCT1STFLOORScreen";
+            else if (nextFloor === 25) nextScreen = "OAFLOORScreen";
             
             else nextScreen = "EN1STFLOORScreen"; // fallback or stay
-          
+            console.log("Navigating to:", nextFloor);
             navigation.navigate(nextScreen, {
               path: remainingPath,
               buildingCoordinates,
@@ -199,7 +198,7 @@ const UEScreen = ({ route, navigation }) => {
                 key={`node-${index}`}
                 cx={cx}
                 cy={cy}
-                r={1.5}
+                r={5}
                 fill="red"
                 animatedProps={animatedProps}
               />

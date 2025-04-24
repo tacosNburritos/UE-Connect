@@ -222,6 +222,8 @@ function PFScreen({ navigation }) {
       navigation.navigate('LCT7THFLOORScreen', { path, buildingCoordinates });
     }else if (startFloor === 24) {
       navigation.navigate('LCT8THFLOORScreen', { path, buildingCoordinates });
+    }else if (startFloor === 25) {
+      navigation.navigate('OAFLOORScreen', { path, buildingCoordinates });
     }
     else {
       navigation.navigate('EN1STFLOORScreen', { path, buildingCoordinates });
