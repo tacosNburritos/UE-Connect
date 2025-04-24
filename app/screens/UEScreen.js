@@ -30,6 +30,8 @@ const UEScreen = ({ route, navigation }) => {
     "TYK E1",
     'OA - E',
     'OA - E2',
+    "HRM - E",
+    "HRM - E2",
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -112,6 +114,7 @@ const UEScreen = ({ route, navigation }) => {
             else if (nextFloor === 6) nextScreen = "TYK1STFLOORScreen";
             else if (nextFloor === 17) nextScreen = "LCT1STFLOORScreen";
             else if (nextFloor === 25) nextScreen = "OAFLOORScreen";
+            else if (nextFloor === 26) nextScreen = "HRMFLOORScreen";
             
             else nextScreen = "EN1STFLOORScreen"; // fallback or stay
             console.log("Navigating to:", nextFloor);

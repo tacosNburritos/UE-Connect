@@ -11,15 +11,15 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const OAFLOORScreen = ({ route, navigation }) => {
+const HRMFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [showNextButton, setShowNextButton] = useState(false);
 
   const stairNodes = [
-    "OA - E",
-    "OA - E2",
+    "HRM - E",
+    "HRM - E2",
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -155,7 +155,7 @@ const OAFLOORScreen = ({ route, navigation }) => {
 
       {/* Title */}
       <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
-        Old Academic Building
+        HRM - Mock Hotel
       </Text>
 
       {/* Map and Path Drawing */}
@@ -165,7 +165,7 @@ const OAFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         <Image
-          source={require("../images/OLDACADFLR.png")}
+          source={require("../images/HRMFLR.png")}
           style={{ width: "100%", height: "100%", resizeMode: "contain" }}
         />
 
@@ -250,4 +250,4 @@ const OAFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default OAFLOORScreen;
+export default HRMFLOORScreen;

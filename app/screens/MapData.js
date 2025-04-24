@@ -40,8 +40,14 @@ export const dropdowndata = [
   // // //UNIVERSITY OF THE EAST - GENERAL
   { key: '122', value: 'MAIN ENTRANCE' }, 
   // { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
-  // { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' }, { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
-  // { key: '130', value: 'HRM Mock Hotel' }, { key: '131', value: 'TYK Building' }, { key: '132', value: 'Administration Building' },
+  { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' },
+   { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
+  { key: '130', value: 'HRM Mock Hotel' }, 
+  { key: '130', value: 'HRM - E' }, 
+  { key: '130', value: 'HRM - E2' }, 
+
+  { key: '131', value: 'TYK Building' }, 
+  // { key: '132', value: 'Administration Building' },
   // { key: '133', value: 'SECOND ENTRANCE' }, { key: '134', value: 'Clinic' }, { key: '135', value: 'Chapel' },
   
   // //TYK BUILDING 1ST FLOOR------------------------------
@@ -252,11 +258,11 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 408' },
   
 //LCT BUILDING 5TH FLOOR :)---------------------------
-  { key: '', value: 'LCT MPH' },
+  // { key: '', value: 'LCT MPH' },
   // { key: '', value: 'LCT Library' },
 
 //LCT BUILDING 6TH FLOOR :)---------------------------
-  { key: '', value: 'LCT 600' },
+  // { key: '', value: 'LCT 600' },
   // { key: '', value: 'LCT 601' },
   // { key: '', value: 'LCT 602' },
   // { key: '', value: 'LCT 603' },
@@ -272,7 +278,7 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 613' },
 
 //LCT BUILDING 7TH FLOOR :)---------------------------
-  { key: '', value: 'LCT 700' },
+  // { key: '', value: 'LCT 700' },
   // { key: '', value: 'LCT 701' },
   // { key: '', value: 'LCT 702' },
   // { key: '', value: 'LCT 703' },
@@ -288,7 +294,7 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 713' },
 
 //LCT BUILDING 8TH FLOOR :)---------------------------
-  { key: '', value: 'LCT Multipurpose Room' },
+  // { key: '', value: 'LCT Multipurpose Room' },
   // { key: '', value: 'LCT 800' },
   // { key: '', value: 'LCT 801' },
   // { key: '', value: 'LCT 802' },
@@ -303,9 +309,20 @@ export const dropdowndata = [
   // { key: '', value: 'LCT 811' },
 
 //OA BLDG FLOOR :)---------------------------
-  { key: '', value: 'IT Department' },
-  { key: '', value: 'SAO (Student Affairs Office)' },
-  { key: '', value: 'Guidance Counseling' },
+  // { key: '', value: 'IT Department' },
+  // { key: '', value: 'SAO (Student Affairs Office)' },
+  // { key: '', value: 'Guidance Counseling' },
+
+//HRM BLDG FLOOR :)---------------------------
+  { key: '', value: 'Bar and Beverage Room' },
+  { key: '', value: 'Dining Area' },
+  { key: '', value: 'Housekeeping Room' },
+  { key: '', value: 'Bakery' },
+  { key: '', value: 'Main Kitchen' },
+  { key: '', value: 'Skills Laboratory' },
+  { key: '', value: 'Cooking Demo Lab' },
+  { key: '', value: 'A28' },
+  { key: '', value: 'E28' },
 
 ];
 
@@ -556,7 +573,7 @@ export const buildingCoordinates = {
   'LCT Building': { x: 0.17, y: 0.35, floor: 5 },
   'EN Building (Right Wing)': { x: 0.16, y: 0.17, floor: 5 },
   'EN Building (Left Wing)': { x: 0.80, y: 0.14, floor: 5 },
-  'HRM Mock Hotel': { x: 0.82, y: 0.23, floor: 5 },
+  'HRM Mock Hotel': { x: 0.82, y: 0.26, floor: 5 },
   'TYK Building': { x: 0.80, y: 0.50, floor: 5 },
   'Administration Building': { x: 0.61, y: 0.76, floor: 5 },
   'SECOND ENTRANCE': { x: 0.37, y: 1, floor: 5 },
@@ -587,9 +604,11 @@ export const buildingCoordinates = {
   'K5': { x: 0.37, y: 0.18, floor: 5 },
   'L5': { x: 0.60, y: 0.18, floor: 5 },
   'M5': { x: 0.80, y: 0.18, floor: 5 },
+  'M51': { x: 0.82, y: 0.23, floor: 5 },
   'M55': { x: 0.80, y: 0.15, floor: 5 },
   'N5': { x: 0.78, y: 0.21, floor: 5 },
   'O5': { x: 0.78, y: 0.32, floor: 5 },
+  'O55': { x: 0.81, y: 0.29, floor: 5 },
   'P5': { x: 0.75, y: 0.32, floor: 5 },
   'Q5': { x: 0.75, y: 0.50, floor: 5 },
   'R5': { x: 0.75, y: 0.64, floor: 5 },
@@ -1255,6 +1274,23 @@ export const buildingCoordinates = {
   'D27': { x: 0.54, y: 0.05, floor: 25 },
   'E27': { x: 0.54, y: 0.02, floor: 25 },
 
+//HRM BUILDING--------------------------
+  'Bar and Beverage Room': { x: 0.47, y: 0.76, floor: 26 },
+  'Dining Area': { x: 0.60, y: 0.66, floor: 26 },
+  'Housekeeping Room': { x: 0.60, y: 0.48, floor: 26 },
+  'Bakery': { x: 0.47, y: 0.40, floor: 26 },
+  'Main Kitchen': { x: 0.47, y: 0.22, floor: 26 },
+  'Skills Laboratory': { x: 0.60, y: 0.22, floor: 26 },
+  'Cooking Demo Lab': { x: 0.47, y: 0.18, floor: 26 },
+ 
+  'A28': { x: 0.54, y: 0.94, floor: 26 },
+  'B28': { x: 0.54, y: 0.76, floor: 26 },
+  'C28': { x: 0.54, y: 0.66, floor: 26 },
+  'D28': { x: 0.54, y: 0.48, floor: 26 },
+  'F28': { x: 0.54, y: 0.40, floor: 26 },
+  'G28': { x: 0.54, y: 0.22, floor: 26 },
+  'H28': { x: 0.54, y: 0.18, floor: 26 },
+  'E28': { x: 0.54, y: 0.02, floor: 26 },
   };
 
   
@@ -1419,7 +1455,7 @@ export const graph = {
   'LCT Building': { 'I5': 1 , 'LCT - EL': 2 },
   'EN Building (Right Wing)': { 'W5': 1 },
   'EN Building (Left Wing)': { 'M5': 1 },
-  'HRM Mock Hotel': { 'M5': 1 },
+  'HRM Mock Hotel': { 'HRM - E': 10,  'HRM - E2': 10},
   'TYK Building': { 'O5': 5, 'Q5': 5, 'TYK E1': 1 },
   'Administration Building': { 'U5': 1 },
   'Clinic': { 'B5': 1 },
@@ -1437,7 +1473,7 @@ export const graph = {
   'D53': { 'D52': 2, 'D54': 2, 'GYM': 1 },
   'D54': { 'D53': 2, 'SECOND ENTRANCE': 2, 'Chapel': 1 },
 
-  'E5': { 'D5': 2, 'F5': 2, 'U5': 1, },
+  'E5': { 'D5': 2, 'F5': 2, 'U5': 2, },
   'F5': { 'E5': 2, 'G5': 2, 'Old Academic Building': 1 },
   
   'OA - E': { 'G55': 1, 'A27': 1},
@@ -1453,12 +1489,14 @@ export const graph = {
   'W5': { 'J5': 2, 'EN Building (Right Wing)': 1, 'W55': 2 },
   'W55': { 'W5': 2, 'EN - ER': 1 },
 
-  'K5': { 'J5': 5, 'L5': 5 },
-  'L5': { 'K5': 5, 'M5': 5 },
-  'M5': { 'L5': 5, 'N5': 5, 'EN Building (Left Wing)': 1, 'HRM Mock Hotel': 1, 'M55': 2 },
-  'M55': { 'M5': 5, 'EN - EL': 1 },
-  'N5': { 'M5': 5, 'O5': 2 },
-  'O5': { 'N5': 2, 'P5': 2, 'TYK Building': 5 },
+  'K5': { 'J5': 3, 'L5': 3 },
+  'L5': { 'K5': 3, 'M5': 3 },
+  'M5': { 'L5': 3, 'N5': 5, 'EN Building (Left Wing)': 1, 'M55': 2, 'M51': 4 },
+  'M51': { 'M5': 4, 'HRM Mock Hotel': 5, },
+  'M55': { 'M5': 5, 'EN - EL': 1,  },
+  'N5': { 'M5': 5, },
+  'O5': { 'P5': 2, 'TYK Building': 5, 'O55': 2 },
+  'O55': { 'O5': 2, 'HRM Mock Hotel': 5,},
   'P5': { 'O5': 2, 'Q5': 2 },
   'Q5': { 'P5': 2, 'R5': 2, 'TYK Building': 5 },
   'R5': { 'Q5': 2, 'S5': 2 },
@@ -2065,18 +2103,35 @@ export const graph = {
   'J26': { 'D26': 2, 'LCT - ELEVATOR': 16, },
 
 //OA BUILDING-----------------------------
-'IT Department': { 'B27': 1 },
-'SAO (Student Affairs Office)': { 'C27': 1 }, 
-'Guidance Counseling': { 'D27': 1 },
+  'IT Department': { 'B27': 1 },
+  'SAO (Student Affairs Office)': { 'C27': 1 }, 
+  'Guidance Counseling': { 'D27': 1 },
 
+  'A27': { 'B27': 8, 'OA - E': 1,},
+  'B27': { 'A27': 8, 'C27': 2, 'IT Department': 1},
+  'C27': { 'B27': 2, 'D27': 2, 'SAO (Student Affairs Office)': 1},
+  'D27': { 'C27': 2, 'E27': 2, 'Guidance Counseling': 1 },
+  'E27': { 'D27': 2, 'OA - E2': 1, },
 
-'A27': { 'B27': 8, 'OA - E': 1,},
-'B27': { 'A27': 8, 'C27': 2, 'IT Department': 1},
-'C27': { 'B27': 2, 'D27': 2, 'SAO (Student Affairs Office)': 1},
-'D27': { 'C27': 2, 'E27': 2, 'Guidance Counseling': 1 },
-'E27': { 'D27': 2, 'OA - E2': 1, },
+//HRM BUILDING-----------------------------
+  'HRM - E': { 'HRM Mock Hotel': 10, 'A28': 10, },
+  'HRM - E2': { 'HRM Mock Hotel': 10, 'E28': 10,},
 
+  'Bar and Beverage Room': {'B28': 1,},
+  'Dining Area': {'C28': 1,},
+  'Housekeeping Room': {'D28': 1,},
+  'Bakery': {'F28': 1,},
+  'Main Kitchen': {'G28': 1,},
+  'Skills Laboratory': {'G28': 1,},
+  'Cooking Demo Lab': {'H28': 1,},
 
-
+  'A28': {'B28': 2, 'HRM - E': 10,},
+  'B28': {'A28': 2, 'C28': 2, 'Bar and Beverage Room': 1 },
+  'C28': {'B28': 2, 'D28': 2, 'Dining Area': 1 },
+  'D28': {'C28': 2, 'F28': 2, 'Housekeeping Room': 1 },
+  'F28': {'D28': 2, 'G28': 2, 'Bakery': 1  },
+  'G28': {'F28': 2, 'H28': 2,  'Main Kitchen': 1, 'Skills Laboratory': 1 },
+  'H28': {'G28': 2, 'E28': 2, 'Cooking Demo Lab': 1 },
+  'E28': {'H28': 2, 'HRM - E2': 10},
 
 };
