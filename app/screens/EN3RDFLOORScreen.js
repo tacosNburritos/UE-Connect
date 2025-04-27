@@ -191,7 +191,7 @@ const EN3RDFLOORScreen = ({ route, navigation }) => {
                 key={`node-${index}`}
                 cx={cx}
                 cy={cy}
-                r={1.5}
+                r={5}
                 fill="red"
                 animatedProps={animatedProps}
               />
