@@ -201,7 +201,7 @@ const UEScreen = ({ route, navigation }) => {
                 key={`node-${index}`}
                 cx={cx}
                 cy={cy}
-                r={5}
+                r={1.5}
                 fill="red"
                 animatedProps={animatedProps}
               />
