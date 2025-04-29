@@ -14,6 +14,10 @@ function WelcomeScreen({ navigation }) {
         navigation.navigate('PathFind'); // Navigate to Pathfinding screen
     };
 
+    const handleRoamPress = () => {
+            navigation.navigate('FreeRoam'); // Navigate to Free Roam screen
+    };
+
     const onPinchEvent = Animated.event(
         [{ nativeEvent: { scale } }],
         { useNativeDriver: true }
@@ -115,7 +119,7 @@ function WelcomeScreen({ navigation }) {
                     <Text style={styles.buttonText}>Find Path</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button1} onPress={() => alert("Free Roam Button Pressed!")}>
+                <TouchableOpacity style={styles.button1} onPress={(handleRoamPress)}>
                     <Text style={styles.buttonText}> 3D Map </Text>
                 </TouchableOpacity>
             </View>
