@@ -11,7 +11,7 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const TYK4THFLOORScreen = ({ route, navigation }) => {
+const TYK5THFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -263,4 +263,4 @@ const TYK4THFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default TYK4THFLOORScreen;
+export default TYK5THFLOORScreen;
