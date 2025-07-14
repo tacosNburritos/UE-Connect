@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { View, StyleSheet, PanResponder, Dimensions } from 'react-native';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
-import * as THREE from 'three';
-import { Asset } from 'expo-asset';
+// import { Canvas, useFrame, useThree } from '@react-three/fiber';
+// import { useGLTF } from '@react-three/drei';
+// import * as THREE from 'three';
+// import { Asset } from 'expo-asset';
 
 // Joystick Component
 function Joystick({ onMove }) {
