@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, Image, TouchableOpacity, Text } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Svg, Circle, Line } from "react-native-svg";
 import Animated, {
   useSharedValue,
@@ -17,6 +17,27 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [showNextButton, setShowNextButton] = useState(false);
 
+  // ✅ Your custom map nodes
+  const mapNodes = {
+    M1: { x: 0.1, y: 0.2 },
+    M2: { x: 0.3, y: 0.2 },
+    M3: { x: 0.3, y: 0.4 },
+    M4: { x: 0.5, y: 0.4 },
+    M5: { x: 0.7, y: 0.4 },
+    M6: { x: 0.7, y: 0.2 },
+    M7: { x: 0.5, y: 0.2 },
+  };
+
+  const mapConnections = [
+    ["M1", "M2"],
+    ["M2", "M3"],
+    ["M3", "M4"],
+    ["M4", "M5"],
+    ["M5", "M6"],
+    ["M6", "M7"],
+    ["M7", "M1"],
+  ];
+
   const stairNodes = [
     "EN - STAIRS RIGHT WING1",
     "EN - STAIRS LEFT WING1",
@@ -24,7 +45,6 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     "EN - STAIRS LEFT WING2",
     "EN - EL",
     "EN - ER",
-
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -55,33 +75,12 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     }
   }, []);
 
-  const getFloorFromNode = (nodeName) => {
-    return buildingCoordinates[nodeName]?.floor;
-  };
-
-  const handleNextPress = () => {
-    const nextNode = remainingPath[0];
-    const nextFloor = getFloorFromNode(nextNode);
-    let nextScreen = "";
-
-    if (nextFloor === 2) nextScreen = "EN2NDFLOORScreen";
-    else if (nextFloor === 3) nextScreen = "EN3RDFLOORScreen";
-    else if (nextFloor === 4) nextScreen = "EN4THFLOORScreen";
-    else if (nextFloor === 5) nextScreen = "UEScreen";
-    else nextScreen = "EN1STFLOORScreen"; // fallback
-
-    navigation.navigate(nextScreen, {
-      path: remainingPath,
-      buildingCoordinates,
-    });
-  };
-
   const onLayout = (event) => {
     const { width, height } = event.nativeEvent.layout;
     setContainerSize({ width, height });
   };
 
-  const renderAnimatedLine = (x1, y1, x2, y2, progress, key) => {
+  const renderAnimatedLine = (x1, y1, x2, y2, progress, key, color = "red") => {
     const animatedProps = useAnimatedProps(() => ({
       strokeDasharray: [300, 300],
       strokeDashoffset: (1 - progress.value) * 300,
@@ -93,7 +92,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
         y1={y1}
         x2={x2}
         y2={y2}
-        stroke="red"
+        stroke={color}
         strokeWidth={3}
         animatedProps={animatedProps}
       />
@@ -116,9 +115,30 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     );
   };
 
+  const getFloorFromNode = (nodeName) => {
+    return buildingCoordinates[nodeName]?.floor;
+  };
+
+  const handleNextPress = () => {
+    const nextNode = remainingPath[0];
+    const nextFloor = getFloorFromNode(nextNode);
+    let nextScreen = "";
+
+    if (nextFloor === 2) nextScreen = "EN2NDFLOORScreen";
+    else if (nextFloor === 3) nextScreen = "EN3RDFLOORScreen";
+    else if (nextFloor === 4) nextScreen = "EN4THFLOORScreen";
+    else if (nextFloor === 5) nextScreen = "UEScreen";
+    else nextScreen = "EN1STFLOORScreen";
+
+    navigation.navigate(nextScreen, {
+      path: remainingPath,
+      buildingCoordinates,
+    });
+  };
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      {/* Top Controls */}
+      {/* Header */}
       <View
         style={{
           position: "absolute",
@@ -158,24 +178,41 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
         )}
       </View>
 
-      {/* Title */}
-      <Text style={{ color: "black", fontSize: 16, marginTop: 50, fontWeight: "bold" }}>
+      <Text style={{ fontSize: 16, fontWeight: "bold", marginTop: 50 }}>
         Engineering Building - First Floor
       </Text>
 
-      {/* Map and Path Drawing */}
       <View
         ref={containerRef}
         onLayout={onLayout}
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
+        {/* 🖼️ Background image to trace over */}
         <Image
           source={require("../images/EN1STFLR.png")}
-          style={{ width: "100%", height: "100%", resizeMode: "contain" }}
+          style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
-          {/* Draw Path Lines */}
+          {/* 🟪 MAP CONNECTIONS (gray lines from local mapNodes) */}
+          {mapConnections.map(([from, to], index) => {
+            const start = mapNodes[from];
+            const end = mapNodes[to];
+            if (!start || !end) return null;
+            return (
+              <Line
+                key={`map-${index}`}
+                x1={start.x * containerSize.width}
+                y1={start.y * containerSize.height}
+                x2={end.x * containerSize.width}
+                y2={end.y * containerSize.height}
+                stroke="blue"
+                strokeWidth={2}
+              />
+            );
+          })}
+
+          {/* 🔴 Animated path route */}
           {adjustedPath.slice(0, -1).map((node, index) => {
             const start = buildingCoordinates[node];
             const end = buildingCoordinates[adjustedPath[index + 1]];
@@ -190,7 +227,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             );
           })}
 
-          {/* Intermediate Nodes */}
+          {/* 🔴 Mid path points */}
           {adjustedPath.map((node, index) => {
             if (index === 0 || index === adjustedPath.length - 1) return null;
             const coords = buildingCoordinates[node];
@@ -205,21 +242,19 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             );
           })}
 
-          {/* Start Node */}
+          {/* 🔵 Start */}
           {buildingCoordinates[adjustedPath[0]] && (
-            <>
-              {renderAnimatedCircle(
-                buildingCoordinates[adjustedPath[0]].x * containerSize.width,
-                buildingCoordinates[adjustedPath[0]].y * containerSize.height,
-                5,
-                "blue",
-                null,
-                "start"
-              )}
-            </>
+            renderAnimatedCircle(
+              buildingCoordinates[adjustedPath[0]].x * containerSize.width,
+              buildingCoordinates[adjustedPath[0]].y * containerSize.height,
+              5,
+              "blue",
+              null,
+              "start"
+            )
           )}
 
-          {/* End Node */}
+          {/* 🔴 End */}
           {buildingCoordinates[adjustedPath[adjustedPath.length - 1]] && (
             renderAnimatedCircle(
               buildingCoordinates[adjustedPath[adjustedPath.length - 1]].x * containerSize.width,
@@ -242,9 +277,6 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
               color: "blue",
               fontSize: 12,
               fontWeight: "bold",
-              paddingHorizontal: 5,
-              paddingVertical: 2,
-              borderRadius: 4,
             }}
           >
             You
