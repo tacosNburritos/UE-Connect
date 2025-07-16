@@ -17,7 +17,6 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [showNextButton, setShowNextButton] = useState(false);
 
-  // ✅ Your custom map nodes
   const mapNodes = {
     M1: { x: 0.1, y: 0.2 },
     M2: { x: 0.3, y: 0.2 },
@@ -25,7 +24,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     M4: { x: 0.5, y: 0.4 },
     M5: { x: 0.7, y: 0.4 },
     M6: { x: 0.7, y: 0.2 },
-    M7: { x: 0.5, y: 0.2 },
+    M7: { x: 0.5, y: 0.1 },
   };
 
   const mapConnections = [
@@ -187,14 +186,14 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
         onLayout={onLayout}
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
-        {/* 🖼️ Background image to trace over */}
+        {/* Background image to trace over */}
         <Image
           source={require("../images/EN1STFLR.png")}
           style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
-          {/* 🟪 MAP CONNECTIONS (gray lines from local mapNodes) */}
+          {/* MAP CONNECTIONS */}
           {mapConnections.map(([from, to], index) => {
             const start = mapNodes[from];
             const end = mapNodes[to];
@@ -212,7 +211,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             );
           })}
 
-          {/* 🔴 Animated path route */}
+          {/* Animated path route */}
           {adjustedPath.slice(0, -1).map((node, index) => {
             const start = buildingCoordinates[node];
             const end = buildingCoordinates[adjustedPath[index + 1]];
@@ -227,7 +226,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             );
           })}
 
-          {/* 🔴 Mid path points */}
+          {/* Mid path points */}
           {adjustedPath.map((node, index) => {
             if (index === 0 || index === adjustedPath.length - 1) return null;
             const coords = buildingCoordinates[node];
@@ -242,7 +241,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             );
           })}
 
-          {/* 🔵 Start */}
+          {/* Start */}
           {buildingCoordinates[adjustedPath[0]] && (
             renderAnimatedCircle(
               buildingCoordinates[adjustedPath[0]].x * containerSize.width,
@@ -254,7 +253,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             )
           )}
 
-          {/* 🔴 End */}
+          {/* End */}
           {buildingCoordinates[adjustedPath[adjustedPath.length - 1]] && (
             renderAnimatedCircle(
               buildingCoordinates[adjustedPath[adjustedPath.length - 1]].x * containerSize.width,
