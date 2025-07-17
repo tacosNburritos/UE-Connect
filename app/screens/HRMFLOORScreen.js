@@ -37,7 +37,14 @@ const HRMFLOORScreen = ({ route, navigation }) => {
     ["M7", "M1"],
   ];
 
-   const stairNodes = [
+// STRICTLY FOR LABELS ONLY
+  const labelNodes = {
+    L1: { x: 0.10, y: 0.25, label: "Room 101" },
+    L2: { x: 0.35, y: 0.25, label: "Room 102" },
+    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+  };
+
+  const stairNodes = [
     "HRM - E",
     "HRM - E2",
   ];
@@ -174,7 +181,7 @@ const HRMFLOORScreen = ({ route, navigation }) => {
       </View>
 
       <Text style={{ fontSize: 16, fontWeight: "bold", marginTop: 50 }}>
-        HRM - Mock Hotel
+        HRM - Mock Hotel Room
       </Text>
 
       <View
@@ -260,7 +267,43 @@ const HRMFLOORScreen = ({ route, navigation }) => {
               "end"
             )
           )}
+
+{/* EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE */}
+          {/* Map node circles with fixed radius */}
+          {Object.entries(mapNodes).map(([key, { x, y }]) => (
+            <Circle
+              key={`node-${key}`}
+              cx={x * containerSize.width}
+              cy={y * containerSize.height}
+              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              fill="red"
+            />
+          ))}
         </Svg>
+
+        {/* Label points */}
+        {Object.entries(labelNodes).map(([key, { x, y, label }]) => (
+          <React.Fragment key={`label-${key}`}>
+            <Circle
+              cx={x * containerSize.width}
+              cy={y * containerSize.height}
+              r={3}
+              fill="black"
+            />
+            <Text
+              style={{
+                position: "absolute",
+                left: x * containerSize.width + 6,
+                top: y * containerSize.height - 6,
+                color: "red", // Change to black if preferred
+                fontSize: 10,
+                fontWeight: "bold",
+              }}
+            >
+              {label}
+            </Text>
+          </React.Fragment>
+        ))}
 
         {/* "You" Label */}
         {buildingCoordinates[adjustedPath[0]] && (

@@ -37,14 +37,18 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
     ["M7", "M1"],
   ];
 
+// STRICTLY FOR LABELS ONLY
+  const labelNodes = {
+    L1: { x: 0.10, y: 0.25, label: "Room 101" },
+    L2: { x: 0.35, y: 0.25, label: "Room 102" },
+    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+  };
+
   const stairNodes = [
     "EN - STAIRS RIGHT WING1",
     "EN - STAIRS LEFT WING1",
     "EN - STAIRS RIGHT WING2",
     "EN - STAIRS LEFT WING2",
-    "EN - ENT LEFT WING",
-    "EN - EXT LEFT WING",
-
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -265,7 +269,43 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
               "end"
             )
           )}
+
+{/* EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE */}
+          {/* Map node circles with fixed radius */}
+          {Object.entries(mapNodes).map(([key, { x, y }]) => (
+            <Circle
+              key={`node-${key}`}
+              cx={x * containerSize.width}
+              cy={y * containerSize.height}
+              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              fill="red"
+            />
+          ))}
         </Svg>
+
+        {/* Label points */}
+        {Object.entries(labelNodes).map(([key, { x, y, label }]) => (
+          <React.Fragment key={`label-${key}`}>
+            <Circle
+              cx={x * containerSize.width}
+              cy={y * containerSize.height}
+              r={3}
+              fill="black"
+            />
+            <Text
+              style={{
+                position: "absolute",
+                left: x * containerSize.width + 6,
+                top: y * containerSize.height - 6,
+                color: "red", // Change to black if preferred
+                fontSize: 10,
+                fontWeight: "bold",
+              }}
+            >
+              {label}
+            </Text>
+          </React.Fragment>
+        ))}
 
         {/* "You" Label */}
         {buildingCoordinates[adjustedPath[0]] && (

@@ -37,8 +37,18 @@ const EN3RDFLOORScreen = ({ route, navigation }) => {
     ["M7", "M1"],
   ];
 
+// STRICTLY FOR LABELS ONLY
+  const labelNodes = {
+    L1: { x: 0.10, y: 0.25, label: "Room 101" },
+    L2: { x: 0.35, y: 0.25, label: "Room 102" },
+    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+  };
+
   const stairNodes = [
-    "LCT - ELEVATOR"
+    "EN - STAIRS RIGHT WING1",
+    "EN - STAIRS LEFT WING1",
+    "EN - STAIRS RIGHT WING2",
+    "EN - STAIRS LEFT WING2",
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -183,8 +193,8 @@ const EN3RDFLOORScreen = ({ route, navigation }) => {
       >
         {/* Background image to trace over */}
         <Image
-          source={require("../images/EN1STFLR.png")}
-          style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
+          source={require("../images/EN3RDFLR.png")}
+          style={{ width: "100%", height: "105%", position: "absolute", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
@@ -259,7 +269,43 @@ const EN3RDFLOORScreen = ({ route, navigation }) => {
               "end"
             )
           )}
+
+{/* EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE */}
+          {/* Map node circles with fixed radius */}
+          {Object.entries(mapNodes).map(([key, { x, y }]) => (
+            <Circle
+              key={`node-${key}`}
+              cx={x * containerSize.width}
+              cy={y * containerSize.height}
+              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              fill="red"
+            />
+          ))}
         </Svg>
+
+        {/* Label points */}
+        {Object.entries(labelNodes).map(([key, { x, y, label }]) => (
+          <React.Fragment key={`label-${key}`}>
+            <Circle
+              cx={x * containerSize.width}
+              cy={y * containerSize.height}
+              r={3}
+              fill="black"
+            />
+            <Text
+              style={{
+                position: "absolute",
+                left: x * containerSize.width + 6,
+                top: y * containerSize.height - 6,
+                color: "red", // Change to black if preferred
+                fontSize: 10,
+                fontWeight: "bold",
+              }}
+            >
+              {label}
+            </Text>
+          </React.Fragment>
+        ))}
 
         {/* "You" Label */}
         {buildingCoordinates[adjustedPath[0]] && (
