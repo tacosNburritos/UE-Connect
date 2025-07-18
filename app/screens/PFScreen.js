@@ -3,10 +3,18 @@ import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-na
 import { SelectList } from 'react-native-dropdown-select-list';
 import { dropdowndata, buildingCoordinates, graph } from '../screens/MapData';
 
+//bago to
+import { useEffect } from 'react';
+import { supabase } from '../lib/supabase';
+
 function PFScreen({ navigation }) {
   const handleGoBack = () => {
     navigation.goBack();
   };
+
+  //bago to
+  const [dropdownData, setDropdownData] = useState([]);
+  const [buildingCoordinates, setBuildingCoordinates] = useState({});
 
   const [selectedStart, setSelectedStart] = useState("");
   const [selectedEnd, setSelectedEnd] = useState("");
@@ -232,6 +240,49 @@ function PFScreen({ navigation }) {
     }
   };
 
+  //bago to
+ useEffect(() => {
+  const fetchLocations = async () => {
+    const { data, error } = await supabase
+      .from('locations')
+      .select('*')
+
+    if (error) {
+      console.error("Error fetching locations:", error);
+      return;
+    }
+
+    const dropdownOptions = data
+    .filter(loc => loc.checker !== 'excluded')
+    .map(loc => ({
+      label: loc.label,
+      value: loc.label,
+  }));
+
+
+    const coordsMap = {};
+    data.forEach(loc => {
+      coordsMap[loc.label] = {
+        x: loc.x,
+        y: loc.y,
+        floor: loc.floor,
+      };
+    });
+
+    setDropdownData([
+      { label: 'NEAREST MALE CR', value: 'NEAREST MALE CR' },
+      { label: 'NEAREST FEMALE CR', value: 'NEAREST FEMALE CR' },
+      ...dropdownOptions,
+    ]);
+
+    setBuildingCoordinates(coordsMap);
+  };
+
+  fetchLocations();
+}, []);
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -243,7 +294,7 @@ function PFScreen({ navigation }) {
         <Text style={styles.label}>Select Current Location</Text>
         <SelectList 
           setSelected={setSelectedStart} 
-          data={dropdowndata} 
+          data={dropdownData} 
           save="value" 
           placeholder="Select Location"
           boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
@@ -254,7 +305,7 @@ function PFScreen({ navigation }) {
         <Text style={styles.label}>Select Destination</Text>
         <SelectList 
           setSelected={setSelectedEnd} 
-          data={dropdowndata} 
+          data={dropdownData} 
           save="value" 
           placeholder="Select Location"
           boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 

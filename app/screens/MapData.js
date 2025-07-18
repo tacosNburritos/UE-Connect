@@ -478,13 +478,13 @@ export const buildingCoordinates = {
 'EN 117': { x: 0.55, y: 0.06, floor: 1 },
 'EN 118': { x: 0.38, y: 0.06, floor: 1 },
 'ACES PICE OFFICE': { x: 0.32, y: 0.94, floor: 1 },
-'MALE COMFORT ROOM (CR) - LEFT WING': { x: 0.24, y: 0.95, floor: 1 },
-'FEMALE COMFORT ROOM (CR) - LEFT WING': { x: 0.79, y: 0.96, floor: 1 },
+// 'MALE COMFORT ROOM (CR) - LEFT WING': { x: 0.24, y: 0.95, floor: 1 },
+// 'FEMALE COMFORT ROOM (CR) - LEFT WING': { x: 0.79, y: 0.96, floor: 1 },
 'College of Engineering': { x: 0.50, y: 0.60, floor: 1 },
 'CE Tool Room': { x: 0.60, y: 0.60, floor: 1 },
 'CPE Faculty Room': { x: 0.60, y: 0.31, floor: 1 },
 // 'Electrical Room': { x: 0.59, y: 0.13, floor: 1 },
-'CAS Faculty Room': { x: 0.32, y: 0.05, floor: 1 },
+// 'CAS Faculty Room': { x: 0.32, y: 0.05, floor: 1 },
 
 'MALE COMFORT ROOM (CR) - RIGHT WING': { x: 0.24, y: 0.05, floor: 1 },
 'FEMALE COMFORT ROOM (CR) - RIGHT WING': { x: 0.79, y: 0.06, floor: 1 },
@@ -1493,7 +1493,7 @@ export const graph = {
   'EN 102': { 'P': 1,},
   'EN 118': { 'V': 1,},
   'EN 117': { 'W': 1,},
-  'Electrical Room': { 'W': 1,},
+  // 'Electrical Room': { 'W': 1,},
   
 
   'A': { 'Q': 2, 'B': 2, 'EN 103': 1 },
@@ -1504,6 +1504,7 @@ export const graph = {
   'F': { 'E': 2, 'G': 2, 'Structural Material & Testing Lab': 1},
   'G': { 'F': 2, 'H': 2, 'EN 112': 1, 'Soil Mechanics Lab': 1, },
   'H': { 'G': 2, 'I': 2, 'EN 113': 1, 'EN 111B': 1, },
+
   'I': { 'H': 2, 'J': 2, 'ME Tool Room': 1, 'CE Faculty Room': 1, },
   'J': { 'I': 2, 'K': 2, 'ME Lab': 1, 'CPE Faculty Room': 1, },
   'K': { 'J': 2, 'L': 2, 'ECE Faculty Room': 1, 'Machine Fabrication Room': 1 },
