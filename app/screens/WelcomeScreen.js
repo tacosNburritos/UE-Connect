@@ -9,7 +9,7 @@ function WelcomeScreen({ navigation }) {
     };
 
     const handleRoamPress = () => {
-        navigation.navigate('FreeRoam');
+        navigation.navigate('AdminScreen');
     };
 
     return (
