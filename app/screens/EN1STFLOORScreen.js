@@ -18,13 +18,13 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
   const [showNextButton, setShowNextButton] = useState(false);
 
   const mapNodes = {
-    M1: { x: 0.1, y: 0.2 },
+    M1: { x: 0.147, y: 0.014 },
     M2: { x: 0.3, y: 0.2 },
     M3: { x: 0.3, y: 0.4 },
     M4: { x: 0.5, y: 0.4 },
     M5: { x: 0.7, y: 0.4 },
     M6: { x: 0.7, y: 0.2 },
-    M7: { x: 0.5, y: 0.1 },
+    M7: { x: 0.85, y: 0.021 },
   };
 
   const mapConnections = [

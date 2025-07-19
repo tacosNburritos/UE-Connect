@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import LoadingScreen from './app/screens/LoadingScreen';
 import PFScreen from './app/screens/PFScreen';
-import FRScreen from './app/screens/FRScreen';
+import AdminScreen from './app/screens/AdminScreen';
 import EN1STFLOORScreen from './app/screens/EN1STFLOORScreen';
 import EN2NDFLOORScreen from './app/screens/EN2NDFLOORScreen';
 import EN3RDFLOORScreen from './app/screens/EN3RDFLOORScreen';
@@ -46,7 +46,7 @@ export default function App() {
         <Stack.Screen name="Loading" component={LoadingScreen} />
         <Stack.Screen name="Main" component={WelcomeScreen} />
         <Stack.Screen name="PathFind" component={PFScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="FreeRoam" component={FRScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="AdminScreen" component={AdminScreen} options={{ headerShown: false }} />
         <Stack.Screen name="EN1STFLOORScreen" component={EN1STFLOORScreen} />
         <Stack.Screen name="EN2NDFLOORScreen" component={EN2NDFLOORScreen} />
         <Stack.Screen name="EN3RDFLOORScreen" component={EN3RDFLOORScreen} />
