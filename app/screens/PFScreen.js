@@ -252,6 +252,7 @@ function PFScreen({ navigation }) {
       return;
     }
 
+    //filtered options para di kita yung iba
     const dropdownOptions = data
     .filter(loc => loc.checker !== 'excluded')
     .map(loc => ({

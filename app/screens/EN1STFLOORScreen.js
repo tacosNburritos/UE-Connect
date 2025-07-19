@@ -218,11 +218,16 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
             );
           })}
 
-          {/* Animated path route */}
           {adjustedPath.slice(0, -1).map((node, index) => {
+            const nextNode = adjustedPath[index + 1];
+
+            // Skip drawing line if the next node is a stair
+            if (stairNodes.includes(nextNode)) return null;
+
             const start = buildingCoordinates[node];
-            const end = buildingCoordinates[adjustedPath[index + 1]];
+            const end = buildingCoordinates[nextNode];
             if (!start || !end) return null;
+
             return renderAnimatedLine(
               start.x * containerSize.width,
               start.y * containerSize.height,
@@ -232,6 +237,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
               `line-${index}`
             );
           })}
+
 
           {/* Mid path points */}
           {adjustedPath.map((node, index) => {
@@ -286,28 +292,34 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
         </Svg>
 
         {/* Label points */}
-        {Object.entries(labelNodes).map(([key, { x, y, label }]) => (
-          <React.Fragment key={`label-${key}`}>
-            <Circle
-              cx={x * containerSize.width}
-              cy={y * containerSize.height}
-              r={3}
-              fill="black"
-            />
-            <Text
-              style={{
-                position: "absolute",
-                left: x * containerSize.width + 6,
-                top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
-                fontSize: 10,
-                fontWeight: "bold",
-              }}
-            >
-              {label}
-            </Text>
-          </React.Fragment>
-        ))}
+        {Object.entries(labelNodes).map(([key, { x, y, label }]) => {
+          if (stairNodes.includes(label)) return null;
+
+          return (
+            <React.Fragment key={`label-${key}`}>
+              <Circle
+                cx={x * containerSize.width}
+                cy={y * containerSize.height}
+                r={0}
+                fill="black"
+              />
+              <Text
+                style={{
+                  position: "absolute",
+                  left: x * containerSize.width + 6,
+                  top: y * containerSize.height - 6,
+                  color: "red",
+                  fontSize: 10,
+                  fontWeight: "bold",
+                }}
+              >
+                {label}
+              </Text>
+            </React.Fragment>
+          );
+        })}
+
+
 
         {/* "You" Label */}
         {buildingCoordinates[adjustedPath[0]] && (

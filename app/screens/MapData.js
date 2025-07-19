@@ -532,7 +532,7 @@ export const buildingCoordinates = {
   '2A': { x: 0.79, y: 0.88, floor: 2 }, 
 //EN - STAIRS RIGHT WING
   'O2': { x: 0.24, y: 0.14, floor: 2 }, 
-  'U2': { x: 0.79, y: 0.14, floor: 2 }, 
+  'U2': { x: 0.79, y: 0.14, floor: 2 }, //dito ko natapos
 
 'W2': { x: 0.30, y: 0.89, floor: 2 },
 'X2': { x: 0.42, y: 0.89, floor: 2 },
@@ -554,12 +554,15 @@ export const buildingCoordinates = {
 'A2': { x: 0.54, y: 0.82, floor: 2 },
 'B2': { x: 0.54, y: 0.79, floor: 2 },
 'C2': { x: 0.54, y: 0.76, floor: 2 },
+
 'D2': { x: 0.54, y: 0.69, floor: 2 },
 'E2': { x: 0.54, y: 0.65, floor: 2 },
 'F2': { x: 0.54, y: 0.61, floor: 2 },
+
 'G2': { x: 0.54, y: 0.56, floor: 2 },
 'H2': { x: 0.54, y: 0.52, floor: 2 },
 'I2': { x: 0.54, y: 0.49, floor: 2 },
+
 'J2': { x: 0.54, y: 0.42, floor: 2 },
 'K2': { x: 0.54, y: 0.36, floor: 2 },
 'L2': { x: 0.54, y: 0.29, floor: 2 },
@@ -1560,7 +1563,7 @@ export const graph = {
 'Electrical Power Lab 4': { 'M2': 1 },
 'EE Tool Room': { 'N2': 1 },
 
-'A2': { 'B2': 2, 'B2': 2, 'Y2': 2, 'Bio Laboratory Stock Room': 1 },
+'A2': { 'B2': 2, 'Y2': 2, 'Bio Laboratory Stock Room': 1 },
 'B2': { 'A2': 2, 'C2': 2, 'DCSS Faculty Room': 1},
 'C2': { 'B2': 2, 'D2': 2, 'CLR 1': 1, 'CLR 2': 1 },
 'D2': { 'C2': 2, 'E2': 2, 'CLR 3': 1, 'ECE Lab 1': 1},
@@ -1580,10 +1583,11 @@ export const graph = {
 'Physics Stock Room': { 'R2': 1 },
 'EN 201': { 'S2': 1 },
 
-'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)': { 'P2': 1 },
+'FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)': { 'Z2': 1 },
 'FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)': { 'T2': 1 },
 'MALE COMFORT ROOM (CR) - LEFT WING (2nd)': { 'W2': 1 },
-'FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)': { 'Z2': 1 },
+'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)': { 'P2': 1 },
+
 
 'P2': { 'O2': 2, 'Q2': 2, 'MALE COMFORT ROOM (CR) - RIGHT WING (2nd)': 1 },
 'Q2': { 'P2': 2, 'R2': 2, 'Net Lab': 1, 'EN 219': 1 },
@@ -1605,6 +1609,7 @@ export const graph = {
 'Y2': { 'X2': 2, 'Z2': 2, 'A2': 2, 'EN Chem Laboratory Stock Room': 1 },
 'Z2': { 'Y2': 2, '2A': 2, 'FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)': 1, 'EN 215': 1 },
 
+//THIS IS NEXT
 //ENGINEERING BUILDING 3RD FLOOR------------------------------
 'A3': { 'B3': 2, 'V3': 2, 'EN 313': 1 },
 'B3': { 'A3': 2, 'C3': 2, 'EN 312': 1 },

@@ -44,7 +44,7 @@ function WelcomeScreen({ navigation }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button1} onPress={handleRoamPress}>
-                    <Text style={styles.buttonText}> 3D Map </Text>
+                    <Text style={styles.buttonText}> Admin Panel </Text>
                 </TouchableOpacity>
             </View>
         </View>

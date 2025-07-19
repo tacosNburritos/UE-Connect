@@ -223,11 +223,16 @@ const TYK8THFLOORScreen = ({ route, navigation }) => {
             );
           })}
 
-          {/* Animated path route */}
           {adjustedPath.slice(0, -1).map((node, index) => {
+            const nextNode = adjustedPath[index + 1];
+
+            // Skip drawing line if the next node is a stair
+            if (stairNodes.includes(nextNode)) return null;
+
             const start = buildingCoordinates[node];
-            const end = buildingCoordinates[adjustedPath[index + 1]];
+            const end = buildingCoordinates[nextNode];
             if (!start || !end) return null;
+
             return renderAnimatedLine(
               start.x * containerSize.width,
               start.y * containerSize.height,
