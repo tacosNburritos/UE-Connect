@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bdc798bd-12df-425c-8f63-a099efeef2d5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/app/screens/EN1STFLOORScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/EN1STFLOORScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/LCT2NDFLOORScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/LCT2NDFLOORScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/MapData.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/MapData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/PFScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/PFScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/TYK6THFLOORScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/TYK6THFLOORScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/UEScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/UEScreen.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="30Ggb9GpUkGZxDpZjLTSMy9dqaM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bdc798bd-12df-425c-8f63-a099efeef2d5" name="Changes" comment="" />
+      <created>1753259393093</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1753259393093</updated>
+    </task>
+    <servers />
+  </component>
+</project>

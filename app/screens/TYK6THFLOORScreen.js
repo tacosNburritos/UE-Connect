@@ -62,6 +62,12 @@ const TYK6THFLOORScreen = ({ route, navigation }) => {
   const lineProgress = adjustedPath.slice(0, -1).map(() => useSharedValue(0));
 
   useEffect(() => {
+    console.log("adjustedPath", adjustedPath);
+adjustedPath.forEach(node => {
+  const coords = buildingCoordinates[node];
+  console.log(`Node: ${node}, Coords:`, coords);
+});
+
     adjustedPath.forEach((_, index) => {
       if (index === 0) return;
       setTimeout(() => {
@@ -201,7 +207,7 @@ const TYK6THFLOORScreen = ({ route, navigation }) => {
         {/* Background image to trace over */}
         <Image
           source={require("../images/TYK6THFLR.png")}
-          style={{ width: "100%", height: "102%", position: "absolute", resizeMode: "contain" }}
+          style={{ width: "97%", height: "102%", position: "absolute", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>

@@ -23,7 +23,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     M3: { x: 0.3, y: 0.4 },
     M4: { x: 0.5, y: 0.4 },
     M5: { x: 0.7, y: 0.4 },
-    M6: { x: 0.7, y: 0.2 },
+    M6: { x: 0.7, y: 0.20 },
     M7: { x: 0.85, y: 0.021 },
   };
 

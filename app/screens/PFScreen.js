@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+// PFScreen.js
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
-import { dropdowndata, buildingCoordinates, graph } from '../screens/MapData';
-
-//bago to
-import { useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 
 function PFScreen({ navigation }) {
@@ -12,10 +9,9 @@ function PFScreen({ navigation }) {
     navigation.goBack();
   };
 
-  //bago to
   const [dropdownData, setDropdownData] = useState([]);
   const [buildingCoordinates, setBuildingCoordinates] = useState({});
-
+  const [graph, setGraph] = useState({});
   const [selectedStart, setSelectedStart] = useState("");
   const [selectedEnd, setSelectedEnd] = useState("");
 
@@ -96,10 +92,8 @@ function PFScreen({ navigation }) {
       return;
     }
 
-    // Nearest Male CR
-    if (selectedEnd === "NEAREST MALE CR") {
-      const maleOptions = [
-        "MALE COMFORT ROOM (CR) - LEFT WING",
+    const maleOptions = [
+      "MALE COMFORT ROOM (CR) - LEFT WING",
         "MALE COMFORT ROOM (CR) - RIGHT WING",
         "MALE COMFORT ROOM (CR) - LEFT WING (2nd)",
         "MALE COMFORT ROOM (CR) - RIGHT WING (2nd)",
@@ -125,23 +119,9 @@ function PFScreen({ navigation }) {
         "MALE COMFORT ROOM (CR) - LCT (6th)",
         "MALE COMFORT ROOM (CR) - LCT (7th)",
         "MALE COMFORT ROOM (CR) - LCT (8th)",
-
-      ];
-
-      const nearest = getNearestCR(startCoord, maleOptions);
-
-      if (nearest) {
-        actualEnd = nearest;
-      } else {
-        Alert.alert("Error", "Could not determine the nearest male CR.");
-        return;
-      }
-    }
-
-    // Nearest Female CR
-    else if (selectedEnd === "NEAREST FEMALE CR") {
-      const femaleOptions = [
-        "FEMALE COMFORT ROOM (CR) - LEFT WING",
+    ]; // Your male CR options here (same as before)
+    const femaleOptions = [
+      "FEMALE COMFORT ROOM (CR) - LEFT WING",
         "FEMALE COMFORT ROOM (CR) - RIGHT WING",
         "FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)",
         "FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)",
@@ -166,123 +146,112 @@ function PFScreen({ navigation }) {
         "FEMALE COMFORT ROOM (CR) - LCT (6th)",
         "FEMALE COMFORT ROOM (CR) - LCT (7th)",
         "FEMALE COMFORT ROOM (CR) - LCT (8th)",
+    ]; // Your female CR options here (same as before)
 
-      ];
-
+    if (selectedEnd === "NEAREST MALE CR") {
+      const nearest = getNearestCR(startCoord, maleOptions);
+      if (nearest) actualEnd = nearest;
+      else return Alert.alert("Error", "Could not determine the nearest male CR.");
+    } else if (selectedEnd === "NEAREST FEMALE CR") {
       const nearest = getNearestCR(startCoord, femaleOptions);
-
-      if (nearest) {
-        actualEnd = nearest;
-      } else {
-        Alert.alert("Error", "Could not determine the nearest female CR.");
-        return;
-      }
+      if (nearest) actualEnd = nearest;
+      else return Alert.alert("Error", "Could not determine the nearest female CR.");
     }
 
     const path = dijkstra(selectedStart, actualEnd);
-    console.log("Path:", path);
-
     const startFloor = startCoord.floor;
 
-    if (startFloor === 2) {
-      navigation.navigate('EN2NDFLOORScreen', { path, buildingCoordinates });
-    } else if (startFloor === 3) {
-      navigation.navigate('EN3RDFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 4) {
-      navigation.navigate('EN4THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 5) {
-      navigation.navigate('UEScreen', { path, buildingCoordinates });
-    }else if (startFloor === 6) {
-      navigation.navigate('TYK1STFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 7) {
-      navigation.navigate('TYK2NDFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 8) {
-      navigation.navigate('TYK3RDFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 9) {
-      navigation.navigate('TYK4THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 10) {
-      navigation.navigate('TYK5THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 11) {
-      navigation.navigate('TYK6THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 12) {
-      navigation.navigate('TYK7THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 13) {
-      navigation.navigate('TYK8THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 14) {
-      navigation.navigate('TYK9THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 15) {
-      navigation.navigate('TYK10THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 16) {
-      navigation.navigate('', { path, buildingCoordinates });
-    }else if (startFloor === 17) {
-      navigation.navigate('LCT1STFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 18) {
-      navigation.navigate('LCT2NDFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 19) {
-      navigation.navigate('LCT3RDFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 20) {
-      navigation.navigate('LCT4THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 21) {
-      navigation.navigate('LCT5THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 22) {
-      navigation.navigate('LCT6THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 23) {
-      navigation.navigate('LCT7THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 24) {
-      navigation.navigate('LCT8THFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 25) {
-      navigation.navigate('OAFLOORScreen', { path, buildingCoordinates });
-    }else if (startFloor === 26) {
-      navigation.navigate('HRMFLOORScreen', { path, buildingCoordinates });
-    }
-    else {
-      navigation.navigate('EN1STFLOORScreen', { path, buildingCoordinates });
-    }
-  };
+    const screenMap = {
+      2: 'EN2NDFLOORScreen',
+      3: 'EN3RDFLOORScreen',
+      4: 'EN4THFLOORScreen',
+      5: 'UEScreen',
+      6: 'TYK1STFLOORScreen',
+      7: 'TYK2NDFLOORScreen',
+      8: 'TYK3RDFLOORScreen',
+      9: 'TYK4THFLOORScreen',
+      10: 'TYK5THFLOORScreen',
+      11: 'TYK6THFLOORScreen',
+      12: 'TYK7THFLOORScreen',
+      13: 'TYK8THFLOORScreen',
+      14: 'TYK9THFLOORScreen',
+      15: 'TYK10THFLOORScreen',
+      17: 'LCT1STFLOORScreen',
+      18: 'LCT2NDFLOORScreen',
+      19: 'LCT3RDFLOORScreen',
+      20: 'LCT4THFLOORScreen',
+      21: 'LCT5THFLOORScreen',
+      22: 'LCT6THFLOORScreen',
+      23: 'LCT7THFLOORScreen',
+      24: 'LCT8THFLOORScreen',
+      25: 'OAFLOORScreen',
+      26: 'HRMFLOORScreen',
+    };
 
-  //bago to
- useEffect(() => {
-  const fetchLocations = async () => {
-    const { data, error } = await supabase
-      .from('locations')
-      .select('*')
-
-    if (error) {
-      console.error("Error fetching locations:", error);
-      return;
-    }
-
-    //filtered options para di kita yung iba
-    const dropdownOptions = data
-    .filter(loc => loc.checker !== 'excluded')
-    .map(loc => ({
-      label: loc.label,
-      value: loc.label,
-  }));
-
-
-    const coordsMap = {};
-    data.forEach(loc => {
-      coordsMap[loc.label] = {
-        x: loc.x,
-        y: loc.y,
-        floor: loc.floor,
-      };
+    navigation.navigate(screenMap[startFloor] || 'EN1STFLOORScreen', {
+      path,
+      buildingCoordinates,
     });
+    console.log("🚀 Final path:", path);
 
-    setDropdownData([
-      { label: 'NEAREST MALE CR', value: 'NEAREST MALE CR' },
-      { label: 'NEAREST FEMALE CR', value: 'NEAREST FEMALE CR' },
-      ...dropdownOptions,
-    ]);
-
-    setBuildingCoordinates(coordsMap);
   };
 
-  fetchLocations();
+ useEffect(() => {
+  const fetchGraph = async () => {
+    try {
+      const { data: locations, error: locError } = await supabase.from('locations').select('id, label, x, y, floor');
+      if (locError) {
+        console.error("❌ Error fetching locations:", locError);
+        return;
+      }
+
+      console.log("✅ Fetched locations:", locations.length);
+
+      const labelMap = {};
+      const coordsMap = {};
+
+      locations.forEach(loc => {
+        labelMap[loc.id] = loc.label;
+        coordsMap[loc.label] = { x: loc.x, y: loc.y, floor: loc.floor };
+      });
+
+      const { data: combinedConnections, error } = await supabase.from('connections').select('*');
+
+      if (error) {
+        console.error("❌ Error fetching connections:", error);
+        return;
+      }
+
+      console.log("✅ Fetched connections:", combinedConnections.length);
+
+      const graphMap = {};
+
+      combinedConnections.forEach(conn => {
+        const fromLabel = labelMap[conn.from_id];
+        const toLabel = labelMap[conn.to_id];
+        const weight = conn.weight || 1;
+
+        if (!fromLabel || !toLabel) {
+          console.warn("⚠️ Skipping connection with missing label:", conn);
+          return;
+        }
+
+        if (!graphMap[fromLabel]) graphMap[fromLabel] = {};
+        graphMap[fromLabel][toLabel] = weight;
+
+        if (!graphMap[toLabel]) graphMap[toLabel] = {};
+        graphMap[toLabel][fromLabel] = weight;
+      });
+
+      console.log("✅ Final graph node count:", Object.keys(graphMap).length);
+      setGraph(graphMap);
+    } catch (err) {
+      console.error("❌ Unexpected error in fetchGraph:", err);
+    }
+  };
+
+  fetchGraph();
 }, []);
-
-
 
   return (
     <View style={styles.container}>
@@ -293,24 +262,14 @@ function PFScreen({ navigation }) {
 
       <View style={styles.dropdownContainer}>
         <Text style={styles.label}>Select Current Location</Text>
-        <SelectList 
-          setSelected={setSelectedStart} 
-          data={dropdownData} 
-          save="value" 
-          placeholder="Select Location"
-          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
-        />
+        <SelectList setSelected={setSelectedStart} data={dropdownData} save="value"
+          placeholder="Select Location" boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} />
       </View>
 
       <View style={styles.dropdownContainer}>
         <Text style={styles.label}>Select Destination</Text>
-        <SelectList 
-          setSelected={setSelectedEnd} 
-          data={dropdownData} 
-          save="value" 
-          placeholder="Select Location"
-          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} 
-        />
+        <SelectList setSelected={setSelectedEnd} data={dropdownData} save="value"
+          placeholder="Select Location" boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} />
       </View>
 
       <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
@@ -321,7 +280,6 @@ function PFScreen({ navigation }) {
         <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
           <Text style={styles.buttonText1}>Go Back</Text>
         </TouchableOpacity>
-
         <TouchableOpacity style={styles.button2}>
           <Text style={styles.buttonText1}>Free Roam</Text>
         </TouchableOpacity>
@@ -330,7 +288,6 @@ function PFScreen({ navigation }) {
   );
 }
 
-// --- styles remain unchanged
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -441,5 +398,4 @@ const styles = StyleSheet.create({
     marginEnd: 10,
   },
 });
-
 export default PFScreen;
