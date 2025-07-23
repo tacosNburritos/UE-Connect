@@ -199,7 +199,7 @@ function PFScreen({ navigation }) {
  useEffect(() => {
   const fetchGraph = async () => {
     try {
-      const { data: locations, error: locError } = await supabase.from('locations').select('id, label, x, y, floor');
+      const { data: locations, error: locError } = await supabase.from('locations').select('*');
       if (locError) {
         console.error("❌ Error fetching locations:", locError);
         return;
@@ -209,14 +209,26 @@ function PFScreen({ navigation }) {
 
       const labelMap = {};
       const coordsMap = {};
+      const dropdownOptions = [];
 
       locations.forEach(loc => {
         labelMap[loc.id] = loc.label;
         coordsMap[loc.label] = { x: loc.x, y: loc.y, floor: loc.floor };
+
+        if (loc.checker !== 'excluded') {
+          dropdownOptions.push({ label: loc.label, value: loc.label });
+        }
       });
 
-      const { data: combinedConnections, error } = await supabase.from('connections').select('*');
+      // 🧠 Update dropdowns and coordinates
+      setBuildingCoordinates(coordsMap);
+      setDropdownData([
+        { label: 'NEAREST MALE CR', value: 'NEAREST MALE CR' },
+        { label: 'NEAREST FEMALE CR', value: 'NEAREST FEMALE CR' },
+        ...dropdownOptions
+      ]);
 
+      const { data: combinedConnections, error } = await supabase.from('connections').select('*');
       if (error) {
         console.error("❌ Error fetching connections:", error);
         return;
@@ -252,6 +264,7 @@ function PFScreen({ navigation }) {
 
   fetchGraph();
 }, []);
+
 
   return (
     <View style={styles.container}>
