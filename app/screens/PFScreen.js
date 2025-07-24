@@ -1,4 +1,3 @@
-// PFScreen.js
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
@@ -162,28 +161,12 @@ function PFScreen({ navigation }) {
     const startFloor = startCoord.floor;
 
     const screenMap = {
-      2: 'EN2NDFLOORScreen',
-      3: 'EN3RDFLOORScreen',
-      4: 'EN4THFLOORScreen',
+      2: 'EN2NDFLOORScreen', 3: 'EN3RDFLOORScreen', 4: 'EN4THFLOORScreen',
       5: 'UEScreen',
-      6: 'TYK1STFLOORScreen',
-      7: 'TYK2NDFLOORScreen',
-      8: 'TYK3RDFLOORScreen',
-      9: 'TYK4THFLOORScreen',
-      10: 'TYK5THFLOORScreen',
-      11: 'TYK6THFLOORScreen',
-      12: 'TYK7THFLOORScreen',
-      13: 'TYK8THFLOORScreen',
-      14: 'TYK9THFLOORScreen',
-      15: 'TYK10THFLOORScreen',
-      17: 'LCT1STFLOORScreen',
-      18: 'LCT2NDFLOORScreen',
-      19: 'LCT3RDFLOORScreen',
-      20: 'LCT4THFLOORScreen',
-      21: 'LCT5THFLOORScreen',
-      22: 'LCT6THFLOORScreen',
-      23: 'LCT7THFLOORScreen',
-      24: 'LCT8THFLOORScreen',
+      6: 'TYK1STFLOORScreen', 7: 'TYK2NDFLOORScreen', 8: 'TYK3RDFLOORScreen', 9: 'TYK4THFLOORScreen', 10: 'TYK5THFLOORScreen',
+      11: 'TYK6THFLOORScreen', 12: 'TYK7THFLOORScreen', 13: 'TYK8THFLOORScreen', 14: 'TYK9THFLOORScreen', 15: 'TYK10THFLOORScreen',
+      17: 'LCT1STFLOORScreen', 18: 'LCT2NDFLOORScreen', 19: 'LCT3RDFLOORScreen', 20: 'LCT4THFLOORScreen', 21: 'LCT5THFLOORScreen',
+      22: 'LCT6THFLOORScreen', 23: 'LCT7THFLOORScreen', 24: 'LCT8THFLOORScreen',
       25: 'OAFLOORScreen',
       26: 'HRMFLOORScreen',
     };
@@ -192,7 +175,7 @@ function PFScreen({ navigation }) {
       path,
       buildingCoordinates,
     });
-    console.log("🚀 Final path:", path);
+    console.log("Final path:", path);
 
   };
 
@@ -201,11 +184,11 @@ function PFScreen({ navigation }) {
     try {
       const { data: locations, error: locError } = await supabase.from('locations').select('*');
       if (locError) {
-        console.error("❌ Error fetching locations:", locError);
+        console.error("Error fetching locations:", locError);
         return;
       }
 
-      console.log("✅ Fetched locations:", locations.length);
+      console.log("Fetched locations:", locations.length);
 
       const labelMap = {};
       const coordsMap = {};
@@ -220,7 +203,7 @@ function PFScreen({ navigation }) {
         }
       });
 
-      // 🧠 Update dropdowns and coordinates
+      // Update dropdowns and coordinates
       setBuildingCoordinates(coordsMap);
       setDropdownData([
         { label: 'NEAREST MALE CR', value: 'NEAREST MALE CR' },
@@ -228,23 +211,39 @@ function PFScreen({ navigation }) {
         ...dropdownOptions
       ]);
 
-      const { data: combinedConnections, error } = await supabase.from('connections').select('*');
-      if (error) {
-        console.error("❌ Error fetching connections:", error);
-        return;
+      let allConnections = [];
+      let from = 0;
+      const pageSize = 1000;
+
+      while (true) {
+        const { data, error } = await supabase
+          .from('connections')
+          .select('*')
+          .range(from, from + pageSize - 1);
+
+        if (error) {
+          console.error("Error fetching page:", error);
+          break;
+        }
+
+        if (data.length === 0) break;
+
+        allConnections = [...allConnections, ...data];
+        from += pageSize;
+
+        if (data.length < pageSize) break; // done fetching
       }
 
-      console.log("✅ Fetched connections:", combinedConnections.length);
+      console.log("Total fetched connections:", allConnections.length);
+      
+            const graphMap = {};
 
-      const graphMap = {};
-
-      combinedConnections.forEach(conn => {
+      allConnections.forEach(conn => {
         const fromLabel = labelMap[conn.from_id];
         const toLabel = labelMap[conn.to_id];
         const weight = conn.weight || 1;
 
         if (!fromLabel || !toLabel) {
-          console.warn("⚠️ Skipping connection with missing label:", conn);
           return;
         }
 
@@ -255,15 +254,16 @@ function PFScreen({ navigation }) {
         graphMap[toLabel][fromLabel] = weight;
       });
 
-      console.log("✅ Final graph node count:", Object.keys(graphMap).length);
-      setGraph(graphMap);
-    } catch (err) {
-      console.error("❌ Unexpected error in fetchGraph:", err);
-    }
-  };
 
-  fetchGraph();
-}, []);
+            console.log("Final graph node count:", Object.keys(graphMap).length);
+            setGraph(graphMap);
+          } catch (err) {
+            console.error("Unexpected error in fetchGraph:", err);
+          }
+        };
+
+        fetchGraph();
+      }, []);
 
 
   return (
