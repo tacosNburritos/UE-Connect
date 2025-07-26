@@ -134,6 +134,7 @@ function PFScreen({ navigation }) {
         "FEMALE COMFORT ROOM (CR) - TYK (4th)",
         "FEMALE COMFORT ROOM (CR) - TYK (5th)",
         "FEMALE COMFORT ROOM (CR) - TYK (6th)",
+        "FEMALE COMFORT ROOM (CR) - TYK (7th)",
         "FEMALE COMFORT ROOM (CR) - TYK (8th)",
         "FEMALE COMFORT ROOM (CR) - TYK (9th)",
         "FEMALE COMFORT ROOM (CR) - TYK (10th)",

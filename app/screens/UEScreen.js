@@ -147,6 +147,8 @@ const UEScreen = ({ route, navigation }) => {
     else if (nextFloor === 13) nextScreen = "TYK8THFLOORScreen";
     else if (nextFloor === 14) nextScreen = "TYK9THFLOORScreen";
     else if (nextFloor === 15) nextScreen = "TYK10THFLOORScreen";
+    else if (nextFloor === 25) nextScreen = "OAFLOORScreen";
+    else if (nextFloor === 26) nextScreen = "HRMScreen";
     else nextScreen = "EN1STFLOORScreen";
     navigation.navigate(nextScreen, {
       path: remainingPath,

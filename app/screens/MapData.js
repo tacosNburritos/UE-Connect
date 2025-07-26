@@ -1152,12 +1152,6 @@ export const buildingCoordinates = {
   '11N': {x: 0.57, y: 0.09, floor: 14},
 
 //TYK 10TH FLOOR-------------------------
-  // 'A12': { x: 0.44, y: 0.93, floor: 15 },
-  // 'B12': { x: 0.51, y: 0.90, floor: 15 },
-  // 'C12': { x: 0.60, y: 0.85, floor: 15 },
-  // 'D12': { x: 0.54, y: 0.82, floor: 15 },
-  // 'E12': { x: 0.47, y: 0.86, floor: 15 },
-  // 'F12': { x: 0.39, y: 0.90, floor: 15 },
   'FEMALE COMFORT ROOM (CR) - TYK (10th)': { x: 0.66, y: 0.50, floor: 15 },
   'MALE COMFORT ROOM (CR) - TYK (10th)': { x: 0.66, y: 0.40, floor: 15 },
 
@@ -1176,6 +1170,12 @@ export const buildingCoordinates = {
   'TYK 1014': {x: 0.48, y: 0.07, floor: 15},
   'TYK 1012': {x: 0.48, y: 0.17, floor: 15},
   'TYK 1010': {x: 0.48, y: 0.23, floor: 15},
+  'A12': { x: 0.44, y: 0.93, floor: 15 },
+  'B12': { x: 0.51, y: 0.90, floor: 15 },
+  'C12': { x: 0.60, y: 0.85, floor: 15 },
+  'D12': { x: 0.54, y: 0.82, floor: 15 },
+  'E12': { x: 0.47, y: 0.86, floor: 15 },
+  'F12': { x: 0.39, y: 0.90, floor: 15 },
 
   'G12': { x: 0.62, y: 0.82, floor: 15 },
   'H12': { x: 0.60, y: 0.79, floor: 15 },
@@ -1203,6 +1203,7 @@ export const buildingCoordinates = {
 //TYK 11TH FLOOR-------------------------
   //'U15': { x: 0.51, y: 0.23, floor: 16 },
 
+  //not done yet here
 //LCT 1ST FLOOR--------------------------
   'FEMALE COMFORT ROOM (CR) - LCT (1st)': { x: 0.59, y: 0.89, floor: 17 },
   'MALE COMFORT ROOM (CR) - LCT (1st)': { x: 0.59, y: 0.89, floor: 17 },
@@ -1422,7 +1423,7 @@ export const buildingCoordinates = {
   'LCT 810': { x: 0.46, y: 0.23, floor: 24 },
 
   'LCT Multipurpose Room': { x: 0.46, y: 0.63, floor: 24 },
-
+  
 //OA BUILDING--------------------------
   'Guidance Counseling': { x: 0.48, y: 0.05, floor: 25 },
   'SAO (Student Affairs Office)': { x: 0.48, y: 0.37, floor: 25 },
@@ -2151,6 +2152,7 @@ export const graph = {
   'M12': { 'L12': 2, 'N12': 2, 'M1212': 2 },
   'M1212':{ 'M12': 2 ,'FEMALE COMFORT ROOM (CR) - TYK (10th)': 1, 'MALE COMFORT ROOM (CR) - TYK (10th)': 1 },
   'N12': { 'M12': 2, 'O12': 2, 'TYK 1007': 1 },
+  
   'O12': { 'N12': 2, 'P12': 2, 'XO12': 2, 'TYK 1008': 1 },
   'XO12': { 'O12': 2,'ELEVATOR R': 22, },
   'P12': { 'O12': 2, 'Q12': 2, 'U12': 2, 'TYK 1009': 1},
@@ -2160,6 +2162,7 @@ export const graph = {
   'T12': { 'S12': 2, 'U12': 2, 'TYK 1012': 1 },
   'U12': { 'T12': 2, 'V12': 2, 'P12': 2, 'TYK 1010': 1 },
   
+
   //LCT 1ST FLOOR-----------------------------
   'LCT - EL': { 'F16': 2, 'LCT Building': 2 },
   'LCT - ELEVATOR': { 'C16': 2, 'J20': 4, 'J21': 6, 'J22': 8, 'F23': 10, 'J24': 12, 'J25': 14, 'J26': 16},
@@ -2391,7 +2394,7 @@ export const graph = {
     'GYM': { },
     'Old Academic Building': { 'F5': 1 },
     'Playground': { 'G5': 1 },
-    'LCT Building': { 'I5': 1 , 'LCT - EL': 2 }, //stopped here
+    'LCT Building': { 'I5': 1 , 'LCT - EL': 2 }, 
     'EN Building (Right Wing)': { 'W5': 1 },
     'EN Building (Left Wing)': { 'M5': 1 },
     'TYK Building': { 'O5': 5, 'Q5': 5, 'TYK E1': 1 },
