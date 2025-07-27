@@ -1229,6 +1229,7 @@ export const buildingCoordinates = {
   'H16': { x: 0.68, y: 0.25, floor: 17 },
   'I16': { x: 0.68, y: 0.16, floor: 17 },
 
+  //here next
 //LCT 2ND FLOOR--------------------------
   'FEMALE COMFORT ROOM (CR) - LCT (2nd)': { x: 0.46, y: 0.08, floor: 18 },
   'MALE COMFORT ROOM (CR) - LCT (2nd)': { x: 0.46, y: 0.87, floor: 18 },
@@ -1258,6 +1259,7 @@ export const buildingCoordinates = {
   'I20': { x: 0.51, y: 0.08, floor: 18 },
   'J20': { x: 0.46, y: 0.57, floor: 18 },
 
+  //next
 //LCT 3RD FLOOR--------------------------
   'FEMALE COMFORT ROOM (CR) - LCT (3rd)': { x: 0.46, y: 0.08, floor: 19 },
   'MALE COMFORT ROOM (CR) - LCT (3rd)': { x: 0.46, y: 0.87, floor: 19 },
@@ -2183,7 +2185,7 @@ export const graph = {
   'B16': { 'A16': 2, 'C16': 2, 'LCT Canteen': 1},
   'C16': { 'B16': 2, 'D16': 2, 'F16': 2, 'LCT - ELEVATOR': 2 },
   'D16': { 'C16': 2, 'E16': 2, 'Student Coordinator Office': 1},
-  'E16': { 'D16': 2, 'E16': 2, 'LCT 101': 1, 'LCT 102': 1},
+  'E16': { 'D16': 2, 'F16': 2, 'LCT 101': 1, 'LCT 102': 1},
   'F16': { 'C16': 2, 'G16': 2, 'LCT - EL': 2},
   'G16': { 'F16': 2, 'H16': 2, 'TLE/Practice House': 1},
   'H16': { 'G16': 2, 'I16': 2, 'Practice Arts': 1},
@@ -2219,6 +2221,7 @@ export const graph = {
   'I20': { 'H20': 2, 'FEMALE COMFORT ROOM (CR) - LCT (2nd)': 1, 'LCT 205': 1 },
   'J20': { 'D20': 2, 'LCT - ELEVATOR': 4,  },
   
+  //try hallway nodes only kung gagana
   //LCT 3RD FLOOR-----------------------------
   'MALE COMFORT ROOM (CR) - LCT (3rd)': { 'A21': 1, },
   'FEMALE COMFORT ROOM (CR) - LCT (3rd)': { 'I21': 1, },
