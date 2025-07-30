@@ -399,6 +399,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     position: 'absolute',
     bottom: 50,
+    left: 6,
     width: '205%',
   },
   button1: {

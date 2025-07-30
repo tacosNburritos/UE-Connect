@@ -112,8 +112,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.55,
     shadowRadius: 4,
     elevation: 5,
-    left: 7,
-    bottom: 12,
     justifyContent: 'center',
   },
   buttonText: {
@@ -123,11 +121,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    position: 'absolute',
-    bottom: 300,
-    right: -20,
-    width: '80%',
+    marginTop: 12,
+    alignItems: 'center',
+    width: '100%',
   },
 });
