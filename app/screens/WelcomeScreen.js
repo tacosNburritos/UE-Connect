@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Text, TouchableOpacity, View, StatusBar, Dimensions } from 'react-native';
+import { ImageBackground, StyleSheet, Image, Text, TouchableOpacity, View, StatusBar, Dimensions } from 'react-native';
 
 function WelcomeScreen({ navigation }) {
     const { width, height } = Dimensions.get('window'); // You can remove if not used elsewhere
@@ -9,7 +9,7 @@ function WelcomeScreen({ navigation }) {
     };
 
     const handleRoamPress = () => {
-        navigation.navigate('AdminScreen');
+        navigation.navigate('LoginScreen');
     };
 
     return (
@@ -19,19 +19,23 @@ function WelcomeScreen({ navigation }) {
                 backgroundColor="transparent"
                 translucent={true}
             />
-
+            <ImageBackground
+                source={require('../images/NEW BG.png')}
+                style={styles.background}
+                resizeMode="cover"
+            ></ImageBackground>
             <View style={styles.imageContainer}>
                 <Image
                     source={require("../images/background v2.png")}
                     style={styles.placeholder}
-                    resizeMode="contain"
+                    resizeMode="cover"
                 />
             </View>
 
             {/* Header */}
             <View style={styles.header}>
                 <Image
-                    source={require("../assets/logo_red.png")}
+                    source={require("../assets/ue_logo.png")}
                     style={styles.logo_header}
                 />
                 <Text style={styles.text}>UE Connect</Text>
@@ -55,12 +59,13 @@ const styles = StyleSheet.create({
     button1: {
         width: '47%',
         height: 60,
-        backgroundColor: '#DF4242',
+        backgroundColor: '#b51509',
         borderRadius: 30,
         left: 7,
+        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.55)',
     },
     text: {
-        color: '#DF4242',
+        color: 'white',
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'left',
@@ -72,6 +77,7 @@ const styles = StyleSheet.create({
         bottom: 50,
         width: '90%',
         alignSelf: 'center',
+        
     },
     buttonText: {
         color: 'white',
@@ -81,19 +87,21 @@ const styles = StyleSheet.create({
         marginTop: 14,
     },
     header: {
-        position: 'absolute',
-        top: 0,
-        width: '100%',
-        height: 120,
-        backgroundColor: 'white',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-end',
-        flexDirection: 'row',
-        paddingStart: 20,
-        paddingBottom: 10,
-        borderBottomEndRadius: 30,
-        borderBottomStartRadius: 30,
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    height: 120,
+    backgroundColor: '#b51509',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+    flexDirection: 'row',
+    paddingStart: 20,
+    paddingBottom: 10,
+    borderBottomEndRadius: 30,
+    borderBottomStartRadius: 30,
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.55)',
     },
+
     placeholder: {
         width: '100%',
         height: '100%',

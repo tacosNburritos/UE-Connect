@@ -29,6 +29,7 @@ import LCT7THFLOORScreen from './app/screens/LCT7THFLOORScreen';
 import LCT8THFLOORScreen from './app/screens/LCT8THFLOORScreen';
 import OAFLOORScreen from './app/screens/OAFLOORScreen';
 import HRMFLOORScreen from './app/screens/HRMFLOORScreen';
+import LoginScreen from './app/screens/LoginScreen';
 
 
 import UEScreen from './app/screens/UEScreen';
@@ -71,6 +72,7 @@ export default function App() {
         <Stack.Screen name="LCT8THFLOORScreen" component={LCT8THFLOORScreen} />
         <Stack.Screen name="OAFLOORScreen" component={OAFLOORScreen} />
         <Stack.Screen name="HRMFLOORScreen" component={HRMFLOORScreen} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
 
         <Stack.Screen name="UEScreen" component={UEScreen} />
         <Stack.Screen name="OnBoard" component={OnBoardScreen} />

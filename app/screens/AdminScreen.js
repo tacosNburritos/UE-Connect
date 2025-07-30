@@ -108,7 +108,7 @@ const AdminScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-        <Text style={styles.backButtonText}>← Back to Welcome</Text>
+        <Text style={styles.backButtonText}>← Back to Home</Text>
       </TouchableOpacity>
     </View>
   );

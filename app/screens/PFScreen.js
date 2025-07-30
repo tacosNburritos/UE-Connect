@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
+import { ImageBackground, StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 import { supabase } from '../lib/supabase';
 
@@ -118,7 +118,7 @@ function PFScreen({ navigation }) {
         "MALE COMFORT ROOM (CR) - LCT (6th)",
         "MALE COMFORT ROOM (CR) - LCT (7th)",
         "MALE COMFORT ROOM (CR) - LCT (8th)",
-    ]; // Your male CR options here (same as before)
+    ];
     const femaleOptions = [
       "FEMALE COMFORT ROOM (CR) - LEFT WING",
         "FEMALE COMFORT ROOM (CR) - RIGHT WING",
@@ -146,7 +146,7 @@ function PFScreen({ navigation }) {
         "FEMALE COMFORT ROOM (CR) - LCT (6th)",
         "FEMALE COMFORT ROOM (CR) - LCT (7th)",
         "FEMALE COMFORT ROOM (CR) - LCT (8th)",
-    ]; // Your female CR options here (same as before)
+    ]; 
 
     if (selectedEnd === "NEAREST MALE CR") {
       const nearest = getNearestCR(startCoord, maleOptions);
@@ -268,7 +268,13 @@ function PFScreen({ navigation }) {
 
 
   return (
-    <View style={styles.container}>
+  <ImageBackground
+  source={require('../images/NEW BG.png')}
+  style={styles.background}
+  resizeMode="cover"
+>
+  <View style={styles.overlay}>
+    <View>
       <View style={styles.header}>
         <Image source={require("../assets/logo_red.png")} style={styles.logo_header} />
         <Text style={styles.text}>UE Connect</Text>
@@ -276,29 +282,40 @@ function PFScreen({ navigation }) {
 
       <View style={styles.dropdownContainer}>
         <Text style={styles.label}>Select Current Location</Text>
-        <SelectList setSelected={setSelectedStart} data={dropdownData} save="value"
-          placeholder="Select Location" boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} />
+        <SelectList
+          setSelected={setSelectedStart}
+          data={dropdownData}
+          save="value"
+          placeholder="Select Location"
+          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }}
+          dropdownStyles={{ backgroundColor: '#fff8f7' }}
+        />
       </View>
 
       <View style={styles.dropdownContainer}>
         <Text style={styles.label}>Select Destination</Text>
-        <SelectList setSelected={setSelectedEnd} data={dropdownData} save="value"
-          placeholder="Select Location" boxStyles={{ backgroundColor: 'white', borderRadius: 30 }} />
+        <SelectList
+          setSelected={setSelectedEnd}
+          data={dropdownData}
+          save="value"
+          placeholder="Select Location"
+          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }}
+          dropdownStyles={{ backgroundColor: '#fff8f7' }}
+        />
       </View>
 
       <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
         <Text style={styles.buttonText}>Search</Text>
       </TouchableOpacity>
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
-          <Text style={styles.buttonText1}>Go Back</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button2}>
-          <Text style={styles.buttonText1}>Free Roam</Text>
-        </TouchableOpacity>
-      </View>
     </View>
+
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
+        <Text style={styles.buttonText1}>Go Back</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+</ImageBackground>
   );
 }
 
@@ -307,12 +324,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+    background: {
+      flex: 1,
+      width: '100%',
+      height: '100%',
+    },
+    overlay: {
+      flex: 1,
+    
+    },
   searchbutton: {
     marginTop: 30,
     alignSelf: 'center',
     width: '47%',
     height: 50,
-    backgroundColor: '#DF4242',
+    backgroundColor: '#fff8f7',
     borderRadius: 30,
     elevation: 5,
     justifyContent: 'center',
@@ -321,12 +347,13 @@ const styles = StyleSheet.create({
   dropdownContainer: {
     marginTop: 20,
     paddingHorizontal: 20,
+  
   },
   label: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#DF4242',
+    color: 'white',
     paddingLeft: 10,
   },
   mapContainer: {
@@ -350,7 +377,7 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     height: 120,
-    backgroundColor: '#DF4242',
+    backgroundColor: '#fff8f7',
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
     flexDirection: 'row',
@@ -361,7 +388,7 @@ const styles = StyleSheet.create({
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.55)',
   },
   text: {
-    color: '#FFFFFF',
+    color: '#b51509',
     fontSize: 32,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -369,15 +396,15 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     position: 'absolute',
     bottom: 50,
-    width: '100%',
+    width: '205%',
   },
   button1: {
     width: '47%',
     height: 60,
-    backgroundColor: '#DF4242',
+    backgroundColor: '#fff8f7',
     borderRadius: 30,
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
     left: 7,
@@ -386,21 +413,21 @@ const styles = StyleSheet.create({
   button2: {
     width: '47%',
     height: 60,
-    backgroundColor: '#DF4242',
+    backgroundColor: '#fff8f7',
     borderRadius: 30,
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.55)',
     right: 7,
     bottom: 12,
   },
   buttonText: {
-    color: 'white',
+    color: '#b51509',
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 0,
   },
   buttonText1: {
-    color: 'white',
+    color: '#b51509',
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
