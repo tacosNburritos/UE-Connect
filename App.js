@@ -4,7 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import LoadingScreen from './app/screens/LoadingScreen';
 import PFScreen from './app/screens/PFScreen';
+import ViewScreen from './app/screens/ViewScreen';
 import AdminScreen from './app/screens/AdminScreen';
+import NewAdmin from './app/screens/NewAdmin';
 import EN1STFLOORScreen from './app/screens/EN1STFLOORScreen';
 import EN2NDFLOORScreen from './app/screens/EN2NDFLOORScreen';
 import EN3RDFLOORScreen from './app/screens/EN3RDFLOORScreen';
@@ -30,13 +32,14 @@ import LCT8THFLOORScreen from './app/screens/LCT8THFLOORScreen';
 import OAFLOORScreen from './app/screens/OAFLOORScreen';
 import HRMFLOORScreen from './app/screens/HRMFLOORScreen';
 import LoginScreen from './app/screens/LoginScreen';
-
+import EditRoom from './app/screens/EditRoom';
 
 import UEScreen from './app/screens/UEScreen';
 
 
 import OnBoardScreen from './app/screens/OnBoardScreen';
 import 'react-native-gesture-handler';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -47,7 +50,10 @@ export default function App() {
         <Stack.Screen name="Loading" component={LoadingScreen} />
         <Stack.Screen name="Main" component={WelcomeScreen} />
         <Stack.Screen name="PathFind" component={PFScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ViewScreen" component={ViewScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="NewAdmin" component={NewAdmin} options={{ headerShown: false }} />
         <Stack.Screen name="AdminScreen" component={AdminScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="EditRoom" component={EditRoom} options={{ headerShown: false }} />
         <Stack.Screen name="EN1STFLOORScreen" component={EN1STFLOORScreen} />
         <Stack.Screen name="EN2NDFLOORScreen" component={EN2NDFLOORScreen} />
         <Stack.Screen name="EN3RDFLOORScreen" component={EN3RDFLOORScreen} />
