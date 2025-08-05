@@ -22,7 +22,11 @@ export default function AdminScreen({ navigation }) {
                     />
             <Text style={styles.text}>UE Connect</Text>
         </View>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+                  <Text style={styles.backText}>← Back</Text>
+                </TouchableOpacity>
       <View style={styles.container}>
+
         <TouchableOpacity
           style={styles.fullWidthButton}
           onPress={() => navigation.navigate('NewAdmin')}
@@ -118,5 +122,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     letterSpacing: 1,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 140,
+    left: 24,
+  },
+  backText: {
+    fontSize: 18,
+    color: '#fff8f7',
   },
 });

@@ -19,14 +19,19 @@ export default function EditRoom({ navigation }) {
   const [loading, setLoading] = useState(true);
 
   const fetchLocations = async () => {
-    const { data, error } = await supabase.from('locations').select('id, label');
+  const { data, error } = await supabase
+    .from('locations')
+    .select('id, label')
+    .is('checker', 'NULL'); // Filter out 'excluded' entries
+
     if (error) {
-      Alert.alert('Error fetching locations', error.message);
+        Alert.alert('Error fetching locations', error.message);
     } else {
-      setLocations(data);
+        setLocations(data);
     }
     setLoading(false);
-  };
+    };
+
 
   const handleUpdate = async () => {
     if (!selectedId || !newLabel) {
