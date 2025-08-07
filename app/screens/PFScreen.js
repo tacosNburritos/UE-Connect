@@ -7,6 +7,8 @@ function PFScreen({ navigation }) {
   const handleGoBack = () => {
     navigation.goBack();
   };
+  const [selectedFilter, setSelectedFilter] = useState('ALL');
+  const [allDropdownOptions, setAllDropdownOptions] = useState([]); // For storing all fetched options
 
   const [dropdownData, setDropdownData] = useState([]);
   const [buildingCoordinates, setBuildingCoordinates] = useState({});
@@ -179,6 +181,25 @@ function PFScreen({ navigation }) {
     console.log("Final path:", path);
 
   };
+  useEffect(() => {
+    if (!selectedFilter || selectedFilter === 'ALL') {
+      setDropdownData(allDropdownOptions);
+      return;
+    }
+
+    let floorRange = [];
+    if (selectedFilter === 'EN') floorRange = [1, 2, 3, 4];
+    else if (selectedFilter === 'TYK') floorRange = Array.from({ length: 10 }, (_, i) => i + 6);
+    else if (selectedFilter === 'LCT') floorRange = Array.from({ length: 8 }, (_, i) => i + 17);
+
+    const filteredOptions = allDropdownOptions.filter(item => {
+      const coords = buildingCoordinates[item.value];
+      if (!coords || typeof coords.floor !== 'number') return true; // Include non-location items (like NEAREST CR)
+      return floorRange.includes(coords.floor);
+    });
+
+    setDropdownData(filteredOptions);
+  }, [selectedFilter, allDropdownOptions, buildingCoordinates]);
 
  useEffect(() => {
   const fetchGraph = async () => {
@@ -206,11 +227,16 @@ function PFScreen({ navigation }) {
 
       // Update dropdowns and coordinates
       setBuildingCoordinates(coordsMap);
-      setDropdownData([
+      const fullDropdownList = [
         { label: 'NEAREST MALE CR', value: 'NEAREST MALE CR' },
         { label: 'NEAREST FEMALE CR', value: 'NEAREST FEMALE CR' },
         ...dropdownOptions
-      ]);
+      ];
+
+      setAllDropdownOptions(fullDropdownList);
+      setDropdownData(fullDropdownList); // Initially show all
+
+
 
       let allConnections = [];
       let from = 0;
@@ -279,6 +305,31 @@ function PFScreen({ navigation }) {
         <Image source={require("../assets/logo_red.png")} style={styles.logo_header} />
         <Text style={styles.text}>UE Connect</Text>
       </View>
+  <View style={styles.filterContainer}>
+  <TouchableOpacity
+    style={[styles.filterButton, selectedFilter === 'EN' && styles.selectedFilter]}
+    onPress={() => setSelectedFilter(prev => prev === 'EN' ? 'ALL' : 'EN')}
+  >
+    <Text style={[styles.filterText, selectedFilter === 'EN' && { color: 'white' }]}>EN</Text>
+  </TouchableOpacity>
+
+  <TouchableOpacity
+    style={[styles.filterButton, selectedFilter === 'TYK' && styles.selectedFilter]}
+    onPress={() => setSelectedFilter(prev => prev === 'TYK' ? 'ALL' : 'TYK')}
+
+  >
+    <Text style={[styles.filterText, selectedFilter === 'TYK' && { color: 'white' }]}>TYK</Text>
+  </TouchableOpacity>
+
+  <TouchableOpacity
+    style={[styles.filterButton, selectedFilter === 'LCT' && styles.selectedFilter]}
+    onPress={() => setSelectedFilter(prev => prev === 'LCT' ? 'ALL' : 'LCT')}
+
+  >
+    <Text style={[styles.filterText, selectedFilter === 'LCT' && { color: 'white' }]}>LCT</Text>
+  </TouchableOpacity>
+</View>
+
 
       <View style={styles.dropdownContainer}>
         <Text style={styles.label}>Select Current Location</Text>
@@ -439,5 +490,27 @@ const styles = StyleSheet.create({
     height: 50,
     marginEnd: 10,
   },
+  filterContainer: {
+  flexDirection: 'row',
+  justifyContent: 'center',
+  marginTop: 20,
+  marginBottom: 10,
+  gap: 10,
+},
+filterButton: {
+  paddingVertical: 8,
+  paddingHorizontal: 16,
+  backgroundColor: '#fff8f7',
+  borderRadius: 20,
+  elevation: 4,
+},
+selectedFilter: {
+  backgroundColor: '#b51509',
+},
+filterText: {
+  color: '#b51509',
+  fontWeight: 'bold',
+}
+
 });
 export default PFScreen;
