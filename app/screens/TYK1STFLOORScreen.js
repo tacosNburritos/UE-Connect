@@ -248,10 +248,10 @@ const TYK1STFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/TYK1STFLR.png")}
           style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}

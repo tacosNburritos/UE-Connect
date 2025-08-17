@@ -7,10 +7,15 @@ function PFScreen({ navigation }) {
   const handleGoBack = () => {
     navigation.goBack();
   };
-  const [selectedFilter, setSelectedFilter] = useState('ALL');
-  const [allDropdownOptions, setAllDropdownOptions] = useState([]); // For storing all fetched options
 
-  const [dropdownData, setDropdownData] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState('ALL');
+
+  // separate sources and dropdowns
+  const [allLocationOptions, setAllLocationOptions] = useState([]);   // sorted locations only
+  const [endBaseOptions, setEndBaseOptions] = useState([]);           // CR options + sorted locations
+  const [startDropdownData, setStartDropdownData] = useState([]);     // filtered for start (no CR)
+  const [endDropdownData, setEndDropdownData] = useState([]);         // filtered for end (with CR)
+
   const [buildingCoordinates, setBuildingCoordinates] = useState({});
   const [graph, setGraph] = useState({});
   const [selectedStart, setSelectedStart] = useState("");
@@ -95,60 +100,60 @@ function PFScreen({ navigation }) {
 
     const maleOptions = [
       "MALE COMFORT ROOM (CR) - LEFT WING",
-        "MALE COMFORT ROOM (CR) - RIGHT WING",
-        "MALE COMFORT ROOM (CR) - LEFT WING (2nd)",
-        "MALE COMFORT ROOM (CR) - RIGHT WING (2nd)",
-        "MALE COMFORT ROOM (CR) - LEFT WING (3rd)",
-        "MALE COMFORT ROOM (CR) - RIGHT WING (3rd)",
-        "MALE COMFORT ROOM (CR) - RIGHT WING (4th)",
-        "MALE COMFORT ROOM (CR) - TYK1 (1st)",
-        "MALE COMFORT ROOM (CR) - TYK2 (1st)",
-        "MALE COMFORT ROOM (CR) - TYK (2nd)",
-        "MALE COMFORT ROOM (CR) - TYK (3rd)",
-        "MALE COMFORT ROOM (CR) - TYK (4th)",
-        "MALE COMFORT ROOM (CR) - TYK (5th)",
-        "MALE COMFORT ROOM (CR) - TYK (6th)",
-        "MALE COMFORT ROOM (CR) - TYK (7th)",
-        "MALE COMFORT ROOM (CR) - TYK (8th)",
-        "MALE COMFORT ROOM (CR) - TYK (9th)",
-        "MALE COMFORT ROOM (CR) - TYK (10th)",
-        "MALE COMFORT ROOM (CR) - LCT (1st)",
-        "MALE COMFORT ROOM (CR) - LCT (2nd)",
-        "MALE COMFORT ROOM (CR) - LCT (3rd)",
-        "MALE COMFORT ROOM (CR) - LCT (4th)",
-        "MALE COMFORT ROOM (CR) - LCT (5th)",
-        "MALE COMFORT ROOM (CR) - LCT (6th)",
-        "MALE COMFORT ROOM (CR) - LCT (7th)",
-        "MALE COMFORT ROOM (CR) - LCT (8th)",
+      "MALE COMFORT ROOM (CR) - RIGHT WING",
+      "MALE COMFORT ROOM (CR) - LEFT WING (2nd)",
+      "MALE COMFORT ROOM (CR) - RIGHT WING (2nd)",
+      "MALE COMFORT ROOM (CR) - LEFT WING (3rd)",
+      "MALE COMFORT ROOM (CR) - RIGHT WING (3rd)",
+      "MALE COMFORT ROOM (CR) - RIGHT WING (4th)",
+      "MALE COMFORT ROOM (CR) - TYK1 (1st)",
+      "MALE COMFORT ROOM (CR) - TYK2 (1st)",
+      "MALE COMFORT ROOM (CR) - TYK (2nd)",
+      "MALE COMFORT ROOM (CR) - TYK (3rd)",
+      "MALE COMFORT ROOM (CR) - TYK (4th)",
+      "MALE COMFORT ROOM (CR) - TYK (5th)",
+      "MALE COMFORT ROOM (CR) - TYK (6th)",
+      "MALE COMFORT ROOM (CR) - TYK (7th)",
+      "MALE COMFORT ROOM (CR) - TYK (8th)",
+      "MALE COMFORT ROOM (CR) - TYK (9th)",
+      "MALE COMFORT ROOM (CR) - TYK (10th)",
+      "MALE COMFORT ROOM (CR) - LCT (1st)",
+      "MALE COMFORT ROOM (CR) - LCT (2nd)",
+      "MALE COMFORT ROOM (CR) - LCT (3rd)",
+      "MALE COMFORT ROOM (CR) - LCT (4th)",
+      "MALE COMFORT ROOM (CR) - LCT (5th)",
+      "MALE COMFORT ROOM (CR) - LCT (6th)",
+      "MALE COMFORT ROOM (CR) - LCT (7th)",
+      "MALE COMFORT ROOM (CR) - LCT (8th)",
     ];
     const femaleOptions = [
       "FEMALE COMFORT ROOM (CR) - LEFT WING",
-        "FEMALE COMFORT ROOM (CR) - RIGHT WING",
-        "FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)",
-        "FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)",
-        "FEMALE COMFORT ROOM (CR) - LEFT WING (3rd)",
-        "FEMALE COMFORT ROOM (CR) - RIGHT WING (3rd)",
-        "FEMALE COMFORT ROOM (CR) - RIGHT WING (4th)",
-        "FEMALE COMFORT ROOM (CR) - TYK1 (1st)",
-        "FEMALE COMFORT ROOM (CR) - TYK2 (1st)",
-        "FEMALE COMFORT ROOM (CR) - TYK (2nd)",
-        "FEMALE COMFORT ROOM (CR) - TYK (3rd)",
-        "FEMALE COMFORT ROOM (CR) - TYK (4th)",
-        "FEMALE COMFORT ROOM (CR) - TYK (5th)",
-        "FEMALE COMFORT ROOM (CR) - TYK (6th)",
-        "FEMALE COMFORT ROOM (CR) - TYK (7th)",
-        "FEMALE COMFORT ROOM (CR) - TYK (8th)",
-        "FEMALE COMFORT ROOM (CR) - TYK (9th)",
-        "FEMALE COMFORT ROOM (CR) - TYK (10th)",
-        "FEMALE COMFORT ROOM (CR) - LCT (1st)",
-        "FEMALE COMFORT ROOM (CR) - LCT (2nd)",
-        "FEMALE COMFORT ROOM (CR) - LCT (3rd)",
-        "FEMALE COMFORT ROOM (CR) - LCT (4th)",
-        "FEMALE COMFORT ROOM (CR) - LCT (5th)",
-        "FEMALE COMFORT ROOM (CR) - LCT (6th)",
-        "FEMALE COMFORT ROOM (CR) - LCT (7th)",
-        "FEMALE COMFORT ROOM (CR) - LCT (8th)",
-    ]; 
+      "FEMALE COMFORT ROOM (CR) - RIGHT WING",
+      "FEMALE COMFORT ROOM (CR) - LEFT WING (2nd)",
+      "FEMALE COMFORT ROOM (CR) - RIGHT WING (2nd)",
+      "FEMALE COMFORT ROOM (CR) - LEFT WING (3rd)",
+      "FEMALE COMFORT ROOM (CR) - RIGHT WING (3rd)",
+      "FEMALE COMFORT ROOM (CR) - RIGHT WING (4th)",
+      "FEMALE COMFORT ROOM (CR) - TYK1 (1st)",
+      "FEMALE COMFORT ROOM (CR) - TYK2 (1st)",
+      "FEMALE COMFORT ROOM (CR) - TYK (2nd)",
+      "FEMALE COMFORT ROOM (CR) - TYK (3rd)",
+      "FEMALE COMFORT ROOM (CR) - TYK (4th)",
+      "FEMALE COMFORT ROOM (CR) - TYK (5th)",
+      "FEMALE COMFORT ROOM (CR) - TYK (6th)",
+      "FEMALE COMFORT ROOM (CR) - TYK (7th)",
+      "FEMALE COMFORT ROOM (CR) - TYK (8th)",
+      "FEMALE COMFORT ROOM (CR) - TYK (9th)",
+      "FEMALE COMFORT ROOM (CR) - TYK (10th)",
+      "FEMALE COMFORT ROOM (CR) - LCT (1st)",
+      "FEMALE COMFORT ROOM (CR) - LCT (2nd)",
+      "FEMALE COMFORT ROOM (CR) - LCT (3rd)",
+      "FEMALE COMFORT ROOM (CR) - LCT (4th)",
+      "FEMALE COMFORT ROOM (CR) - LCT (5th)",
+      "FEMALE COMFORT ROOM (CR) - LCT (6th)",
+      "FEMALE COMFORT ROOM (CR) - LCT (7th)",
+      "FEMALE COMFORT ROOM (CR) - LCT (8th)",
+    ];
 
     if (selectedEnd === "NEAREST MALE CR") {
       const nearest = getNearestCR(startCoord, maleOptions);
@@ -179,29 +184,39 @@ function PFScreen({ navigation }) {
       buildingCoordinates,
     });
     console.log("Final path:", path);
-
   };
+
+  // Filter both dropdowns whenever filter/coords/base lists change
   useEffect(() => {
-    if (!selectedFilter || selectedFilter === 'ALL') {
-      setDropdownData(allDropdownOptions);
-      return;
-    }
+    const applyFilter = () => {
+      if (!selectedFilter || selectedFilter === 'ALL') {
+        setStartDropdownData(allLocationOptions);
+        setEndDropdownData(endBaseOptions);
+        return;
+      }
 
-    let floorRange = [];
-    if (selectedFilter === 'EN') floorRange = [1, 2, 3, 4];
-    else if (selectedFilter === 'TYK') floorRange = Array.from({ length: 10 }, (_, i) => i + 6);
-    else if (selectedFilter === 'LCT') floorRange = Array.from({ length: 8 }, (_, i) => i + 17);
+      let floorRange = [];
+      if (selectedFilter === 'EN') floorRange = [1, 2, 3, 4];
+      else if (selectedFilter === 'TYK') floorRange = Array.from({ length: 10 }, (_, i) => i + 6);
+      else if (selectedFilter === 'LCT') floorRange = Array.from({ length: 8 }, (_, i) => i + 17);
 
-    const filteredOptions = allDropdownOptions.filter(item => {
-      const coords = buildingCoordinates[item.value];
-      if (!coords || typeof coords.floor !== 'number') return true; // Include non-location items (like NEAREST CR)
-      return floorRange.includes(coords.floor);
-    });
+      const filterByFloor = (arr) =>
+        arr.filter(item => {
+          const coords = buildingCoordinates[item.value];
+          // keep items without coords (NEAREST options)
+          if (!coords || typeof coords.floor !== 'number') return true;
+          return floorRange.includes(coords.floor);
+        });
 
-    setDropdownData(filteredOptions);
-  }, [selectedFilter, allDropdownOptions, buildingCoordinates]);
+      setStartDropdownData(filterByFloor(allLocationOptions));
+      setEndDropdownData(filterByFloor(endBaseOptions));
+    };
 
- useEffect(() => {
+    applyFilter();
+  }, [selectedFilter, allLocationOptions, endBaseOptions, buildingCoordinates]);
+
+  // Fetch locations + connections
+  useEffect(() => {
   const fetchGraph = async () => {
     try {
       const { data: locations, error: locError } = await supabase.from('locations').select('*');
@@ -221,23 +236,43 @@ function PFScreen({ navigation }) {
         coordsMap[loc.label] = { x: loc.x, y: loc.y, floor: loc.floor };
 
         if (loc.checker !== 'excluded') {
-          dropdownOptions.push({ label: loc.label, value: loc.label });
+          dropdownOptions.push({
+            label: loc.label,
+            value: loc.label,
+            isEntrance: loc["entrance?"] === "yes",   // track entrance
+          });
         }
       });
 
-      // Update dropdowns and coordinates
+      // Update coordinates
       setBuildingCoordinates(coordsMap);
-      const fullDropdownList = [
+
+      // Split entrances and others
+      const entrances = dropdownOptions
+        .filter(opt => opt.isEntrance)
+        .sort((a, b) => a.label.localeCompare(b.label));
+
+      const others = dropdownOptions
+        .filter(opt => !opt.isEntrance)
+        .sort((a, b) => a.label.localeCompare(b.label));
+
+      // Merge: entrances first, then others
+      const sortedLocations = [...entrances, ...others];
+
+      // Build end base options (NEAREST + sorted)
+      const nearestOptions = [
         { label: 'NEAREST MALE CR', value: 'NEAREST MALE CR' },
         { label: 'NEAREST FEMALE CR', value: 'NEAREST FEMALE CR' },
-        ...dropdownOptions
       ];
+      const endAll = [...nearestOptions, ...sortedLocations];
 
-      setAllDropdownOptions(fullDropdownList);
-      setDropdownData(fullDropdownList); // Initially show all
+      // Seed state
+      setAllLocationOptions(sortedLocations);
+      setEndBaseOptions(endAll);
+      setStartDropdownData(sortedLocations);
+      setEndDropdownData(endAll);
 
-
-
+      // Fetch connections
       let allConnections = [];
       let from = 0;
       const pageSize = 1000;
@@ -258,12 +293,12 @@ function PFScreen({ navigation }) {
         allConnections = [...allConnections, ...data];
         from += pageSize;
 
-        if (data.length < pageSize) break; // done fetching
+        if (data.length < pageSize) break;
       }
 
       console.log("Total fetched connections:", allConnections.length);
-      
-            const graphMap = {};
+
+      const graphMap = {};
 
       allConnections.forEach(conn => {
         const fromLabel = labelMap[conn.from_id];
@@ -281,92 +316,89 @@ function PFScreen({ navigation }) {
         graphMap[toLabel][fromLabel] = weight;
       });
 
+      console.log("Final graph node count:", Object.keys(graphMap).length);
+      setGraph(graphMap);
+    } catch (err) {
+      console.error("Unexpected error in fetchGraph:", err);
+    }
+  };
 
-            console.log("Final graph node count:", Object.keys(graphMap).length);
-            setGraph(graphMap);
-          } catch (err) {
-            console.error("Unexpected error in fetchGraph:", err);
-          }
-        };
-
-        fetchGraph();
-      }, []);
+  fetchGraph();
+}, []);
 
 
   return (
-  <ImageBackground
-  source={require('../images/NEW BG.png')}
-  style={styles.background}
-  resizeMode="cover"
->
-  <View style={styles.overlay}>
-    <View>
-      <View style={styles.header}>
-        <Image source={require("../assets/logo_red.png")} style={styles.logo_header} />
-        <Text style={styles.text}>UE Connect</Text>
+    <ImageBackground
+      source={require('../images/NEW BG.png')}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
+        <View>
+          <View style={styles.header}>
+            <Image source={require("../assets/logo_red.png")} style={styles.logo_header} />
+            <Text style={styles.text}>UE Connect</Text>
+          </View>
+
+          <View style={styles.filterContainer}>
+            <TouchableOpacity
+              style={[styles.filterButton, selectedFilter === 'EN' && styles.selectedFilter]}
+              onPress={() => setSelectedFilter(prev => prev === 'EN' ? 'ALL' : 'EN')}
+            >
+              <Text style={[styles.filterText, selectedFilter === 'EN' && { color: 'white' }]}>EN</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[styles.filterButton, selectedFilter === 'TYK' && styles.selectedFilter]}
+              onPress={() => setSelectedFilter(prev => prev === 'TYK' ? 'ALL' : 'TYK')}
+            >
+              <Text style={[styles.filterText, selectedFilter === 'TYK' && { color: 'white' }]}>TYK</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[styles.filterButton, selectedFilter === 'LCT' && styles.selectedFilter]}
+              onPress={() => setSelectedFilter(prev => prev === 'LCT' ? 'ALL' : 'LCT')}
+            >
+              <Text style={[styles.filterText, selectedFilter === 'LCT' && { color: 'white' }]}>LCT</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.dropdownContainer}>
+            <Text style={styles.label}>Select Current Location</Text>
+            <SelectList
+              setSelected={setSelectedStart}
+              data={startDropdownData}   // no CR options
+              save="value"
+              placeholder="Select Location"
+              boxStyles={{ backgroundColor: 'white', borderRadius: 30 }}
+              dropdownStyles={{ backgroundColor: '#fff8f7' }}
+            />
+          </View>
+
+          <View style={styles.dropdownContainer}>
+            <Text style={styles.label}>Select Destination</Text>
+            <SelectList
+              setSelected={setSelectedEnd}
+              data={endDropdownData}     // includes CR options
+              save="value"
+              placeholder="Select Location"
+              boxStyles={{ backgroundColor: 'white', borderRadius: 30 }}
+              dropdownStyles={{ backgroundColor: '#fff8f7' }}
+            />
+          </View>
+
+          <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
+            <Text style={styles.buttonText}>Search</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
+            <Text style={styles.buttonText1}>Go Back</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-  <View style={styles.filterContainer}>
-  <TouchableOpacity
-    style={[styles.filterButton, selectedFilter === 'EN' && styles.selectedFilter]}
-    onPress={() => setSelectedFilter(prev => prev === 'EN' ? 'ALL' : 'EN')}
-  >
-    <Text style={[styles.filterText, selectedFilter === 'EN' && { color: 'white' }]}>EN</Text>
-  </TouchableOpacity>
-
-  <TouchableOpacity
-    style={[styles.filterButton, selectedFilter === 'TYK' && styles.selectedFilter]}
-    onPress={() => setSelectedFilter(prev => prev === 'TYK' ? 'ALL' : 'TYK')}
-
-  >
-    <Text style={[styles.filterText, selectedFilter === 'TYK' && { color: 'white' }]}>TYK</Text>
-  </TouchableOpacity>
-
-  <TouchableOpacity
-    style={[styles.filterButton, selectedFilter === 'LCT' && styles.selectedFilter]}
-    onPress={() => setSelectedFilter(prev => prev === 'LCT' ? 'ALL' : 'LCT')}
-
-  >
-    <Text style={[styles.filterText, selectedFilter === 'LCT' && { color: 'white' }]}>LCT</Text>
-  </TouchableOpacity>
-</View>
-
-
-      <View style={styles.dropdownContainer}>
-        <Text style={styles.label}>Select Current Location</Text>
-        <SelectList
-          setSelected={setSelectedStart}
-          data={dropdownData}
-          save="value"
-          placeholder="Select Location"
-          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }}
-          dropdownStyles={{ backgroundColor: '#fff8f7' }}
-        />
-      </View>
-
-      <View style={styles.dropdownContainer}>
-        <Text style={styles.label}>Select Destination</Text>
-        <SelectList
-          setSelected={setSelectedEnd}
-          data={dropdownData}
-          save="value"
-          placeholder="Select Location"
-          boxStyles={{ backgroundColor: 'white', borderRadius: 30 }}
-          dropdownStyles={{ backgroundColor: '#fff8f7' }}
-        />
-      </View>
-
-      <TouchableOpacity style={styles.searchbutton} onPress={handleSearch}>
-        <Text style={styles.buttonText}>Search</Text>
-      </TouchableOpacity>
-    </View>
-
-    <View style={styles.buttonContainer}>
-      <TouchableOpacity style={styles.button1} onPress={handleGoBack}>
-        <Text style={styles.buttonText1}>Go Back</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
-</ImageBackground>
+    </ImageBackground>
   );
 }
 
@@ -375,15 +407,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-    background: {
-      flex: 1,
-      width: '100%',
-      height: '102%',
-    },
-    overlay: {
-      flex: 1,
-    
-    },
+  background: {
+    flex: 1,
+    width: '100%',
+    height: '102%',
+  },
+  overlay: {
+    flex: 1,
+  },
   searchbutton: {
     marginTop: 30,
     alignSelf: 'center',
@@ -398,7 +429,6 @@ const styles = StyleSheet.create({
   dropdownContainer: {
     marginTop: 20,
     paddingHorizontal: 20,
-  
   },
   label: {
     fontSize: 18,
@@ -491,26 +521,26 @@ const styles = StyleSheet.create({
     marginEnd: 10,
   },
   filterContainer: {
-  flexDirection: 'row',
-  justifyContent: 'center',
-  marginTop: 20,
-  marginBottom: 10,
-  gap: 10,
-},
-filterButton: {
-  paddingVertical: 8,
-  paddingHorizontal: 16,
-  backgroundColor: '#fff8f7',
-  borderRadius: 20,
-  elevation: 4,
-},
-selectedFilter: {
-  backgroundColor: '#b51509',
-},
-filterText: {
-  color: '#b51509',
-  fontWeight: 'bold',
-}
-
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+    gap: 10,
+  },
+  filterButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    backgroundColor: '#fff8f7',
+    borderRadius: 20,
+    elevation: 4,
+  },
+  selectedFilter: {
+    backgroundColor: '#b51509',
+  },
+  filterText: {
+    color: '#b51509',
+    fontWeight: 'bold',
+  }
 });
+
 export default PFScreen;
