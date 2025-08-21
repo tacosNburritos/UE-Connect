@@ -18,23 +18,124 @@ const TYK2NDFLOORScreen = ({ route, navigation }) => {
   const [showNextButton, setShowNextButton] = useState(false);
 
   const mapNodes = {
-    M1: { x: 0.1, y: 0.2 },
-    M2: { x: 0.3, y: 0.2 },
-    M3: { x: 0.3, y: 0.4 },
-    M4: { x: 0.5, y: 0.4 },
-    M5: { x: 0.7, y: 0.4 },
-    M6: { x: 0.7, y: 0.2 },
-    M7: { x: 0.5, y: 0.1 },
+    //UPPER PART OUTLINE (LEFT)
+    UPSTO1: { x: 0.505, y: 0.009 }, //UPPER STAIR OUTLINE
+    UPSTO2: { x: 0.505, y: 0.062 },
+    UPTO1: { x: 0.423, y: 0.062 },  //UPPER PART OUTLINE
+    UPTO2: { x: 0.423, y: 0.247 },
+    UPTO3: { x: 0.508, y: 0.247 },
+    UPTO4: { x: 0.507, y: 0.34 },
+
+    UPTOP1: { x: 0.423, y: 0.122 }, //UPPER PART OUTLINE POINT
+    UPTOP2: { x: 0.423, y: 0.184 },
+    UPTOP3: { x: 0.507, y: 0.259 },
+    UPTOP4: { x: 0.507, y: 0.2775 },
+    UPTOP5: { x: 0.507, y: 0.2853 },
+    UPTOP6: { x: 0.507, y: 0.3043 },
+    UPTOP7: { x: 0.507, y: 0.323 },
+
+    //MIDLE PART OUTLINE
+    MST1: { x: 0.4, y: 0.34 }, //MIDLE STAIR OUTLINE
+    MST2: { x: 0.543, y: 0.34 },
+    MST3: { x: 0.412, y: 0.34 },
+    MST4: { x: 0.412, y: 0.35 },
+    MST5: { x: 0.395, y: 0.357 },
+    MST6: { x: 0.412, y: 0.3635 }, 
+    MST7: { x: 0.412, y: 0.3725 },
+    MST8: { x: 0.4, y: 0.3725 },
+    MST9: { x: 0.515, y: 0.3725 },
+    MST10: { x: 0.462, y: 0.3725 },
+
+    MPO1: { x: 0.462, y: 0.542 },   // MIDLE PART OUTLINE 
+  
+    MPOP1: { x: 0.495, y: 0.3725 }, // MIDLE PART OUTLINE POINT
+    MPOP2: { x: 0.462, y: 0.499 },
+    MPOP3: { x: 0.462, y: 0.449 },
+    
+    //LOWER PART OUTLINE
+    LPO1: { x: 0.575, y: 0.565 }, // LOWER PART OUTLINE
+    LPO2: { x: 0.543, y: 0.583 },
+    LPO3: { x: 0.462, y: 0.6271 },
+    LPO4: { x: 0.575, y: 0.626 },
+    LPO5: { x: 0.52, y: 0.654 },
+    LPO6: { x: 0.462, y: 0.6845 },
+    LPO7: { x: 0.572, y: 0.685 },
+    LPO8: { x: 0.52, y: 0.712 },
+    LPO9: { x: 0.4653, y: 0.742 },
+    LPO10: { x: 0.583, y: 0.742 },
+    LPO11: { x: 0.527, y: 0.77 },
+    LPO12: { x: 0.502, y: 0.7835 },
+    LPO13: { x: 0.512, y: 0.7885 },
+    LPO14: { x: 0.5845, y: 0.8245 },
+    LPO15: { x: 0.3, y: 0.89 },
+    LPO16: { x: 0.487, y: 0.978 },
+
+    LPOP1: { x: 0.53, y: 0.7975 }, // LOWER PART OUTLINE POINT
+    LPOP2: { x: 0.557, y: 0.812 }, 
+    LPOP3: { x: 0.437, y: 0.823 },  
+    LPOP4: { x: 0.37, y: 0.855 },
+    LPOP5: { x: 0.343, y: 0.911 },
+    LPOP6: { x: 0.37, y: 0.923 },
+    LPOP7: { x: 0.41, y: 0.942 },
+    LPOP8: { x: 0.437, y: 0.96 }, //
+    LPOP9: { x: 0.465, y: 0.978 }, // 
+
+    //LOWER PART OUTLINE (RIGHT)
+    LRO1: { x: 0.692, y: 0.882 }, // LOWER PART OUTLINE RIGHT
+
+    LPOP6: { x: 0.557, y: 0.9455 }, // LOWER PART OUTLINE POINT RIGHT
+    LPOP7: { x: 0.623, y: 0.914 },
+
   };
 
-  const mapConnections = [
-    ["M1", "M2"],
-    ["M2", "M3"],
-    ["M3", "M4"],
-    ["M4", "M5"],
-    ["M5", "M6"],
-    ["M6", "M7"],
-    ["M7", "M1"],
+
+const mapConnections = [
+    ["UPSTO1", "UPSTO2"],
+    ["UPSTO2", "UPTO1"],
+    ["UPTO1", "UPTOP1",],
+    ["UPTOP1", "UPTOP2"],
+    ["UPTOP2", "UPTO2"],
+    ["UPTO2", "UPTO3"],
+    ["UPTO3", "UPTOP3"],
+    ["UPTOP3", "UPTOP4"],
+    ["UPTOP4", "UPTOP5"], 
+    ["UPTOP5", "UPTOP6"],
+    ["UPTOP6", "UPTOP7"],
+    ["UPTOP7", "UPTO4"],
+    ["MST2", "UPTO4"],
+    ["UPTO4", "MST1"],
+    ["MST1", "MST3"],
+    ["MST3", "MST4"],
+    ["MST4", "MST5"],
+    ["MST5", "MST6"],
+    ["MST6", "MST7"],
+    ["MST7", "MST8"],
+    ["MST8", "MST9"],
+    ["MST9", "MST10"],
+    ["MST10", "MPOP2"],
+    ["MPOP2", "MPO1"],
+    ["MPO1", "LPO2"],
+    ["LPO1", "LPO2"],
+    ["LPO2", "LPO3"],
+    ["LPO3", "LPO5"],
+    ["LPO5", "LPO4"],
+    ["LPO4", "LPO6"],
+    ["LPO6", "LPO8"],
+    ["LPO8", "LPO7"],
+    ["LPO7", "LPO9"],
+    ["LPO9", "LPO11"],
+    ["LPO11", "LPO10"],
+    ["LPO10", "LPO12"],
+    ["LPO12", "LPO13"],
+    ["LPO13", "LPOP1"],
+    ["LPOP1", "LPOP2"],
+    ["LPOP2", "LPO14"],
+    ["LPO13", "LPOP3"],
+    ["LPOP3", "LPOP4"],
+    ["LPOP4", "LPO15"],
+    ["LPO15", "LPOP5"],
+  
+
   ];
 
 // STRICTLY FOR LABELS ONLY
@@ -289,7 +390,7 @@ const TYK2NDFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={1} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
