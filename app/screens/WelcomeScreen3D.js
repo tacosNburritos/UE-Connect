@@ -1,5 +1,13 @@
 import React, { useRef, useEffect } from "react";
-import { View, PanResponder, StyleSheet, Image, Text, TouchableOpacity, StatusBar } from "react-native";
+import {
+  View,
+  PanResponder,
+  StyleSheet,
+  Image,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 import { GLView } from "expo-gl";
 import { Renderer } from "expo-three";
 import * as THREE from "three";
@@ -14,6 +22,8 @@ function WelcomeScreen3D({ navigation }) {
   const lastPan = useRef({ x: 0, y: 0 });
   const rotation = useRef({ yaw: 0, pitch: 0 });
   const boundsRef = useRef(null);
+  const collidablesRef = useRef([]); // collision meshes
+  const cloudsRef = useRef([]); // store cloud GROUPS
 
   // Controls initial offset from model center
   const HEIGHT_OFFSET = 100;
@@ -35,6 +45,16 @@ function WelcomeScreen3D({ navigation }) {
     camera.position.x = Math.max(min.x, Math.min(max.x, camera.position.x));
     camera.position.y = Math.max(min.y, Math.min(max.y, camera.position.y));
     camera.position.z = Math.max(min.z, Math.min(max.z, camera.position.z));
+  };
+
+  const checkCollision = (camera, direction, distance = 2) => {
+    if (!collidablesRef.current.length) return false;
+
+    const raycaster = new THREE.Raycaster();
+    raycaster.set(camera.position, direction.normalize());
+
+    const intersects = raycaster.intersectObjects(collidablesRef.current, true);
+    return intersects.length > 0 && intersects[0].distance < distance;
   };
 
   const panResponder = useRef(
@@ -63,9 +83,11 @@ function WelcomeScreen3D({ navigation }) {
           // === MOVE FORWARD ===
           const forward = new THREE.Vector3();
           camera.getWorldDirection(forward).normalize();
-          camera.position.addScaledVector(forward, MOVE_STEP);
 
-          clampCameraToBounds(camera);
+          if (!checkCollision(camera, forward, MOVE_STEP + 2)) {
+            camera.position.addScaledVector(forward, MOVE_STEP);
+            clampCameraToBounds(camera);
+          }
         }
       },
       onPanResponderRelease: () => {
@@ -78,7 +100,7 @@ function WelcomeScreen3D({ navigation }) {
     const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color("white");
+    scene.background = new THREE.Color(0x87ceeb); // sky blue
     sceneRef.current = scene;
 
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 5000);
@@ -88,7 +110,81 @@ function WelcomeScreen3D({ navigation }) {
     renderer.setSize(width, height);
     rendererRef.current = renderer;
 
-    scene.add(new THREE.AmbientLight(0xffffff, 1));
+    // Lighting
+    scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+    const sun = new THREE.DirectionalLight(0xffffff, 0.8);
+    sun.position.set(2000, 3000, 1500);
+    scene.add(sun);
+
+    // === Sky Sphere ===
+    const skyGeo = new THREE.SphereGeometry(5000, 32, 32);
+    const skyMat = new THREE.MeshBasicMaterial({
+      color: 0x87ceeb,
+      side: THREE.BackSide,
+    });
+    const sky = new THREE.Mesh(skyGeo, skyMat);
+    scene.add(sky);
+
+    // === Helper: create a volumetric "puffy" cloud (group of spheres) ===
+        // === Helper: create a Minecraft-style blocky cloud (group of cubes) ===
+    const createBlockyCloud = () => {
+      const group = new THREE.Group();
+
+      const mat = new THREE.MeshBasicMaterial({
+        color: 0xffffff, // flat white, ignores light
+        transparent: true, // allow transparency
+  opacity: 0.8,      // adjust (0 = invisible, 1 = solid)
+      });
+
+
+      // How many cubes make up one cloud
+      const cubeCount = 6 + Math.floor(Math.random() * 6); // 6–12 cubes
+      const spreadX = 800; // horizontal spread
+      const spreadY = 400; // vertical variation
+      const spreadZ = 700; // depth spread
+
+      for (let i = 0; i < cubeCount; i++) {
+        const size = 180 + Math.random() * 70; // cube size
+        const geo = new THREE.BoxGeometry(size, size, size);
+
+        const cube = new THREE.Mesh(geo, mat);
+        cube.position.set(
+          (Math.random() - 0.5) * spreadX,
+          (Math.random() - 0.5) * spreadY,
+          (Math.random() - 0.5) * spreadZ
+        );
+
+        group.add(cube);
+      }
+
+      // Position the whole cloud group
+      const baseY = 800 + Math.random() * 1200;
+      group.position.set(
+        (Math.random() - 0.5) * 8000,
+        baseY,
+        (Math.random() - 0.5) * 8000
+      );
+
+      // Random cloud scale
+      const s = 0.9 + Math.random() * 1.5;
+      group.scale.set(s, s, s);
+
+      group.userData = {
+        speed: 0.05 + Math.random() * 0.8, // slow drift
+        wobblePhase: Math.random() * Math.PI * 2,
+        baseY,
+      };
+
+      return group;
+    };
+
+    // === Create many blocky clouds ===
+    for (let i = 0; i < 24; i++) {
+      const cloudGroup = createBlockyCloud();
+      scene.add(cloudGroup);
+      cloudsRef.current.push(cloudGroup);
+    }
+
 
     // Load GLB model
     const asset = Asset.fromModule(require("../assets/models/test this.glb"));
@@ -104,14 +200,21 @@ function WelcomeScreen3D({ navigation }) {
 
         model.updateWorldMatrix(true, true);
 
-        // Compute padded bounds
+        const collidableMeshes = [];
+        model.traverse((child) => {
+          if (child.isMesh) {
+            collidableMeshes.push(child);
+            child.material.side = THREE.DoubleSide;
+          }
+        });
+        collidablesRef.current = collidableMeshes;
+
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
         const paddedMin = box.min.clone().addScalar(-BOUNDS_PADDING);
         const paddedMax = box.max.clone().addScalar(BOUNDS_PADDING);
         boundsRef.current = { min: paddedMin, max: paddedMax };
 
-        // === Initial Camera Setup ===
         camera.position.set(
           center.x,
           center.y + HEIGHT_OFFSET,
@@ -123,8 +226,28 @@ function WelcomeScreen3D({ navigation }) {
       (error) => console.error(error)
     );
 
+    const clock = new THREE.Clock();
+
     const render = () => {
       requestAnimationFrame(render);
+
+      const t = clock.getElapsedTime();
+
+      // Animate clouds: drift, slight bob, tiny rotation
+      cloudsRef.current.forEach((group) => {
+        const { speed, wobblePhase, baseY } = group.userData;
+
+        // Drift on X (wrap around for endless sky)
+        group.position.x += speed;
+        if (group.position.x > 5000) group.position.x = -5000;
+
+        // Gentle vertical bobbing
+        group.position.y = baseY + Math.sin(t * 0.4 + wobblePhase) * 12;
+
+        // Tiny slow spin to add parallax change
+        group.rotation.y += 0.00035;
+      });
+
       renderer.render(scene, camera);
       gl.endFrameEXP();
     };
@@ -145,20 +268,30 @@ function WelcomeScreen3D({ navigation }) {
 
   return (
     <View style={{ flex: 1 }} {...panResponder.panHandlers}>
-      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent={true} />
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent={true}
+      />
 
       {/* === 3D Background === */}
       <GLView style={{ flex: 1 }} onContextCreate={onContextCreate} />
 
       {/* === Overlay UI === */}
       <View style={styles.header}>
-        <Image source={require("../assets/ue_logo.png")} style={styles.logo_header} />
+        <Image
+          source={require("../assets/ue_logo.png")}
+          style={styles.logo_header}
+        />
         <Text style={styles.text}>UE Connect</Text>
       </View>
 
-      {/* === Toggle 2D Bar just below header === */}
+      {/* === Toggle 2D Bar === */}
       <View style={styles.toggleBar}>
-        <TouchableOpacity style={styles.toggleButton} onPress={handleToggle2DPress}>
+        <TouchableOpacity
+          style={styles.toggleButton}
+          onPress={handleToggle2DPress}
+        >
           <Text style={styles.toggleButtonText}>Toggle 2D</Text>
         </TouchableOpacity>
       </View>
@@ -183,8 +316,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#b51509",
     borderRadius: 30,
     left: 7,
-    elevation: 6, // RN shadow for Android
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.55)',
+    elevation: 6,
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.55)",
   },
   text: {
     color: "white",
@@ -221,7 +354,7 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
     borderBottomStartRadius: 30,
     elevation: 6,
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.55)',
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.55)",
   },
   logo_header: {
     width: 50,
@@ -230,7 +363,7 @@ const styles = StyleSheet.create({
   },
   toggleBar: {
     position: "absolute",
-    top: 120, // directly below header
+    top: 120,
     right: 0,
     width: "100%",
     paddingVertical: 10,
