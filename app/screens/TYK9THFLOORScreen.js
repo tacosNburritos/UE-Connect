@@ -201,7 +201,7 @@ const TYK9THFLOORScreen = ({ route, navigation }) => {
         {/* Background image to trace over */}
         <Image
           source={require("../images/TYK9THFLR.png")}
-          style={{ width: "97%", height: "104%", position: "absolute", resizeMode: "contain" }}
+          style={{ width: "97%", height: "100%", position: "absolute", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
