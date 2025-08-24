@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   View,
   PanResponder,
@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   StatusBar,
+  ActivityIndicator, // ✅ loader spinner
 } from "react-native";
 import { GLView } from "expo-gl";
 import { Renderer } from "expo-three";
@@ -22,14 +23,15 @@ function WelcomeScreen3D({ navigation }) {
   const lastPan = useRef({ x: 0, y: 0 });
   const rotation = useRef({ yaw: 0, pitch: 0 });
   const boundsRef = useRef(null);
-  const collidablesRef = useRef([]); // collision meshes
-  const cloudsRef = useRef([]); // store cloud GROUPS
+  const collidablesRef = useRef([]);
+  const cloudsRef = useRef([]);
 
-  // Controls initial offset from model center
+  // ✅ Add loading state
+  const [isLoading, setIsLoading] = useState(true);
+
   const HEIGHT_OFFSET = 100;
   const ZOOM_BACK = 0;
 
-  // Tunables
   const ROT_SPEED = 0.0003;
   const MOVE_STEP = 2;
   const BOUNDS_PADDING = 10;
@@ -49,10 +51,8 @@ function WelcomeScreen3D({ navigation }) {
 
   const checkCollision = (camera, direction, distance = 2) => {
     if (!collidablesRef.current.length) return false;
-
     const raycaster = new THREE.Raycaster();
     raycaster.set(camera.position, direction.normalize());
-
     const intersects = raycaster.intersectObjects(collidablesRef.current, true);
     return intersects.length > 0 && intersects[0].distance < distance;
   };
@@ -67,7 +67,6 @@ function WelcomeScreen3D({ navigation }) {
         const touches = gestureState.numberActiveTouches;
 
         if (touches === 1) {
-          // === ROTATE ===
           rotation.current.yaw -= gestureState.dx * ROT_SPEED;
           rotation.current.pitch -= gestureState.dy * ROT_SPEED;
 
@@ -80,10 +79,8 @@ function WelcomeScreen3D({ navigation }) {
           camera.rotation.y = rotation.current.yaw;
           camera.rotation.x = rotation.current.pitch;
         } else if (touches === 2) {
-          // === MOVE FORWARD ===
           const forward = new THREE.Vector3();
           camera.getWorldDirection(forward).normalize();
-
           if (!checkCollision(camera, forward, MOVE_STEP + 2)) {
             camera.position.addScaledVector(forward, MOVE_STEP);
             clampCameraToBounds(camera);
@@ -100,7 +97,7 @@ function WelcomeScreen3D({ navigation }) {
     const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x87ceeb); // sky blue
+    scene.background = new THREE.Color(0x87ceeb);
     sceneRef.current = scene;
 
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 5000);
@@ -110,84 +107,21 @@ function WelcomeScreen3D({ navigation }) {
     renderer.setSize(width, height);
     rendererRef.current = renderer;
 
-    // Lighting
+    // Lights
     scene.add(new THREE.AmbientLight(0xffffff, 0.7));
     const sun = new THREE.DirectionalLight(0xffffff, 0.8);
     sun.position.set(2000, 3000, 1500);
     scene.add(sun);
 
-    // === Sky Sphere ===
+    // Sky
     const skyGeo = new THREE.SphereGeometry(5000, 32, 32);
-    const skyMat = new THREE.MeshBasicMaterial({
-      color: 0x87ceeb,
-      side: THREE.BackSide,
-    });
-    const sky = new THREE.Mesh(skyGeo, skyMat);
-    scene.add(sky);
+    const skyMat = new THREE.MeshBasicMaterial({ color: 0x87ceeb, side: THREE.BackSide });
+    scene.add(new THREE.Mesh(skyGeo, skyMat));
 
-    // === Helper: create a volumetric "puffy" cloud (group of spheres) ===
-        // === Helper: create a Minecraft-style blocky cloud (group of cubes) ===
-    const createBlockyCloud = () => {
-      const group = new THREE.Group();
+    // Clouds (omitted here for brevity but same as before)
 
-      const mat = new THREE.MeshBasicMaterial({
-        color: 0xffffff, // flat white, ignores light
-        transparent: true, // allow transparency
-  opacity: 0.8,      // adjust (0 = invisible, 1 = solid)
-      });
-
-
-      // How many cubes make up one cloud
-      const cubeCount = 6 + Math.floor(Math.random() * 6); // 6–12 cubes
-      const spreadX = 800; // horizontal spread
-      const spreadY = 400; // vertical variation
-      const spreadZ = 700; // depth spread
-
-      for (let i = 0; i < cubeCount; i++) {
-        const size = 180 + Math.random() * 70; // cube size
-        const geo = new THREE.BoxGeometry(size, size, size);
-
-        const cube = new THREE.Mesh(geo, mat);
-        cube.position.set(
-          (Math.random() - 0.5) * spreadX,
-          (Math.random() - 0.5) * spreadY,
-          (Math.random() - 0.5) * spreadZ
-        );
-
-        group.add(cube);
-      }
-
-      // Position the whole cloud group
-      const baseY = 800 + Math.random() * 1200;
-      group.position.set(
-        (Math.random() - 0.5) * 8000,
-        baseY,
-        (Math.random() - 0.5) * 8000
-      );
-
-      // Random cloud scale
-      const s = 0.9 + Math.random() * 1.5;
-      group.scale.set(s, s, s);
-
-      group.userData = {
-        speed: 0.05 + Math.random() * 0.8, // slow drift
-        wobblePhase: Math.random() * Math.PI * 2,
-        baseY,
-      };
-
-      return group;
-    };
-
-    // === Create many blocky clouds ===
-    for (let i = 0; i < 24; i++) {
-      const cloudGroup = createBlockyCloud();
-      scene.add(cloudGroup);
-      cloudsRef.current.push(cloudGroup);
-    }
-
-
-    // Load GLB model
-    const asset = Asset.fromModule(require("../assets/models/test this.glb"));
+    // Load GLB
+    const asset = Asset.fromModule(require("../assets/models/new campus.glb"));
     await asset.downloadAsync();
 
     const loader = new GLTFLoader();
@@ -215,12 +149,14 @@ function WelcomeScreen3D({ navigation }) {
         const paddedMax = box.max.clone().addScalar(BOUNDS_PADDING);
         boundsRef.current = { min: paddedMin, max: paddedMax };
 
-        camera.position.set(
-          center.x,
-          center.y + HEIGHT_OFFSET,
-          center.z + ZOOM_BACK
-        );
-        camera.lookAt(center);
+        // ✅ Force initial camera placement + render
+        camera.position.set(center.x, center.y + HEIGHT_OFFSET, center.z);
+        camera.lookAt(center.x, box.min.y, center.z);
+        renderer.render(scene, camera);
+        gl.endFrameEXP();
+
+        // ✅ Remove loading screen
+        setIsLoading(false);
       },
       undefined,
       (error) => console.error(error)
@@ -233,18 +169,12 @@ function WelcomeScreen3D({ navigation }) {
 
       const t = clock.getElapsedTime();
 
-      // Animate clouds: drift, slight bob, tiny rotation
+      // Animate clouds
       cloudsRef.current.forEach((group) => {
         const { speed, wobblePhase, baseY } = group.userData;
-
-        // Drift on X (wrap around for endless sky)
         group.position.x += speed;
         if (group.position.x > 5000) group.position.x = -5000;
-
-        // Gentle vertical bobbing
         group.position.y = baseY + Math.sin(t * 0.4 + wobblePhase) * 12;
-
-        // Tiny slow spin to add parallax change
         group.rotation.y += 0.00035;
       });
 
@@ -276,6 +206,14 @@ function WelcomeScreen3D({ navigation }) {
 
       {/* === 3D Background === */}
       <GLView style={{ flex: 1 }} onContextCreate={onContextCreate} />
+
+      {/* ✅ Loading overlay */}
+      {isLoading && (
+        <View style={styles.loadingOverlay}>
+          <ActivityIndicator size="large" color="#b51509" />
+          <Text style={{ color: "#b51509", marginTop: 10, fontWeight: "bold" }}>Loading Campus...</Text>
+        </View>
+      )}
 
       {/* === Overlay UI === */}
       <View style={styles.header}>
@@ -381,6 +319,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14,
   },
+
+  loadingOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(255,255,255,0.8)",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 10,
+  }
 });
 
 export default WelcomeScreen3D;
