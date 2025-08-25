@@ -18,30 +18,96 @@ const HRMFLOORScreen = ({ route, navigation }) => {
   const [showNextButton, setShowNextButton] = useState(false);
 
   const mapNodes = {
-    M1: { x: 0.1, y: 0.2 },
-    M2: { x: 0.3, y: 0.2 },
-    M3: { x: 0.3, y: 0.4 },
-    M4: { x: 0.5, y: 0.4 },
-    M5: { x: 0.7, y: 0.4 },
-    M6: { x: 0.7, y: 0.2 },
-    M7: { x: 0.5, y: 0.1 },
+    //cooking demo lab
+    M1: { x: 0.326, y: 0.024 },
+    M2: { x: 0.489, y: 0.024 },
+    M3: { x: 0.326, y: 0.197 },
+    M4: { x: 0.489, y: 0.197 },
+    M5: { x: 0.489, y: 0.05 },
+    M6: { x: 0.489, y: 0.17 },
+    //main kitchen
+    M7: { x: 0.326, y: 0.381 },
+    M8: { x: 0.489, y: 0.381 },
+    M9: { x: 0.489, y: 0.22 },
+    M10: { x: 0.489, y: 0.349 },
+    //bakery
+    M11: { x: 0.326, y: 0.575 },
+    M12: { x: 0.489, y: 0.575 },
+    M13: { x: 0.48999, y: 0.413 },
+    M14: { x: 0.48999, y: 0.546 },
+    //bar & beverage
+    M15: { x: 0.326, y: 0.941},
+    M16: { x: 0.489, y: 0.941 },
+    M17: { x: 0.491, y: 0.593},
+    M18: { x: 0.491, y: 0.75 },
+    M19: { x: 0.491, y: 0.77 },
+    M20: { x: 0.491, y: 0.92 },
+    //skill lab
+    M21: { x: 0.585, y: 0.024},
+    M22: { x: 0.678, y: 0.024},
+    M23: { x: 0.678, y: 0.267},
+    M24: { x: 0.585, y: 0.267},
+    M25: { x: 0.585, y: 0.236},
+    M26: { x: 0.585, y: 0.052},
+    M27: { x: 0.585, y: 0.214},
+    //housekeeping room
+    M28: { x: 0.678, y: 0.525},
+    M29: { x: 0.585, y: 0.525},
+    M30: { x: 0.585, y: 0.49},
+    M31: { x: 0.585, y: 0.472},
+    //dining area
+    M32: { x: 0.678, y: 0.941},
+    M33: { x: 0.585, y: 0.941},
+    M34: { x: 0.585, y: 0.6699},
+    M35: { x: 0.585, y: 0.641},
   };
 
   const mapConnections = [
+    //cooking demo lab
     ["M1", "M2"],
-    ["M2", "M3"],
+    ["M1", "M3"],
     ["M3", "M4"],
-    ["M4", "M5"],
     ["M5", "M6"],
-    ["M6", "M7"],
-    ["M7", "M1"],
+    //main kitchen
+    ["M3", "M7"],
+    ["M7", "M8"],
+    ["M9", "M10"],
+    //bakery
+    ["M7", "M11"],
+    ["M11", "M12"],
+    ["M13", "M14"],
+    //bar & beverage
+    ["M11", "M15"],
+    ["M15", "M16"],
+    ["M17", "M18"],
+    ["M19", "M20"],
+    //skill lab
+    ["M21", "M22"],
+    ["M22", "M23"],
+    ["M23", "M24"],
+    ["M24", "M25"],
+    ["M26", "M27"],
+    //housekeeping room
+    ["M23", "M28"],
+    ["M28", "M29"],
+    ["M29", "M30"],
+    ["M24", "M31"],
+    //dining area
+    ["M28", "M32"],
+    ["M32", "M33"],
+    ["M33", "M34"],
+    ["M29", "M35"],
   ];
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.33, y: 0.1, label: "Cooking\nDemo Lab" },
+    L2: { x: 0.34, y: 0.28, label: "Main\nKitchen" },
+    L3: { x: 0.34, y: 0.47, label: "Bakery" },
+    L4: { x: 0.34, y: 0.67, label: "Bar & \nBeverage \nRoom" },
+    L5: { x: 0.6, y: 0.1, label: "Skills \nLaboratory" },
+    L6: { x: 0.6, y: 0.4, label: "Hoursekeeping \nRoom" },
+    L7: { x: 0.6, y: 0.7, label: "Dining \nArea" },
   };
 
   const stairNodes = [

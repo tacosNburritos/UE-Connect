@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageBackground, StyleSheet, Image, Text, TouchableOpacity, View, StatusBar, Dimensions } from 'react-native';
 
 function WelcomeScreen({ navigation }) {
-    const { width, height } = Dimensions.get('window'); // You can remove if not used elsewhere
+    const { width, height } = Dimensions.get('window'); 
 
     const handlePathPress = () => {
         navigation.navigate('PathFind');
@@ -10,6 +10,10 @@ function WelcomeScreen({ navigation }) {
 
     const handleRoamPress = () => {
         navigation.navigate('LoginScreen');
+    };
+
+    const handleToggle3DPress = () => {
+        navigation.navigate('WelcomeScreen3D');
     };
 
     return (
@@ -39,6 +43,13 @@ function WelcomeScreen({ navigation }) {
                     style={styles.logo_header}
                 />
                 <Text style={styles.text}>UE Connect</Text>
+            </View>
+
+            {/* Toggle 3D Bar */}
+            <View style={styles.toggleBar}>
+                <TouchableOpacity style={styles.toggleButton} onPress={handleToggle3DPress}>
+                    <Text style={styles.toggleButtonText}>Toggle 3D</Text>
+                </TouchableOpacity>
             </View>
 
             {/* Buttons Side by Side */}
@@ -77,7 +88,6 @@ const styles = StyleSheet.create({
         bottom: 50,
         width: '90%',
         alignSelf: 'center',
-        
     },
     buttonText: {
         color: 'white',
@@ -87,32 +97,51 @@ const styles = StyleSheet.create({
         marginTop: 14,
     },
     header: {
-    position: 'absolute',
-    top: 0,
-    width: '100%',
-    height: 120,
-    backgroundColor: '#b51509',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end',
-    flexDirection: 'row',
-    paddingStart: 20,
-    paddingBottom: 10,
-    borderBottomEndRadius: 30,
-    borderBottomStartRadius: 30,
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.55)',
-    },
-
-    placeholder: {
+        position: 'absolute',
+        top: 0,
         width: '100%',
-        height: '100%',
+        height: 120,
+        backgroundColor: '#b51509',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-end',
+        flexDirection: 'row',
+        paddingStart: 20,
+        paddingBottom: 10,
+        borderBottomEndRadius: 30,
+        borderBottomStartRadius: 30,
+        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.55)',
     },
     logo_header: {
         width: 50,
         height: 50,
         marginEnd: 10
     },
+    placeholder: {
+        width: '100%',
+        height: '100%',
+    },
     imageContainer: {
         flex: 1,
+    },
+    toggleBar: {
+        position: 'absolute',
+        top: 120, // directly below header
+        right: 0,
+        width: '100%',
+        paddingVertical: 10,
+        alignItems: 'flex-end',
+        paddingRight: 15,
+    },
+    toggleButton: {
+        backgroundColor: 'white',
+        paddingVertical: 6,
+        paddingHorizontal: 14,
+        borderRadius: 20,
+    },
+    toggleButtonText: {
+        color: '#b51509',
+        fontWeight: 'bold',
+        fontSize: 14,
     }
 });
 

@@ -18,36 +18,65 @@ const OAFLOORScreen = ({ route, navigation }) => {
   const [showNextButton, setShowNextButton] = useState(false);
 
   const mapNodes = {
-    M1: { x: 0.1, y: 0.2 },
-    M2: { x: 0.3, y: 0.2 },
-    M3: { x: 0.3, y: 0.4 },
-    M4: { x: 0.5, y: 0.4 },
-    M5: { x: 0.7, y: 0.4 },
-    M6: { x: 0.7, y: 0.2 },
-    M7: { x: 0.5, y: 0.1 },
+    //Guidance counseling
+    M1: { x: 0.495, y: 0.023 },
+    M2: { x: 0.336, y: 0.023  },
+    M3: { x: 0.336, y: 0.357  },
+    M4: { x: 0.495, y: 0.357  },
+    M5: { x: 0.495, y: 0.06  },
+    //SAO
+    M6: { x: 0.336, y: 0.53  },
+    M7: { x: 0.495, y: 0.53  },
+    M8: { x: 0.495, y: 0.378 },
+    //IT dept
+    M9: { x: 0.336, y: 0.942  },
+    M10: { x: 0.495, y: 0.942 },
+    M11: { x: 0.495, y: 0.55 },
+    //lobby
+    M12: { x: 0.67, y: 0.942 },
+    M13: { x: 0.67, y: 0.023 },
+
   };
 
   const mapConnections = [
+    //Guidance counseling
     ["M1", "M2"],
     ["M2", "M3"],
     ["M3", "M4"],
     ["M4", "M5"],
-    ["M5", "M6"],
+    //SAO
+    ["M3", "M6"],
     ["M6", "M7"],
-    ["M7", "M1"],
+    ["M7", "M8"],
+    //IT dept
+    ["M6", "M9"],
+    ["M9", "M10"],
+    ["M10", "M11"],
+    //daanan
+    ["M10", "M12"],
+    ["M12", "M13"],
+    ["M13", "M1"],
+    
   ];
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.33, y: 0.2, label: "Guidance \nCounseling" },
+    L2: { x: 0.35, y: 0.43, label: "Student \nAffairs \nOffice" },
+    L4: { x: 0.33, y: 0.69, label: "I.T \nDepartment" },
   };
 
   const stairNodes = [
     "OA - E",
     "OA - E2",
   ];
+
+  //FOR DASHED LINES
+  const dashedConnections = new Set([
+  "M10-M12",
+  "M12-M13",
+  "M13-M1",
+  ]);
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
   const adjustedPath =
@@ -194,13 +223,18 @@ const OAFLOORScreen = ({ route, navigation }) => {
           source={require("../images/OLDACADFLR.png")}
           style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
         />
-
+      
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
           {mapConnections.map(([from, to], index) => {
             const start = mapNodes[from];
             const end = mapNodes[to];
             if (!start || !end) return null;
+
+            const key = `${from}-${to}`;
+            const reverseKey = `${to}-${from}`;
+            const isDashed = dashedConnections.has(key) || dashedConnections.has(reverseKey);
+
             return (
               <Line
                 key={`map-${index}`}
@@ -210,6 +244,7 @@ const OAFLOORScreen = ({ route, navigation }) => {
                 y2={end.y * containerSize.height}
                 stroke="blue"
                 strokeWidth={2}
+                strokeDasharray={isDashed ? "5,5" : undefined}
               />
             );
           })}
@@ -320,6 +355,7 @@ const OAFLOORScreen = ({ route, navigation }) => {
               color: "blue",
               fontSize: 12,
               fontWeight: "bold",
+              
             }}
           >
             You
