@@ -99,9 +99,9 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     M66: { x: 0.566, y: 0.71 },
     M67: { x: 0.576, y: 0.79 },
     M68: { x: 0.599, y: 0.779 },
-    M69: { x: 0.576, y: 0.76 },
+    M69: { x: 0.58, y: 0.76 },
     M70: { x: 0.55, y: 0.778 },
-    M71: { x: 0.55, y: 0.749 },
+    M71: { x: 0.56, y: 0.749 },
     M72: { x: 0.53, y: 0.768 },
     //lower 1 room
     M73: { x: 0.51, y: 0.755 },
@@ -280,9 +280,27 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.28, y: 0.89, label: "700" },
+    L2: { x: 0.37, y: 0.84, label: "702" },
+    L3: { x: 0.45, y: 0.794, label: "704" },
+    
+    L4: { x: 0.425, y: 0.95, label: "701" },
+    L5: { x: 0.5, y: 0.91, label: "703" },
+    L6: { x: 0.58, y: 0.865, label: "705" },
+    L7: { x: 0.52, y: 0.59, label: "Lobby" },
+
+    L8: { x: 0.58, y: 0.495, label: "F CR" },
+    L9: { x: 0.575, y: 0.39, label: "M CR" },
+    L10: { x: 0.587, y: 0.33, label: "706" },
+    L11: { x: 0.587, y: 0.27, label: "707" },
+
+    L12: { x: 0.61, y: 0.205, label: "709" },
+    L13: { x: 0.61, y: 0.145, label: "711" },
+    L14: { x: 0.61, y: 0.087, label: "713" },
+
+    L15: { x: 0.39, y: 0.205, label: "708" },
+    L16: { x: 0.39, y: 0.145, label: "710" },
+    L17: { x: 0.39, y: 0.087, label: "712" },
   };
 
   const stairNodes = [
@@ -440,10 +458,10 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/TYK7THFLR.png")}
           style={{ width: "97%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -530,7 +548,7 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -551,7 +569,7 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: "bold",
               }}
             >

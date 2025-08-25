@@ -7,12 +7,13 @@ const ViewScreen = ({ navigation }) => {
   const [selectedFloor, setSelectedFloor] = useState('');
 
   const buildingOptions = [
-    { key: 'EN', value: 'EN' },
-    { key: 'LCT', value: 'LCT' },
-    { key: 'HRM', value: 'HRM' },
-    { key: 'OA', value: 'OA' },
-    { key: 'TYK', value: 'TYK' },
-    { key: 'UE', value: 'UE' },
+    { key: 'EN', value: 'EN Building' },
+    { key: 'LCT', value: 'LCT Building' },
+    { key: 'HRM', value: 'HRM Mock Hotel' },
+    { key: 'OA', value: 'Old Academic Building' },
+    { key: 'TYK', value: 'TYK Building' },
+    { key: 'UE', value: 'UE General Campus' },
+    { key: 'AD', value: 'Admission Area' },
   ];
 
   const buildingFloors = {
@@ -22,6 +23,8 @@ const ViewScreen = ({ navigation }) => {
     HRM: 1,
     OA: 1,
     UE: 1,
+    AD: 1,
+
   };
 
   const getFloorOptions = () => {
@@ -64,6 +67,7 @@ const ViewScreen = ({ navigation }) => {
       'LCT-Floor 6': 'LCT6THFLOORScreen',
       'LCT-Floor 7': 'LCT7THFLOORScreen',
       'LCT-Floor 8': 'LCT8THFLOORScreen',
+      'AD-Floor 1': 'ADMINFLOORScreen',
     };
 
     const key = `${selectedBuilding}-${selectedFloor}`;
@@ -89,7 +93,7 @@ const ViewScreen = ({ navigation }) => {
         setSelected={setSelectedBuilding}
         data={buildingOptions}
         placeholder="Select a building"
-        save="value"
+        save="key"
         boxStyles={styles.dropdown}
       />
 
@@ -98,7 +102,7 @@ const ViewScreen = ({ navigation }) => {
         setSelected={setSelectedFloor}
         data={getFloorOptions()}
         placeholder="Select a floor"
-        save="value"
+        save="key"
         boxStyles={styles.dropdown}
         disabled={!selectedBuilding}
       />

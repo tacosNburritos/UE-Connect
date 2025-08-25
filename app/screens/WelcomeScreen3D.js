@@ -26,10 +26,10 @@ function WelcomeScreen3D({ navigation }) {
   const collidablesRef = useRef([]);
   const cloudsRef = useRef([]);
 
-  // ✅ Add loading state
+  // loading state
   const [isLoading, setIsLoading] = useState(true);
 
-  const HEIGHT_OFFSET = 100;
+  const HEIGHT_OFFSET = 150;
   const ZOOM_BACK = 0;
 
   const ROT_SPEED = 0.0003;
@@ -182,6 +182,7 @@ function WelcomeScreen3D({ navigation }) {
       gl.endFrameEXP();
     };
     render();
+    
   };
 
   const handlePathPress = () => {

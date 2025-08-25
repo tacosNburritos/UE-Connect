@@ -34,6 +34,7 @@ import HRMFLOORScreen from './app/screens/HRMFLOORScreen';
 import LoginScreen from './app/screens/LoginScreen';
 import EditRoom from './app/screens/EditRoom';
 import WelcomeScreen3D from './app/screens/WelcomeScreen3D';
+import ADMINFLOORScreen from './app/screens/ADMINFLOORScreen';
 
 import UEScreen from './app/screens/UEScreen';
 
@@ -57,6 +58,7 @@ export default function App() {
         <Stack.Screen name="EditRoom" component={EditRoom} options={{ headerShown: false }} />
             
         <Stack.Screen name="WelcomeScreen3D" component={WelcomeScreen3D} />
+        <Stack.Screen name="ADMINFLOORScreen" component={ADMINFLOORScreen} />
 
         <Stack.Screen name="EN1STFLOORScreen" component={EN1STFLOORScreen} />
         <Stack.Screen name="EN2NDFLOORScreen" component={EN2NDFLOORScreen} />

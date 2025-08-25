@@ -45,7 +45,7 @@ const TYK6THFLOORScreen = ({ route, navigation }) => {
     M25: { x: 0.55, y: 0.768 },
     M26: { x: 0.459, y: 0.809 },
     M27: { x: 0.536, y: 0.851 },
-    M28: { x: 0.251, y: 0.915 },
+    M28: { x: 0.28, y: 0.905 },
     M29: { x: 0.439, y: 0.99999},
     M30: { x: 0.641, y: 0.91},
     M31: { x: 0.469, y: 0.815 },
@@ -160,12 +160,12 @@ const TYK6THFLOORScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.35, y: 0.09, label: "Workshop\n & Tool\n Room" },
-    L2: { x: 0.36, y: 0.19, label: "Arts &\n Design \n Open \n Studio" },
+    L1: { x: 0.38, y: 0.09, label: "Work\nshop\nRoom" },
+    L2: { x: 0.376, y: 0.18, label: "Arts &\nDesign \nOpen \nStudio" },
     L3: { x: 0.53, y: 0.6, label: "Library" },
-    L4: { x: 0.56, y: 0.23, label: "Animation \nStudio" },
-    L5: { x: 0.6, y: 0.17, label: "TYK\n600" },
-    L6: { x: 0.6, y: 0.09, label: "Video\nEditing\nRoom" },
+    L4: { x: 0.58, y: 0.22, label: "Anim-\nation \nStudio" },
+    L5: { x: 0.595, y: 0.16, label: "TYK\n600" },
+    L6: { x: 0.58, y: 0.09, label: "Video\nEditing\nRoom" },
   };
 
   const stairNodes = [
@@ -329,10 +329,10 @@ adjustedPath.forEach(node => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/TYK6THFLR.png")}
           style={{ width: "97%", height: "102%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -419,7 +419,7 @@ adjustedPath.forEach(node => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -437,7 +437,7 @@ adjustedPath.forEach(node => {
             <Text
               style={{
                 position: "absolute",
-                left: x * containerSize.width + 6,
+                left: x * containerSize.width + 7,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
                 fontSize: 10,

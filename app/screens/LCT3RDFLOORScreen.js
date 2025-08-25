@@ -49,11 +49,11 @@ const mapNodes = {
     B22: { x: 0.335, y: 0.527},
     B23: { x: 0.48, y: 0.527},
     B24: { x: 0.48, y: 0.434},
-    //elevator
+        //elevator
     B25: { x: 0.335, y: 0.527 },
     B26: { x: 0.335, y: 0.621},
-    B27: { x: 0.48, y: 0.621},
-    B28: { x: 0.48, y: 0.527},
+    B27: { x: 0.380, y: 0.621},
+    B28: { x: 0.380, y: 0.527},
     // room 304
     B29: { x: 0.335, y: 0.621 },
     B30: { x: 0.335, y: 0.714},
@@ -77,9 +77,15 @@ const mapNodes = {
 
     //hallway
     H1: { x: 0.48, y: 0.016 },
-    H2: { x: 0.48, y: 0.951 },
-    H3: { x: 0.535, y: 0.951 },
+    H2: { x: 0.48, y: 0.527 },
+    H3: { x: 0.535, y: 0.527 },
     H4: { x: 0.535, y: 0.016 },
+
+    //hallway 2
+    H5: { x: 0.48, y: 0.621 },
+    H6: { x: 0.48, y: 0.951},
+    H7: { x: 0.535, y: 0.951 },
+    H8: { x: 0.535, y: 0.621 },
 
     //room 313
     F1:  { x: 0.535, y: 0.064 },
@@ -135,11 +141,16 @@ const mapNodes = {
 
 
   const mapConnections = [
-    //hallway
+
+        //hallway
     ["H1", "H2"],
-    ["H2", "H3"],
     ["H3", "H4"],
     ["H4", "H1"],
+        //hallway 2
+    ["H5", "H6"],
+    ["H6", "H7"],
+    ["H7", "H8"],
+    
     //left wing stairs
     ["B1", "B2"],
     ["B2", "B3"],
@@ -252,28 +263,28 @@ const mapNodes = {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    LB1: { x: 0.345, y: 0.040, label: "Stairs" },
-    LB2: { x: 0.335, y: 0.110, label: "Female CR" },
-    LB3: { x: 0.347, y: 0.201, label: "LCT 312" },
-    LB4: { x: 0.347, y: 0.292, label: "LCT 310" },
-    LB5: { x: 0.347, y: 0.384, label: "LCT 308" },
-    LB6: { x: 0.347, y: 0.475, label: "LCT 306" },
-    LB7: { x: 0.347, y: 0.566, label: "Elevator" },
-    LB8: { x: 0.347, y: 0.665, label: "LCT 304" },
-    LB9: { x: 0.347, y: 0.760, label: "LCT 302" },
-    LB10: { x: 0.355, y: 0.850, label: "Male CR" },
-    LB11: { x: 0.345, y: 0.925, label: "Stairs" },
+    LB1: { x: 0.36, y: 0.040, label: "Stairs" },
+    LB2: { x: 0.35, y: 0.110, label: "Female\n   CR" },
+    LB3: { x: 0.342, y: 0.201, label: "LCT 312" },
+    LB4: { x: 0.342, y: 0.292, label: "LCT 310" },
+    LB5: { x: 0.342, y: 0.384, label: "LCT 308" },
+    LB6: { x: 0.342, y: 0.475, label: "LCT 306" },
+    LB7: { x: 0.342, y: 0.566, label: "Elevator" },
+    LB8: { x: 0.342, y: 0.665, label: "LCT 304" },
+    LB9: { x: 0.342, y: 0.760, label: "LCT 302" },
+    LB10: { x: 0.365, y: 0.845, label: "Male\n  CR" },
+    LB11: { x: 0.360, y: 0.925, label: "Stairs" },
 
-    LF1: { x: 0.548, y: 0.110, label: "LCT 313" },
-    LF2: { x: 0.548, y: 0.201, label: "LCT 311" },
-    LF3: { x: 0.548, y: 0.292, label: "LCT 309" },
-    LF4: { x: 0.548, y: 0.384, label: "LCT 307" },
-    LF5: { x: 0.548, y: 0.475, label: "LCT 305" },
-    LF6: { x: 0.548, y: 0.545, label: "LCT 203" },
-    LF10: { x: 0.548, y: 0.595, label: "Stairs" },
-    LF7: { x: 0.548, y: 0.665, label: "LCT 303" },
-    LF8: { x: 0.548, y: 0.760, label: "LCT 301" },
-    LF9: { x: 0.548, y: 0.850, label: "LCT 300" },
+    LF1: { x: 0.540, y: 0.110, label: "LCT 313" },
+    LF2: { x: 0.540, y: 0.201, label: "LCT 311" },
+    LF3: { x: 0.540, y: 0.292, label: "LCT 309" },
+    LF4: { x: 0.540, y: 0.384, label: "LCT 307" },
+    LF5: { x: 0.540, y: 0.475, label: "LCT 305" },
+    LF6: { x: 0.540, y: 0.545, label: "LCT 203" },
+    LF10: { x: 0.555, y: 0.595, label: "Stairs" },
+    LF7: { x: 0.540, y: 0.665, label: "LCT 303" },
+    LF8: { x: 0.540, y: 0.760, label: "LCT 301" },
+    LF9: { x: 0.540, y: 0.850, label: "LCT 300" },
   };
 
   const stairNodes = [

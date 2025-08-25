@@ -11,258 +11,55 @@ import Animated, {
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const LCT2NDFLOORScreen = ({ route, navigation }) => {
+const ADMINFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [showNextButton, setShowNextButton] = useState(false);
 
    const mapNodes = { 
-    //left wing stairs
-    B1: { x: 0.335, y: 0.016 },
-    B2: { x: 0.335, y: 0.064 },
-    B3: { x: 0.48, y: 0.064 },
-    B4: { x: 0.48, y: 0.016 },
-    //left wing extra room
-    B5: { x: 0.335, y: 0.064 },
-    B6: { x: 0.335, y: 0.153 },
-    B7: { x: 0.48, y: 0.153},
-    B8: { x: 0.48, y: 0.064 },
-    //room 204
-    B9:  { x: 0.335, y: 0.153 },
-    B10: { x: 0.335, y: 0.246 },
-    B11: { x: 0.48, y: 0.246},
-    B12: { x: 0.48, y: 0.153},
-    //room 202
-    B13: { x: 0.335, y: 0.246 },
-    B14: { x: 0.335, y: 0.341},
-    B15: { x: 0.48, y: 0.341},
-    B16: { x: 0.48, y: 0.246},
-    //elementary faculty
-    B17: { x: 0.335, y: 0.341},
-    B18: { x: 0.335, y: 0.434},
-    B19: { x: 0.48, y: 0.434},
-    B20: { x: 0.48, y: 0.341},
-    //guidance office
-    B21: { x: 0.335, y: 0.434 },
-    B22: { x: 0.335, y: 0.527},
-    B23: { x: 0.48, y: 0.527},
-    B24: { x: 0.48, y: 0.434},
-    //elevator
-    B25: { x: 0.335, y: 0.527 },
-    B26: { x: 0.335, y: 0.621},
-    B27: { x: 0.380, y: 0.621},
-    B28: { x: 0.380, y: 0.527},
-    //highschool faculty
-    B29: { x: 0.335, y: 0.621 },
-    B30: { x: 0.335, y: 0.736},
-    B31: { x: 0.48, y: 0.736},
-    B32: { x: 0.48, y: 0.621},
-    //multimedia room
-    B33: { x: 0.335, y: 0.736 },
-    B34: { x: 0.335, y: 0.815},
-    B35: { x: 0.48, y: 0.815},
-    B36: { x: 0.48, y: 0.736},
-    //right wing extra room
-    B37: { x: 0.335, y: 0.815 },
-    B38: { x: 0.335, y: 0.895},
-    B39: { x: 0.48, y: 0.895},
-    B40: { x: 0.48, y: 0.815},
-    //right wing stairs
-    B41: { x: 0.335, y: 0.895},
-    B42: { x: 0.335, y: 0.951},
-    B43: { x: 0.48, y: 0.951},
-    B44: { x: 0.48, y: 0.895},
+    B1: { x: 0.135, y: 0.016 },
+    B2: { x: 0.88, y: 0.016 },
+    B3: { x: 0.88, y: 0.9 },
+    B4: { x: 0.135, y: 0.9 },
+    B5: { x: 0.135, y: 0.1 },
+    B6: { x: 0.67, y: 0.1 },
+    B7: { x: 0.67, y: 0.016 },
+    B8: { x: 0.135, y: 0.3 },
+    B9: { x: 0.67, y: 0.3 },
+    B10: { x: 0.67, y: 0.9 },
+    B11: { x: 0.135, y: 0.4 },
+    B12: { x: 0.67, y: 0.4 },
+    B13: { x: 0.328, y: 0.3 },
+    B14: { x: 0.328, y: 0.4 },
 
-    //hallway
-    H1: { x: 0.48, y: 0.016 },
-    H2: { x: 0.48, y: 0.527 },
-    H3: { x: 0.535, y: 0.527 },
-    H4: { x: 0.535, y: 0.016 },
-
-    //hallway 2
-    H5: { x: 0.48, y: 0.621 },
-    H6: { x: 0.48, y: 0.951},
-    H7: { x: 0.535, y: 0.951 },
-    H8: { x: 0.535, y: 0.621 },
-
-    //room 205
-    F1:  { x: 0.535, y: 0.064 },
-    F2:  { x: 0.535, y: 0.153 },
-    F3:  { x: 0.679, y: 0.153 },
-    F4:  { x: 0.679, y: 0.064 },
-    // room 203
-    F5:  { x: 0.535, y: 0.153 },
-    F6:  { x: 0.535, y: 0.246 },
-    F7:  { x: 0.679, y: 0.246 },
-    F8:  { x: 0.679, y: 0.153 },
-    // room 201
-    F9:  { x: 0.535, y: 0.246 },
-    F10: { x: 0.535, y: 0.341 },
-    F11: { x: 0.679, y: 0.341 },
-    F12: { x: 0.679, y: 0.246 },
-    // room 200
-    F13: { x: 0.535, y: 0.341 },
-    F14: { x: 0.535, y: 0.434 },
-    F15: { x: 0.679, y: 0.434 },
-    F16: { x: 0.679, y: 0.341 },
-    // speech laboratory
-    F17: { x: 0.535, y: 0.434 },
-    F18: { x: 0.535, y: 0.571 },
-    F19: { x: 0.679, y: 0.571 },
-    F20: { x: 0.679, y: 0.434 },
-    // middle stairs
-    F21: { x: 0.535, y: 0.571 },
-    F22: { x: 0.535, y: 0.621 },
-    F23: { x: 0.679, y: 0.621 },
-    F24: { x: 0.679, y: 0.571 },
-    // highschool computer laboratory
-    F25: { x: 0.535, y: 0.621 },
-    F26: { x: 0.535, y: 0.766 },
-    F27: { x: 0.679, y: 0.766 },
-    F28: { x: 0.679, y: 0.621 },
-    // elementary computer laboratory
-    F29: { x: 0.535, y: 0.766 },
-    F30: { x: 0.535, y: 0.895 },
-    F31: { x: 0.679, y: 0.895 },
-    F32: { x: 0.679, y: 0.766 },
   };
 
-
   const mapConnections = [
-    //hallway
-    ["H1", "H2"],
-    ["H3", "H4"],
-    ["H4", "H1"],
-        //hallway 2
-    ["H5", "H6"],
-    ["H6", "H7"],
-    ["H7", "H8"],
-    
-    //left wing stairs
     ["B1", "B2"],
     ["B2", "B3"],
     ["B3", "B4"],
     ["B4", "B1"],
-    // female comfort room cr
     ["B5", "B6"],
     ["B6", "B7"],
-    ["B7", "B8"],
-    ["B8", "B5"],
-    // room 204
-    ["B9",  "B10"],
-    ["B10", "B11"],
+    ["B8", "B9"],
+    ["B9", "B10"],
     ["B11", "B12"],
-    ["B12", "B9"],
-    //room 202
     ["B13", "B14"],
-    ["B14", "B15"],
-    ["B15", "B16"],
-    ["B16", "B13"],
-    //elementary faculty
-    ["B17", "B18"],
-    ["B18", "B19"],
-    ["B19", "B20"],
-    ["B20", "B17"],
-    //guidance office
-    ["B21", "B22"],
-    ["B22", "B23"],
-    ["B23", "B24"],
-    ["B24", "B21"],
-    //elevator
-    ["B25", "B26"],
-    ["B26", "B27"],
-    ["B27", "B28"],
-    ["B28", "B25"],
-    //highschool faculty
-    ["B29", "B30"],
-    ["B30", "B31"],
-    ["B31", "B32"],
-    ["B32", "B29"],
-    //multimedia room
-    ["B33", "B34"],
-    ["B34", "B35"],
-    ["B35", "B36"],
-    ["B36", "B33"],
-    // male comfort room cr
-    ["B37", "B38"],
-    ["B38", "B39"],
-    ["B39", "B40"],
-    ["B40", "B37"],
-    //right wing stairs
-    ["B41", "B42"],
-    ["B42", "B43"],
-    ["B43", "B44"],
-    ["B44", "B41"],
-
-    //room 205
-  ["F1", "F2"],
-  ["F2", "F3"],
-  ["F3", "F4"],
-  ["F4", "F1"],
-  //room 203
-  ["F5", "F6"],
-  ["F6", "F7"],
-  ["F7", "F8"],
-  ["F8", "F5"],
-  //room 201
-  ["F9",  "F10"],
-  ["F10", "F11"],
-  ["F11", "F12"],
-  ["F12", "F9"],
-  // room 200
-  ["F13", "F14"],
-  ["F14", "F15"],
-  ["F15", "F16"],
-  ["F16", "F13"],
-  // speech laboratory
-  ["F17", "F18"],
-  ["F18", "F19"],
-  ["F19", "F20"],
-  ["F20", "F17"],
-  // middle stairs
-  ["F21", "F22"],
-  ["F22", "F23"],
-  ["F23", "F24"],
-  ["F24", "F21"],
-  // highschool computer laboratory
-  ["F25", "F26"],
-  ["F26", "F27"],
-  ["F27", "F28"],
-  ["F28", "F25"],
-  // elementary computer laboratory
-  ["F29", "F30"],
-  ["F30", "F31"],
-  ["F31", "F32"],
-  ["F32", "F29"],
 ];
 
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    LB1: { x: 0.36, y: 0.040, label: "----------" },
-    LB2: { x: 0.35, y: 0.110, label: "Female\n    CR" },
-    LB3: { x: 0.350, y: 0.201, label: "LCT 204" },
-    LB4: { x: 0.350, y: 0.292, label: "LCT 202" },
-    LB5: { x: 0.335, y: 0.384, label: "Elementary\n   Faculty" },
-    LB6: { x: 0.345, y: 0.475, label: "Guidance\n   Office" },
-    LB7: { x: 0.350, y: 0.566, label: "Elevator" },
-    LB8: { x: 0.330, y: 0.677, label: "Highschool\n    Faculty" },
-    LB9: { x: 0.335, y: 0.770, label: "Multimedia\n    Room" },
-    LB10: { x: 0.365, y: 0.845, label: "Male\n  CR" },
-    LB11: { x: 0.360, y: 0.925, label: "Stairs" },
-
-    LF1: { x: 0.550, y: 0.110, label: "LCT 205" },
-    LF2: { x: 0.55, y: 0.201, label: "LCT 203" },
-    LF3: { x: 0.55, y: 0.292, label: "LCT 201" },
-    LF4: { x: 0.55, y: 0.384, label: "LCT 200" },
-    LF5: { x: 0.535, y: 0.495, label: "   Speech\nLaboratory" },
-    LF6: { x: 0.55, y: 0.596, label: "----------" },
-    LF7: { x: 0.532, y: 0.685, label: "Highschool\n  Computer\n       Lab" },
-    LF8: { x: 0.535, y: 0.815, label: "Elementary\n Computer \nLaboratory" },
+    LB1: { x: 0.32, y: 0.19, label: "Waiting Area" },
+    LB2: { x: 0.27, y: 0.06, label: "Admission's Office" },
+    LB3: { x: 0.14, y: 0.34, label: "Comptroller's\nOffice" },
+    LB4: { x: 0.44, y: 0.346, label: "Cashier" },
   };
 
   const stairNodes = [
+    "LCT - EL",
+    "LCT - ER",
     "LCT - ELEVATOR"
   ];
 
@@ -343,7 +140,7 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
     const nextFloor = getFloorFromNode(nextNode);
     let nextScreen = "";
 
-    if (nextFloor === 2) nextScreen = "EN2NDFLOORScreen";
+     if (nextFloor === 2) nextScreen = "EN2NDFLOORScreen";
     else if (nextFloor === 3) nextScreen = "EN3RDFLOORScreen";
     else if (nextFloor === 4) nextScreen = "EN4THFLOORScreen";
     else if (nextFloor === 5) nextScreen = "UEScreen";
@@ -406,7 +203,7 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
       </View>
 
       <Text style={{ fontSize: 16, fontWeight: "bold", marginTop: 50 }}>
-        LCT - Second Floor
+        Admission Area
       </Text>
 
       <View
@@ -415,10 +212,10 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
-          source={require("../images/LCT2NDFLR.png")}
+        {/* <Image
+          source={require("../images/LCT1STFLR.png")}
           style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -526,7 +323,7 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
-                fontSize: 8.5,
+                fontSize: 10,
                 fontWeight: "bold",
               }}
             >
@@ -555,4 +352,4 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
   );
 };
 
-export default LCT2NDFLOORScreen;
+export default ADMINFLOORScreen;
