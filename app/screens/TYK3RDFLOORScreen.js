@@ -18,23 +18,182 @@ const TYK3RDFLOORScreen = ({ route, navigation }) => {
   const [showNextButton, setShowNextButton] = useState(false);
 
   const mapNodes = {
-    M1: { x: 0.1, y: 0.2 },
-    M2: { x: 0.3, y: 0.2 },
-    M3: { x: 0.3, y: 0.4 },
-    M4: { x: 0.5, y: 0.4 },
-    M5: { x: 0.7, y: 0.4 },
-    M6: { x: 0.7, y: 0.2 },
-    M7: { x: 0.5, y: 0.1 },
+    //UPPER PART OUTLINE (LEFT)
+    ULSTO1: { x: 0.48, y: 0.015 }, //UPPER STAIR OUTLINE
+    ULSTO2: { x: 0.478, y: 0.069 },
+    ULO1: { x: 0.394, y: 0.069 },
+    ULO2: { x: 0.39,  y: 0.257},
+    ULO3: { x: 0.475,  y: 0.257},
+    ULO4: { x: 0.475,  y: 0.352},
+
+    ULOP1: { x: 0.391, y: 0.164 }, //UPPER PART OUTLINE POINT
+    ULOP2: { x: 0.475, y: 0.2692 },
+    ULOP3: { x: 0.475, y: 0.2879 },
+    ULOP4: { x: 0.475, y: 0.296 },
+    ULOP5: { x: 0.475, y: 0.3152 },
+    ULOP6: { x: 0.475, y: 0.334 },
+
+    //MIDLE PART OUTLINE
+    MLSTO1: { x: 0.51, y: 0.352 }, //MIDDLE STAIR OUTLINE
+    MLSTO2: { x: 0.365, y: 0.352 },
+    MLSTO3: { x: 0.3765, y: 0.352 },
+    MLSTO4: { x: 0.3765, y: 0.361 },
+    MLSTO5: { x: 0.359, y: 0.368 },
+    MLSTO6: { x: 0.3765, y: 0.375 },
+    MLSTO7: { x: 0.3765, y: 0.384 },
+    MLSTO8: { x: 0.365, y: 0.384 },
+    MLSTO9: { x: 0.482, y: 0.384 },
+    MLSTO10: { x: 0.427, y: 0.384 },
+
+    MLO1:  { x: 0.427, y: 0.557 }, // MIDDLE PART OUTLINE 
+    MLO2: { x: 0.505, y: 0.598 },  
+  
+    MLOP1: { x: 0.46, y: 0.384 }, // MIDDLE PART OUTLINE POINT
+    MLOP2: { x: 0.427, y: 0.461},
+    
+    //LOWER PART OUTLINE
+    LLO1: { x: 0.42, y: 0.643 }, // LOWER PART OUTLINE
+    LLO2: { x: 0.479, y: 0.672 }, 
+    LLO3: { x: 0.42, y: 0.701 }, 
+    LLO4: { x: 0.479, y: 0.729 }, 
+    LLO5: { x: 0.425, y: 0.759 },
+    LLO6: { x: 0.485, y: 0.788 },
+    LLO7: { x: 0.459, y: 0.8025 },
+    LLO8: { x: 0.467, y: 0.806 },  
+    LLO9: { x: 0.54, y: 0.8435 }, 
+    LLO10: { x: 0.25, y: 0.9095 }, 
+
+    LLOP1: { x: 0.54, y: 0.759 }, // LOWER PART OUTLINE POINT
+    LLOP2: { x: 0.486, y: 0.815 },
+    LLOP3: { x: 0.515, y: 0.83 },
+    LLOP4: { x: 0.467, y: 0.806 }, 
+    LLOP5: { x: 0.392, y: 0.842 },
+    LLOP6: { x: 0.32, y: 0.877 },
+    LLOP7: { x: 0.302, y: 0.934 },
+    LLOP8: { x: 0.393, y: 0.977 },
+ 
+ 
+    //RIGHT PART OUTLINE 
+    RO1: { x: 0.441, y: 0.999 }, 
+    RO2: { x: 0.65, y: 0.903 }, 
+    RO3: { x: 0.602, y: 0.88 }, 
+    RO4: { x: 0.627, y: 0.869 }, 
+    RO5: { x: 0.627, y: 0.759 }, 
+    RO6: { x: 0.67, y: 0.759 }, 
+    RO7: { x: 0.675, y: 0.508 }, 
+    RO8: { x: 0.647, y: 0.508 }, 
+    RO9: { x: 0.647, y: 0.493 }, 
+    RO10: { x: 0.675, y: 0.479 }, 
+    RO11: { x: 0.647, y: 0.464 }, 
+    RO12: { x: 0.647, y: 0.448 }, 
+    RO13: { x: 0.675, y: 0.448 }, 
+    RO14: { x: 0.681, y: 0.069 },
+    RO15: { x: 0.6, y: 0.069 },
+    RO16: { x: 0.6, y: 0.015 },
+
+    ROP1: { x: 0.5105, y: 0.9665 }, // LOWER PART OUTLINE POINT RIGHT
+    ROP2: { x: 0.583, y: 0.934 },
+    ROP3: { x: 0.675, y: 0.666 },
+    ROP4: { x: 0.675, y: 0.57 },
+    ROP5: { x: 0.675, y: 0.525 },
+    ROP6: { x: 0.675, y: 0.425 },
+    ROP7: { x: 0.675, y: 0.386 },
+    ROP8: { x: 0.676, y: 0.365 },
+    ROP9: { x: 0.677, y: 0.314 },
+    ROP10: { x: 0.678, y: 0.259 },
+    ROP11: { x: 0.679, y: 0.196 },
+    ROP12: { x: 0.68, y: 0.132 },
+
+    //INSIDE STRUCTURE
+    //IS: { x: 0.55, y: 0.185 }, //INSIDE STRUCTURE
+
+    
+    //EO1: { x: 0.55, y: 0.34 }, //ELEVATOR OUTLINE
+
+
   };
 
-  const mapConnections = [
-    ["M1", "M2"],
-    ["M2", "M3"],
-    ["M3", "M4"],
-    ["M4", "M5"],
-    ["M5", "M6"],
-    ["M6", "M7"],
-    ["M7", "M1"],
+
+const mapConnections = [
+    ["ULSTO1", "ULSTO2"],
+    ["ULSTO2", "ULO1"],
+    ["ULO1", "ULO1",],
+    ["ULO1", "ULOP1"],
+    ["ULOP1", "ULO2"],
+    ["ULO2", "ULO3"],,
+    ["ULO3", "ULOP2"],
+    ["ULOP2", "ULOP3"],
+    ["ULOP3", "ULOP4"],
+    ["ULOP4", "ULOP5"],
+    ["ULOP5", "ULOP6"],
+    ["ULOP6", "ULO4"],
+
+    ["ULO4", "MLSTO1"],
+    ["MLSTO1", "MLSTO3"],
+    ["MLSTO3", "MLSTO2"],
+    ["MLSTO3", "MLSTO4"],
+    ["MLSTO4", "MLSTO5"],
+    ["MLSTO5", "MLSTO6"],
+    ["MLSTO6", "MLSTO7"],
+    ["MLSTO7", "MLSTO8"],
+    ["MLSTO8", "MLSTO10"],
+    ["MLSTO10", "MLOP1"],
+    ["MLOP1", "MLSTO9"],
+    ["MLSTO10", "MLO1"],
+    ["MLO1", "MLO2"],
+
+    ["MLO2", "LLO1"],
+    ["LLO1", "LLO2"],
+    ["LLO2", "LLO3"],
+    ["LLO3", "LLO4"],
+    ["LLO4", "LLO5"],
+    ["LLO5", "LLO6"],
+    ["LLO6", "LLO7"],
+    ["LLO7", "LLOP1"],
+    ["LLO7", "LLO8"],
+    ["LLO8", "LLOP2"],
+    ["LLOP2", "LLOP3"],
+    ["LLOP3", "LLO9"],
+    ["LLO8", "LLOP5"],
+    ["LLOP5", "LLOP6"],
+    ["LLOP6", "LLO10"],
+    ["LLO10", "LLOP7"],
+    ["LLOP7", "LLOP8"],
+
+    ["LLOP8", "RO1"],
+    ["RO1", "ROP1"],
+    ["ROP1", "ROP2"],
+    ["ROP2", "RO2"],
+    ["RO2", "RO3"],
+    ["RO3", "RO4"],
+    ["RO4", "RO5"],
+    ["RO5", "RO6"],
+
+    ["LLOP1", "RO5"],
+
+    ["RO6", "ROP3"],
+    ["ROP3", "ROP4"],
+    ["ROP4", "ROP5"],
+    ["ROP5", "RO7"],
+    ["RO7", "RO8"],
+    ["RO8", "RO9"],
+    ["RO9", "RO10"],
+    ["RO10", "RO11"],
+    ["RO11", "RO12"],
+    ["RO12", "RO13"],
+    ["RO13", "ROP6"],
+    ["ROP6", "ROP7"],
+    ["ROP7", "ROP8"],
+    ["ROP8", "ROP9"],
+    ["ROP9", "ROP10"],
+    ["ROP10", "ROP11"],
+    ["ROP11", "ROP12"],
+    ["ROP12", "RO14"],
+    ["RO14", "RO15"],
+    ["RO15", "RO16"],
+
+    
+    
   ];
 
 // STRICTLY FOR LABELS ONLY
@@ -290,7 +449,7 @@ const TYK3RDFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={1} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}

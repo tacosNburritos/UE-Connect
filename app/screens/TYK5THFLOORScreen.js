@@ -18,13 +18,89 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
   const [showNextButton, setShowNextButton] = useState(false);
 
   const mapNodes = {
-    M1: { x: 0.1, y: 0.2 },
-    M2: { x: 0.3, y: 0.2 },
-    M3: { x: 0.3, y: 0.4 },
-    M4: { x: 0.5, y: 0.4 },
-    M5: { x: 0.7, y: 0.4 },
-    M6: { x: 0.7, y: 0.2 },
-    M7: { x: 0.5, y: 0.1 },
+    //UPPER PART OUTLINE (LEFT)
+    ULSTO1: { x: 0.48, y: 0.011 }, //UPPER STAIR OUTLINE
+    ULSTO2: { x: 0.478, y: 0.064 },
+    ULO1: { x: 0.394, y: 0.064 },  //UPPER PART OUTLINE
+    ULO2: { x: 0.394, y: 0.253 },
+    ULO3: { x: 0.481, y: 0.253 },
+    ULO4: { x: 0.481, y: 0.347 },
+
+    ULOP1: { x: 0.481, y: 0.265 }, //UPPER PART OUTLINE POINT
+    ULOP2: { x: 0.481, y: 0.284 },
+    ULOP3: { x: 0.481, y: 0.291 },
+    ULOP4: { x: 0.481, y: 0.311 },
+    ULOP5: { x: 0.481, y: 0.33 },
+
+    //MIDLE PART OUTLINE
+    MLSTO1: { x: 0.372, y: 0.347 }, //MIDLE STAIR OUTLINE
+    MLSTO2: { x: 0.384, y: 0.347 },
+    MLSTO3: { x: 0.384, y: 0.357 },
+    MLSTO4: { x: 0.368, y: 0.364 },
+    MLSTO5: { x: 0.384, y: 0.372 },
+    MLSTO6: { x: 0.384, y: 0.38 }, 
+    MLSTO7: { x: 0.372, y: 0.38 },
+    MLSTO8: { x: 0.434, y: 0.38 },
+    MLSTO9: { x: 0.49, y: 0.38 },
+
+    MLO1: { x: 0.434, y: 0.553 }, // MIDLE PART OUTLINE 
+    MLO2: { x: 0.516, y: 0.595 },
+  
+    MLOP1: { x: 0.467, y: 0.38 }, // MIDLE PART OUTLINE POINT
+    MLOP2: { x: 0.434, y: 0.457 },
+    
+    //LOWER PART OUTLINE
+    LLO1: { x: 0.434, y: 0.639 }, // LOWER PART OUTLINE
+    LLO2: { x: 0.495, y: 0.666 },
+    LLO3: { x: 0.434, y: 0.698 },
+    LLO4: { x: 0.495, y: 0.725 },
+    LLO5: { x: 0.439, y: 0.755 },
+    LLO6: { x: 0.502, y: 0.784 },
+    LLO7: { x: 0.475, y: 0.798 },
+    LLO8: { x: 0.485, y: 0.803 },
+    LLO9: { x: 0.271, y: 0.907 }, 
+
+    /*LLOP1: { x: 0.53, y: 0.7975 }, // LOWER PART OUTLINE POINT
+    LLOP2: { x: 0.557, y: 0.812 }, 
+    LLOP2: { x: 0.557, y: 0.812 }, 
+    LLOP2: { x: 0.557, y: 0.812 }, 
+    LLOP2: { x: 0.557, y: 0.812 }, 
+    LLOP2: { x: 0.557, y: 0.812 }, 
+    LLOP2: { x: 0.557, y: 0.812 }, 
+    LLOP2: { x: 0.557, y: 0.812 }, */
+
+    //RIGHT PART OUTLINE 
+    RO1: { x: 0.46, y: 0.996 }, 
+    RO2: { x: 0.669, y: 0.899 }, // DUNNO WHAT THIS IS
+    RO3: { x: 0.621, y: 0.876 },
+    RO4: { x: 0.626, y: 0.874 },
+    RO5: { x: 0.645, y: 0.865 },
+    RO6: { x: 0.645, y: 0.755 },
+    RO7: { x: 0.685, y: 0.755 },
+    RO8: { x: 0.685, y: 0.503 },
+    RO9: { x: 0.659, y: 0.503 },
+    RO10: { x: 0.659, y: 0.488 },
+    RO11: { x: 0.685, y: 0.474 },
+    RO12: { x: 0.659, y: 0.46 },
+    RO13: { x: 0.659, y: 0.443 },
+    RO14: { x: 0.687, y: 0.443},
+    RO15: { x: 0.686, y: 0.064},
+    RO16: { x: 0.6, y: 0.064},
+    RO17: { x: 0.6, y: 0.011},
+
+
+    /*ROP1: { x: 0.557, y: 0.9455 }, // LOWER PART OUTLINE POINT RIGHT
+    ROP2: { x: 0.623, y: 0.914 },
+    ROP3: { x: 0.708, y: 0.679 },
+    ROP4: { x: 0.708, y: 0.617 },
+    ROP5: { x: 0.708, y: 0.555 },
+    ROP6: { x: 0.708, y: 0.511 },
+    ROP7: { x: 0.708, y: 0.4115 },
+    ROP8: { x: 0.708, y: 0.373 },
+    ROP9: { x: 0.708, y: 0.3105 },
+    ROP10: { x: 0.708, y: 0.247 },
+    ROP11: { x: 0.708, y: 0.186 },
+    ROP12: { x: 0.708, y: 0.125 },*/
   };
 
   const mapConnections = [
@@ -289,7 +365,7 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={1} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
