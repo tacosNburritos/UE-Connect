@@ -171,13 +171,34 @@ function PFScreen({ navigation }) {
     const path = dijkstra(selectedStart, actualEnd);
     const startFloor = startCoord.floor;
 
+    console.log("Start floor:", startCoord.floor, typeof startCoord.floor);
+
     const screenMap = {
-      2: 'EN2NDFLOORScreen', 3: 'EN3RDFLOORScreen', 4: 'EN4THFLOORScreen',
+      2: 'EN2NDFLOORScreen', 
+      3: 'EN3RDFLOORScreen', 
+      4: 'EN4THFLOORScreen',
       5: 'UEScreen',
-      6: 'TYK1STFLOORScreen', 7: 'TYK2NDFLOORScreen', 8: 'TYK3RDFLOORScreen', 9: 'TYK4THFLOORScreen', 10: 'TYK5THFLOORScreen',
-      11: 'TYK6THFLOORScreen', 12: 'TYK7THFLOORScreen', 13: 'TYK8THFLOORScreen', 14: 'TYK9THFLOORScreen', 15: 'TYK10THFLOORScreen',
-      17: 'LCT1STFLOORScreen', 18: 'LCT2NDFLOORScreen', 19: 'LCT3RDFLOORScreen', 20: 'LCT4THFLOORScreen', 21: 'LCT5THFLOORScreen',
-      22: 'LCT6THFLOORScreen', 23: 'LCT7THFLOORScreen', 24: 'LCT8THFLOORScreen',
+      6: 'TYK1STFLOORScreen', 
+      7: 'TYK2NDFLOORScreen', 
+      8: 'TYK3RDFLOORScreen', 
+      9: 'TYK4THFLOORScreen', 
+      10: 'TYK5THFLOORScreen',
+      11: 'TYK6THFLOORScreen', 
+      12: 'TYK7THFLOORScreen', 
+      13: 'TYK8THFLOORScreen', 
+      14: 'TYK9THFLOORScreen', 
+      15: 'TYK10THFLOORScreen',
+      
+      27: 'ADMINFLOORScreen',
+
+      17: 'LCT1STFLOORScreen', 
+      18: 'LCT2NDFLOORScreen', 
+      19: 'LCT3RDFLOORScreen', 
+      20: 'LCT4THFLOORScreen', 
+      21: 'LCT5THFLOORScreen',
+      22: 'LCT6THFLOORScreen', 
+      23: 'LCT7THFLOORScreen', 
+      24: 'LCT8THFLOORScreen',
       25: 'OAFLOORScreen',
       26: 'HRMFLOORScreen',
     };
@@ -337,7 +358,9 @@ function PFScreen({ navigation }) {
         setGraph(graphMap);
       } catch (err) {
         console.error("Unexpected error in fetchGraph:", err);
-      }
+      }console.log("Start floor:", startCoord.floor, typeof startCoord.floor);
+
+
     };
 
     fetchGraph();

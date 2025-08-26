@@ -59,9 +59,9 @@ const UEScreen = ({ route, navigation }) => {
 
     //playground
     P1: { x: 0.22, y: 0.665 }, 
-    P2: { x: 0.158, y: 0.68 }, 
+    P2: { x: 0.127, y: 0.686 }, 
     P3: { x: 0.278, y: 0.717 }, 
-    P4: { x: 0.216, y: 0.729 }, 
+    P4: { x: 0.19, y: 0.736 }, 
 
     //gym
     G1: { x: 0.098, y: 0.889 },
@@ -378,9 +378,19 @@ const UEScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    // L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    // L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    // L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L3: { x: 0.81, y: 0.24, label: "HRM\nMock\nHotel" },
+    L5: { x: 0.15, y: 0.52, label: "O\nl\nd\n\nA\nc\na\nd" },
+    L6: { x: 0.15, y: 0.69, label: "Play-\nground" },
+    L7: { x: 0.21, y: 0.745, label: "Old\nAcad\nBldg." },
+    L8: { x: 0.445, y: 0.79, label: "Administration\n      Bldg." },
+    L1: { x: 0.15, y: 0.26, label: "L\nC\nT\n\nB\nu\ni\nl\nd\ni\nn\ng" },
+  };
+
+  const labelNodes2 = {
+ 
+    L2: { x: 0.2, y: 0.117, label: "College of Engineering Building" },
+    L4: { x: 0.814, y: 0.4, label: "T\nY\nK\n\nB\nu\ni\nl\nd\ni\nn\ng" },
+    L9: { x: 0.174, y: 0.895, label: "G\nY\nM" },
   };
 
    const stairNodes = [
@@ -393,6 +403,7 @@ const UEScreen = ({ route, navigation }) => {
     'OA - E2',
     "HRM - E",
     "HRM - E2",
+    "AA E",
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -477,18 +488,11 @@ const UEScreen = ({ route, navigation }) => {
     else if (nextFloor === 4) nextScreen = "EN4THFLOORScreen";
     else if (nextFloor === 5) nextScreen = "UEScreen";
     else if (nextFloor === 6) nextScreen = "TYK1STFLOORScreen";
-    else if (nextFloor === 7) nextScreen = "TYK2NDFLOORScreen";
-    else if (nextFloor === 8) nextScreen = "TYK3RDFLOORScreen";
-    else if (nextFloor === 9) nextScreen = "TYK4THFLOORScreen";
-    else if (nextFloor === 10) nextScreen = "TYK5THFLOORScreen";
-    else if (nextFloor === 11) nextScreen = "TYK6THFLOORScreen";
-    else if (nextFloor === 12) nextScreen = "TYK7THFLOORScreen";
-    else if (nextFloor === 13) nextScreen = "TYK8THFLOORScreen";
-    else if (nextFloor === 14) nextScreen = "TYK9THFLOORScreen";
-    else if (nextFloor === 15) nextScreen = "TYK10THFLOORScreen";
+    else if (nextFloor === 16) nextScreen = "ADMINFLOORScreen";
     else if (nextFloor === 17) nextScreen = "LCT1STFLOORScreen";
     else if (nextFloor === 25) nextScreen = "OAFLOORScreen";
     else if (nextFloor === 26) nextScreen = "HRMScreen";
+    else if (nextFloor == 27) nextScreen = "ADMINFLOORScreen";
     else nextScreen = "EN1STFLOORScreen";
     navigation.navigate(nextScreen, {
       path: remainingPath,
@@ -666,6 +670,30 @@ const UEScreen = ({ route, navigation }) => {
               {label}
             </Text>
           </React.Fragment>
+        ))}
+
+        {Object.entries(labelNodes2).map(([key, { x, y, label }]) => (
+          <React.Fragment key={`label-${key}`}>
+            <Circle
+              cx={x * containerSize.width}
+              cy={y * containerSize.height}
+              r={3}
+              fill="black"
+            />
+            <Text
+              style={{
+                position: "absolute",
+                left: x * containerSize.width + 6,
+                top: y * containerSize.height - 6,
+                color: "red", // Change to black if preferred
+                fontSize: 15,
+                fontWeight: "bold",
+              }}
+            >
+              {label}
+            </Text>
+          </React.Fragment>
+
         ))}
 
         {/* "You" Label */}

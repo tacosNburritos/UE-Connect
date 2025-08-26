@@ -131,7 +131,9 @@ export const dropdowndata = [
  
   // // // //UNIVERSITY OF THE EAST - GENERAL
   // { key: '122', value: 'MAIN ENTRANCE' }, 
-  // { key: '123', value: 'Security Office' }, { key: '124', value: 'GYM' }, { key: '125', value: 'Old Academic Building' },
+  // { key: '123', value: 'Security Office' }, 
+  { key: '124', value: 'GYM' }, 
+  // { key: '125', value: 'Old Academic Building' },
   // { key: '126', value: 'Playground' }, { key: '127', value: 'LCT Building' },
   //  { key: '128', value: 'EN Building (Right Wing)' }, { key: '129', value: 'EN Building (Left Wing)' },
   // { key: '130', value: 'HRM Mock Hotel' }, 
@@ -212,20 +214,20 @@ export const dropdowndata = [
   // { key: '', value: 'Workshop and Tool Room' },
   
   // //TYK BUILDING 7TH FLOOR-----------------------------
-  { key: '', value: 'TYK 700' },
-  { key: '', value: 'TYK 701' },
-  { key: '', value: 'TYK 702' },
-  { key: '', value: 'TYK 703' },
-  { key: '', value: 'TYK 704' },
-  { key: '', value: 'TYK 705' },
-  { key: '', value: 'TYK 706' },
-  { key: '', value: 'TYK 707' },
-  { key: '', value: 'TYK 708' },
-  { key: '', value: 'TYK 709' },
-  { key: '', value: 'TYK 710' },
-  { key: '', value: 'TYK 711' },
-  { key: '', value: 'TYK 712' },
-  { key: '', value: 'TYK 713' },
+  // { key: '', value: 'TYK 700' },
+  // { key: '', value: 'TYK 701' },
+  // { key: '', value: 'TYK 702' },
+  // { key: '', value: 'TYK 703' },
+  // { key: '', value: 'TYK 704' },
+  // { key: '', value: 'TYK 705' },
+  // { key: '', value: 'TYK 706' },
+  // { key: '', value: 'TYK 707' },
+  // { key: '', value: 'TYK 708' },
+  // { key: '', value: 'TYK 709' },
+  // { key: '', value: 'TYK 710' },
+  // { key: '', value: 'TYK 711' },
+  // { key: '', value: 'TYK 712' },
+  // { key: '', value: 'TYK 713' },
 
   // //TYK BUILDING 8TH FLOOR :)---------------------------
   // { key: '', value: 'TYK 800' },
@@ -250,26 +252,26 @@ export const dropdowndata = [
   // { key: '', value: 'TYK 819' },
 
   //TYK BUILDING 9TH FLOOR :)---------------------------
-  { key: '', value: 'TYK 900' },
-  { key: '', value: 'TYK 901' },
-  { key: '', value: 'TYK 902' },
-  { key: '', value: 'TYK 903' },
-  { key: '', value: 'TYK 904' },
-  { key: '', value: 'TYK 905' },
-  { key: '', value: 'TYK 906' },
-  { key: '', value: 'TYK 907' },
-  { key: '', value: 'TYK 908' },
-  { key: '', value: 'TYK 909' },
-  { key: '', value: 'TYK 910' },
-  { key: '', value: 'TYK 911' },
-  { key: '', value: 'TYK 912' },
-  { key: '', value: 'TYK 913' },
-  { key: '', value: 'TYK 914' },
-  { key: '', value: 'TYK 915' },
-  { key: '', value: 'TYK 916' },
-  { key: '', value: 'TYK 917' },
-  { key: '', value: 'TYK 918' },
-  { key: '', value: 'TYK 919' },
+  // { key: '', value: 'TYK 900' },
+  // { key: '', value: 'TYK 901' },
+  // { key: '', value: 'TYK 902' },
+  // { key: '', value: 'TYK 903' },
+  // { key: '', value: 'TYK 904' },
+  // { key: '', value: 'TYK 905' },
+  // { key: '', value: 'TYK 906' },
+  // { key: '', value: 'TYK 907' },
+  // { key: '', value: 'TYK 908' },
+  // { key: '', value: 'TYK 909' },
+  // { key: '', value: 'TYK 910' },
+  // { key: '', value: 'TYK 911' },
+  // { key: '', value: 'TYK 912' },
+  // { key: '', value: 'TYK 913' },
+  // { key: '', value: 'TYK 914' },
+  // { key: '', value: 'TYK 915' },
+  // { key: '', value: 'TYK 916' },
+  // { key: '', value: 'TYK 917' },
+  // { key: '', value: 'TYK 918' },
+  // { key: '', value: 'TYK 919' },
   
 
 
@@ -367,7 +369,7 @@ export const dropdowndata = [
 //   { key: '', value: 'LCT 613' },
 
 // //LCT BUILDING 7TH FLOOR :)---------------------------
-//   { key: '', value: 'LCT 700' },
+  // { key: '', value: 'LCT 700' },
 //   { key: '', value: 'LCT 701' },
 //   { key: '', value: 'LCT 702' },
 //   { key: '', value: 'LCT 703' },
@@ -399,7 +401,7 @@ export const dropdowndata = [
 
 // //OA BLDG FLOOR :)---------------------------
 //   { key: '', value: 'IT Department' },
-//   { key: '', value: 'SAO (Student Affairs Office)' },
+  { key: '', value: 'SAO (Student Affairs Office)' },
 //   { key: '', value: 'Guidance Counseling' },
 
 // //HRM BLDG FLOOR :)---------------------------
@@ -410,6 +412,14 @@ export const dropdowndata = [
 //   { key: '', value: 'Main Kitchen' },
 //   { key: '', value: 'Skills Laboratory' },
 //   { key: '', value: 'Cooking Demo Lab' },
+
+// //ADMIN BLDG FLOOR :)---------------------------
+
+  { key: '', value: 'Cashier' },
+  { key: '', value: 'A29' },
+  { key: '', value: 'U5' },
+  { key: '', value: 'Administration Building' },
+  { key: '', value: 'OA - E3' },
 
 ];
 
@@ -1455,11 +1465,24 @@ export const buildingCoordinates = {
   'G28': { x: 0.54, y: 0.22, floor: 26 },
   'H28': { x: 0.54, y: 0.18, floor: 26 },
   'E28': { x: 0.54, y: 0.02, floor: 26 },
+
+  //admission area,
+  'Cashier': { x: 0.48, y: 0.52, floor: 27 },
+  'A29': { x: 0.54, y: 0.54, floor: 27 },
   };
+
 
   
 //Connections 
 export const graph = {
+
+  //TESTING
+  'Cashier': { 'A29': 1},
+  'A29': { 'Cashier': 1, 'OA - E3': 2},
+  'OA - E2': { 'H55': 1, 'E27': 1,},
+  'OA - E3': { 'Administration Building': 1, 'A29': 2},
+  'Administration Building': { 'U5': 1, 'OA - E3': 1},
+  
 
 //ENGINEERING BUILDING STAIRS------------------------------
   'EN - STAIRS LEFT WING1': { 'N': 4, 'V2': 8, 'S3': 12, 'U4': 16 },
@@ -2402,7 +2425,7 @@ export const graph = {
     'EN Building (Right Wing)': { 'W5': 1 },
     'EN Building (Left Wing)': { 'M5': 1 },
     'TYK Building': { 'O5': 5, 'Q5': 5, 'TYK E1': 1 },
-    'Administration Building': { 'U5': 1 },
+
     'Clinic': { 'B5': 1 },
     'EN - EL': { 'M55': 1, 'O - EXIT': 1 },
     'EN - ER': { 'W55': 1, 'U - EXIT': 1 },
@@ -2422,7 +2445,7 @@ export const graph = {
     'F5': { 'E5': 2, 'G5': 2, 'Old Academic Building': 1 },
     
     'OA - E': { 'G55': 1, 'A27': 1},
-    'OA - E2': { 'H55': 1, 'E27': 1},
+ 
     
     'G5': { 'F5': 2, 'G55': 2, },
     'G55': { 'G5': 2, 'H55': 2, 'OA - E': 1 },
@@ -2447,7 +2470,7 @@ export const graph = {
     'R5': { 'Q5': 2, 'S5': 2 },
     'S5': { 'R5': 2, 'T5': 2 },
     'T5': { 'S5': 2, 'U5': 2,  'B5': 2 },
-    'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1, },
+     'U5': { 'T5': 2, 'E5': 2, 'Administration Building': 1},
     
     'HRM Mock Hotel': { 'HRM - E2': 2, 'M51': 2,} ,
     'HRM Mock Hotel 2': { 'HRM - E': 2, 'O55': 2,},

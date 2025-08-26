@@ -105,9 +105,9 @@ const HRMFLOORScreen = ({ route, navigation }) => {
     L2: { x: 0.34, y: 0.28, label: "Main\nKitchen" },
     L3: { x: 0.34, y: 0.47, label: "Bakery" },
     L4: { x: 0.34, y: 0.67, label: "Bar & \nBeverage \nRoom" },
-    L5: { x: 0.6, y: 0.1, label: "Skills \nLaboratory" },
-    L6: { x: 0.6, y: 0.4, label: "Hoursekeeping \nRoom" },
-    L7: { x: 0.6, y: 0.7, label: "Dining \nArea" },
+    L5: { x: 0.585, y: 0.13, label: "Skills\nLab" },
+    L6: { x: 0.61, y: 0.28, label: "H\no\nu\ns\ne\nk\ne\ne\np\ni\nn\ng\n\nR\no\no\nm" },
+    L7: { x: 0.58, y: 0.7, label: "Dining \nArea" },
   };
 
   const stairNodes = [
@@ -256,10 +256,10 @@ const HRMFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/HRMFLR.png")}
           style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -346,7 +346,7 @@ const HRMFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}

@@ -33,6 +33,12 @@ const ADMINFLOORScreen = ({ route, navigation }) => {
     B13: { x: 0.328, y: 0.3 },
     B14: { x: 0.328, y: 0.4 },
 
+    B15: { x: 0.63, y: 0.5 },
+    B16: { x: 0.67, y: 0.5 },
+    B17: { x: 0.63, y: 0.65 },
+    B18: { x: 0.67, y: 0.65 },
+    B19: { x: 0.63, y: 0.8 },
+    B20: { x: 0.67, y: 0.8 },
   };
 
   const mapConnections = [
@@ -46,6 +52,9 @@ const ADMINFLOORScreen = ({ route, navigation }) => {
     ["B9", "B10"],
     ["B11", "B12"],
     ["B13", "B14"],
+    ["B15", "B16"],
+    ["B17", "B18"],
+    ["B19", "B20"],
 ];
 
 
@@ -60,7 +69,8 @@ const ADMINFLOORScreen = ({ route, navigation }) => {
   const stairNodes = [
     "LCT - EL",
     "LCT - ER",
-    "LCT - ELEVATOR"
+    "LCT - ELEVATOR",
+    "AA E",
   ];
 
   const stairsIndex = path.findIndex((node) => stairNodes.includes(node));
@@ -302,7 +312,7 @@ const ADMINFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
