@@ -33,11 +33,12 @@ const ADMINFLOORScreen = ({ route, navigation }) => {
     B13: { x: 0.328, y: 0.3 },
     B14: { x: 0.328, y: 0.4 },
 
-    B15: { x: 0.63, y: 0.5 },
-    B16: { x: 0.67, y: 0.5 },
-    B17: { x: 0.63, y: 0.65 },
-    B18: { x: 0.67, y: 0.65 },
-    B19: { x: 0.63, y: 0.8 },
+    B15: { x: 0.63, y: 0.53 },
+    B16: { x: 0.67, y: 0.53 },
+    B17: { x: 0.63, y: 0.67 },
+    B18: { x: 0.67, y: 0.67 },
+
+    B19: { x: 0.135, y: 0.8 },
     B20: { x: 0.67, y: 0.8 },
   };
 
@@ -64,6 +65,7 @@ const ADMINFLOORScreen = ({ route, navigation }) => {
     LB2: { x: 0.27, y: 0.06, label: "Admission's Office" },
     LB3: { x: 0.14, y: 0.34, label: "Comptroller's\nOffice" },
     LB4: { x: 0.44, y: 0.346, label: "Cashier" },
+    LB5: { x: 0.32, y: 0.846, label: "OJT Office" },
   };
 
   const stairNodes = [

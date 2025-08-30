@@ -17,7 +17,7 @@ export default function AdminScreen({ navigation }) {
     >
         <View style={styles.header}>
             <Image
-                source={require("../assets/ue_logo.png")}
+                source={require("../assets/LOGO 2 white no text.png")}
                     style={styles.logo_header}
                     />
             <Text style={styles.text}>UE Connect</Text>

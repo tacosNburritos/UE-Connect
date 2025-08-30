@@ -39,10 +39,10 @@ function WelcomeScreen({ navigation }) {
             {/* Header */}
             <View style={styles.header}>
                 <Image
-                    source={require("../assets/ue_logo.png")}
+                    source={require("../assets/LOGO 2 white no text.png")}
                     style={styles.logo_header}
                 />
-                <Text style={styles.text}>UE Connect</Text>
+                <Text style={styles.text}>Kadima</Text>
             </View>
 
             {/* Toggle 3D Bar */}
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'white',
-        fontSize: 30,
+        fontSize: 40,
         fontWeight: 'bold',
         textAlign: 'left',
     },

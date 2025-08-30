@@ -379,17 +379,17 @@ const UEScreen = ({ route, navigation }) => {
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
     L3: { x: 0.81, y: 0.24, label: "HRM\nMock\nHotel" },
-    L5: { x: 0.15, y: 0.52, label: "O\nl\nd\n\nA\nc\na\nd" },
+    L5: { x: 0.15, y: 0.52, label: "O\nL\nD\n\nA\nC\nA\nD" },
     L6: { x: 0.15, y: 0.69, label: "Play-\nground" },
     L7: { x: 0.21, y: 0.745, label: "Old\nAcad\nBldg." },
     L8: { x: 0.445, y: 0.79, label: "Administration\n      Bldg." },
-    L1: { x: 0.15, y: 0.26, label: "L\nC\nT\n\nB\nu\ni\nl\nd\ni\nn\ng" },
+    L1: { x: 0.15, y: 0.26, label: "L\nC\nT\n\nB\nU\nI\nL\nD\nI\nN\nG" },
   };
 
   const labelNodes2 = {
  
     L2: { x: 0.2, y: 0.117, label: "College of Engineering Building" },
-    L4: { x: 0.814, y: 0.4, label: "T\nY\nK\n\nB\nu\ni\nl\nd\ni\nn\ng" },
+    L4: { x: 0.814, y: 0.4, label: "T\nY\nK\n\nB\nU\nI\nL\nD\nI\nN\nG" },
     L9: { x: 0.174, y: 0.895, label: "G\nY\nM" },
   };
 

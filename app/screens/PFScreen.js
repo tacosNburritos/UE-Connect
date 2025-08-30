@@ -375,8 +375,8 @@ function PFScreen({ navigation }) {
       <View style={styles.overlay}>
         <View>
           <View style={styles.header}>
-            <Image source={require("../assets/logo_red.png")} style={styles.logo_header} />
-            <Text style={styles.text}>UE Connect</Text>
+            <Image source={require("../assets/LOGO 2 black no text.png")} style={styles.logo_header} />
+            <Text style={styles.text}>Kadima</Text>
           </View>
 
           <View style={styles.filterContainer}>
@@ -519,7 +519,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#b51509',
-    fontSize: 32,
+    fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
     letterSpacing: 1,

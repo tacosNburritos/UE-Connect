@@ -7,13 +7,13 @@ const ViewScreen = ({ navigation }) => {
   const [selectedFloor, setSelectedFloor] = useState('');
 
   const buildingOptions = [
+    { key: 'AD', value: 'Administration Building' },
     { key: 'EN', value: 'EN Building' },
-    { key: 'LCT', value: 'LCT Building' },
     { key: 'HRM', value: 'HRM Mock Hotel' },
+    { key: 'LCT', value: 'LCT Building' },
     { key: 'OA', value: 'Old Academic Building' },
     { key: 'TYK', value: 'TYK Building' },
     { key: 'UE', value: 'UE General Campus' },
-    { key: 'AD', value: 'Admission Area' },
   ];
 
   const buildingFloors = {
@@ -86,7 +86,7 @@ const ViewScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Admin Screen</Text>
+      <Text style={styles.title}>Floor Plan Collection</Text>
 
       <Text style={styles.label}>Building</Text>
       <SelectList
@@ -108,11 +108,11 @@ const ViewScreen = ({ navigation }) => {
       />
 
       <TouchableOpacity style={styles.button} onPress={handlePresent}>
-        <Text style={styles.buttonText}>Present</Text>
+        <Text style={styles.buttonText}>View</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-        <Text style={styles.backButtonText}>← Back to Home</Text>
+        <Text style={styles.backButtonText}>Back to Home</Text>
       </TouchableOpacity>
     </View>
   );
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#b51509',
     paddingVertical: 14,
     borderRadius: 6,
     marginTop: 32,
