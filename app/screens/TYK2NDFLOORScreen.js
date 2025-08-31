@@ -608,7 +608,6 @@ const mapConnections = [
     ["LLOP9", "IST236"],
     ["IST234", "IST235"],
     ["IST236", "IST237"],
-
   ];
 
 // STRICTLY FOR LABELS ONLY

@@ -60,14 +60,14 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
     LLO8: { x: 0.485, y: 0.803 },
     LLO9: { x: 0.271, y: 0.907 }, 
 
-    /*LLOP1: { x: 0.53, y: 0.7975 }, // LOWER PART OUTLINE POINT
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, */
+    LLOP1: { x: 0.558, y: 0.755 }, // LOWER PART OUTLINE POINT
+    LLOP2: { x: 0.503, y: 0.812 }, 
+    LLOP3: { x: 0.534, y: 0.826 }, 
+    LLOP: { x: 0.557, y: 0.812 }, 
+    LLOP: { x: 0.557, y: 0.812 }, 
+    LLOP: { x: 0.557, y: 0.812 }, 
+    LLOP: { x: 0.557, y: 0.812 }, 
+    LLOP: { x: 0.557, y: 0.812 },
 
     //RIGHT PART OUTLINE 
     RO1: { x: 0.46, y: 0.996 }, 
@@ -88,19 +88,13 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
     RO16: { x: 0.6, y: 0.064},
     RO17: { x: 0.6, y: 0.011},
 
-
-    /*ROP1: { x: 0.557, y: 0.9455 }, // LOWER PART OUTLINE POINT RIGHT
-    ROP2: { x: 0.623, y: 0.914 },
-    ROP3: { x: 0.708, y: 0.679 },
-    ROP4: { x: 0.708, y: 0.617 },
-    ROP5: { x: 0.708, y: 0.555 },
-    ROP6: { x: 0.708, y: 0.511 },
-    ROP7: { x: 0.708, y: 0.4115 },
-    ROP8: { x: 0.708, y: 0.373 },
-    ROP9: { x: 0.708, y: 0.3105 },
-    ROP10: { x: 0.708, y: 0.247 },
-    ROP11: { x: 0.708, y: 0.186 },
-    ROP12: { x: 0.708, y: 0.125 },*/
+    ROP1: { x: 0.686, y: 0.693 }, // LOWER PART OUTLINE POINT RIGHT
+    ROP2: { x: 0.686, y: 0.629 },
+    ROP3: { x: 0.686, y: 0.565 },
+    ROP4: { x: 0.686, y: 0.521 },
+    ROP5: { x: 0.686, y: 0.42 },
+    ROP6: { x: 0.686, y: 0.317 },
+    ROP7: { x: 0.686, y: 0.253 },
   };
 
   const mapConnections = [
