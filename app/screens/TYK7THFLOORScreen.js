@@ -116,6 +116,10 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     M80: { x: 0.3, y: 0.94},
     M81: { x: 0.374, y: 0.978},
     M82: { x: 0.4, y: 0.966},
+
+
+
+
     //room right
     M83: { x: 0.453, y: 0.993},
     M84: { x: 0.53, y: 0.95},
@@ -151,8 +155,14 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     M110: { x: 0.674, y: 0.37},
     M111: { x: 0.628, y: 0.417},
 
-
-
+    S1: { x: 0.42, y: 0.354},
+    S2: { x: 0.49, y: 0.355},
+    S3: { x: 0.43, y: 0.338},
+    S4: { x: 0.43, y: 0.37},
+    S5: { x: 0.45, y: 0.338},
+    S6: { x: 0.45, y: 0.37},
+    S7: { x: 0.47, y: 0.338},
+    S8: { x: 0.47, y: 0.37},
 
   };
 
@@ -276,31 +286,36 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     ["M109", "M110"],
     ["M108", "M111"],
 
+    ["S1", "S2"],
+    ["S3", "S4"],
+    ["S5", "S6"],
+    ["S7", "S8"],
+
   ];
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.28, y: 0.89, label: "700" },
-    L2: { x: 0.37, y: 0.84, label: "702" },
-    L3: { x: 0.45, y: 0.794, label: "704" },
+    L1: { x: 0.28, y: 0.88, label: "TYK\n700" },
+    L2: { x: 0.37, y: 0.84, label: "TYK\n702" },
+    L3: { x: 0.45, y: 0.794, label: "TYK\n704" },
     
-    L4: { x: 0.425, y: 0.95, label: "701" },
-    L5: { x: 0.5, y: 0.91, label: "703" },
-    L6: { x: 0.58, y: 0.865, label: "705" },
+    L4: { x: 0.425, y: 0.95, label: "TYK\n701" },
+    L5: { x: 0.5, y: 0.906, label: "TYK\n703" },
+    L6: { x: 0.58, y: 0.86, label: "TYK\n705" },
     L7: { x: 0.52, y: 0.59, label: "Lobby" },
 
-    L8: { x: 0.58, y: 0.495, label: "F CR" },
-    L9: { x: 0.575, y: 0.39, label: "M CR" },
-    L10: { x: 0.587, y: 0.33, label: "706" },
-    L11: { x: 0.587, y: 0.27, label: "707" },
+    L8: { x: 0.58, y: 0.495, label: "Female\nCR" },
+    L9: { x: 0.585, y: 0.39, label: "Male\nCR" },
+    L10: { x: 0.587, y: 0.33, label: "TYK\n706" },
+    L11: { x: 0.587, y: 0.27, label: "TYK\n707" },
 
-    L12: { x: 0.61, y: 0.205, label: "709" },
-    L13: { x: 0.61, y: 0.145, label: "711" },
-    L14: { x: 0.61, y: 0.087, label: "713" },
+    L12: { x: 0.61, y: 0.205, label: "TYK\n709" },
+    L13: { x: 0.61, y: 0.145, label: "TYK\n711" },
+    L14: { x: 0.61, y: 0.087, label: "TYK\n713" },
 
-    L15: { x: 0.39, y: 0.205, label: "708" },
-    L16: { x: 0.39, y: 0.145, label: "710" },
-    L17: { x: 0.39, y: 0.087, label: "712" },
+    L15: { x: 0.39, y: 0.205, label: "TYK\n708" },
+    L16: { x: 0.39, y: 0.145, label: "TYK\n710" },
+    L17: { x: 0.39, y: 0.087, label: "TYK\n712" },
   };
 
   const stairNodes = [
@@ -548,7 +563,7 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -569,7 +584,7 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: "bold",
               }}
             >

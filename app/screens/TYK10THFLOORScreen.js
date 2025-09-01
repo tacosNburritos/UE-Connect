@@ -91,9 +91,11 @@ const mapNodes = {
     M58: { x: 0.529, y: 0.581 },
     M59: { x: 0.529, y: 0.581 },
     M60: { x: 0.448, y: 0.627 },
-    M61: { x: 0.504, y: 0.651 },
+    M61: { x: 0.504, y: 0.651 }, //THIS ONE
+    M611: { x: 0.56, y: 0.627 }, //THIS ONE
     M62: { x: 0.451, y: 0.683 },
-    M63: { x: 0.507, y: 0.712 },
+    M63: { x: 0.507, y: 0.712 }, //THIS ONE
+    M633: { x: 0.564, y: 0.683 }, //THIS ONE
     M64: { x: 0.45, y: 0.74},
     //elevator baba
     M65: { x: 0.51, y: 0.77},
@@ -154,6 +156,15 @@ const mapNodes = {
     M112: { x: 0.544, y: 0.78},
     M113: { x: 0.517, y: 0.796},
 
+    //additions
+    M114: { x: 0.693, y: 0.615 },
+    M115: { x: 0.61, y: 0.615 },
+    M116: { x: 0.6933, y: 0.678 },
+    M117: { x: 0.61, y: 0.678 },
+    M118: { x: 0.61, y: 0.695 },
+    M119: { x: 0.61, y: 0.72 },
+    M210: { x: 0.61, y: 0.57 },
+    M211: { x: 0.61, y: 0.6 },
 
   };
 
@@ -276,6 +287,18 @@ const mapNodes = {
     ["M109", "M110"],
     ["M108", "M111"],
 
+    //additions
+    ["M114", "M115"],
+    ["M116", "M117"],
+    ["M115", "M117"],
+    ["M118", "M119"],
+    ["M210", "M211"],
+    ["M61", "M611"],
+    ["M63", "M633"],
+    ["M611", "M633"],
+    ["M56", "M611"],
+    ["M66", "M633"],
+
   ];
 
 // STRICTLY FOR LABELS ONLY
@@ -295,9 +318,9 @@ const mapNodes = {
 
     L10: { x: 0.47, y: 0.52, label: "TYK \n1006" },
 
-    L11: { x: 0.47, y: 0.6, label: "TYK \n1004" },
+    L11: { x: 0.47, y: 0.61, label: "TYK \n1004" },
     L12: { x: 0.47, y: 0.67, label: "TYK \n1002" },
-    L13: { x: 0.47, y: 0.72, label: "TYK \n1000" },
+    L13: { x: 0.47, y: 0.73, label: "TYK \n1000" },
 
     L14: { x: 0.6, y: 0.58, label: "TYK \n1005" },
     L15: { x: 0.6, y: 0.64, label: "TYK \n1003" },
@@ -459,10 +482,10 @@ const mapNodes = {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/TYK10THFLR.png")}
           style={{ width: "97%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -549,7 +572,7 @@ const mapNodes = {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}

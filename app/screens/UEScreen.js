@@ -491,7 +491,7 @@ const UEScreen = ({ route, navigation }) => {
     else if (nextFloor === 16) nextScreen = "ADMINFLOORScreen";
     else if (nextFloor === 17) nextScreen = "LCT1STFLOORScreen";
     else if (nextFloor === 25) nextScreen = "OAFLOORScreen";
-    else if (nextFloor === 26) nextScreen = "HRMScreen";
+    else if (nextFloor === 26) nextScreen = "HRMFLOORScreen";
     else if (nextFloor == 27) nextScreen = "ADMINFLOORScreen";
     else nextScreen = "EN1STFLOORScreen";
     navigation.navigate(nextScreen, {
