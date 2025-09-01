@@ -19,7 +19,7 @@ const LoadingScreen = ({ navigation }) => {
       >
         <View style={styles.content}>
           <Image 
-            source={require('../assets/ue_logo.png')}
+            source={require('../assets/LOGO 2 White.png')}
             style={styles.logo}
           />
         </View>

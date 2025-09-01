@@ -99,9 +99,9 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     M66: { x: 0.566, y: 0.71 },
     M67: { x: 0.576, y: 0.79 },
     M68: { x: 0.599, y: 0.779 },
-    M69: { x: 0.576, y: 0.76 },
+    M69: { x: 0.58, y: 0.76 },
     M70: { x: 0.55, y: 0.778 },
-    M71: { x: 0.55, y: 0.749 },
+    M71: { x: 0.56, y: 0.749 },
     M72: { x: 0.53, y: 0.768 },
     //lower 1 room
     M73: { x: 0.51, y: 0.755 },
@@ -116,6 +116,10 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     M80: { x: 0.3, y: 0.94},
     M81: { x: 0.374, y: 0.978},
     M82: { x: 0.4, y: 0.966},
+
+
+
+
     //room right
     M83: { x: 0.453, y: 0.993},
     M84: { x: 0.53, y: 0.95},
@@ -151,8 +155,14 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     M110: { x: 0.674, y: 0.37},
     M111: { x: 0.628, y: 0.417},
 
-
-
+    S1: { x: 0.42, y: 0.354},
+    S2: { x: 0.49, y: 0.355},
+    S3: { x: 0.43, y: 0.338},
+    S4: { x: 0.43, y: 0.37},
+    S5: { x: 0.45, y: 0.338},
+    S6: { x: 0.45, y: 0.37},
+    S7: { x: 0.47, y: 0.338},
+    S8: { x: 0.47, y: 0.37},
 
   };
 
@@ -276,13 +286,36 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     ["M109", "M110"],
     ["M108", "M111"],
 
+    ["S1", "S2"],
+    ["S3", "S4"],
+    ["S5", "S6"],
+    ["S7", "S8"],
+
   ];
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.28, y: 0.88, label: "TYK\n700" },
+    L2: { x: 0.37, y: 0.84, label: "TYK\n702" },
+    L3: { x: 0.45, y: 0.794, label: "TYK\n704" },
+    
+    L4: { x: 0.425, y: 0.95, label: "TYK\n701" },
+    L5: { x: 0.5, y: 0.906, label: "TYK\n703" },
+    L6: { x: 0.58, y: 0.86, label: "TYK\n705" },
+    L7: { x: 0.52, y: 0.59, label: "Lobby" },
+
+    L8: { x: 0.58, y: 0.495, label: "Female\nCR" },
+    L9: { x: 0.585, y: 0.39, label: "Male\nCR" },
+    L10: { x: 0.587, y: 0.33, label: "TYK\n706" },
+    L11: { x: 0.587, y: 0.27, label: "TYK\n707" },
+
+    L12: { x: 0.61, y: 0.205, label: "TYK\n709" },
+    L13: { x: 0.61, y: 0.145, label: "TYK\n711" },
+    L14: { x: 0.61, y: 0.087, label: "TYK\n713" },
+
+    L15: { x: 0.39, y: 0.205, label: "TYK\n708" },
+    L16: { x: 0.39, y: 0.145, label: "TYK\n710" },
+    L17: { x: 0.39, y: 0.087, label: "TYK\n712" },
   };
 
   const stairNodes = [
@@ -440,10 +473,10 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/TYK7THFLR.png")}
           style={{ width: "97%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -551,7 +584,7 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
-                fontSize: 10,
+                fontSize: 11,
                 fontWeight: "bold",
               }}
             >

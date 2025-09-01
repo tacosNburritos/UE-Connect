@@ -51,8 +51,8 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
     //elevator
     B25: { x: 0.335, y: 0.527 },
     B26: { x: 0.335, y: 0.621},
-    B27: { x: 0.48, y: 0.621},
-    B28: { x: 0.48, y: 0.527},
+    B27: { x: 0.380, y: 0.621},
+    B28: { x: 0.380, y: 0.527},
     //highschool faculty
     B29: { x: 0.335, y: 0.621 },
     B30: { x: 0.335, y: 0.736},
@@ -76,9 +76,15 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
 
     //hallway
     H1: { x: 0.48, y: 0.016 },
-    H2: { x: 0.48, y: 0.951 },
-    H3: { x: 0.535, y: 0.951 },
+    H2: { x: 0.48, y: 0.527 },
+    H3: { x: 0.535, y: 0.527 },
     H4: { x: 0.535, y: 0.016 },
+
+    //hallway 2
+    H5: { x: 0.48, y: 0.621 },
+    H6: { x: 0.48, y: 0.951},
+    H7: { x: 0.535, y: 0.951 },
+    H8: { x: 0.535, y: 0.621 },
 
     //room 205
     F1:  { x: 0.535, y: 0.064 },
@@ -126,9 +132,13 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
   const mapConnections = [
     //hallway
     ["H1", "H2"],
-    ["H2", "H3"],
     ["H3", "H4"],
     ["H4", "H1"],
+        //hallway 2
+    ["H5", "H6"],
+    ["H6", "H7"],
+    ["H7", "H8"],
+    
     //left wing stairs
     ["B1", "B2"],
     ["B2", "B3"],
@@ -230,26 +240,26 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    LB1: { x: 0.345, y: 0.040, label: "Stairs" },
-    LB2: { x: 0.335, y: 0.110, label: "Female CR" },
-    LB3: { x: 0.347, y: 0.201, label: "LCT 204" },
-    LB4: { x: 0.347, y: 0.292, label: "LCT 202" },
-    LB5: { x: 0.347, y: 0.384, label: "Elementary Faculty" },
-    LB6: { x: 0.347, y: 0.475, label: "Guidance Office" },
-    LB7: { x: 0.347, y: 0.566, label: "Elevator" },
-    LB8: { x: 0.347, y: 0.677, label: "Highschool Faculty" },
-    LB9: { x: 0.347, y: 0.777, label: "Multimedia Room" },
-    LB10: { x: 0.355, y: 0.858, label: "Male CR" },
-    LB11: { x: 0.345, y: 0.925, label: "Stairs" },
+    LB1: { x: 0.36, y: 0.040, label: "----------" },
+    LB2: { x: 0.35, y: 0.110, label: "Female\n    CR" },
+    LB3: { x: 0.350, y: 0.201, label: "LCT 204" },
+    LB4: { x: 0.350, y: 0.292, label: "LCT 202" },
+    LB5: { x: 0.335, y: 0.384, label: "Elementary\n   Faculty" },
+    LB6: { x: 0.345, y: 0.475, label: "Guidance\n   Office" },
+    LB7: { x: 0.350, y: 0.566, label: "Elevator" },
+    LB8: { x: 0.330, y: 0.677, label: "Highschool\n    Faculty" },
+    LB9: { x: 0.335, y: 0.770, label: "Multimedia\n    Room" },
+    LB10: { x: 0.365, y: 0.845, label: "Male\n  CR" },
+    LB11: { x: 0.360, y: 0.925, label: "Stairs" },
 
-    LF1: { x: 0.548, y: 0.110, label: "LCT 205" },
-    LF2: { x: 0.548, y: 0.201, label: "LCT 203" },
-    LF3: { x: 0.548, y: 0.292, label: "LCT 201" },
-    LF4: { x: 0.548, y: 0.384, label: "LCT 200" },
-    LF5: { x: 0.548, y: 0.505, label: "Speech Laboratory" },
-    LF6: { x: 0.548, y: 0.596, label: "LCT 203" },
-    LF7: { x: 0.548, y: 0.677, label: "Highschool Faculty" },
-    LF8: { x: 0.548, y: 0.795, label: "Elementary Computer Laboratory" },
+    LF1: { x: 0.550, y: 0.110, label: "LCT 205" },
+    LF2: { x: 0.55, y: 0.201, label: "LCT 203" },
+    LF3: { x: 0.55, y: 0.292, label: "LCT 201" },
+    LF4: { x: 0.55, y: 0.384, label: "LCT 200" },
+    LF5: { x: 0.535, y: 0.495, label: "   Speech\nLaboratory" },
+    LF6: { x: 0.55, y: 0.596, label: "----------" },
+    LF7: { x: 0.532, y: 0.685, label: "Highschool\n  Computer\n       Lab" },
+    LF8: { x: 0.535, y: 0.815, label: "Elementary\n Computer \nLaboratory" },
   };
 
   const stairNodes = [

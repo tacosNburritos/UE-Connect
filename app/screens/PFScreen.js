@@ -21,6 +21,9 @@ function PFScreen({ navigation }) {
   const [selectedStart, setSelectedStart] = useState("");
   const [selectedEnd, setSelectedEnd] = useState("");
 
+  // store "common?" flag
+  const [commonLocations, setCommonLocations] = useState(new Set());
+
   const dijkstra = (start, end) => {
     let distances = {};
     let previous = {};
@@ -168,13 +171,34 @@ function PFScreen({ navigation }) {
     const path = dijkstra(selectedStart, actualEnd);
     const startFloor = startCoord.floor;
 
+    console.log("Start floor:", startCoord.floor, typeof startCoord.floor);
+
     const screenMap = {
-      2: 'EN2NDFLOORScreen', 3: 'EN3RDFLOORScreen', 4: 'EN4THFLOORScreen',
+      2: 'EN2NDFLOORScreen', 
+      3: 'EN3RDFLOORScreen', 
+      4: 'EN4THFLOORScreen',
       5: 'UEScreen',
-      6: 'TYK1STFLOORScreen', 7: 'TYK2NDFLOORScreen', 8: 'TYK3RDFLOORScreen', 9: 'TYK4THFLOORScreen', 10: 'TYK5THFLOORScreen',
-      11: 'TYK6THFLOORScreen', 12: 'TYK7THFLOORScreen', 13: 'TYK8THFLOORScreen', 14: 'TYK9THFLOORScreen', 15: 'TYK10THFLOORScreen',
-      17: 'LCT1STFLOORScreen', 18: 'LCT2NDFLOORScreen', 19: 'LCT3RDFLOORScreen', 20: 'LCT4THFLOORScreen', 21: 'LCT5THFLOORScreen',
-      22: 'LCT6THFLOORScreen', 23: 'LCT7THFLOORScreen', 24: 'LCT8THFLOORScreen',
+      6: 'TYK1STFLOORScreen', 
+      7: 'TYK2NDFLOORScreen', 
+      8: 'TYK3RDFLOORScreen', 
+      9: 'TYK4THFLOORScreen', 
+      10: 'TYK5THFLOORScreen',
+      11: 'TYK6THFLOORScreen', 
+      12: 'TYK7THFLOORScreen', 
+      13: 'TYK8THFLOORScreen', 
+      14: 'TYK9THFLOORScreen', 
+      15: 'TYK10THFLOORScreen',
+      
+      27: 'ADMINFLOORScreen',
+
+      17: 'LCT1STFLOORScreen', 
+      18: 'LCT2NDFLOORScreen', 
+      19: 'LCT3RDFLOORScreen', 
+      20: 'LCT4THFLOORScreen', 
+      21: 'LCT5THFLOORScreen',
+      22: 'LCT6THFLOORScreen', 
+      23: 'LCT7THFLOORScreen', 
+      24: 'LCT8THFLOORScreen',
       25: 'OAFLOORScreen',
       26: 'HRMFLOORScreen',
     };
@@ -192,6 +216,15 @@ function PFScreen({ navigation }) {
       if (!selectedFilter || selectedFilter === 'ALL') {
         setStartDropdownData(allLocationOptions);
         setEndDropdownData(endBaseOptions);
+        return;
+      }
+
+      // NEW: Common Areas filter
+      if (selectedFilter === 'COMMON') {
+        const filterByCommon = (arr) =>
+          arr.filter(item => commonLocations.has(item.value));
+        setStartDropdownData(filterByCommon(allLocationOptions));
+        setEndDropdownData(filterByCommon(endBaseOptions));
         return;
       }
 
@@ -213,119 +246,125 @@ function PFScreen({ navigation }) {
     };
 
     applyFilter();
-  }, [selectedFilter, allLocationOptions, endBaseOptions, buildingCoordinates]);
+  }, [selectedFilter, allLocationOptions, endBaseOptions, buildingCoordinates, commonLocations]);
 
   // Fetch locations + connections
   useEffect(() => {
-  const fetchGraph = async () => {
-    try {
-      const { data: locations, error: locError } = await supabase.from('locations').select('*');
-      if (locError) {
-        console.error("Error fetching locations:", locError);
-        return;
-      }
-
-      console.log("Fetched locations:", locations.length);
-
-      const labelMap = {};
-      const coordsMap = {};
-      const dropdownOptions = [];
-
-      locations.forEach(loc => {
-        labelMap[loc.id] = loc.label;
-        coordsMap[loc.label] = { x: loc.x, y: loc.y, floor: loc.floor };
-
-        if (loc.checker !== 'excluded') {
-          dropdownOptions.push({
-            label: loc.label,
-            value: loc.label,
-            isEntrance: loc["entrance?"] === "yes",   // track entrance
-          });
-        }
-      });
-
-      // Update coordinates
-      setBuildingCoordinates(coordsMap);
-
-      // Split entrances and others
-      const entrances = dropdownOptions
-        .filter(opt => opt.isEntrance)
-        .sort((a, b) => a.label.localeCompare(b.label));
-
-      const others = dropdownOptions
-        .filter(opt => !opt.isEntrance)
-        .sort((a, b) => a.label.localeCompare(b.label));
-
-      // Merge: entrances first, then others
-      const sortedLocations = [...entrances, ...others];
-
-      // Build end base options (NEAREST + sorted)
-      const nearestOptions = [
-        { label: 'NEAREST MALE CR', value: 'NEAREST MALE CR' },
-        { label: 'NEAREST FEMALE CR', value: 'NEAREST FEMALE CR' },
-      ];
-      const endAll = [...nearestOptions, ...sortedLocations];
-
-      // Seed state
-      setAllLocationOptions(sortedLocations);
-      setEndBaseOptions(endAll);
-      setStartDropdownData(sortedLocations);
-      setEndDropdownData(endAll);
-
-      // Fetch connections
-      let allConnections = [];
-      let from = 0;
-      const pageSize = 1000;
-
-      while (true) {
-        const { data, error } = await supabase
-          .from('connections')
-          .select('*')
-          .range(from, from + pageSize - 1);
-
-        if (error) {
-          console.error("Error fetching page:", error);
-          break;
-        }
-
-        if (data.length === 0) break;
-
-        allConnections = [...allConnections, ...data];
-        from += pageSize;
-
-        if (data.length < pageSize) break;
-      }
-
-      console.log("Total fetched connections:", allConnections.length);
-
-      const graphMap = {};
-
-      allConnections.forEach(conn => {
-        const fromLabel = labelMap[conn.from_id];
-        const toLabel = labelMap[conn.to_id];
-        const weight = conn.weight || 1;
-
-        if (!fromLabel || !toLabel) {
+    const fetchGraph = async () => {
+      try {
+        const { data: locations, error: locError } = await supabase.from('locations').select('*');
+        if (locError) {
+          console.error("Error fetching locations:", locError);
           return;
         }
 
-        if (!graphMap[fromLabel]) graphMap[fromLabel] = {};
-        graphMap[fromLabel][toLabel] = weight;
+        console.log("Fetched locations:", locations.length);
 
-        if (!graphMap[toLabel]) graphMap[toLabel] = {};
-        graphMap[toLabel][fromLabel] = weight;
-      });
+        const labelMap = {};
+        const coordsMap = {};
+        const dropdownOptions = [];
+        const commonSet = new Set();
 
-      console.log("Final graph node count:", Object.keys(graphMap).length);
-      setGraph(graphMap);
-    } catch (err) {
-      console.error("Unexpected error in fetchGraph:", err);
-    }
-  };
+        locations.forEach(loc => {
+          labelMap[loc.id] = loc.label;
+          coordsMap[loc.label] = { x: loc.x, y: loc.y, floor: loc.floor };
 
-  fetchGraph();
-}, []);
+          if (loc["common?"] === "yes") {
+            commonSet.add(loc.label);
+          }
 
+          if (loc.checker !== 'excluded') {
+            dropdownOptions.push({
+              label: loc.label,
+              value: loc.label,
+              isEntrance: loc["entrance?"] === "yes",   // track entrance
+            });
+          }
+        });
+
+        setCommonLocations(commonSet);
+        setBuildingCoordinates(coordsMap);
+
+        // Split entrances and others
+        const entrances = dropdownOptions
+          .filter(opt => opt.isEntrance)
+          .sort((a, b) => a.label.localeCompare(b.label));
+
+        const others = dropdownOptions
+          .filter(opt => !opt.isEntrance)
+          .sort((a, b) => a.label.localeCompare(b.label));
+
+        // Merge: entrances first, then others
+        const sortedLocations = [...entrances, ...others];
+
+        // Build end base options (NEAREST + sorted)
+        const nearestOptions = [
+          { label: 'NEAREST MALE CR', value: 'NEAREST MALE CR' },
+          { label: 'NEAREST FEMALE CR', value: 'NEAREST FEMALE CR' },
+        ];
+        const endAll = [...nearestOptions, ...sortedLocations];
+
+        // Seed state
+        setAllLocationOptions(sortedLocations);
+        setEndBaseOptions(endAll);
+        setStartDropdownData(sortedLocations);
+        setEndDropdownData(endAll);
+
+        // Fetch connections
+        let allConnections = [];
+        let from = 0;
+        const pageSize = 1000;
+
+        while (true) {
+          const { data, error } = await supabase
+            .from('connections')
+            .select('*')
+            .range(from, from + pageSize - 1);
+
+          if (error) {
+            console.error("Error fetching page:", error);
+            break;
+          }
+
+          if (data.length === 0) break;
+
+          allConnections = [...allConnections, ...data];
+          from += pageSize;
+
+          if (data.length < pageSize) break;
+        }
+
+        console.log("Total fetched connections:", allConnections.length);
+
+        const graphMap = {};
+
+        allConnections.forEach(conn => {
+          const fromLabel = labelMap[conn.from_id];
+          const toLabel = labelMap[conn.to_id];
+          const weight = conn.weight || 1;
+
+          if (!fromLabel || !toLabel) {
+            return;
+          }
+
+          if (!graphMap[fromLabel]) graphMap[fromLabel] = {};
+          graphMap[fromLabel][toLabel] = weight;
+
+          if (!graphMap[toLabel]) graphMap[toLabel] = {};
+          graphMap[toLabel][fromLabel] = weight;
+        });
+
+        console.log("Final graph node count:", Object.keys(graphMap).length);
+        setGraph(graphMap);
+      } catch (err) {
+        console.error("Unexpected error in fetchGraph:", err);
+      }console.log("Start floor:", startCoord.floor, typeof startCoord.floor);
+
+
+    };
+
+    fetchGraph();
+  }, []);
 
   return (
     <ImageBackground
@@ -336,8 +375,8 @@ function PFScreen({ navigation }) {
       <View style={styles.overlay}>
         <View>
           <View style={styles.header}>
-            <Image source={require("../assets/logo_red.png")} style={styles.logo_header} />
-            <Text style={styles.text}>UE Connect</Text>
+            <Image source={require("../assets/LOGO 2 black no text.png")} style={styles.logo_header} />
+            <Text style={styles.text}>Kadima</Text>
           </View>
 
           <View style={styles.filterContainer}>
@@ -360,6 +399,16 @@ function PFScreen({ navigation }) {
               onPress={() => setSelectedFilter(prev => prev === 'LCT' ? 'ALL' : 'LCT')}
             >
               <Text style={[styles.filterText, selectedFilter === 'LCT' && { color: 'white' }]}>LCT</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* NEW Common Areas button */}
+          <View style={styles.filterContainer}>
+            <TouchableOpacity
+              style={[styles.filterButton, selectedFilter === 'COMMON' && styles.selectedFilter]}
+              onPress={() => setSelectedFilter(prev => prev === 'COMMON' ? 'ALL' : 'COMMON')}
+            >
+              <Text style={[styles.filterText, selectedFilter === 'COMMON' && { color: 'white' }]}>Commonly Asked Areas</Text>
             </TouchableOpacity>
           </View>
 
@@ -470,7 +519,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#b51509',
-    fontSize: 32,
+    fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
     letterSpacing: 1,
@@ -524,7 +573,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 20,
-    marginBottom: 10,
+    marginBottom: 0,
     gap: 10,
   },
   filterButton: {

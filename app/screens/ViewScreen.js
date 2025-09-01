@@ -7,12 +7,13 @@ const ViewScreen = ({ navigation }) => {
   const [selectedFloor, setSelectedFloor] = useState('');
 
   const buildingOptions = [
-    { key: 'EN', value: 'EN' },
-    { key: 'LCT', value: 'LCT' },
-    { key: 'HRM', value: 'HRM' },
-    { key: 'OA', value: 'OA' },
-    { key: 'TYK', value: 'TYK' },
-    { key: 'UE', value: 'UE' },
+    { key: 'AD', value: 'Administration Building' },
+    { key: 'EN', value: 'EN Building' },
+    { key: 'HRM', value: 'HRM Mock Hotel' },
+    { key: 'LCT', value: 'LCT Building' },
+    { key: 'OA', value: 'Old Academic Building' },
+    { key: 'TYK', value: 'TYK Building' },
+    { key: 'UE', value: 'UE General Campus' },
   ];
 
   const buildingFloors = {
@@ -22,6 +23,8 @@ const ViewScreen = ({ navigation }) => {
     HRM: 1,
     OA: 1,
     UE: 1,
+    AD: 1,
+
   };
 
   const getFloorOptions = () => {
@@ -64,6 +67,7 @@ const ViewScreen = ({ navigation }) => {
       'LCT-Floor 6': 'LCT6THFLOORScreen',
       'LCT-Floor 7': 'LCT7THFLOORScreen',
       'LCT-Floor 8': 'LCT8THFLOORScreen',
+      'AD-Floor 1': 'ADMINFLOORScreen',
     };
 
     const key = `${selectedBuilding}-${selectedFloor}`;
@@ -82,14 +86,14 @@ const ViewScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Admin Screen</Text>
+      <Text style={styles.title}>Floor Plan Collection</Text>
 
       <Text style={styles.label}>Building</Text>
       <SelectList
         setSelected={setSelectedBuilding}
         data={buildingOptions}
         placeholder="Select a building"
-        save="value"
+        save="key"
         boxStyles={styles.dropdown}
       />
 
@@ -98,17 +102,17 @@ const ViewScreen = ({ navigation }) => {
         setSelected={setSelectedFloor}
         data={getFloorOptions()}
         placeholder="Select a floor"
-        save="value"
+        save="key"
         boxStyles={styles.dropdown}
         disabled={!selectedBuilding}
       />
 
       <TouchableOpacity style={styles.button} onPress={handlePresent}>
-        <Text style={styles.buttonText}>Present</Text>
+        <Text style={styles.buttonText}>View</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-        <Text style={styles.backButtonText}>← Back to Home</Text>
+        <Text style={styles.backButtonText}>Back to Home</Text>
       </TouchableOpacity>
     </View>
   );
@@ -138,7 +142,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#b51509',
     paddingVertical: 14,
     borderRadius: 6,
     marginTop: 32,

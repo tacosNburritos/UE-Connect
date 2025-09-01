@@ -45,7 +45,7 @@ const TYK6THFLOORScreen = ({ route, navigation }) => {
     M25: { x: 0.55, y: 0.768 },
     M26: { x: 0.459, y: 0.809 },
     M27: { x: 0.536, y: 0.851 },
-    M28: { x: 0.251, y: 0.915 },
+    M28: { x: 0.28, y: 0.905 },
     M29: { x: 0.439, y: 0.99999},
     M30: { x: 0.641, y: 0.91},
     M31: { x: 0.469, y: 0.815 },
@@ -82,11 +82,48 @@ const TYK6THFLOORScreen = ({ route, navigation }) => {
     M64: { x: 0.597, y: 0.203 },
     M65: { x: 0.595, y: 0.269 },
     M66: { x: 0.595, y: 0.138 },
-    //stairs
-    
+    //new add
+    M67: { x: 0.47, y: 0.376 },
+    M68: { x: 0.41, y: 0.376 },
+    M69: { x: 0.51, y: 0.358 },
+    M70: { x: 0.51, y: 0.34 },
+    M71: { x: 0.47, y: 0.34 },
+    M72: { x: 0.51, y: 0.3219 },
+    M73: { x: 0.47, y: 0.3219 },
+    M74: { x: 0.51, y: 0.303 },
+    M75: { x: 0.47, y: 0.303 },
+    M76: { x: 0.51, y: 0.278 },
+    M77: { x: 0.47, y: 0.278 },
+    M78: { x: 0.51, y: 0.295 },
+    M79: { x: 0.47, y: 0.295 },
+    M80: { x: 0.482, y: 0.824 },
+    M81: { x: 0.51, y: 0.808 },
+    M82: { x: 0.541, y: 0.825 },
+    M83: { x: 0.513, y: 0.836 },
+    M84: { x: 0.564, y: 0.837},
+    M85: { x: 0.578, y: 0.799},
+    M86: { x: 0.533, y: 0.076},
+    M87: { x: 0.533, y: 0.037},
   };
 
   const mapConnections = [
+    //new add
+    ["M67", "M68"],
+    ["M9", "M69"],
+    ["M70", "M71"],
+    ["M72", "M73"],
+    ["M74", "M75"],
+    ["M76", "M77"],
+    ["M78", "M79"],
+    ["M76", "M78"],
+    ["M80", "M81"],
+    ["M82", "M83"],
+    ["M84", "M27"],
+    ["M36", "M85"],
+    ["M86", "M87"],
+
+
+
     ["M1", "M2"],
     ["M2", "M3"],
     ["M3", "M4"],
@@ -160,12 +197,12 @@ const TYK6THFLOORScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.35, y: 0.09, label: "Workshop\n & Tool\n Room" },
-    L2: { x: 0.36, y: 0.19, label: "Arts &\n Design \n Open \n Studio" },
+    L1: { x: 0.38, y: 0.09, label: "Work\nshop\nRoom" },
+    L2: { x: 0.376, y: 0.18, label: "Arts &\nDesign \nOpen \nStudio" },
     L3: { x: 0.53, y: 0.6, label: "Library" },
-    L4: { x: 0.56, y: 0.23, label: "Animation \nStudio" },
-    L5: { x: 0.6, y: 0.17, label: "TYK\n600" },
-    L6: { x: 0.6, y: 0.09, label: "Video\nEditing\nRoom" },
+    L4: { x: 0.58, y: 0.22, label: "Anim-\nation \nStudio" },
+    L5: { x: 0.595, y: 0.16, label: "TYK\n600" },
+    L6: { x: 0.58, y: 0.09, label: "Video\nEditing\nRoom" },
   };
 
   const stairNodes = [
@@ -329,10 +366,10 @@ adjustedPath.forEach(node => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/TYK6THFLR.png")}
           style={{ width: "97%", height: "102%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -419,7 +456,7 @@ adjustedPath.forEach(node => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -437,7 +474,7 @@ adjustedPath.forEach(node => {
             <Text
               style={{
                 position: "absolute",
-                left: x * containerSize.width + 6,
+                left: x * containerSize.width + 7,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
                 fontSize: 10,

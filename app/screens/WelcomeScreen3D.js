@@ -26,10 +26,10 @@ function WelcomeScreen3D({ navigation }) {
   const collidablesRef = useRef([]);
   const cloudsRef = useRef([]);
 
-  // ✅ Add loading state
+  // loading state
   const [isLoading, setIsLoading] = useState(true);
 
-  const HEIGHT_OFFSET = 100;
+  const HEIGHT_OFFSET = 150;
   const ZOOM_BACK = 0;
 
   const ROT_SPEED = 0.0003;
@@ -150,7 +150,7 @@ function WelcomeScreen3D({ navigation }) {
         boundsRef.current = { min: paddedMin, max: paddedMax };
 
         // ✅ Force initial camera placement + render
-        camera.position.set(center.x, center.y + HEIGHT_OFFSET, center.z);
+        camera.position.set(center.x, center.y + HEIGHT_OFFSET, center.z +30);
         camera.lookAt(center.x, box.min.y, center.z);
         renderer.render(scene, camera);
         gl.endFrameEXP();
@@ -182,6 +182,7 @@ function WelcomeScreen3D({ navigation }) {
       gl.endFrameEXP();
     };
     render();
+    
   };
 
   const handlePathPress = () => {
@@ -218,10 +219,10 @@ function WelcomeScreen3D({ navigation }) {
       {/* === Overlay UI === */}
       <View style={styles.header}>
         <Image
-          source={require("../assets/ue_logo.png")}
+          source={require("../assets/LOGO 2 white no text.png")}
           style={styles.logo_header}
         />
-        <Text style={styles.text}>UE Connect</Text>
+        <Text style={styles.text}>Kadima</Text>
       </View>
 
       {/* === Toggle 2D Bar === */}
@@ -259,7 +260,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontSize: 30,
+    fontSize: 40,
     fontWeight: "bold",
     textAlign: "left",
   },

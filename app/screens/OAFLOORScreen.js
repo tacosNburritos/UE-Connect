@@ -63,7 +63,7 @@ const OAFLOORScreen = ({ route, navigation }) => {
   const labelNodes = {
     L1: { x: 0.33, y: 0.2, label: "Guidance \nCounseling" },
     L2: { x: 0.35, y: 0.43, label: "Student \nAffairs \nOffice" },
-    L4: { x: 0.33, y: 0.69, label: "I.T \nDepartment" },
+    L4: { x: 0.39, y: 0.645, label: "I.\nT.\n\nD\ne\np\na\nr\nt\nm\ne\nn\nt" },
   };
 
   const stairNodes = [
@@ -219,10 +219,10 @@ const OAFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/OLDACADFLR.png")}
           style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
       
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -315,7 +315,7 @@ const OAFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -336,7 +336,7 @@ const OAFLOORScreen = ({ route, navigation }) => {
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: "bold",
               }}
             >

@@ -42,6 +42,7 @@ import OnBoardScreen from './app/screens/OnBoardScreen';
 import 'react-native-gesture-handler';
 
 
+import ADMINFLOORScreen from './app/screens/ADMINFLOORScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -55,9 +56,9 @@ export default function App() {
         <Stack.Screen name="NewAdmin" component={NewAdmin} options={{ headerShown: false }} />
         <Stack.Screen name="AdminScreen" component={AdminScreen} options={{ headerShown: false }} />
         <Stack.Screen name="EditRoom" component={EditRoom} options={{ headerShown: false }} />
+        <Stack.Screen name="ADMINFLOORScreen" component={ADMINFLOORScreen} options={{ headerShown: false }} />
             
         <Stack.Screen name="WelcomeScreen3D" component={WelcomeScreen3D} />
-
         <Stack.Screen name="EN1STFLOORScreen" component={EN1STFLOORScreen} />
         <Stack.Screen name="EN2NDFLOORScreen" component={EN2NDFLOORScreen} />
         <Stack.Screen name="EN3RDFLOORScreen" component={EN3RDFLOORScreen} />
