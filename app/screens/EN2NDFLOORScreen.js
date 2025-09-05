@@ -288,6 +288,10 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
     RL24: { x: 0.427, y: 0.907},
     RL25: { x: 0.348, y: 0.903},
     RL26: { x: 0.326, y: 0.902},
+
+    //addition
+    AD1: { x: 0.6, y: 0.095 },
+    AD2: { x: 0.67, y: 0.094 },
   }; 
 
   const mapConnections = [
@@ -452,10 +456,45 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
     ["SS43", "SS44"],
     ["SS45", "SS46"],
     ["SC7", "SC8"],
+    ["AD1", "AD2"]
   ];
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
+    L1: { x: 0.12, y: 0.92, label: "MALE CR" },
+    L2: { x: 0.3, y: 0.928, label: "EN 217" },
+    L3: { x: 0.44, y: 0.925, label: "CHEM\nSTOCK\nROOM" },
+    L4: { x: 0.556, y: 0.94, label: "EN 215" },
+    L5: { x: 0.69, y: 0.94, label: "FEMALE\n     CR" },
+    L6: { x: 0.14, y: 0.07, label: "MALE CR" },
+    L7: { x: 0.72, y: 0.06, label: "FEMALE\n     CR" },
+    L8: { x: 0.38, y: 0.8, label: "DCSS\nFaculty\nRoom" },
+    L9: { x: 0.38, y: 0.75, label: "CLR 1" },
+    L10: { x: 0.38, y: 0.7, label: "ECE\nLAB 1" },
+    L11: { x: 0.38, y: 0.655, label: "ECE\nLAB 2" },
+    L12: { x: 0.38, y: 0.61, label: "ECE\nLAB 3" },
+    L13: { x: 0.38, y: 0.565, label: "ECE\nLAB 4" },
+    L14: { x: 0.345, y: 0.52, label: "Satellite\nRepair Room" },
+    L15: { x: 0.355, y: 0.478, label: "ECE/COE\nTool Room" },
+    L16: { x: 0.355, y: 0.39, label: "Electrical\nPower\nEng' Lab 1" },
+    L17: { x: 0.355, y: 0.32, label: "Electrical\nPower\nEng' Lab 2" },
+    L18: { x: 0.355, y: 0.26, label: "Electrical\nPower\nEng' Lab 3" },
+    L19: { x: 0.355, y: 0.19, label: "Electrical\nPower\nEng' Lab 4" },
+    L20: { x: 0.56, y: 0.79, label: "Bio Lab\nStock\nRoom" },
+    L21: { x: 0.56, y: 0.74, label: "CLR 2" },
+    L22: { x: 0.56, y: 0.67, label: "CLR 3" },
+    L23: { x: 0.56, y: 0.6, label: "CLR 4" },
+    L24: { x: 0.56, y: 0.54, label: "CLR 5" },
+    L25: { x: 0.56, y: 0.47, label: "CLR 6" },
+    L26: { x: 0.56, y: 0.41, label: "CLR 7" },
+    L27: { x: 0.56, y: 0.34, label: "CLR 8" },
+    L28: { x: 0.56, y: 0.27, label: "EN 206" },
+    L29: { x: 0.56, y: 0.2, label: "EN 205" },
+    L30: { x: 0.42, y: 0.13, label: "EE\nTool\nRoom" },
+    L31: { x: 0.29, y: 0.145, label: "Net Lab" },
+    L32: { x: 0.32, y: 0.07, label: "EN 219" },
+    L33: { x: 0.46, y: 0.055, label: "Physics\nStock\nRoom" },
+    L34: { x: 0.58, y: 0.07, label: "EN 201" },
   };
 
    const stairNodes = [
@@ -606,10 +645,10 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
-          // source={require("../images/EN2NDFLR.png")}
-          // style={{ width: "100%", height: "105%", position: "absolute", resizeMode: "contain" }}
-        />
+        {/* <Image
+          source={require("../images/EN2NDFLR.png")}
+          style={{ width: "100%", height: "105%", position: "absolute", resizeMode: "contain" }}
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -624,8 +663,8 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
-                strokeWidth={2}
+                stroke="black"
+                strokeWidth={1.8}
               />
             );
           })}
@@ -717,8 +756,8 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
-                fontSize: 10,
+                color: "black", // Change to black if preferred
+                fontSize: 9.3,
                 fontWeight: "bold",
               }}
             >

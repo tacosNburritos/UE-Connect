@@ -427,6 +427,52 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
+    L1 : { x: 0.14, y: 0.92, label: "EN 434" },
+    L2 : { x: 0.29, y: 0.925, label: "EN 432" },
+    L3 : { x: 0.43, y: 0.93, label: "EN 431" },
+    L4 : { x: 0.55, y: 0.93, label: "EN\n430" },
+    L5 : { x: 0.65, y: 0.93, label: "EN\n429" },
+    L6 : { x: 0.75, y: 0.935, label: "EN\n433" },
+    L7 : { x: 0.55, y: 0.845, label: "EN\n428" },
+    L8 : { x: 0.65, y: 0.845, label: "EN\n427" },
+    L9 : { x: 0.32, y: 0.845, label: "AEES" },
+    L10 : { x: 0.37, y: 0.79, label: "EN\n426" },
+    L11 : { x: 0.37, y: 0.74, label: "EN\n424" },
+    L12 : { x: 0.37, y: 0.69, label: "EN\n422" },
+    L13 : { x: 0.37, y: 0.63, label: "EN\n420" },
+    L14 : { x: 0.37, y: 0.58, label: "EN\n418" },
+    L15 : { x: 0.37, y: 0.53, label: "EN\n416" },
+    L16 : { x: 0.37, y: 0.48, label: "EN\n414" },
+    L17 : { x: 0.37, y: 0.43, label: "EN\n412" },
+    L18 : { x: 0.37, y: 0.37, label: "EN\n410" },
+    L19 : { x: 0.37, y: 0.32, label: "EN\n408" },
+    L20 : { x: 0.37, y: 0.27, label: "EN\n406" },
+    L21 : { x: 0.37, y: 0.22, label: "EN\n404" },
+    L22 : { x: 0.37, y: 0.17, label: "EN\n402" },
+
+    L23 : { x: 0.57, y: 0.79, label: "EN 425" },
+    L24 : { x: 0.57, y: 0.74, label: "EN 423" },
+    L25 : { x: 0.57, y: 0.69, label: "EN 421" },
+    L26 : { x: 0.57, y: 0.63, label: "EN 419" },
+    L27 : { x: 0.57, y: 0.58, label: "EN 417" },
+    L28 : { x: 0.57, y: 0.53, label: "EN 415" },
+    L29 : { x: 0.57, y: 0.48, label: "EN 413" },
+    L30 : { x: 0.57, y: 0.43, label: "EN 411" },
+    L31 : { x: 0.57, y: 0.37, label: "EN 409" },
+    L32 : { x: 0.57, y: 0.32, label: "EN 407" },
+    L33 : { x: 0.57, y: 0.27, label: "EN 405" },
+    L34 : { x: 0.57, y: 0.22, label: "EN 403" },
+    L35 : { x: 0.57, y: 0.17, label: "EN 401" },
+
+    L36 : { x: 0.165, y: 0.035, label: "FEMALE\n    CR" },
+    L37 : { x: 0.32, y: 0.035, label: "EN\nD1" },
+    L38 : { x: 0.42, y: 0.036, label: "EN\nD2" },
+    L39 : { x: 0.52, y: 0.037, label: "EN\nD3" },
+    L40 : { x: 0.62, y: 0.038, label: "EN\nD4" },
+    L41 : { x: 0.71, y: 0.047, label: "MALE CR" },
+    L42 : { x: 0.56, y: 0.115, label: "EN\nD5" },
+    L43 : { x: 0.64, y: 0.115, label: "EN\nD6" },
+
   };
 
   const stairNodes = [
@@ -595,7 +641,7 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -687,8 +733,8 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
-                fontSize: 10,
+                color: "black", // Change to black if preferred
+                fontSize: 9.6,
                 fontWeight: "bold",
               }}
             >

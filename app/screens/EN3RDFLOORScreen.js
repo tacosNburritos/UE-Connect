@@ -469,6 +469,32 @@ const EN3RDFLOORScreen = ({ route, navigation }) => {
 
   // STRICTLY FOR LABELS ONLY
   const labelNodes = {
+    L1 : { x: 0.12, y: 0.92, label: "MALE CR" },
+    L2 : { x: 0.28, y: 0.93, label: "EN 319" },
+    L3 : { x: 0.42, y: 0.94, label: "EN 318" },
+    L4 : { x: 0.57, y: 0.95, label: "EN 317" },
+    L5 : { x: 0.71, y: 0.95, label: "FEMALE\n    CR" },
+    L6 : { x: 0.43, y: 0.62, label: "L\nI\nB\nR\nA\nR\nY" },
+    L7 : { x: 0.39, y: 0.39, label: "MPH 2" },
+    L8 : { x: 0.39, y: 0.21, label: "MPH 1" },
+    L9 : { x: 0.37, y: 0.12, label: "IECEP" },
+    L10 : { x: 0.57, y: 0.8, label: "EN 313" },
+    L11 : { x: 0.57, y: 0.73, label: "EN 312" },
+    L12 : { x: 0.57, y: 0.67, label: "EN 311" },
+    L13 : { x: 0.57, y: 0.6, label: "EN 310" },
+    L14 : { x: 0.57, y: 0.525, label: "EN 309" },
+    L15 : { x: 0.57, y: 0.45, label: "EN 308" },
+    L16 : { x: 0.57, y: 0.39, label: "EN 307" },
+    L17 : { x: 0.57, y: 0.32, label: "EN 306" },
+    L18 : { x: 0.57, y: 0.25, label: "EN 305" },
+    L19 : { x: 0.57, y: 0.17, label: "EN 304" },
+    L20 : { x: 0.59, y: 0.05, label: "EN 301" },
+    L21 : { x: 0.45, y: 0.05, label: "EN 302" },
+    L22 : { x: 0.3, y: 0.05, label: "EN 303" },
+    L23 : { x: 0.15, y: 0.05, label: "MALE CR" },
+    L24 : { x: 0.73, y: 0.04, label: "FEMALE\n    CR" },
+
+
   };
 
   const stairNodes = [
@@ -637,7 +663,7 @@ const EN3RDFLOORScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -729,7 +755,7 @@ const EN3RDFLOORScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
+                color: "black", // Change to black if preferred
                 fontSize: 10,
                 fontWeight: "bold",
               }}

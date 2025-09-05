@@ -265,36 +265,6 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     M185: {x: 0.326, y: 0.968},
     M186: {x: 0.266, y: 0.966},
     M187: {x: 0.12, y: 0.961},
-
-    // //stairs bottom left
-    // S: {x: 0.17, y: 0.853},
-    // S1: {x: 0.25, y: 0.859},
-    // S2: {x: 0.235, y: 0.85},
-    // S7: {x: 0.235, y: 0.867},
-
-    // S3: {x: 0.215, y: 0.849},
-    // S6: {x: 0.215, y: 0.866},
-
-    // S4: {x: 0.198, y: 0.848},
-    // S5: {x: 0.194, y: 0.865},
-
-    // S8: {x: 0.18, y: 0.847},
-    // S9: {x: 0.175, y: 0.863},
-
-    
-    // //stairs bottom right
-    // S10: {x: 0.76, y: 0.873},
-    // S11: {x: 0.83, y: 0.877},
-
-    // S12: {x: 0.778, y: 0.86},
-    // S13: {x: 0.772, y: 0.887},
-
-    // S14: {x: 0.8, y: 0.861},
-    // S15: {x: 0.796, y: 0.888},
-
-    // S16: {x: 0.816, y: 0.889},
-    // S17: {x: 0.82, y: 0.863},
-
   };
 
   const mapConnections = [
@@ -418,6 +388,34 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     ["M184", "M173"],
     ["M183", "M177"],
     ["M187", "M165"],
+    ["SS1", "SS2"],
+    ["SS3", "SS4"],
+    ["SS5", "SS6"],
+    ["SS7", "SS8"],
+    ["SS9", "SS10"],
+    ["SS11", "SS12"],
+    ["SC1", "SC2"],
+    ["SS13", "SS14"],
+    ["SS15", "SS16"],
+    ["SS17", "SS18"],
+    ["SS19", "SS20"],
+    ["SS21", "SS22"],
+    ["SS23", "SS24"],
+    ["SC3", "SC4"],
+    ["SS25", "S6"],
+    ["SS26", "SS27"],
+    ["SS28", "SS29"],
+    ["SS30", "SS31"],
+    ["SS32", "SS33"],
+    ["SS34", "SS35"],
+    ["SC5", "SC6"],
+    ["SS36", "S8"],
+    ["SS37", "SS38"],
+    ["SS39", "SS40"],
+    ["SS41", "SS42"],
+    ["SS43", "SS44"],
+    ["SS45", "SS46"],
+    ["SC7", "SC8"],
   ];
 
 // STRICTLY FOR LABELS ONLY
@@ -452,12 +450,6 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     L26: { x: 0.365, y: 0.94, label: "EN 102" },
     L27: { x: 0.55, y: 0.946, label: "EN 101" },
     L28: { x: 0.28, y: 0.917, label: "A\nC\nE\nS" },
-    L29: { x: 0.156, y: 0.855, label: "STAIRS" },
-    L30: { x: 0.73, y: 0.875, label: "STAIRS" },
-    L31: { x: 0.73, y: 0.12, label: "STAIRS" },
-    L32: { x: 0.162, y: 0.115, label: "STAIRS" },
-
-
   };
 
   const stairNodes = [
@@ -628,7 +620,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -724,7 +716,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
                   position: "absolute",
                   left: x * containerSize.width + 6,
                   top: y * containerSize.height - 6,
-                  color: "red",
+                  color: "black",
                   fontSize: 10,
                   fontWeight: "bold",
                 }}
