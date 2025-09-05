@@ -85,19 +85,24 @@ const TYK9THFLOORScreen = ({ route, navigation }) => {
     M53: { x: 0.59, y: 0.450 },
     M54: { x: 0.471, y: 0.357 },
     M55: { x: 0.477, y: 0.493},
-    M56: { x: 0.59, y: 0.51 },
+    M56: { x: 0.59, y: 0.51 }, //CONNECT HERE ALSO
     //zigzad left
     M57: { x: 0.540, y: 0.530 },
-    M58: { x: 0.46, y: 0.57 },
+    M58: { x: 0.46, y: 0.57 }, //CONNECT HERE
+    M58X: { x: 0.587, y: 0.57 }, //extra point
     M59: { x: 0.52, y: 0.60 },
     M60: { x: 0.45, y: 0.636 },
+    M60X: { x: 0.587, y: 0.636 },
     M61: { x: 0.52, y: 0.668 },
+  
     M62: { x: 0.455, y: 0.70 },
     M63: { x: 0.529, y: 0.737 },
     M64: { x: 0.50, y: 0.752},
+
+    
     //elevator baba
     M65: { x: 0.52, y: 0.742},
-    M66: { x: 0.579, y: 0.71 },
+    M66: { x: 0.584, y: 0.71 },
     M67: { x: 0.597, y: 0.781 },
     M68: { x: 0.628, y: 0.767 },
     M69: { x: 0.598, y: 0.757 },
@@ -220,12 +225,21 @@ const TYK9THFLOORScreen = ({ route, navigation }) => {
     ["M55", "M52"],
     ["M56", "M53"],
     ["M56", "M57"],
+    ["M56", "M58X"],
+    
     //baba ng faculty
     ["M57", "M58"],
     ["M55", "M57"],
     ["M58", "M59"],
+    ["M59", "M58X"],
     ["M59", "M60"],
     ["M60", "M61"],
+    
+    //NEW ONES
+    ["M61", "M60X"],
+    ["M58X", "M60X"],
+    ["M60X", "M66"],
+
     ["M62", "M61"],
     ["M62", "M63"],
     ["M63", "M64"],
@@ -287,9 +301,31 @@ const TYK9THFLOORScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.29, y: 0.86, label: "TYK\n900" },
+    L2: { x: 0.38, y: 0.82, label: "TYK\n902" },
+    L3: { x: 0.47, y: 0.78, label: "TYK\n904" },
+    L4: { x: 0.44, y: 0.94, label: "TYK\n901" },
+    L5: { x: 0.53, y: 0.9, label: "TYK\n903" },
+    L6: { x: 0.62, y: 0.855, label: "TYK\n905" },
+    L7: { x: 0.49, y: 0.69, label: "TYK\n906" },
+    L8: { x: 0.49, y: 0.62, label: "TYK\n908" },
+    L9: { x: 0.49, y: 0.56, label: "TYK\n910" },
+    L10: { x: 0.64, y: 0.66, label: "TYK\n906" },
+    L11: { x: 0.63, y: 0.6, label: "TYK\n908" },
+    L12: { x: 0.63, y: 0.53, label: "TYK\n910" },
+    L13: { x: 0.47, y: 0.47, label: "Faculty\n Room" },
+    L14: { x: 0.515, y: 0.37, label: "Lobby" },
+    L15: { x: 0.62, y: 0.37, label: "MALE\nCR" },
+    L16: { x: 0.61, y: 0.48, label: "FEMALE\nCR" },
+    L17: { x: 0.63, y: 0.32, label: "TYK\n912" },
+    L18: { x: 0.63, y: 0.25, label: "TYK\n913" },
+    L19: { x: 0.63, y: 0.19, label: "TYK\n915" },
+    L20: { x: 0.63, y: 0.13, label: "TYK\n917" },
+    L21: { x: 0.63, y: 0.07, label: "TYK\n919" },
+    L22: { x: 0.418, y: 0.19, label: "TYK\n914" },
+    L23: { x: 0.418, y: 0.13, label: "TYK\n916" },
+    L24: { x: 0.418, y: 0.07, label: "TYK\n918" },
+
   };
 
   const stairNodes = [
@@ -447,10 +483,10 @@ const TYK9THFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/TYK9THFLR.png")}
           style={{ width: "97%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -537,7 +573,7 @@ const TYK9THFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}

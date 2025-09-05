@@ -32,8 +32,8 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
     ULOP4: { x: 0.481, y: 0.311 },
     ULOP5: { x: 0.481, y: 0.33 },
 
-    //MIDLE PART OUTLINE
-    MLSTO1: { x: 0.372, y: 0.347 }, //MIDLE STAIR OUTLINE
+    //MIDDLE PART OUTLINE
+    MLSTO1: { x: 0.372, y: 0.347 }, //MIDDLE STAIR OUTLINE
     MLSTO2: { x: 0.384, y: 0.347 },
     MLSTO3: { x: 0.384, y: 0.357 },
     MLSTO4: { x: 0.368, y: 0.364 },
@@ -43,10 +43,10 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
     MLSTO8: { x: 0.434, y: 0.38 },
     MLSTO9: { x: 0.49, y: 0.38 },
 
-    MLO1: { x: 0.434, y: 0.553 }, // MIDLE PART OUTLINE 
+    MLO1: { x: 0.434, y: 0.553 }, // MIDDLE PART OUTLINE 
     MLO2: { x: 0.516, y: 0.595 },
   
-    MLOP1: { x: 0.467, y: 0.38 }, // MIDLE PART OUTLINE POINT
+    MLOP1: { x: 0.467, y: 0.38 }, // MIDD LE PART OUTLINE POINT
     MLOP2: { x: 0.434, y: 0.457 },
     
     //LOWER PART OUTLINE
@@ -60,18 +60,14 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
     LLO8: { x: 0.485, y: 0.803 },
     LLO9: { x: 0.271, y: 0.907 }, 
 
-    /*LLOP1: { x: 0.53, y: 0.7975 }, // LOWER PART OUTLINE POINT
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, 
-    LLOP2: { x: 0.557, y: 0.812 }, */
+    LLOP1: { x: 0.558, y: 0.755 }, // LOWER PART OUTLINE POINT
+    LLOP2: { x: 0.503, y: 0.812 }, 
+    LLOP3: { x: 0.531, y: 0.826 }, 
+    LLOP4: { x: 0.558, y: 0.84 }, 
 
     //RIGHT PART OUTLINE 
     RO1: { x: 0.46, y: 0.996 }, 
-    RO2: { x: 0.669, y: 0.899 }, // DUNNO WHAT THIS IS
+    RO2: { x: 0.669, y: 0.899 }, 
     RO3: { x: 0.621, y: 0.876 },
     RO4: { x: 0.626, y: 0.874 },
     RO5: { x: 0.645, y: 0.865 },
@@ -88,29 +84,172 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
     RO16: { x: 0.6, y: 0.064},
     RO17: { x: 0.6, y: 0.011},
 
+    ROP1: { x: 0.686, y: 0.693 }, // LOWER PART OUTLINE POINT RIGHT
+    ROP2: { x: 0.686, y: 0.629 },
+    ROP3: { x: 0.686, y: 0.565 },
+    ROP4: { x: 0.686, y: 0.521 },
+    ROP5: { x: 0.686, y: 0.38 },
+    ROP6: { x: 0.686, y: 0.42 },
+    ROP7: { x: 0.686, y: 0.317 },
+    ROP8: { x: 0.686, y: 0.253 },
 
-    /*ROP1: { x: 0.557, y: 0.9455 }, // LOWER PART OUTLINE POINT RIGHT
-    ROP2: { x: 0.623, y: 0.914 },
-    ROP3: { x: 0.708, y: 0.679 },
-    ROP4: { x: 0.708, y: 0.617 },
-    ROP5: { x: 0.708, y: 0.555 },
-    ROP6: { x: 0.708, y: 0.511 },
-    ROP7: { x: 0.708, y: 0.4115 },
-    ROP8: { x: 0.708, y: 0.373 },
-    ROP9: { x: 0.708, y: 0.3105 },
-    ROP10: { x: 0.708, y: 0.247 },
-    ROP11: { x: 0.708, y: 0.186 },
-    ROP12: { x: 0.708, y: 0.125 },*/
+    //INSIDE STRUCTURE
+    IS1: { x: 0.54, y: 0.022 },
+    IS2: { x: 0.54, y: 0.064 },
+
+    IS3: { x: 0.525, y: 0.085 },
+    IS4: { x: 0.562, y: 0.085 },
+    IS5: { x: 0.525, y: 0.232 },
+    IS6: { x: 0.562, y: 0.232 },
+
+    IS7: { x: 0.518, y: 0.265 }, //ELEV
+    IS8: { x: 0.518, y: 0.273 },
+    IS9: { x: 0.518, y: 0.284 },
+    IS10: { x: 0.518, y: 0.291 },
+    IS11: { x: 0.518, y: 0.295 },
+    IS12: { x: 0.518, y: 0.306 },
+    IS13: { x: 0.518, y: 0.3115 },
+    IS14: { x: 0.518, y: 0.316 },
+    IS15: { x: 0.518, y: 0.326 },
+    IS16: { x: 0.518, y: 0.33 },
+    IS17: { x: 0.518, y: 0.334 },
+    IS18: { x: 0.518, y: 0.344 },
+    IS19: { x: 0.518, y: 0.347 },
+  
+    IS20: { x: 0.585, y: 0.267 },
+    IS21: { x: 0.6, y: 0.267 },
+    IS22: { x: 0.6, y: 0.302 },
+    IS23: { x: 0.585, y: 0.302},
+    IS24: { x: 0.6, y: 0.317 },
+    IS25: { x: 0.585, y: 0.33 },
+    IS26: { x: 0.6, y: 0.33 },
+    IS27: { x: 0.6, y: 0.365 },
+    IS28: { x: 0.585, y: 0.365 },
+
+    IS: { x: 0.686, y: 0.253 },
+    IS: { x: 0.686, y: 0.253 },
+    IS: { x: 0.686, y: 0.253 },
+    IS: { x: 0.686, y: 0.253 },
+    IS: { x: 0.686, y: 0.253 },
+    IS: { x: 0.686, y: 0.253 },
+    IS: { x: 0.686, y: 0.253 },
+    IS: { x: 0.686, y: 0.253 },
+    IS: { x: 0.686, y: 0.253 },
+    IS: { x: 0.686, y: 0.253 },
+    
   };
 
   const mapConnections = [
-    ["M1", "M2"],
-    ["M2", "M3"],
-    ["M3", "M4"],
-    ["M4", "M5"],
-    ["M5", "M6"],
-    ["M6", "M7"],
-    ["M7", "M1"],
+    ["ULSTO1", "ULSTO2"],
+    ["ULSTO2", "ULO1"],
+    ["ULO1", "ULO2"],
+    ["ULO2", "ULO3"],
+    ["ULO3", "ROP8"],
+    ["ULO3", "ULOP1"],
+    ["ULOP1", "ULOP2"],
+    ["ULOP2", "ULOP3"],
+    ["ULOP3", "ULOP4"],
+    ["ULOP4", "ULOP5"],
+    ["ULOP5", "ULO4"],
+
+    ["ULO4", "MLSTO1"],
+    ["MLSTO1", "MLSTO2"],
+    ["MLSTO2", "MLSTO3"],
+    ["MLSTO3", "MLSTO4"],
+    ["MLSTO4", "MLSTO5"],
+    ["MLSTO5", "MLSTO6"],
+    ["MLSTO6", "MLSTO7"],
+    ["MLSTO7", "MLSTO8"],
+    ["MLSTO8", "MLOP1"],
+    ["MLOP1", "MLSTO9"],
+    ["MLSTO8", "MLOP2"],
+    ["MLOP2", "MLO1"],
+    ["MLO1", "MLO2"],
+
+    ["MLO2", "LLO1"],
+    ["LLO1", "LLO2"],
+    ["LLO2", "LLO3"],
+    ["LLO3", "LLO4"],
+    ["LLO4", "LLO5"],
+    ["LLO5", "LLO6"],
+    ["LLO6", "LLOP1"],
+    ["LLOP1", "RO6"],
+    ["LLO6", "LLO7"],
+    ["LLO7", "LLO8"],
+    ["LLO8", "LLOP2"],
+    ["LLOP2", "LLOP3"],
+    ["LLOP3", "LLOP4"],
+    ["LLOP4", "RO4"],
+    ["LLO8", "LLO9"],
+
+    ["LLO9", "RO1"],
+    ["RO1", "RO2"],
+    ["RO2", "RO3"],
+    ["RO3", "RO4"],
+    ["RO4", "RO5"],
+    ["RO5", "RO6"],
+    ["RO6", "RO7"],
+    ["RO7", "ROP1"],
+    ["ROP1", "ROP2"],
+    ["ROP2", "ROP3"],
+    ["ROP3", "ROP4"],
+    ["ROP4", "RO8"],
+    ["RO8", "RO9"],
+    ["RO9", "RO10"],
+    ["RO10", "RO11"],
+    ["RO11", "RO12"],
+    ["RO12", "RO13"],
+    ["RO13", "RO14"],
+    ["RO14", "ROP5"],
+    ["ROP5", "ROP6"],
+    ["ROP6", "ROP7"],
+    ["ROP7", "ROP8"],
+    ["ROP8", "RO15"],
+    ["RO15", "RO16"],
+    ["RO16", "ULSTO2"],
+    ["RO16", "RO17"],
+    ["ULSTO1", "RO17"],
+
+    ["IS1", "IS2"],
+
+    ["IS3", "IS4"],
+    ["IS3", "IS5"],
+    ["IS5", "IS6"],
+    ["IS6", "IS4"],
+
+    ["ULOP1", "IS7"],
+    ["ULOP2", "IS9"],
+    ["IS9", "IS8"],
+    ["ULOP3", "IS10"],
+    ["IS10", "IS11"],
+    ["ULOP4", "IS13"],
+    ["IS12", "IS13"],
+    ["IS13", "IS14"],
+    ["ULOP5", "IS16"],
+    ["IS15", "IS16"],
+    ["IS16", "IS17"],
+    ["ULO4", "IS19"],
+    ["IS19", "IS18"],
+
+    ["IS20", "IS21"],
+    ["IS21", "IS22"],
+    ["IS22", "IS23"],
+    ["ROP7", "IS24"],
+    ["IS25", "IS26"],
+    ["IS26", "IS27"],
+    ["IS27", "IS28"],
+    ["ULSTO1", "RO17"],
+
+    ["ULSTO1", "RO17"],
+    ["ULSTO1", "RO17"],
+    ["ULSTO1", "RO17"],
+    ["ULSTO1", "RO17"],
+    ["ULSTO1", "RO17"],
+    ["ULSTO1", "RO17"],
+    ["ULSTO1", "RO17"],
+    ["ULSTO1", "RO17"],
+    ["ULSTO1", "RO17"],
+    ["ULSTO1", "RO17"],
   ];
 
 // STRICTLY FOR LABELS ONLY

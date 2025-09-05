@@ -265,6 +265,36 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     M185: {x: 0.326, y: 0.968},
     M186: {x: 0.266, y: 0.966},
     M187: {x: 0.12, y: 0.961},
+
+    // //stairs bottom left
+    // S: {x: 0.17, y: 0.853},
+    // S1: {x: 0.25, y: 0.859},
+    // S2: {x: 0.235, y: 0.85},
+    // S7: {x: 0.235, y: 0.867},
+
+    // S3: {x: 0.215, y: 0.849},
+    // S6: {x: 0.215, y: 0.866},
+
+    // S4: {x: 0.198, y: 0.848},
+    // S5: {x: 0.194, y: 0.865},
+
+    // S8: {x: 0.18, y: 0.847},
+    // S9: {x: 0.175, y: 0.863},
+
+    
+    // //stairs bottom right
+    // S10: {x: 0.76, y: 0.873},
+    // S11: {x: 0.83, y: 0.877},
+
+    // S12: {x: 0.778, y: 0.86},
+    // S13: {x: 0.772, y: 0.887},
+
+    // S14: {x: 0.8, y: 0.861},
+    // S15: {x: 0.796, y: 0.888},
+
+    // S16: {x: 0.816, y: 0.889},
+    // S17: {x: 0.82, y: 0.863},
+
   };
 
   const mapConnections = [
@@ -388,34 +418,6 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     ["M184", "M173"],
     ["M183", "M177"],
     ["M187", "M165"],
-    ["SS1", "SS2"],
-    ["SS3", "SS4"],
-    ["SS5", "SS6"],
-    ["SS7", "SS8"],
-    ["SS9", "SS10"],
-    ["SS11", "SS12"],
-    ["SC1", "SC2"],
-    ["SS13", "SS14"],
-    ["SS15", "SS16"],
-    ["SS17", "SS18"],
-    ["SS19", "SS20"],
-    ["SS21", "SS22"],
-    ["SS23", "SS24"],
-    ["SC3", "SC4"],
-    ["SS25", "S6"],
-    ["SS26", "SS27"],
-    ["SS28", "SS29"],
-    ["SS30", "SS31"],
-    ["SS32", "SS33"],
-    ["SS34", "SS35"],
-    ["SC5", "SC6"],
-    ["SS36", "S8"],
-    ["SS37", "SS38"],
-    ["SS39", "SS40"],
-    ["SS41", "SS42"],
-    ["SS43", "SS44"],
-    ["SS45", "SS46"],
-    ["SC7", "SC8"],
   ];
 
 // STRICTLY FOR LABELS ONLY
@@ -423,12 +425,39 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     L1: { x: 0.375, y: 0.043, label: "EN 118" },
     L2: { x: 0.562, y: 0.044, label: "EN 117" },
     L3: { x: 0.16, y: 0.042, label: "Male CR" },
+    L3X: { x: 0.14, y: 0.932, label: "Male CR" },
     L4: { x: 0.704, y: 0.045, label: "Female CR" },
+    L4X: { x: 0.69, y: 0.949, label: "Female CR" },
     L5: { x: 0.375, y: 0.189, label: "Machine\nFabrication\nRoom" },
     L6: { x: 0.57, y: 0.155, label: "ME\nFaculty\nRoom" },
     L7: { x: 0.57, y: 0.201, label: "EE\nFaculty\nRoom" },
     L8: { x: 0.57, y: 0.248, label: "ECE\nFaculty\nRoom" },
-    L9: { x: 0.57, y: 0.248, label: "CFE\nFaculty\nRoom" },
+    L9: { x: 0.57, y: 0.296, label: "CPE\nFaculty\nRoom" },
+    L10: { x: 0.57, y: 0.339, label: "CE\nFaculty\nRoom" },
+    L11: { x: 0.584, y: 0.404, label: "EN\n111B" },
+    L12: { x: 0.584, y: 0.467, label: "Soil\nMech\nLab" },
+    L13: { x: 0.574, y: 0.536, label: "Testing\nLab" },
+    L14: { x: 0.575, y: 0.57, label: "CE\nTool\nRoom" },
+    L15: { x: 0.567, y: 0.63, label: "Fluid\nMech\n& Hydra-\nulics\nRoom" },
+    L16: { x: 0.567, y: 0.736, label: "Faculty\nTraining\nRoom" },
+    L17: { x: 0.379, y: 0.81, label: "EN 104" },
+    L18: { x: 0.379, y: 0.736, label: "ME LAB 1" },
+    L19: { x: 0.379, y: 0.65, label: "Dean's\nOffice" },
+    L20: { x: 0.394, y: 0.596, label: "C.O.E." },
+    L21: { x: 0.394, y: 0.487, label: "EN 112" },
+    L22: { x: 0.394, y: 0.437, label: "EN 113" },
+    L23: { x: 0.394, y: 0.37, label: "M.E.\nTool\nRoom " },
+    L24: { x: 0.38, y: 0.315, label: "ME LAB 2" },
+    L25: { x: 0.379, y: 0.86, label: "EN 103" },
+    L26: { x: 0.365, y: 0.94, label: "EN 102" },
+    L27: { x: 0.55, y: 0.946, label: "EN 101" },
+    L28: { x: 0.28, y: 0.917, label: "A\nC\nE\nS" },
+    L29: { x: 0.156, y: 0.855, label: "STAIRS" },
+    L30: { x: 0.73, y: 0.875, label: "STAIRS" },
+    L31: { x: 0.73, y: 0.12, label: "STAIRS" },
+    L32: { x: 0.162, y: 0.115, label: "STAIRS" },
+
+
   };
 
   const stairNodes = [
