@@ -39,6 +39,62 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     M18: { x: 0.495, y: 0.071 },
     M19: { x: 0.549, y: 0.0725 },
     M20: { x: 0.757, y: 0.074 },
+    //
+    SS1: { x: 0.24, y: 0.092 },
+    SS2: { x: 0.24, y: 0.147 },
+    SS3: { x: 0.23, y: 0.092 },
+    SS4: { x: 0.23, y: 0.147 },
+    SS5: { x: 0.22, y: 0.092 },
+    SS6: { x: 0.22, y: 0.147 },
+    SS7: { x: 0.21, y: 0.092 },
+    SS8: { x: 0.21, y: 0.147 },
+    SS9: { x: 0.2, y: 0.092 },
+    SS10: { x: 0.2, y: 0.147 },
+    SS11: { x: 0.19, y: 0.092 },
+    SS12: { x: 0.19, y: 0.147 },
+    SC1: { x: 0.242, y: 0.118 },
+    SC2: { x: 0.19, y: 0.118 },
+    //
+    SS13: { x: 0.753, y: 0.097 },
+    SS14: { x: 0.753, y: 0.15 },
+    SS15: { x: 0.763, y: 0.097 },
+    SS16: { x: 0.763, y: 0.15 },
+    SS17: { x: 0.773, y: 0.097 },
+    SS18: { x: 0.773, y: 0.15 },
+    SS19: { x: 0.783, y: 0.097 },
+    SS20: { x: 0.783, y: 0.15 },
+    SS21: { x: 0.793, y: 0.097 },
+    SS22: { x: 0.793, y: 0.15 },
+    SS23: { x: 0.803, y: 0.097 },
+    SS24: { x: 0.803, y: 0.15 },
+    SC3: { x: 0.753, y: 0.123 },
+    SC4: { x: 0.803, y: 0.123 },
+    //
+    SS26: { x: 0.757, y: 0.904 },
+    SS27: { x: 0.767, y: 0.85 },
+    SS28: { x: 0.767, y: 0.904 },
+    SS29: { x: 0.777, y: 0.85 },
+    SS30: { x: 0.787, y: 0.849 },
+    SS31: { x: 0.777, y: 0.904 },
+    SS32: { x: 0.797, y: 0.85 },
+    SS33: { x: 0.787, y: 0.904 },
+    SS34: { x: 0.807, y: 0.85 },
+    SS35: { x: 0.797, y: 0.904 },
+    SC5: { x: 0.757, y: 0.877 },
+    SC6: { x: 0.8, y: 0.876 },
+    //
+    SS37: { x: 0.243, y: 0.829 },
+    SS38: { x: 0.233, y: 0.883 },
+    SS39: { x: 0.233, y: 0.829 },
+    SS40: { x: 0.223, y: 0.883 },
+    SS41: { x: 0.223, y: 0.829 },
+    SS42: { x: 0.213, y: 0.883 },
+    SS43: { x: 0.213, y: 0.829 },
+    SS44: { x: 0.203, y: 0.883 },
+    SS45: { x: 0.203, y: 0.829 },
+    SS46: { x: 0.193, y: 0.883 },
+    SC7: { x: 0.193, y: 0.858 },
+    SC8: { x: 0.243, y: 0.86 },
     //part2
     M21: { x: 0.148, y: 0.092},
     M22: { x: 0.24, y: 0.092},
@@ -362,8 +418,6 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     ["M184", "M173"],
     ["M183", "M177"],
     ["M187", "M165"],
-
-
   ];
 
 // STRICTLY FOR LABELS ONLY
@@ -556,10 +610,10 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        {/* <Image
-          source={require("../images/EN1STFLR.png")}
-          style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        /> */}
+        { <Image
+          // source={require("../images/EN1STFLR.png")}
+          // style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
+        />}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
