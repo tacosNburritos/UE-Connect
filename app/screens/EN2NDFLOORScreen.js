@@ -74,6 +74,64 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
     S6: { x: 0.735, y: 0.9 },
     S7: { x: 0.13, y: 0.87 },
     S8: { x: 0.22, y: 0.874 },
+    // SS - Stair Steps Nodes, SC - Stair Center Nodes
+    SS1: { x: 0.229, y: 0.121 },
+    SS2: { x: 0.229, y: 0.173 },
+    SS3: { x: 0.219, y: 0.121 },
+    SS4: { x: 0.219, y: 0.173 },
+    SS5: { x: 0.209, y: 0.121 },
+    SS6: { x: 0.209, y: 0.173 },
+    SS7: { x: 0.199, y: 0.121 },
+    SS8: { x: 0.199, y: 0.173 },
+    SS9: { x: 0.189, y: 0.121 },
+    SS10: { x: 0.189, y: 0.173 },
+    SS11: { x: 0.179, y: 0.121 },
+    SS12: { x: 0.179, y: 0.173 },
+    SC1: { x: 0.23, y: 0.148 },
+    SC2: { x: 0.178, y: 0.148 },
+    //
+    SS13: { x: 0.753, y: 0.118 },
+    SS14: { x: 0.753, y: 0.171 },
+    SS15: { x: 0.763, y: 0.118 },
+    SS16: { x: 0.763, y: 0.171 },
+    SS17: { x: 0.773, y: 0.118 },
+    SS18: { x: 0.773, y: 0.171 },
+    SS19: { x: 0.783, y: 0.118 },
+    SS20: { x: 0.783, y: 0.171 },
+    SS21: { x: 0.793, y: 0.118 },
+    SS22: { x: 0.793, y: 0.171 },
+    SS23: { x: 0.803, y: 0.118 },
+    SS24: { x: 0.803, y: 0.171 },
+    SC3: { x: 0.753, y: 0.144 },
+    SC4: { x: 0.803, y: 0.144 },
+    //
+    SS25: { x: 0.747, y: 0.849 },
+    SS26: { x: 0.747, y: 0.903 },
+    SS27: { x: 0.757, y: 0.849 },
+    SS28: { x: 0.757, y: 0.903 },
+    SS29: { x: 0.767, y: 0.849 },
+    SS30: { x: 0.777, y: 0.848 },
+    SS31: { x: 0.767, y: 0.903 },
+    SS32: { x: 0.787, y: 0.849 },
+    SS33: { x: 0.777, y: 0.903 },
+    SS34: { x: 0.797, y: 0.849 },
+    SS35: { x: 0.787, y: 0.903 },
+    SC5: { x: 0.739, y: 0.877 },
+    SC6: { x: 0.789, y: 0.88 },
+    //
+    SS36: { x: 0.23, y: 0.822 },
+    SS37: { x: 0.22, y: 0.822 },
+    SS38: { x: 0.21, y: 0.873 },
+    SS39: { x: 0.21, y: 0.822 },
+    SS40: { x: 0.2, y: 0.873 },
+    SS41: { x: 0.2, y: 0.822 },
+    SS42: { x: 0.19, y: 0.873 },
+    SS43: { x: 0.19, y: 0.822 },
+    SS44: { x: 0.18, y: 0.873 },
+    SS45: { x: 0.18, y: 0.822 },
+    SS46: { x: 0.17, y: 0.873 },
+    SC7: { x: 0.23, y: 0.85 },
+    SC8: { x: 0.17, y: 0.847 },
     // R - Room Nodes
     // RU - Upper Hallways rooms
     RU1:{ x: 0.3, y: 0.098 },
@@ -366,6 +424,34 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
     ["RL22", "RL23"],
     ["RL24", "RL25"],
     ["RL26", "C14"],
+    ["SS1", "SS2"],
+    ["SS3", "SS4"],
+    ["SS5", "SS6"],
+    ["SS7", "SS8"],
+    ["SS9", "SS10"],
+    ["SS11", "SS12"],
+    ["SC1", "SC2"],
+    ["SS13", "SS14"],
+    ["SS15", "SS16"],
+    ["SS17", "SS18"],
+    ["SS19", "SS20"],
+    ["SS21", "SS22"],
+    ["SS23", "SS24"],
+    ["SC3", "SC4"],
+    ["SS25", "S6"],
+    ["SS26", "SS27"],
+    ["SS28", "SS29"],
+    ["SS30", "SS31"],
+    ["SS32", "SS33"],
+    ["SS34", "SS35"],
+    ["SC5", "SC6"],
+    ["SS36", "S8"],
+    ["SS37", "SS38"],
+    ["SS39", "SS40"],
+    ["SS41", "SS42"],
+    ["SS43", "SS44"],
+    ["SS45", "SS46"],
+    ["SC7", "SC8"],
   ];
 
 // STRICTLY FOR LABELS ONLY
@@ -520,10 +606,10 @@ const EN2NDFLOORScreen = ({ route, navigation }) => {
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        {/* <Image
-          source={require("../images/EN2NDFLR.png")}
-          style={{ width: "100%", height: "105%", position: "absolute", resizeMode: "contain" }}
-        /> */}
+        <Image
+          // source={require("../images/EN2NDFLR.png")}
+          // style={{ width: "100%", height: "105%", position: "absolute", resizeMode: "contain" }}
+        />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
