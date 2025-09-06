@@ -63,7 +63,7 @@ const ADMINFLOORScreen = ({ route, navigation }) => {
   const labelNodes = {
     LB1: { x: 0.32, y: 0.19, label: "Waiting Area" },
     LB2: { x: 0.27, y: 0.06, label: "Admission's Office" },
-    LB3: { x: 0.14, y: 0.34, label: "Comptroller's\nOffice" },
+    LB3: { x: 0.14, y: 0.34, label: "Comptroller\nOffice" },
     LB4: { x: 0.44, y: 0.346, label: "Cashier" },
     LB5: { x: 0.32, y: 0.846, label: "OJT Office" },
   };
@@ -242,7 +242,7 @@ const ADMINFLOORScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -334,7 +334,7 @@ const ADMINFLOORScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
+                color: "black", // Change to black if preferred
                 fontSize: 10,
                 fontWeight: "bold",
               }}

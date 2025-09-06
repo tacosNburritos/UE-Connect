@@ -756,7 +756,7 @@ const EN3RDFLOORScreen = ({ route, navigation }) => {
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "black", // Change to black if preferred
-                fontSize: 10,
+                fontSize: 9,
                 fontWeight: "bold",
               }}
             >

@@ -17,10 +17,10 @@ export default function AdminScreen({ navigation }) {
     >
         <View style={styles.header}>
             <Image
-                source={require("../assets/LOGO 2 white no text.png")}
+                source={require("../assets/LOGO 2 black no text.png")}
                     style={styles.logo_header}
                     />
-            <Text style={styles.text}>UE Connect</Text>
+            <Text style={styles.text}>Kadima</Text>
         </View>
       <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
                   <Text style={styles.backText}>← Back</Text>
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#b51509',
-    fontSize: 32,
+    fontSize: 38,
     fontWeight: 'bold',
     textAlign: 'center',
     letterSpacing: 1,

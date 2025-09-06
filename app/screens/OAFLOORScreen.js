@@ -242,7 +242,7 @@ const OAFLOORScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
                 strokeDasharray={isDashed ? "5,5" : undefined}
               />
@@ -335,8 +335,8 @@ const OAFLOORScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
-                fontSize: 12,
+                color: "black", // Change to black if preferred
+                fontSize: 9,
                 fontWeight: "bold",
               }}
             >
