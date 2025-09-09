@@ -351,9 +351,12 @@ const TYK1STFLOORScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.425, y: 0.11, label: "C\nA\nN\nT\nE\nE\nN" },
+    L2: { x: 0.63, y: 0.125, label: "L\nO\nB\nB\nY" },
+    L3: { x: 0.46, y: 0.62, label: "CBA\nOffice" },
+    L4: { x: 0.47, y: 0.73, label: "CBA\nFaculty" },
+    L5: { x: 0.585, y: 0.675, label: "Alumni\nMarketing" },
+    L6: { x: 0.61, y: 0.61, label: "DCO" },
   };
 
   const stairNodes = [
@@ -530,7 +533,7 @@ const TYK1STFLOORScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -602,7 +605,7 @@ const TYK1STFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={1} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -622,8 +625,8 @@ const TYK1STFLOORScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
-                fontSize: 10,
+                color: "black", // Change to black if preferred
+                fontSize: 7,
                 fontWeight: "bold",
               }}
             >
