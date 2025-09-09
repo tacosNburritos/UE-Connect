@@ -570,7 +570,7 @@ const UEScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -662,8 +662,8 @@ const UEScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
-                fontSize: 10,
+                color: "black", // Change to black if preferred
+                fontSize: 8.5,
                 fontWeight: "bold",
               }}
             >
@@ -685,7 +685,7 @@ const UEScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
+                color: "black", // Change to black if preferred
                 fontSize: 15,
                 fontWeight: "bold",
               }}

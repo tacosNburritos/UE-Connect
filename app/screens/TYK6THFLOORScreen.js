@@ -384,7 +384,7 @@ adjustedPath.forEach(node => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -476,8 +476,8 @@ adjustedPath.forEach(node => {
                 position: "absolute",
                 left: x * containerSize.width + 7,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
-                fontSize: 10,
+                color: "black", // Change to black if preferred
+                fontSize: 8,
                 fontWeight: "bold",
               }}
             >

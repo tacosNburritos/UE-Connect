@@ -18,6 +18,17 @@ const LCT5THFLOORScreen = ({ route, navigation }) => {
   const [showNextButton, setShowNextButton] = useState(false);
 
 const mapNodes = {  
+  // left stairs outline
+    S1: { x: 0.375, y: 0.025 },
+    S2: { x: 0.375, y: 0.055 },
+    S3: { x: 0.390, y: 0.025 },
+    S4: { x: 0.390, y: 0.055 },
+    S5: { x: 0.405, y: 0.025 },
+    S6: { x: 0.405, y: 0.055 },
+    S7: { x: 0.420, y: 0.025 },
+    S8: { x: 0.420, y: 0.055 },
+    S9: { x: 0.435, y: 0.025 },
+    S10: { x: 0.435, y: 0.055 },
     //left wing stairs
     B1: { x: 0.335, y: 0.016 },
     B2: { x: 0.335, y: 0.064 },
@@ -28,11 +39,24 @@ const mapNodes = {
     B6: { x: 0.335, y: 0.527 },
     B7: { x: 0.679, y: 0.527},
     B8: { x: 0.679, y: 0.064 },
-    //elevator
+             //elevator
     B25: { x: 0.335, y: 0.527 },
     B26: { x: 0.335, y: 0.621},
-    B27: { x: 0.392, y: 0.621},
-    B28: { x: 0.392, y: 0.527},
+    B27: { x: 0.405, y: 0.621},
+    B28: { x: 0.405, y: 0.527},
+    //elevator outline
+    E1: { x: 0.35, y: 0.613 },
+    E2: { x: 0.385, y: 0.593},
+    E3: { x: 0.35, y: 0.593},
+    E4: { x: 0.385, y: 0.613},
+    E5: { x: 0.35, y: 0.583},
+    E6: { x: 0.385, y: 0.563},
+    E7: { x: 0.35, y: 0.563},
+    E8: { x: 0.385, y: 0.583},
+    E9: { x: 0.35, y: 0.553},
+    E10: { x: 0.385, y: 0.535},
+    E11: { x: 0.35, y: 0.535},
+    E12: { x: 0.385, y: 0.553},
     // wall
     B29: { x: 0.335, y: 0.621 },
     B30: { x: 0.335, y: 0.807},
@@ -41,11 +65,33 @@ const mapNodes = {
     B38: { x: 0.335, y: 0.895},
     B39: { x: 0.41, y: 0.895},
     B40: { x: 0.41, y: 0.807},
+         //right stairs outline
+    S11: { x: 0.375, y: 0.905 },
+    S12: { x: 0.375, y: 0.940 },
+    S13: { x: 0.390, y: 0.905 },
+    S14: { x: 0.390, y: 0.940 },
+    S15: { x: 0.405, y: 0.905 },
+    S16: { x: 0.405, y: 0.940 },
+    S17: { x: 0.420, y: 0.905 },
+    S18: { x: 0.420, y: 0.940 },
+    S19: { x: 0.435, y: 0.905 },
+    S20: { x: 0.435, y: 0.940 },
     //right wing stairs
     B41: { x: 0.335, y: 0.895},
     B42: { x: 0.335, y: 0.951},
     B43: { x: 0.535, y: 0.951},
     B44: { x: 0.535, y: 0.895},
+        // middle stairs outline
+    S21: { x: 0.570, y: 0.582 },
+    S22: { x: 0.570, y: 0.609 },
+    S23: { x: 0.585, y: 0.582 },
+    S24: { x: 0.585, y: 0.609 },
+    S25: { x: 0.601, y: 0.582 },
+    S26: { x: 0.601, y: 0.609 },
+    S27: { x: 0.615, y: 0.582 },
+    S28: { x: 0.615, y: 0.609 },
+    S29: { x: 0.630, y: 0.582 },
+    S30: { x: 0.630, y: 0.609 },
     // middle stairs
     F21: { x: 0.535, y: 0.571 },
     F22: { x: 0.535, y: 0.621 },
@@ -60,6 +106,14 @@ const mapNodes = {
 
 
   const mapConnections = [
+    ["B7", "F40"],
+
+    // left stairs outline
+    ["S1", "S2"],
+    ["S3", "S4"],
+    ["S5", "S6"],
+    ["S7", "S8"],
+    ["S9", "S10"],
     //left wing stairs
     ["B1", "B2"],
     ["B2", "B3"],
@@ -70,12 +124,18 @@ const mapNodes = {
     ["B6", "B7"],
     ["B7", "B8"],
     ["B8", "B5"],
+    //elevator outline
+     ["E1", "E2"],
+    ["E3", "E4"],
+    ["E5", "E6"],
+    ["E7", "E8"],
+    ["E9", "E10"],
+    ["E11", "E12"],
     //elevator
     ["B25", "B26"],
     ["B26", "B27"],
     ["B27", "B28"],
     ["B28", "B25"],
-    //elevator
     ["B45", "B46"],
     ["B46", "B47"],
     ["B47", "B48"],
@@ -88,15 +148,23 @@ const mapNodes = {
     ["B38", "B39"],
     ["B39", "B40"],
     ["B40", "B37"],
+    // right stairs outline
+    ["S11", "S12"],
+    ["S13", "S14"],
+    ["S15", "S16"],
+    ["S17", "S18"],
+    ["S19", "S20"],
     //right wing stairs
     ["B41", "B42"],
     ["B42", "B43"],
     ["B43", "B44"],
-    ["B44", "B41"],
-
-
+    // middle stairs outline
+    ["S21", "S22"],
+    ["S23", "S24"],
+    ["S25", "S26"],
+    ["S27", "S28"],
+    ["S29", "S30"],
     // middle stairs
-    ["F21", "F22"],
     ["F22", "F23"],
     ["F23", "F24"],
     ["F24", "F21"],
@@ -114,13 +182,12 @@ const mapNodes = {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    LB1: { x: 0.345, y: 0.040, label: "Stairs" },
+    // LB1: { x: 0.345, y: 0.040, label: "Stairs" },
     LB4: { x: 0.345, y: 0.292, label: "LCT Multipurpose Hall/\n          Auditorium" },
-    LB7: { x: 0.342, y: 0.566, label: "Elevator" },
-    LB8: { x: 0.385, y: 0.566, label: "Lobby" },
+    LB8: { x: 0.405, y: 0.566, label: "Lobby" },
     LB10: { x: 0.338, y: 0.850, label: "CR" },
-    LB11: { x: 0.345, y: 0.925, label: "Stairs" },
-    LF10: { x: 0.540, y: 0.595, label: "Stairs" },
+    // LB11: { x: 0.345, y: 0.925, label: "Stairs" },
+    // LF10: { x: 0.540, y: 0.595, label: "Stairs" },
     LF9: { x: 0.49, y: 0.775, label: "LCT Library" },
   };
 
@@ -280,8 +347,8 @@ const mapNodes = {
       >
         {/* Background image to trace over */}
         <Image
-          source={require("../images/LCT5THFLR.png")}
-          style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
+          // source={require("../images/LCT5THFLR.png")}
+          // style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
@@ -297,7 +364,7 @@ const mapNodes = {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -369,7 +436,7 @@ const mapNodes = {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -389,7 +456,7 @@ const mapNodes = {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
+                color: "black", // Change to black if preferred
                 fontSize: 10,
                 fontWeight: "bold",
               }}

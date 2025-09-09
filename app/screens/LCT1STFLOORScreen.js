@@ -56,8 +56,21 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
     //elevator
     B25: { x: 0.335, y: 0.527 },
     B26: { x: 0.335, y: 0.621},
-    B27: { x: 0.380, y: 0.621},
-    B28: { x: 0.380, y: 0.527},
+    B27: { x: 0.405, y: 0.621},
+    B28: { x: 0.405, y: 0.527},
+    //elevator outline
+    E1: { x: 0.35, y: 0.613 },
+    E2: { x: 0.385, y: 0.593},
+    E3: { x: 0.35, y: 0.593},
+    E4: { x: 0.385, y: 0.613},
+    E5: { x: 0.35, y: 0.583},
+    E6: { x: 0.385, y: 0.563},
+    E7: { x: 0.35, y: 0.563},
+    E8: { x: 0.385, y: 0.583},
+    E9: { x: 0.35, y: 0.553},
+    E10: { x: 0.385, y: 0.535},
+    E11: { x: 0.35, y: 0.535},
+    E12: { x: 0.385, y: 0.553},
     // canteen
     B29: { x: 0.335, y: 0.621 },
     B30: { x: 0.335, y: 0.815},
@@ -68,25 +81,32 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
     B38: { x: 0.335, y: 0.895},
     B39: { x: 0.48, y: 0.895},
     B40: { x: 0.48, y: 0.815},
+         //right stairs outline
+    S11: { x: 0.375, y: 0.905 },
+    S12: { x: 0.375, y: 0.940 },
+    S13: { x: 0.390, y: 0.905 },
+    S14: { x: 0.390, y: 0.940 },
+    S15: { x: 0.405, y: 0.905 },
+    S16: { x: 0.405, y: 0.940 },
+    S17: { x: 0.420, y: 0.905 },
+    S18: { x: 0.420, y: 0.940 },
+    S19: { x: 0.435, y: 0.905 },
+    S20: { x: 0.435, y: 0.940 },
     //right wing stairs
     B41: { x: 0.335, y: 0.895},
     B42: { x: 0.335, y: 0.951},
     B43: { x: 0.48, y: 0.951},
     B44: { x: 0.48, y: 0.895},
-
     //hallway
     H1: { x: 0.48, y: 0.341 },
     H2: { x: 0.48, y: 0.546 },
     H3: { x: 0.535, y: 0.546 },
     H4: { x: 0.535, y: 0.341 },
-
-    
     //hallway 2
     H5: { x: 0.48, y: 0.621 },
-    H6: { x: 0.48, y: 0.895 },
-    H7: { x: 0.535, y: 0.895 },
+    H6: { x: 0.48, y: 0.951 },
+    H7: { x: 0.535, y: 0.951 },
     H8: { x: 0.535, y: 0.621 },
-
     // tle practice room house
     F9:  { x: 0.48, y: 0.246 },
     F10: { x: 0.48, y: 0.341 },
@@ -104,14 +124,25 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
     F20: { x: 0.679, y: 0.434 },
     // entrance
     F33: { x: 0.535, y: 0.546 },
-    F34: { x: 0.535, y: 0.590 },
-    F35: { x: 0.679, y: 0.590 },
+    F34: { x: 0.535, y: 0.570 },
+    F35: { x: 0.679, y: 0.570 },
     F36: { x: 0.679, y: 0.546 },
+        // middle stairs outline
+    S21: { x: 0.570, y: 0.582 },
+    S22: { x: 0.570, y: 0.609 },
+    S23: { x: 0.585, y: 0.582 },
+    S24: { x: 0.585, y: 0.609 },
+    S25: { x: 0.601, y: 0.582 },
+    S26: { x: 0.601, y: 0.609 },
+    S27: { x: 0.615, y: 0.582 },
+    S28: { x: 0.615, y: 0.609 },
+    S29: { x: 0.630, y: 0.582 },
+    S30: { x: 0.630, y: 0.609 },
     // middle stairs
-    F21: { x: 0.535, y: 0.590 },
+    F21: { x: 0.535, y: 0.570 },
     F22: { x: 0.535, y: 0.621 },
     F23: { x: 0.679, y: 0.621 },
-    F24: { x: 0.679, y: 0.590 },
+    F24: { x: 0.679, y: 0.570 },
     // finance / accounting
     F25: { x: 0.535, y: 0.621 },
     F26: { x: 0.535, y: 0.815 },
@@ -131,6 +162,48 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
 
 
   const mapConnections = [
+    // left stairs outline
+    ["S1", "S2"],
+    ["S3", "S4"],
+    ["S5", "S6"],
+    ["S7", "S8"],
+    ["S9", "S10"],
+    //left wing stairs
+    ["B1", "B2"],
+    ["B4", "B1"],
+        // right stairs outline
+    ["S11", "S12"],
+    ["S13", "S14"],
+    ["S15", "S16"],
+    ["S17", "S18"],
+    ["S19", "S20"],
+    //right wing stairs
+    ["B41", "B42"],
+    ["B42", "B43"],
+        // middle stairs outline
+    ["S21", "S22"],
+    ["S23", "S24"],
+    ["S25", "S26"],
+    ["S27", "S28"],
+    ["S29", "S30"],
+    // middle stairs
+    ["F21", "F22"],
+    ["F22", "F23"],
+    ["F23", "F24"],
+    ["F24", "F21"],
+        //elevator
+    ["B25", "B26"],
+    ["B26", "B27"],
+    ["B27", "B28"],
+    ["B28", "B25"],
+    //elevator outline
+     ["E1", "E2"],
+    ["E3", "E4"],
+    ["E5", "E6"],
+    ["E7", "E8"],
+    ["E9", "E10"],
+    ["E11", "E12"],
+
     //hallway
     ["H1", "H2"],
     ["H2", "H3"],
@@ -200,7 +273,6 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
     ["B42", "B43"],
     ["B43", "B44"],
     ["B44", "B41"],
-
     //room 205
   ["F1", "F2"],
   ["F2", "F3"],
@@ -242,7 +314,6 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
   ["F31", "F32"],
   ["F32", "F29"],
   // entrance
-  ["F33", "F34"],
   ["F34", "F35"],
   ["F35", "F36"],
   ["F36", "F33"],
@@ -256,24 +327,24 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    LB1: { x: 0.370, y: 0.040, label: "CR" },
-    LB2: { x: 0.395, y: 0.110, label: "Industrial Arts" },
-    LB3: { x: 0.400, y: 0.201, label: "Practice Arts" },
+    LB1: { x: 0.370, y: 0.042, label: "CR" },
+    LB12: { x: 0.545, y: 0.042, label: "CR" },
+    LB2: { x: 0.405, y: 0.110, label: "Industrial Arts" },
+    LB3: { x: 0.405, y: 0.201, label: "Practice Arts" },
     LF3: { x: 0.478, y: 0.292, label: "TLE/Practice\n     House" },
     LB4: { x: 0.350, y: 0.292, label: "Extra\nRoom" },
-    LB5: { x: 0.340, y: 0.384, label: "LCT 101" },
-    LF4: { x: 0.540, y: 0.384, label: "LCT 102" },
-    LB6: { x: 0.320, y: 0.456, label: "    Subject\nCoordinator's\n     Office" },
+    LB5: { x: 0.340, y: 0.394, label: "LCT 101" },
+    LF4: { x: 0.540, y: 0.394, label: "LCT 102" },
+    LB6: { x: 0.320, y: 0.456, label: "    Subject\nCoordinator\n     Office" },
     LF5: { x: 0.555, y: 0.485, label: "Room" },
-    LF9: { x: 0.540, y: 0.565, label: "Entrance" },
-    LF6: { x: 0.555, y: 0.602, label: "Stairs" },
-    LB7: { x: 0.350, y: 0.566, label: "Elevator" },
+    LF9: { x: 0.540, y: 0.555, label: "Entrance" },
+    // LF6: { x: 0.555, y: 0.602, label: "Stairs" },
     LB8: { x: 0.335, y: 0.720, label: "Canteen" },
     LB10: { x: 0.355, y: 0.853, label: "Room" },
-    LB11: { x: 0.345, y: 0.925, label: "Stairs" },
-    LF7: { x: 0.540, y: 0.705, label: "  Finance/\nAccounting\n   Office" },
-    LF8: { x: 0.530, y: 0.835, label: "Principal's\n   Office" },
-    LF10: { x: 0.540, y: 0.871, label: "Female\n   CR" },
+    // LB11: { x: 0.345, y: 0.925, label: "Stairs" },
+    LF7: { x: 0.521, y: 0.705, label: "  Finance/\nAccounting\n   Office" },
+    LF8: { x: 0.530, y: 0.830, label: "Principal's\n   Office" },
+    LF10: { x: 0.540, y: 0.879, label: "CR" },
   };
 
   const stairNodes = [
@@ -432,8 +503,8 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
       >
         {/* Background image to trace over */}
         <Image
-          source={require("../images/LCT1STFLR.png")}
-          style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
+          // source={require("../images/LCT1STFLR.png")}
+          // style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
@@ -449,7 +520,7 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -521,7 +592,7 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -541,9 +612,9 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
+                color: "black", // Change to black if preferred
                 fontSize: 10,
-                fontWeight: "bold",
+                fontWeight: "bold"
               }}
             >
               {label}

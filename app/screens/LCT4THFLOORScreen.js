@@ -18,11 +18,77 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
   const [showNextButton, setShowNextButton] = useState(false);
 
   const mapNodes = {  
+    // left stairs outline
+    S1: { x: 0.375, y: 0.025 },
+    S2: { x: 0.375, y: 0.055 },
+    S3: { x: 0.390, y: 0.025 },
+    S4: { x: 0.390, y: 0.055 },
+    S5: { x: 0.405, y: 0.025 },
+    S6: { x: 0.405, y: 0.055 },
+    S7: { x: 0.420, y: 0.025 },
+    S8: { x: 0.420, y: 0.055 },
+    S9: { x: 0.435, y: 0.025 },
+    S10: { x: 0.435, y: 0.055 },
     //left wing stairs
     B1: { x: 0.335, y: 0.016 },
     B2: { x: 0.335, y: 0.064 },
     B3: { x: 0.48, y: 0.064 },
     B4: { x: 0.48, y: 0.016 },
+     //right stairs outline
+    S11: { x: 0.375, y: 0.905 },
+    S12: { x: 0.375, y: 0.940 },
+    S13: { x: 0.390, y: 0.905 },
+    S14: { x: 0.390, y: 0.940 },
+    S15: { x: 0.405, y: 0.905 },
+    S16: { x: 0.405, y: 0.940 },
+    S17: { x: 0.420, y: 0.905 },
+    S18: { x: 0.420, y: 0.940 },
+    S19: { x: 0.435, y: 0.905 },
+    S20: { x: 0.435, y: 0.940 },
+    //right wing stairs
+    B41: { x: 0.335, y: 0.895},
+    B42: { x: 0.335, y: 0.951},
+    B43: { x: 0.48, y: 0.951},
+    B44: { x: 0.48, y: 0.895},
+    // middle stairs outline
+    S21: { x: 0.570, y: 0.582 },
+    S22: { x: 0.570, y: 0.609 },
+    S23: { x: 0.585, y: 0.582 },
+    S24: { x: 0.585, y: 0.609 },
+    S25: { x: 0.601, y: 0.582 },
+    S26: { x: 0.601, y: 0.609 },
+    S27: { x: 0.615, y: 0.582 },
+    S28: { x: 0.615, y: 0.609 },
+    S29: { x: 0.630, y: 0.582 },
+    S30: { x: 0.630, y: 0.609 },
+    //elevator
+    B25: { x: 0.335, y: 0.527 },
+    B26: { x: 0.335, y: 0.621},
+    B27: { x: 0.405, y: 0.621},
+    B28: { x: 0.405, y: 0.527},
+    //elevator outline
+    E1: { x: 0.35, y: 0.613 },
+    E2: { x: 0.385, y: 0.593},
+    E3: { x: 0.35, y: 0.593},
+    E4: { x: 0.385, y: 0.613},
+    E5: { x: 0.35, y: 0.583},
+    E6: { x: 0.385, y: 0.563},
+    E7: { x: 0.35, y: 0.563},
+    E8: { x: 0.385, y: 0.583},
+    E9: { x: 0.35, y: 0.553},
+    E10: { x: 0.385, y: 0.535},
+    E11: { x: 0.35, y: 0.535},
+    E12: { x: 0.385, y: 0.553},
+    //hallway
+    H1: { x: 0.48, y: 0.016 },
+    H2: { x: 0.48, y: 0.527 },
+    H3: { x: 0.535, y: 0.527 },
+    H4: { x: 0.535, y: 0.016 },
+    //hallway 2
+    H5: { x: 0.48, y: 0.951 },
+    H6: { x: 0.48, y: 0.951},
+    H7: { x: 0.535, y: 0.951 },
+    H8: { x: 0.535, y: 0.621 },
     // female comfort room cr
     B5: { x: 0.335, y: 0.064 },
     B6: { x: 0.335, y: 0.153 },
@@ -48,41 +114,16 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
     B22: { x: 0.335, y: 0.527},
     B23: { x: 0.48, y: 0.527},
     B24: { x: 0.48, y: 0.434},
-    //elevator
-    B25: { x: 0.335, y: 0.527 },
-    B26: { x: 0.335, y: 0.621},
-    B27: { x: 0.38, y: 0.621},
-    B28: { x: 0.38, y: 0.527},
     // biology laboratory
     B29: { x: 0.305, y: 0.621 },
     B30: { x: 0.305, y: 0.807},
     B31: { x: 0.48, y: 0.807},
     B32: { x: 0.48, y: 0.621},
-
     // male comfort room cr
     B37: { x: 0.335, y: 0.807 },
     B38: { x: 0.335, y: 0.895},
     B39: { x: 0.48, y: 0.895},
     B40: { x: 0.48, y: 0.807},
-    //right wing stairs
-    B41: { x: 0.335, y: 0.895},
-    B42: { x: 0.335, y: 0.951},
-    B43: { x: 0.48, y: 0.951},
-    B44: { x: 0.48, y: 0.895},
-
-    //hallway
-    H1: { x: 0.48, y: 0.016 },
-    H2: { x: 0.48, y: 0.527 },
-    H3: { x: 0.535, y: 0.527 },
-    H4: { x: 0.535, y: 0.016 },
-
-    //hallway 2
-    H5: { x: 0.48, y: 0.621 },
-    H6: { x: 0.48, y: 0.951},
-    H7: { x: 0.535, y: 0.951 },
-    H8: { x: 0.535, y: 0.621 },
-
-
     //room 408
     F1:  { x: 0.535, y: 0.064 },
     F2:  { x: 0.535, y: 0.153 },
@@ -113,11 +154,6 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
     F34: { x: 0.535, y: 0.571 },
     F35: { x: 0.679, y: 0.571 },
     F36: { x: 0.679, y: 0.527 },
-    // middle stairs
-    F21: { x: 0.535, y: 0.571 },
-    F22: { x: 0.535, y: 0.621 },
-    F23: { x: 0.679, y: 0.621 },
-    F24: { x: 0.679, y: 0.571 },
     // physical laboratory
     F25: { x: 0.535, y: 0.621 },
     F26: { x: 0.535, y: 0.783 },
@@ -132,19 +168,57 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
 
 
   const mapConnections = [
+    ["F35", "F28"],
+
+    // left stairs outline
+    ["S1", "S2"],
+    ["S3", "S4"],
+    ["S5", "S6"],
+    ["S7", "S8"],
+    ["S9", "S10"],
+    //left wing stairs
+    ["B1", "B2"],
+    ["B4", "B1"],
+        // right stairs outline
+    ["S11", "S12"],
+    ["S13", "S14"],
+    ["S15", "S16"],
+    ["S17", "S18"],
+    ["S19", "S20"],
+    //right wing stairs
+    ["B41", "B42"],
+    ["B42", "B43"],
+    ["B44", "B41"],
+        // middle stairs outline
+    ["S21", "S22"],
+    ["S23", "S24"],
+    ["S25", "S26"],
+    ["S27", "S28"],
+    ["S29", "S30"],
+    // middle stairs
+    ["F21", "F22"],
+    ["F22", "F23"],
+    ["F23", "F24"],
+    ["F24", "F21"],
+        //elevator
+    ["B25", "B26"],
+    ["B26", "B27"],
+    ["B27", "B28"],
+    ["B28", "B25"],
+    //elevator outline
+     ["E1", "E2"],
+    ["E3", "E4"],
+    ["E5", "E6"],
+    ["E7", "E8"],
+    ["E9", "E10"],
+    ["E11", "E12"],
         //hallway
-    ["H1", "H2"],
     ["H3", "H4"],
     ["H4", "H1"],
         //hallway 2
     ["H5", "H6"],
     ["H6", "H7"],
     ["H7", "H8"],
-    //left wing stairs
-    ["B1", "B2"],
-    ["B2", "B3"],
-    ["B3", "B4"],
-    ["B4", "B1"],
     // female comfort room cr
     ["B5", "B6"],
     ["B6", "B7"],
@@ -170,29 +244,16 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
     ["B22", "B23"],
     ["B23", "B24"],
     ["B24", "B21"],
-    //elevator
-    ["B25", "B26"],
-    ["B26", "B27"],
-    ["B27", "B28"],
-    ["B28", "B25"],
     // biology laboratory
     ["B29", "B30"],
     ["B30", "B31"],
     ["B31", "B32"],
     ["B32", "B29"],
-
     // male comfort room cr
     ["B37", "B38"],
     ["B38", "B39"],
     ["B39", "B40"],
     ["B40", "B37"],
-    //right wing stairs
-    ["B41", "B42"],
-    ["B42", "B43"],
-    ["B43", "B44"],
-    ["B44", "B41"],
-
-
     //room 408
     ["F1", "F2"],
     ["F2", "F3"],
@@ -223,11 +284,6 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
     ["F34", "F35"],
     ["F35", "F36"],
     ["F36", "F333"],
-    // middle stairs
-    ["F21", "F22"],
-    ["F22", "F23"],
-    ["F23", "F24"],
-    ["F24", "F21"],
     // physical laboratory
     ["F25", "F26"],
     ["F26", "F27"],
@@ -248,16 +304,14 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    LB1: { x: 0.36, y: 0.040, label: "Stairs" },
     LB2: { x: 0.35, y: 0.110, label: "Female\n   CR" },
     LB3: { x: 0.342, y: 0.201, label: "LCT 407" },
     LB4: { x: 0.342, y: 0.292, label: "LCT 405" },
     LB5: { x: 0.342, y: 0.384, label: "LCT 403" },
     LB6: { x: 0.342, y: 0.475, label: "LCT 401" },
-    LB7: { x: 0.342, y: 0.566, label: "Elevator" },
     LB8: { x: 0.313, y: 0.705, label: "   Biology\nLaboratory" },
     LB10: { x: 0.365, y: 0.845, label: "Male\n  CR" },
-    LB11: { x: 0.36, y: 0.925, label: "Stairs" },
+    // LB11: { x: 0.36, y: 0.925, label: "Stairs" },
 
     LF1: { x: 0.540, y: 0.110, label: "LCT 408" },
     LF2: { x: 0.540, y: 0.201, label: "LCT 406" },
@@ -265,7 +319,7 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
     LF4: { x: 0.540, y: 0.384, label: "LCT 402" },
     LF5: { x: 0.540, y: 0.475, label: "LCT 400" },
     LF6: { x: 0.555, y: 0.538, label: " Extra\nRoom" },
-    LF10: { x: 0.555, y: 0.595, label: "Stairs" },
+    // LF10: { x: 0.555, y: 0.595, label: "Stairs" },
     LF7: { x: 0.525, y: 0.69, label: "  Physical\nLaboratory" },
     LF9: { x: 0.525, y: 0.825, label: "Chemistry\nLaboratory" },
   };
@@ -425,8 +479,8 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
       >
         {/* Background image to trace over */}
         <Image
-          source={require("../images/LCT4THFLR.png")}
-          style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
+          // source={require("../images/LCT4THFLR.png")}
+          // style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
@@ -442,7 +496,7 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -514,7 +568,7 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={3} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -534,7 +588,7 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
+                color: "black", // Change to black if preferred
                 fontSize: 10,
                 fontWeight: "bold",
               }}

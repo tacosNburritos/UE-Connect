@@ -734,7 +734,7 @@ const EN4THFLOORScreen = ({ route, navigation }) => {
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "black", // Change to black if preferred
-                fontSize: 9.6,
+                fontSize: 9,
                 fontWeight: "bold",
               }}
             >
