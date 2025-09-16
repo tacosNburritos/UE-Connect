@@ -107,20 +107,20 @@ const TYK3RDFLOORScreen = ({ route, navigation }) => {
     //INSIDE STRUCTURE
     IS1: { x: 0.539, y: 0.028 }, 
     IS2: { x: 0.539, y: 0.069 }, 
-    IS3: { x: 0.479, y: 0.032 },
+    /*IS3: { x: 0.479, y: 0.032 },
     IS4: { x: 0.599, y: 0.032 },
     IS5: { x: 0.479, y: 0.037 },
     IS6: { x: 0.599, y: 0.037 },
     IS7: { x: 0.479, y: 0.042 },
     IS8: { x: 0.599, y: 0.042 },
-    IS9: { x: 0.599, y: 0.047 },
+    IS9: { x: 0.599, y: 0.047 }, 
     IS10: { x: 0.479, y: 0.047 },
     IS11: { x: 0.599, y: 0.052 },
-    IS12: { x: 0.479, y: 0.052 },
+    IS12: { x: 0.479, y: 0.052 }, 
     IS13: { x: 0.599, y: 0.057 },
     IS14: { x: 0.479, y: 0.057 },
     IS15: { x: 0.599, y: 0.062 },
-    IS16: { x: 0.479, y: 0.062 },
+    IS16: { x: 0.479, y: 0.062 }, */
     IS17: { x: 0.478, y: 0.082 }, //LEFT LINE 1
     IS18: { x: 0.478, y: 0.150 },
     IS19: { x: 0.478, y: 0.180 },//LEFT LINE 2
@@ -164,7 +164,7 @@ const TYK3RDFLOORScreen = ({ route, navigation }) => {
     IS57: { x: 0.51, y: 0.348 }, //ELEV END
     IS58: { x: 0.410, y: 0.368 }, //STAIRS
     IS59: { x: 0.470, y: 0.368 }, //STAIRS
-    IS60: { x: 0.420, y: 0.352 }, //STAIRS
+    /*IS60: { x: 0.420, y: 0.352 }, //STAIRS
     IS61: { x: 0.420, y: 0.384 }, //STAIRS
     IS62: { x: 0.430, y: 0.352 }, //STAIRS
     IS63: { x: 0.430, y: 0.384 }, //STAIRS
@@ -173,7 +173,7 @@ const TYK3RDFLOORScreen = ({ route, navigation }) => {
     IS66: { x: 0.450, y: 0.352 }, //STAIRS
     IS67: { x: 0.450, y: 0.384 }, //STAIRS
     IS68: { x: 0.460, y: 0.352 }, //STAIRS
-    IS69: { x: 0.460, y: 0.384 }, //STAIRS
+    IS69: { x: 0.460, y: 0.384 }, //STAIRS */
     IS70: { x: 0.460, y: 0.444 }, 
     IS71: { x: 0.460, y: 0.438 }, 
     IS72: { x: 0.490, y: 0.451 }, 
@@ -215,12 +215,12 @@ const TYK3RDFLOORScreen = ({ route, navigation }) => {
     IS108: { x: 0.582, y: 0.789 }, 
     IS109: { x: 0.604, y: 0.773 }, 
     IS110: { x: 0.604, y: 0.790 }, 
-    IS111: { x: 0.582, y: 0.776 }, 
+    /* IS111: { x: 0.582, y: 0.776 }, 
     IS112: { x: 0.627, y: 0.776 }, 
     IS113: { x: 0.582, y: 0.781 }, 
     IS114: { x: 0.627, y: 0.781 }, 
     IS115: { x: 0.582, y: 0.786 }, 
-    IS116: { x: 0.627, y: 0.786 },
+    IS116: { x: 0.627, y: 0.786 }, */
     IS117: { x: 0.498, y: 0.795 }, //ELEV
     IS118: { x: 0.507, y: 0.800 }, //ELEV
     IS119: { x: 0.520, y: 0.806 }, //ELEV
@@ -458,77 +458,31 @@ const mapConnections = [
     ["ROP1", "IS155"],
     ["IS156", "IS157"],
     ["LLOP8", "IS158"],
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
   ];
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.393, y: 0.11, label: "Speech \n    Lab \n   Rm 1" },
+    L2: { x: 0.393, y: 0.2, label: "Speech \n    Lab \n   Rm 2" },
+    L3: { x: 0.609, y: 0.1, label: " TYK \n 309" },
+    L4: { x: 0.58, y: 0.155, label: "         CAS \n  Research & \nConsultation \n          Rm" },
+    L5: { x: 0.6, y: 0.225, label: "  CAS \nStudio" },
+    L6: { x: 0.58, y: 0.285, label: " Multimedia \n      Rm 3B" },
+    L7: { x: 0.58, y: 0.338, label: " Multimedia \n      Rm 3A" },
+    L8: { x: 0.58, y: 0.617, label: "Computer \n     Rm 3A" },
+    L9: { x: 0.58, y: 0.707, label: "Computer \n     Rm 3B" },
+    L10: { x: 0.451, y: 0.63, label: "College of \n    Arts & \n Science" },
+    L11: { x: 0.434, y: 0.7, label: "Dept Chair's \n      Office" },
+    L12: { x: 0.449, y: 0.75, label: "Student \nCouncil \n  Office" },
+    L13: { x: 0.41, y: 0.84, label: "TYK 301" },
+    L14: { x: 0.335, y: 0.875, label: "TYK 303" },
+    L15: { x: 0.265, y: 0.91, label: "TYK 305" },
+    L16: { x: 0.407, y: 0.975, label: "TYK 304" },
+    L17: { x: 0.483, y: 0.94, label: "TYK 302" },
+    L18: { x: 0.55, y: 0.91, label: "TYK 300" },
+
+    L19: { x: 0.466, y: 0.309, label: "Elev" },
   };
 
   const stairNodes = [
@@ -798,7 +752,7 @@ const mapConnections = [
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
-                fontSize: 10,
+                fontSize: 6,
                 fontWeight: "bold",
               }}
             >

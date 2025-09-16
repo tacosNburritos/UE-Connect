@@ -211,31 +211,31 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
 
     ST1: { x: 0.41, y: 0.364 },
     ST2: { x: 0.475, y: 0.364 },
-    ST3: { x: 0.42, y: 0.347 },
+    /* ST3: { x: 0.42, y: 0.347 },
     ST4: { x: 0.42, y: 0.38 },
     ST5: { x: 0.435, y: 0.347 },
     ST6: { x: 0.45, y: 0.347 },
     ST7: { x: 0.45, y: 0.38 },
-    ST8: { x: 0.468, y: 0.347 },
+    ST8: { x: 0.468, y: 0.347 }, */
 
     ST9: { x: 0.6, y: 0.755 },
     ST10: { x: 0.6, y: 0.785 },
     ST11: { x: 0.62, y: 0.767 },
     ST12: { x: 0.62, y: 0.785 },
-    ST13: { x: 0.645, y: 0.785 },
+    /* ST13: { x: 0.645, y: 0.785 },
     ST14: { x: 0.6, y: 0.77 },
     ST15: { x: 0.645, y: 0.77 },
     ST16: { x: 0.6, y: 0.777 },
-    ST17: { x: 0.645, y: 0.777 },
+    ST17: { x: 0.645, y: 0.777 }, */
 
     ST18: { x: 0.48, y: 0.025 },
-    ST19: { x: 0.6, y: 0.025 },
+   /* ST19: { x: 0.6, y: 0.025 },
     ST20: { x: 0.48, y: 0.035 },
     ST21: { x: 0.6, y: 0.035 },
     ST22: { x: 0.48, y: 0.045 },
     ST23: { x: 0.6, y: 0.045 },
     ST24: { x: 0.48, y: 0.055 },
-    ST25: { x: 0.6, y: 0.055 },
+    ST25: { x: 0.6, y: 0.055 }, */
 
   };
 
@@ -441,9 +441,22 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
 
 //STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.4, y: 0.16, label: "Roof Deck" },
+    L2: { x: 0.48, y: 0.303, label: "Elev" },
+    L3: { x: 0.597, y: 0.287, label: "TYK 505" },
+    L4: { x: 0.597, y: 0.35, label: "TYK 504"  },
+    L5: { x: 0.5, y: 0.415, label: "Lobby" },
+    L6: { x: 0.59, y: 0.475, label: "Terrace" },
+    L7: { x: 0.46, y: 0.535, label: "Reception" },
+    L8: { x: 0.598, y: 0.601, label: "TYK 503" },
+    L9: { x: 0.465, y: 0.633, label: "Office" },
+    L10: { x: 0.49, y: 0.661, label: "  Dark \n Room" },
+    L11: { x: 0.598, y: 0.663, label: "TYK 502" },
+    L12: { x: 0.445, y: 0.7, label: "TYK 500" },
+    L13: { x: 0.465, y: 0.745, label: "     CFA \n Faculty \n      Rm" },
+    L14: { x: 0.6, y: 0.726, label: "TYK 501" },
+    L15: { x: 0.35, y: 0.885, label: "Roof Deck" },
+
   }
 
   const stairNodes = [
@@ -712,7 +725,7 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
-                fontSize: 10,
+                fontSize: 6.5,
                 fontWeight: "bold",
               }}
             >
