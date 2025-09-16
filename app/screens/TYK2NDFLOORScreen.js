@@ -612,9 +612,33 @@ const mapConnections = [
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.42, y: 0.08, label: "TYK\n220" },
+    L2: { x: 0.42, y: 0.14, label: "TYK\n218" },
+    L3: { x: 0.42, y: 0.21, label: "TYK\n216" },
+
+    L4: { x: 0.62, y: 0.08, label: "TYK\n219" },
+    L5: { x: 0.62, y: 0.14, label: "TYK\n217" },
+    L6: { x: 0.62, y: 0.21, label: "TYK\n215" },
+    L7: { x: 0.62, y: 0.27, label: "TYK\n214" },
+    L8: { x: 0.62, y: 0.33, label: "TYK\n213" },
+    
+    L9: { x: 0.62, y: 0.58, label: "TYK\n211" },
+    L10: { x: 0.62, y: 0.64, label: "TYK\n209" },
+    L11: { x: 0.62, y: 0.7, label: "TYK\n207" },
+
+    L12: { x: 0.48, y: 0.52, label: "TYK\n212" },
+    L13: { x: 0.49, y: 0.61, label: "TYK\n210" },
+    L14: { x: 0.49, y: 0.67, label: "TYK\n208" },
+    L15: { x: 0.49, y: 0.73, label: "TYK\n206" },
+
+    L16: { x: 0.46, y: 0.81, label: "TYK\n204" },
+    L17: { x: 0.39, y: 0.84, label: "TYK\n202" },
+    L18: { x: 0.33, y: 0.87, label: "TYK\n200" },
+
+    L19: { x: 0.59, y: 0.88, label: "TYK\n205" },
+    L20: { x: 0.53, y: 0.91, label: "TYK\n203" },
+    L21: { x: 0.46, y: 0.94, label: "TYK\n201" },
+    
   };
 
   const stairNodes = [
@@ -772,10 +796,10 @@ const mapConnections = [
         style={{ width: "90%", height: "85%", position: "relative" }}
       >
         {/* Background image to trace over */}
-        <Image
+        {/* <Image
           source={require("../images/TYK2NDFLR.png")}
           style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />
+        /> */}
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
           {/* MAP CONNECTIONS */}
@@ -790,7 +814,7 @@ const mapConnections = [
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -862,7 +886,7 @@ const mapConnections = [
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={1} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -882,7 +906,7 @@ const mapConnections = [
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
+                color: "black", // Change to black if preferred
                 fontSize: 10,
                 fontWeight: "bold",
               }}

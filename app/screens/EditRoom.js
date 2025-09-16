@@ -1,55 +1,63 @@
 import React, { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Alert,
-  ImageBackground,
-  ActivityIndicator,
-} from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { View,Text,TextInput,TouchableOpacity,StyleSheet,Alert,ImageBackground,ActivityIndicator} from 'react-native';
+import { SelectList } from 'react-native-dropdown-select-list';
 import { supabase } from '../lib/supabase';
 
 export default function EditRoom({ navigation }) {
   const [locations, setLocations] = useState([]);
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(null); // will hold UUID (string)
   const [newLabel, setNewLabel] = useState('');
   const [loading, setLoading] = useState(true);
 
   const fetchLocations = async () => {
+  setLoading(true);
   const { data, error } = await supabase
     .from('locations')
     .select('id, label')
-    .is('checker', 'NULL'); // Filter out 'excluded' entries
+    .is('checker', null); // filter
 
-    if (error) {
-        Alert.alert('Error fetching locations', error.message);
-    } else {
-        setLocations(data);
+  if (error) {
+    Alert.alert('Error fetching locations', error.message);
+  } else {
+    let sortedData = data ?? [];
+
+    // Sort alphabetically
+    sortedData.sort((a, b) => a.label.localeCompare(b.label));
+
+    // If a room is currently selected, move it to the top
+    if (selectedId) {
+      sortedData = sortedData.filter(l => l.id !== selectedId);
+      const selectedRoom = data.find(l => l.id === selectedId);
+      if (selectedRoom) {
+        sortedData.unshift(selectedRoom); // put selected at top
+      }
     }
-    setLoading(false);
-    };
+
+    setLocations(sortedData);
+  }
+  setLoading(false);
+};
 
 
   const handleUpdate = async () => {
-    if (!selectedId || !newLabel) {
+    if (!selectedId || !newLabel.trim()) {
       Alert.alert('Missing fields', 'Please select a room and enter a new label.');
       return;
     }
 
     const { error } = await supabase
       .from('locations')
-      .update({ label: newLabel })
-      .eq('id', selectedId);
+      .update({ label: newLabel.trim() })
+      .eq('id', selectedId); // selectedId is the UUID string
 
     if (error) {
       Alert.alert('Update Failed', error.message);
+      console.log('Update Error:', error);
     } else {
       Alert.alert('Success', 'Room label updated.');
       setNewLabel('');
-      fetchLocations();
+      setSelectedId(null); // reset dropdown
+      fetchLocations();    // refresh list so the new label shows up
     }
   };
 
@@ -75,20 +83,21 @@ export default function EditRoom({ navigation }) {
         ) : (
           <>
             <View style={styles.pickerContainer}>
-              <Picker
-                selectedValue={selectedId}
-                onValueChange={(itemValue) => {
-                  setSelectedId(itemValue);
-                  const selectedRoom = locations.find(loc => loc.id === itemValue);
+              <SelectList
+                data={locations.map((loc) => ({
+                  key: String(loc.id),   // ensure UUID is string
+                  value: loc.label,
+                }))}
+                save="key"                // return the key (UUID) to setSelected
+                setSelected={(val) => {
+                  setSelectedId(val);     // val is UUID
+                  const selectedRoom = locations.find((l) => String(l.id) === val);
                   setNewLabel(selectedRoom?.label || '');
                 }}
-                style={styles.picker}
-              >
-                <Picker.Item label="Select a room" value={null} />
-                {locations.map((loc) => (
-                  <Picker.Item key={loc.id} label={loc.label} value={loc.id} />
-                ))}
-              </Picker>
+                placeholder="Select a room"
+                boxStyles={{ backgroundColor: '#ffffffcc', borderRadius: 10 }}
+                dropdownStyles={{ backgroundColor: '#ffffffcc', borderRadius: 10 }}
+              />
             </View>
 
             <TextInput
@@ -112,7 +121,7 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: '100%',
-    height: '100%',
+    height: '101%',
   },
   container: {
     flex: 1,
@@ -123,6 +132,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 48,
     left: 24,
+    zIndex: 1,
   },
   backText: {
     fontSize: 18,
@@ -141,10 +151,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: '#ccc',
-  },
-  picker: {
-    height: 50,
-    width: '100%',
+    zIndex: 1000,
   },
   input: {
     height: 48,
