@@ -404,9 +404,30 @@ const mapConnections = [
 
 // STRICTLY FOR LABELS ONLY
   const labelNodes = {
-    L1: { x: 0.10, y: 0.25, label: "Room 101" },
-    L2: { x: 0.35, y: 0.25, label: "Room 102" },
-    L3: { x: 0.6, y: 0.4, label: "Lobby" },
+    L1: { x: 0.409, y: 0.075, label: "TYK 414" },
+    L2: { x: 0.409, y: 0.14, label: "TYK 412" },
+    L3: { x: 0.409, y: 0.207, label: "TYK 410" },
+    L4: { x: 0.634, y: 0.075, label: "TYK 415" },
+    L5: { x: 0.634, y: 0.145, label: "TYK 413" },
+    L6: { x: 0.634, y: 0.207, label: "TYK 411" },
+    L7: { x: 0.634, y: 0.275, label: "TYK 409" },
+    L8: { x: 0.634, y: 0.339, label: "TYK 408" },
+    L9: { x: 0.5, y: 0.298, label: "Elev" },
+    L10: { x: 0.53, y: 0.395, label: "Lobby" },
+    L11: { x: 0.52, y: 0.505, label: "Sitting \n  Area" },
+    L12: { x: 0.52, y: 0.535, label: "Faculty \n     Hall" },
+    L13: { x: 0.63, y: 0.453, label: "Terrace" },
+    L14: { x: 0.485, y: 0.65, label: "TYK 407" },
+    L15: { x: 0.486, y: 0.715, label: "TYK 406" },
+    L16: { x: 0.634, y: 0.577, label: "Computer \n    Lab 4B" },
+    L17: { x: 0.634, y: 0.67, label: "Computer \n    Lab 4A" },
+    L18: { x: 0.634, y: 0.339, label: "TYK 400" },
+    L19: { x: 0.45, y: 0.81, label: "TYK 404" },
+    L20: { x: 0.36, y: 0.855, label: "TYK 402" },
+    L21: { x: 0.27, y: 0.9, label: "TYK 400" },
+    L22: { x: 0.605, y: 0.88, label: "TYK 405" },
+    L23: { x: 0.513, y: 0.925, label: "TYK 403" },
+    L24: { x: 0.424, y: 0.965, label: "TYK 401" },
   };
 
   const stairNodes = [
@@ -675,7 +696,7 @@ const mapConnections = [
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
                 color: "red", // Change to black if preferred
-                fontSize: 10,
+                fontSize: 6.5,
                 fontWeight: "bold",
               }}
             >
