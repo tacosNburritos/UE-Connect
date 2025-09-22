@@ -642,8 +642,8 @@ const mapConnections = [
       >
         {/* Background image to trace over */}
         <Image
-          source={require("../images/TYK3RDFLR.png")}
-          style={{ width: "97%", height: "102%", position: "absolute", resizeMode: "contain" }}
+          // source={require("../images/TYK3RDFLR.png")}
+          // style={{ width: "97%", height: "102%", position: "absolute", resizeMode: "contain" }}
         />
 
         <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
@@ -659,7 +659,7 @@ const mapConnections = [
                 y1={start.y * containerSize.height}
                 x2={end.x * containerSize.width}
                 y2={end.y * containerSize.height}
-                stroke="blue"
+                stroke="black"
                 strokeWidth={2}
               />
             );
@@ -731,7 +731,7 @@ const mapConnections = [
               key={`node-${key}`}
               cx={x * containerSize.width}
               cy={y * containerSize.height}
-              r={1} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
+              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
               fill="red"
             />
           ))}
@@ -751,7 +751,7 @@ const mapConnections = [
                 position: "absolute",
                 left: x * containerSize.width + 6,
                 top: y * containerSize.height - 6,
-                color: "red", // Change to black if preferred
+                color: "black", // Change to black if preferred
                 fontSize: 6,
                 fontWeight: "bold",
               }}
