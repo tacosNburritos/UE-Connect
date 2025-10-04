@@ -19,13 +19,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tacosNburritos.Kadima"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a4e14a31-9c80-4862-96d2-d953dcf8293b"
+      }
+    }
   }
 }

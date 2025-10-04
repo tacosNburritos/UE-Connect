@@ -7,7 +7,7 @@ import {
   Text,
   TouchableOpacity,
   StatusBar,
-  ActivityIndicator, // ✅ loader spinner
+  ActivityIndicator,
 } from "react-native";
 import { GLView } from "expo-gl";
 import { Renderer } from "expo-three";
@@ -26,7 +26,6 @@ function WelcomeScreen3D({ navigation }) {
   const collidablesRef = useRef([]);
   const cloudsRef = useRef([]);
 
-  // loading state
   const [isLoading, setIsLoading] = useState(true);
 
   const HEIGHT_OFFSET = 150;
@@ -49,7 +48,13 @@ function WelcomeScreen3D({ navigation }) {
     camera.position.z = Math.max(min.z, Math.min(max.z, camera.position.z));
   };
 
-  const checkCollision = (camera, direction, distance = 2) => {
+  // === Throttled collision check ===
+  let lastCollisionCheck = 0;
+  const checkCollisionThrottled = (camera, direction, distance = 2) => {
+    const now = Date.now();
+    if (now - lastCollisionCheck < 100) return false; // only check every 100ms
+    lastCollisionCheck = now;
+
     if (!collidablesRef.current.length) return false;
     const raycaster = new THREE.Raycaster();
     raycaster.set(camera.position, direction.normalize());
@@ -57,6 +62,8 @@ function WelcomeScreen3D({ navigation }) {
     return intersects.length > 0 && intersects[0].distance < distance;
   };
 
+  // === PanResponder with requestAnimationFrame throttling ===
+  let animating = false;
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
@@ -64,27 +71,35 @@ function WelcomeScreen3D({ navigation }) {
         const camera = cameraRef.current;
         if (!camera) return;
 
-        const touches = gestureState.numberActiveTouches;
+        if (!animating) {
+          animating = true;
+          requestAnimationFrame(() => {
+            const touches = gestureState.numberActiveTouches;
 
-        if (touches === 1) {
-          rotation.current.yaw -= gestureState.dx * ROT_SPEED;
-          rotation.current.pitch -= gestureState.dy * ROT_SPEED;
+            if (touches === 1) {
+              // Rotate
+              rotation.current.yaw -= gestureState.dx * ROT_SPEED;
+              rotation.current.pitch -= gestureState.dy * ROT_SPEED;
+              rotation.current.pitch = Math.max(
+                -Math.PI / 2,
+                Math.min(Math.PI / 2, rotation.current.pitch)
+              );
 
-          rotation.current.pitch = Math.max(
-            -Math.PI / 2,
-            Math.min(Math.PI / 2, rotation.current.pitch)
-          );
+              camera.rotation.order = "YXZ";
+              camera.rotation.y = rotation.current.yaw;
+              camera.rotation.x = rotation.current.pitch;
+            } else if (touches === 2) {
+              // Move forward
+              const forward = new THREE.Vector3();
+              camera.getWorldDirection(forward).normalize();
+              if (!checkCollisionThrottled(camera, forward, MOVE_STEP + 2)) {
+                camera.position.addScaledVector(forward, MOVE_STEP);
+                clampCameraToBounds(camera);
+              }
+            }
 
-          camera.rotation.order = "YXZ";
-          camera.rotation.y = rotation.current.yaw;
-          camera.rotation.x = rotation.current.pitch;
-        } else if (touches === 2) {
-          const forward = new THREE.Vector3();
-          camera.getWorldDirection(forward).normalize();
-          if (!checkCollision(camera, forward, MOVE_STEP + 2)) {
-            camera.position.addScaledVector(forward, MOVE_STEP);
-            clampCameraToBounds(camera);
-          }
+            animating = false;
+          });
         }
       },
       onPanResponderRelease: () => {
@@ -114,14 +129,15 @@ function WelcomeScreen3D({ navigation }) {
     scene.add(sun);
 
     // Sky
-    const skyGeo = new THREE.SphereGeometry(5000, 32, 32);
-    const skyMat = new THREE.MeshBasicMaterial({ color: 0x87ceeb, side: THREE.BackSide });
+    const skyGeo = new THREE.SphereGeometry(5000, 16, 16); // reduced resolution
+    const skyMat = new THREE.MeshBasicMaterial({
+      color: 0x87ceeb,
+      side: THREE.BackSide,
+    });
     scene.add(new THREE.Mesh(skyGeo, skyMat));
 
-    // Clouds (omitted here for brevity but same as before)
-
     // Load GLB
-    const asset = Asset.fromModule(require("../assets/models/new campus.glb"));
+    const asset = Asset.fromModule(require("../assets/models/campus_low.glb"));
     await asset.downloadAsync();
 
     const loader = new GLTFLoader();
@@ -143,19 +159,20 @@ function WelcomeScreen3D({ navigation }) {
         });
         collidablesRef.current = collidableMeshes;
 
+        console.log("Meshes in model:", collidableMeshes.length); // 👈 check complexity
+
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
         const paddedMin = box.min.clone().addScalar(-BOUNDS_PADDING);
         const paddedMax = box.max.clone().addScalar(BOUNDS_PADDING);
         boundsRef.current = { min: paddedMin, max: paddedMax };
 
-        // ✅ Force initial camera placement + render
-        camera.position.set(center.x, center.y + HEIGHT_OFFSET, center.z +30);
+        camera.position.set(center.x, center.y + HEIGHT_OFFSET, center.z + 30);
         camera.lookAt(center.x, box.min.y, center.z);
+
         renderer.render(scene, camera);
         gl.endFrameEXP();
 
-        // ✅ Remove loading screen
         setIsLoading(false);
       },
       undefined,
@@ -169,20 +186,21 @@ function WelcomeScreen3D({ navigation }) {
 
       const t = clock.getElapsedTime();
 
-      // Animate clouds
-      cloudsRef.current.forEach((group) => {
-        const { speed, wobblePhase, baseY } = group.userData;
-        group.position.x += speed;
-        if (group.position.x > 5000) group.position.x = -5000;
-        group.position.y = baseY + Math.sin(t * 0.4 + wobblePhase) * 12;
-        group.rotation.y += 0.00035;
-      });
+      // Clouds: lighter updates
+      if (Math.random() < 0.4) {
+        cloudsRef.current.forEach((group) => {
+          const { speed, wobblePhase, baseY } = group.userData;
+          group.position.x += speed;
+          if (group.position.x > 5000) group.position.x = -5000;
+          group.position.y = baseY + Math.sin(t * 0.4 + wobblePhase) * 12;
+          group.rotation.y += 0.00035;
+        });
+      }
 
       renderer.render(scene, camera);
       gl.endFrameEXP();
     };
     render();
-    
   };
 
   const handlePathPress = () => {
@@ -205,18 +223,17 @@ function WelcomeScreen3D({ navigation }) {
         translucent={true}
       />
 
-      {/* === 3D Background === */}
       <GLView style={{ flex: 1 }} onContextCreate={onContextCreate} />
 
-      {/* ✅ Loading overlay */}
       {isLoading && (
         <View style={styles.loadingOverlay}>
           <ActivityIndicator size="large" color="#b51509" />
-          <Text style={{ color: "#b51509", marginTop: 10, fontWeight: "bold" }}>Loading Campus...</Text>
+          <Text style={{ color: "#b51509", marginTop: 10, fontWeight: "bold" }}>
+            Loading Campus...
+          </Text>
         </View>
       )}
 
-      {/* === Overlay UI === */}
       <View style={styles.header}>
         <Image
           source={require("../assets/LOGO 2 white no text.png")}
@@ -225,7 +242,6 @@ function WelcomeScreen3D({ navigation }) {
         <Text style={styles.text}>Kadima</Text>
       </View>
 
-      {/* === Toggle 2D Bar === */}
       <View style={styles.toggleBar}>
         <TouchableOpacity
           style={styles.toggleButton}
@@ -320,7 +336,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14,
   },
-
   loadingOverlay: {
     position: "absolute",
     top: 0,
@@ -331,7 +346,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     zIndex: 10,
-  }
+  },
 });
 
 export default WelcomeScreen3D;

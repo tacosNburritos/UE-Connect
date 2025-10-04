@@ -1,21 +1,34 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+// Import Gesture components for zoom/pan functionality
+import { Gesture, GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler"; // <--- ADDED GestureHandlerRootView
 import { Svg, Circle, Line } from "react-native-svg";
 import Animated, {
   useSharedValue,
   withTiming,
   useAnimatedProps,
   Easing,
+  useAnimatedStyle,
 } from "react-native-reanimated";
 
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+const AnimatedView = Animated.createAnimatedComponent(View); // Use Animated.View for the zoomable map container
 
 const EN1STFLOORScreen = ({ route, navigation }) => {
   const { path = [], buildingCoordinates = {} } = route.params || {};
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [showNextButton, setShowNextButton] = useState(false);
+
+  // === ZOOM & PAN STATE ===
+  const scale = useSharedValue(1);
+  const savedScale = useSharedValue(1);
+  const translateX = useSharedValue(0);
+  const savedTranslateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
+  const savedTranslateY = useSharedValue(0);
+  // ========================
 
   const mapNodes = {
     //part 1
@@ -219,52 +232,52 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     M140: {x: 0.683, y: 0.799},
     M141: {x: 0.685, y: 0.845},
     //part 4
-    M142: {x: 0.147, y: 0.826},
-    M143: {x: 0.29, y: 0.831},
-    M144: {x: 0.625, y: 0.843},
-    M145: {x: 0.72, y: 0.847},
-    M146: {x: 0.763, y: 0.849},
-    M147: {x: 0.858, y: 0.853},
-    M148: {x: 0.848, y: 0.907},
-    M149: {x: 0.755, y: 0.905},
-    M150: {x: 0.708, y: 0.903},
-    M151: {x: 0.685, y: 0.902},
-    M152: {x: 0.693, y: 0.871},
-    M153: {x: 0.618, y: 0.869},
-    M154: {x: 0.693, y: 0.871},
-    M155: {x: 0.612, y: 0.884},
-    M156: {x: 0.565, y: 0.882},
-    M157: {x: 0.525, y: 0.854},
-    M158: {x: 0.515, y: 0.895},
-    M159: {x: 0.424, y: 0.893},
-    M160: {x: 0.393, y: 0.892},
-    M161: {x: 0.357, y: 0.891},
-    M162: {x: 0.282, y: 0.888},
-    M163: {x: 0.234, y: 0.886},
-    M164: {x: 0.135, y: 0.882},
-    M165: {x: 0.133, y: 0.906},
-    M166: {x: 0.179, y: 0.906},
-    M167: {x: 0.229, y: 0.908},
-    M168: {x: 0.275, y: 0.911},
-    M169: {x: 0.293, y: 0.911},
-    M170: {x: 0.338, y: 0.912},
-    M171: {x: 0.368, y: 0.913},
-    M172: {x: 0.484, y: 0.918},
-    M173: {x: 0.513, y: 0.92},
-    M174: {x: 0.536, y: 0.92},
-    M175: {x: 0.559, y: 0.921},
-    M176: {x: 0.67, y: 0.925},
-    M177: {x: 0.705, y: 0.926},
-    M178: {x: 0.745, y: 0.927},
-    M179: {x: 0.792, y: 0.929},
-    M180: {x: 0.842, y: 0.93},
-    M181: {x: 0.834, y: 0.986},
-    M182: {x: 0.692, y: 0.981},
-    M183: {x: 0.692, y: 0.981},
-    M184: {x: 0.503, y: 0.974},
-    M185: {x: 0.326, y: 0.968},
-    M186: {x: 0.266, y: 0.966},
-    M187: {x: 0.12, y: 0.961},
+    M142: { x: 0.147, y: 0.826},
+    M143: { x: 0.29, y: 0.831},
+    M144: { x: 0.625, y: 0.843},
+    M145: { x: 0.72, y: 0.847},
+    M146: { x: 0.763, y: 0.849},
+    M147: { x: 0.858, y: 0.853},
+    M148: { x: 0.848, y: 0.907},
+    M149: { x: 0.755, y: 0.905},
+    M150: { x: 0.708, y: 0.903},
+    M151: { x: 0.685, y: 0.902},
+    M152: { x: 0.693, y: 0.871},
+    M153: { x: 0.618, y: 0.869},
+    M154: { x: 0.693, y: 0.871},
+    M155: { x: 0.612, y: 0.884},
+    M156: { x: 0.565, y: 0.882},
+    M157: { x: 0.525, y: 0.854},
+    M158: { x: 0.515, y: 0.895},
+    M159: { x: 0.424, y: 0.893},
+    M160: { x: 0.393, y: 0.892},
+    M161: { x: 0.357, y: 0.891},
+    M162: { x: 0.282, y: 0.888},
+    M163: { x: 0.234, y: 0.886},
+    M164: { x: 0.135, y: 0.882},
+    M165: { x: 0.133, y: 0.906},
+    M166: { x: 0.179, y: 0.906},
+    M167: { x: 0.229, y: 0.908},
+    M168: { x: 0.275, y: 0.911},
+    M169: { x: 0.293, y: 0.911},
+    M170: { x: 0.338, y: 0.912},
+    M171: { x: 0.368, y: 0.913},
+    M172: { x: 0.484, y: 0.918},
+    M173: { x: 0.513, y: 0.92},
+    M174: { x: 0.536, y: 0.92},
+    M175: { x: 0.559, y: 0.921},
+    M176: { x: 0.67, y: 0.925},
+    M177: { x: 0.705, y: 0.926},
+    M178: { x: 0.745, y: 0.927},
+    M179: { x: 0.792, y: 0.929},
+    M180: { x: 0.842, y: 0.93},
+    M181: { x: 0.834, y: 0.986},
+    M182: { x: 0.692, y: 0.981},
+    M183: { x: 0.692, y: 0.981},
+    M184: { x: 0.503, y: 0.974},
+    M185: { x: 0.326, y: 0.968},
+    M186: { x: 0.266, y: 0.966},
+    M187: { x: 0.12, y: 0.961},
   };
 
   const mapConnections = [
@@ -402,14 +415,12 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     ["SS21", "SS22"],
     ["SS23", "SS24"],
     ["SC3", "SC4"],
-    ["SS25", "S6"],
     ["SS26", "SS27"],
     ["SS28", "SS29"],
     ["SS30", "SS31"],
     ["SS32", "SS33"],
     ["SS34", "SS35"],
     ["SC5", "SC6"],
-    ["SS36", "S8"],
     ["SS37", "SS38"],
     ["SS39", "SS40"],
     ["SS41", "SS42"],
@@ -418,7 +429,7 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     ["SC7", "SC8"],
   ];
 
-// STRICTLY FOR LABELS ONLY
+  // STRICTLY FOR LABELS ONLY
   const labelNodes = {
     L1: { x: 0.375, y: 0.043, label: "EN 118" },
     L2: { x: 0.562, y: 0.044, label: "EN 117" },
@@ -495,10 +506,15 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
   };
 
   const renderAnimatedLine = (x1, y1, x2, y2, progress, key, color = "red") => {
-    const animatedProps = useAnimatedProps(() => ({
-      strokeDasharray: [300, 300],
-      strokeDashoffset: (1 - progress.value) * 300,
-    }));
+    const animatedProps = useAnimatedProps(() => {
+      // Calculate the length of the line segment for dash array/offset
+      const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+      return {
+        // Use the actual line length for dash array/offset
+        strokeDasharray: [length, length],
+        strokeDashoffset: (1 - progress.value) * length,
+      };
+    });
     return (
       <AnimatedLine
         key={key}
@@ -550,203 +566,289 @@ const EN1STFLOORScreen = ({ route, navigation }) => {
     });
   };
 
+  // --- GESTURE HANDLERS ---
+  const panGesture = Gesture.Pan()
+    .onUpdate((event) => {
+      // Apply translation relative to the current saved position
+      translateX.value = savedTranslateX.value + event.translationX;
+      translateY.value = savedTranslateY.value + event.translationY;
+    })
+    .onEnd(() => {
+      // Save the new translated position
+      savedTranslateX.value = translateX.value;
+      savedTranslateY.value = translateY.value;
+    });
+
+  const pinchGesture = Gesture.Pinch()
+    .onUpdate((event) => {
+      // Update scale relative to the saved scale
+      scale.value = savedScale.value * event.scale;
+    })
+    .onEnd(() => {
+      // Clamp the scale between 1 (min zoom) and 5 (max zoom)
+      if (scale.value < 1) {
+        scale.value = withTiming(1);
+      } else if (scale.value > 5) {
+        scale.value = withTiming(5);
+      }
+      // Save the final scale value
+      savedScale.value = scale.value;
+    });
+
+  // Combine pan and pinch gestures
+  const composedGesture = Gesture.Simultaneous(pinchGesture, panGesture);
+
+  // Animated Style for the map container
+  const mapAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        { translateX: translateX.value },
+        { translateY: translateY.value },
+        { scale: scale.value },
+      ],
+    };
+  });
+  // -------------------------
+
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    // Replaced the top-level <View> with <GestureHandlerRootView>
+    <GestureHandlerRootView style={styles.flexContainer}> 
       {/* Header */}
-      <View
-        style={{
-          position: "absolute",
-          top: 40,
-          left: 0,
-          right: 0,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          paddingHorizontal: 20,
-          zIndex: 10,
-        }}
-      >
+      <View style={styles.headerContainer}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          style={{
-            backgroundColor: "rgba(0,0,0,0.6)",
-            paddingVertical: 8,
-            paddingHorizontal: 15,
-            borderRadius: 8,
-          }}
+          style={styles.backButton}
         >
-          <Text style={{ color: "white", fontSize: 16 }}>Back</Text>
+          <Text style={styles.buttonText}>Back</Text>
         </TouchableOpacity>
 
         {showNextButton && (
           <TouchableOpacity
             onPress={handleNextPress}
-            style={{
-              backgroundColor: "#007bff",
-              paddingVertical: 8,
-              paddingHorizontal: 15,
-              borderRadius: 8,
-            }}
+            style={styles.nextButton}
           >
-            <Text style={{ color: "white", fontSize: 16 }}>Next</Text>
+            <Text style={styles.buttonText}>Next</Text>
           </TouchableOpacity>
         )}
       </View>
 
-      <Text style={{ fontSize: 16, fontWeight: "bold", marginTop: 50 }}>
+      <Text style={styles.titleText}>
         Engineering Building - First Floor
       </Text>
 
-      <View
-        ref={containerRef}
-        onLayout={onLayout}
-        style={{ width: "90%", height: "85%", position: "relative" }}
-      >
-        {/* Background image to trace over */}
-        { <Image
-          // source={require("../images/EN1STFLR.png")}
-          // style={{ width: "100%", height: "100%", position: "absolute", resizeMode: "contain" }}
-        />}
+      {/* Gesture Detector wraps the map */}
+      <GestureDetector gesture={composedGesture}>
+        <AnimatedView
+          ref={containerRef}
+          onLayout={onLayout}
+          style={[styles.mapWrapper, mapAnimatedStyle]}
+        >
+          {/* Background image to trace over */}
+          {/* <Image
+            source={require("../images/EN1STFLR.png")}
+            style={styles.backgroundImage}
+          /> */}
 
-        <Svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }}>
-          {/* MAP CONNECTIONS */}
-          {mapConnections.map(([from, to], index) => {
-            const start = mapNodes[from];
-            const end = mapNodes[to];
-            if (!start || !end) return null;
-            return (
-              <Line
-                key={`map-${index}`}
-                x1={start.x * containerSize.width}
-                y1={start.y * containerSize.height}
-                x2={end.x * containerSize.width}
-                y2={end.y * containerSize.height}
-                stroke="black"
-                strokeWidth={2}
-              />
-            );
-          })}
+          {/* SVG layer for map lines and path */}
+          <Svg width="100%" height="100%" style={styles.svgLayer}>
+            {/* MAP CONNECTIONS (Static Map Lines) */}
+            {mapConnections.map(([from, to], index) => {
+              const start = mapNodes[from];
+              const end = mapNodes[to];
+              if (!start || !end) return null;
+              return (
+                <Line
+                  key={`map-${index}`}
+                  x1={start.x * containerSize.width}
+                  y1={start.y * containerSize.height}
+                  x2={end.x * containerSize.width}
+                  y2={end.y * containerSize.height}
+                  stroke="black"
+                  strokeWidth={2}
+                />
+              );
+            })}
 
-          {adjustedPath.slice(0, -1).map((node, index) => {
-            const nextNode = adjustedPath[index + 1];
+            {/* ANIMATED PATH LINES */}
+            {adjustedPath.slice(0, -1).map((node, index) => {
+              const nextNode = adjustedPath[index + 1];
 
-            // Skip drawing line if the next node is a stair
-            if (stairNodes.includes(nextNode)) return null;
+              // Skip drawing line if the next node is a stair
+              if (stairNodes.includes(nextNode)) return null;
 
-            const start = buildingCoordinates[node];
-            const end = buildingCoordinates[nextNode];
-            if (!start || !end) return null;
+              const start = buildingCoordinates[node];
+              const end = buildingCoordinates[nextNode];
+              if (!start || !end) return null;
 
-            return renderAnimatedLine(
-              start.x * containerSize.width,
-              start.y * containerSize.height,
-              end.x * containerSize.width,
-              end.y * containerSize.height,
-              lineProgress[index],
-              `line-${index}`
-            );
-          })}
+              return renderAnimatedLine(
+                start.x * containerSize.width,
+                start.y * containerSize.height,
+                end.x * containerSize.width,
+                end.y * containerSize.height,
+                lineProgress[index],
+                `line-${index}`
+              );
+            })}
 
+            {/* Mid path points */}
+            {adjustedPath.map((node, index) => {
+              if (index === 0 || index === adjustedPath.length - 1) return null;
+              const coords = buildingCoordinates[node];
+              if (!coords) return null;
+              return renderAnimatedCircle(
+                coords.x * containerSize.width,
+                coords.y * containerSize.height,
+                1.5,
+                "red",
+                lineProgress[index - 1],
+                `circle-${index}`
+              );
+            })}
 
-          {/* Mid path points */}
-          {adjustedPath.map((node, index) => {
-            if (index === 0 || index === adjustedPath.length - 1) return null;
-            const coords = buildingCoordinates[node];
-            if (!coords) return null;
-            return renderAnimatedCircle(
-              coords.x * containerSize.width,
-              coords.y * containerSize.height,
-              1.5,
-              "red",
-              lineProgress[index - 1],
-              `circle-${index}`
-            );
-          })}
+            {/* Start point (You) */}
+            {buildingCoordinates[adjustedPath[0]] && (
+              renderAnimatedCircle(
+                buildingCoordinates[adjustedPath[0]].x * containerSize.width,
+                buildingCoordinates[adjustedPath[0]].y * containerSize.height,
+                5,
+                "blue",
+                null,
+                "start"
+              )
+            )}
 
-          {/* Start */}
-          {buildingCoordinates[adjustedPath[0]] && (
-            renderAnimatedCircle(
-              buildingCoordinates[adjustedPath[0]].x * containerSize.width,
-              buildingCoordinates[adjustedPath[0]].y * containerSize.height,
-              5,
-              "blue",
-              null,
-              "start"
-            )
-          )}
+            {/* End point (Destination) */}
+            {buildingCoordinates[adjustedPath[adjustedPath.length - 1]] && (
+              renderAnimatedCircle(
+                buildingCoordinates[adjustedPath[adjustedPath.length - 1]].x * containerSize.width,
+                buildingCoordinates[adjustedPath[adjustedPath.length - 1]].y * containerSize.height,
+                5,
+                "red",
+                lineProgress[lineProgress.length - 1],
+                "end"
+              )
+            )}
 
-          {/* End */}
-          {buildingCoordinates[adjustedPath[adjustedPath.length - 1]] && (
-            renderAnimatedCircle(
-              buildingCoordinates[adjustedPath[adjustedPath.length - 1]].x * containerSize.width,
-              buildingCoordinates[adjustedPath[adjustedPath.length - 1]].y * containerSize.height,
-              5,
-              "red",
-              lineProgress[lineProgress.length - 1],
-              "end"
-            )
-          )}
-
-{/* EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE */}
-          {/* Map node circles with fixed radius */}
-          {Object.entries(mapNodes).map(([key, { x, y }]) => (
-            <Circle
-              key={`node-${key}`}
-              cx={x * containerSize.width}
-              cy={y * containerSize.height}
-              r={0} // CHANGE TO 0 ONCE YOU'RE DONE (Chelsea, Jinjer, Mariel, Jacob)
-              fill="red"
-            />
-          ))}
-        </Svg>
-
-        {/* Label points */}
-        {Object.entries(labelNodes).map(([key, { x, y, label }]) => {
-          if (stairNodes.includes(label)) return null;
-
-          return (
-            <React.Fragment key={`label-${key}`}>
+            {/* Map node circles (for debug, currently hidden) */}
+            {Object.entries(mapNodes).map(([key, { x, y }]) => (
               <Circle
+                key={`node-${key}`}
                 cx={x * containerSize.width}
                 cy={y * containerSize.height}
-                r={0}
-                fill="black"
+                r={0} 
+                fill="red"
               />
-              <Text
-                style={{
-                  position: "absolute",
-                  left: x * containerSize.width + 6,
-                  top: y * containerSize.height - 6,
-                  color: "black",
-                  fontSize: 10,
-                  fontWeight: "bold",
-                }}
-              >
-                {label}
-              </Text>
-            </React.Fragment>
-          );
-        })}
+            ))}
+          </Svg>
 
+          {/* Label points */}
+          {Object.entries(labelNodes).map(([key, { x, y, label }]) => {
+            if (stairNodes.includes(label)) return null;
 
+            return (
+              <React.Fragment key={`label-${key}`}>
+                <Circle
+                  cx={x * containerSize.width}
+                  cy={y * containerSize.height}
+                  r={0}
+                  fill="black"
+                />
+                <Text
+                  style={{
+                    position: "absolute",
+                    left: x * containerSize.width + 6,
+                    top: y * containerSize.height - 6,
+                    color: "black",
+                    fontSize: 10,
+                    fontWeight: "bold",
+                  }}
+                >
+                  {label}
+                </Text>
+              </React.Fragment>
+            );
+          })}
 
-        {/* "You" Label */}
-        {buildingCoordinates[adjustedPath[0]] && (
-          <Text
-            style={{
-              position: "absolute",
-              left: buildingCoordinates[adjustedPath[0]].x * containerSize.width - 30,
-              top: buildingCoordinates[adjustedPath[0]].y * containerSize.height - 25,
-              color: "blue",
-              fontSize: 12,
-              fontWeight: "bold",
-            }}
-          >
-            You
-          </Text>
-        )}
-      </View>
-    </View>
+          {/* "You" Label */}
+          {buildingCoordinates[adjustedPath[0]] && (
+            <Text
+              style={{
+                position: "absolute",
+                left: buildingCoordinates[adjustedPath[0]].x * containerSize.width - 30,
+                top: buildingCoordinates[adjustedPath[0]].y * containerSize.height - 25,
+                color: "blue",
+                fontSize: 12,
+                fontWeight: "bold",
+              }}
+            >
+              You
+            </Text>
+          )}
+        </AnimatedView>
+      </GestureDetector>
+    </GestureHandlerRootView>
   );
 };
+
+const styles = StyleSheet.create({
+  flexContainer: {
+    flex: 1, 
+    alignItems: "center", 
+    justifyContent: "center",
+    paddingTop: 50,
+  },
+  headerContainer: {
+    position: "absolute",
+    top: 40,
+    left: 0,
+    right: 0,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    zIndex: 10,
+  },
+  backButton: {
+    backgroundColor: "rgba(0,0,0,0.6)",
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+  },
+  nextButton: {
+    backgroundColor: "#007bff",
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: "white", 
+    fontSize: 16
+  },
+  titleText: {
+    fontSize: 16, 
+    fontWeight: "bold", 
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  mapWrapper: {
+    width: "90%",
+    height: "85%",
+    position: "relative",
+    overflow: 'hidden', 
+    backgroundColor: '##f2f2f2',
+    borderRadius: 10,
+    borderWidth: 0,
+  },
+  backgroundImage: {
+    width: "100%", 
+    height: "100%", 
+    position: "absolute", 
+    resizeMode: "contain"
+  },
+  svgLayer: {
+    position: "absolute", 
+    top: 0, 
+    left: 0
+  }
+});
 
 export default EN1STFLOORScreen;
