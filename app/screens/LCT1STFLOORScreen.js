@@ -546,10 +546,10 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
           style={[styles.mapWrapper, mapAnimatedStyle]}
         >
           {/* Background image to trace over */}
-          {/* <Image
-            source={require("../images/EN1STFLR.png")}
-            style={styles.backgroundImage}
-          /> */}
+          { <Image
+            // source={require("../images/LCT1STFLR.png")}
+            // style={styles.backgroundImage}
+          /> }
 
           {/* SVG layer for map lines and path */}
           <Svg width="100%" height="100%" style={styles.svgLayer}>

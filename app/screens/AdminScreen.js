@@ -1,19 +1,16 @@
 import React from 'react';
 import {
-  View,
+  View, // Changed from ImageBackground
   Text,
   StyleSheet,
   TouchableOpacity,
-  ImageBackground,
   Image
 } from 'react-native';
 
 export default function AdminScreen({ navigation }) {
   return (
-    <ImageBackground
-      source={require('../images/NEW BG.png')}
+    <View // Replaced ImageBackground with View
       style={styles.background}
-      resizeMode="cover"
     >
         <View style={styles.header}>
             <Image
@@ -50,15 +47,14 @@ export default function AdminScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    width: '100%',
-    height: '102%',
+    backgroundColor: '#5f2320ff', // Solid background color applied
   },
   container: {
     flex: 0.9,

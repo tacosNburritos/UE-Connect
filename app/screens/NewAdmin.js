@@ -30,10 +30,9 @@ export default function NewAdmin({ navigation }) {
   };
 
   return (
-    <ImageBackground
-      source={require('../images/NEW BG.png')}
+    <View
       style={styles.background}
-      resizeMode="cover"
+
     >
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -63,15 +62,14 @@ export default function NewAdmin({ navigation }) {
           <Text style={styles.buttonText}>Create Admin</Text>
         </TouchableOpacity>
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    width: '100%',
-    height: '102%',
+backgroundColor: '#5f2320ff',
   },
   container: {
     flex: 1,

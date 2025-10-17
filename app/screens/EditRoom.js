@@ -66,10 +66,10 @@ export default function EditRoom({ navigation }) {
   }, []);
 
   return (
-    <ImageBackground
-      source={require('../images/NEW BG.png')}
+    <View
+
       style={styles.background}
-      resizeMode="cover"
+
     >
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -113,15 +113,14 @@ export default function EditRoom({ navigation }) {
           </>
         )}
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    width: '100%',
-    height: '101%',
+    backgroundColor: '#5f2320ff',
   },
   container: {
     flex: 1,
