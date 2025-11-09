@@ -370,6 +370,7 @@ const TYK1STFLOORScreen = ({ route, navigation }) => {
     L4: { x: 0.47, y: 0.73, label: "CBA\nFaculty" },
     L5: { x: 0.585, y: 0.675, label: "Alumni\nMarketing" },
     L6: { x: 0.61, y: 0.61, label: "DCO" },
+    L7: { x: 0.53, y: 0.26, label: "E\nL\nE\nV\nA\nT\nO\nR" },
   };
 
   const stairNodes = [
@@ -674,7 +675,7 @@ const TYK1STFLOORScreen = ({ route, navigation }) => {
                     left: x * containerSize.width + 6,
                     top: y * containerSize.height - 6,
                     color: "black",
-                    fontSize: 10,
+                    fontSize: 8,
                     fontWeight: "bold",
                   }}
                 >

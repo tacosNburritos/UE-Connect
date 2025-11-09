@@ -367,6 +367,8 @@ const mapNodes = {
     LF7: { x: 0.540, y: 0.665, label: "LCT 703" },
     LF8: { x: 0.540, y: 0.760, label: "LCT 701" },
     LF9: { x: 0.540, y: 0.850, label: "LCT 700" },
+    LF10: { x: 0.41, y: 0.57, label: "Elev." },
+
   };
 
   const stairNodes = [

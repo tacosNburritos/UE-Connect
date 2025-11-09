@@ -425,7 +425,7 @@ const mapConnections = [
     L6: { x: 0.634, y: 0.207, label: "TYK 411" },
     L7: { x: 0.634, y: 0.275, label: "TYK 409" },
     L8: { x: 0.634, y: 0.339, label: "TYK 408" },
-    L9: { x: 0.5, y: 0.298, label: "Elev" },
+    L9: { x: 0.54, y: 0.27, label: "E\nL\nE\nV\nA\nT\nO\nR" },
     L10: { x: 0.53, y: 0.395, label: "Lobby" },
     L11: { x: 0.52, y: 0.505, label: "Sitting \n  Area" },
     L12: { x: 0.52, y: 0.535, label: "Faculty \n     Hall" },

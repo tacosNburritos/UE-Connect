@@ -495,7 +495,7 @@ const mapConnections = [
     L17: { x: 0.483, y: 0.94, label: "TYK 302" },
     L18: { x: 0.55, y: 0.91, label: "TYK 300" },
 
-    L19: { x: 0.466, y: 0.309, label: "Elev" },
+    L19: { x: 0.51, y: 0.28, label: "E\nL\nE\nV\nA\nT\nO\nR" },
   };
 
   const stairNodes = [

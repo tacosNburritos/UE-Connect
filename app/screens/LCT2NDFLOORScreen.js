@@ -337,6 +337,9 @@ const LCT2NDFLOORScreen = ({ route, navigation }) => {
     // LF6: { x: 0.55, y: 0.596, label: "LCT 203" },
     LF7: { x: 0.532, y: 0.685, label: "Highschool\n  Computer\n       Lab" },
     LF8: { x: 0.535, y: 0.815, label: "Elementary\n Computer \nLaboratory" },
+    LF9: { x: 0.41, y: 0.57, label: "Elev." },
+
+    
   };
 
   const stairNodes = [

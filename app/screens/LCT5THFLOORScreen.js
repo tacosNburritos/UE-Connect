@@ -197,11 +197,13 @@ const mapNodes = {
   const labelNodes = {
     // LB1: { x: 0.345, y: 0.040, label: "Stairs" },
     LB4: { x: 0.345, y: 0.292, label: "LCT Multipurpose Hall/\n          Auditorium" },
-    LB8: { x: 0.405, y: 0.566, label: "Lobby" },
+    LB8: { x: 0.475, y: 0.546, label: "Lobby" },
     LB10: { x: 0.338, y: 0.850, label: "CR" },
     // LB11: { x: 0.345, y: 0.925, label: "Stairs" },
     // LF10: { x: 0.540, y: 0.595, label: "Stairs" },
     LF9: { x: 0.49, y: 0.775, label: "LCT Library" },
+    LF10: { x: 0.41, y: 0.57, label: "Elev." },
+
   };
 
   const stairNodes = [

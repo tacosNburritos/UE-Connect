@@ -651,6 +651,7 @@ const mapConnections = [
     L19: { x: 0.59, y: 0.88, label: "TYK\n205" },
     L20: { x: 0.53, y: 0.91, label: "TYK\n203" },
     L21: { x: 0.46, y: 0.94, label: "TYK\n201" },
+    L22: { x: 0.55, y: 0.26, label: "E\nL\nE\nV\nA\nT\nO\nR" },
     
   };
 

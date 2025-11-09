@@ -335,6 +335,8 @@ const LCT4THFLOORScreen = ({ route, navigation }) => {
     // LF10: { x: 0.555, y: 0.595, label: "Stairs" },
     LF7: { x: 0.525, y: 0.69, label: "  Physical\nLaboratory" },
     LF9: { x: 0.525, y: 0.825, label: "Chemistry\nLaboratory" },
+    LF10: { x: 0.41, y: 0.57, label: "Elev." },
+
   };
 
 

@@ -338,6 +338,7 @@ const TYK8THFLOORScreen = ({ route, navigation }) => {
     L22: { x: 0.418, y: 0.19, label: "TYK\n814" },
     L23: { x: 0.418, y: 0.13, label: "TYK\n816" },
     L24: { x: 0.418, y: 0.07, label: "TYK\n818" },
+    L25: { x: 0.55, y: 0.25, label: "E\nL\nE\nV\nA\nT\nO\nR" },
 
   };
 

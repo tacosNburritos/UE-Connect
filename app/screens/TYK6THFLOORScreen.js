@@ -184,8 +184,7 @@ const mapNodes = {
     ["M44","M45"],
     ["M45","M46"],
     ["M45","M48"],
-    ["M53","M52"],
-    ["M52","M51"],
+    ["M53","M52"],    ["M52","M51"],
     ["M47","M50"],
     ["M45","M47"],
     ["M54","M47"],
@@ -216,6 +215,7 @@ const mapNodes = {
     L4: { x: 0.58, y: 0.22, label: "Anim-\nation \nStudio" },
     L5: { x: 0.595, y: 0.16, label: "TYK\n600" },
     L6: { x: 0.58, y: 0.09, label: "Video\nEditing\nRoom" },
+    L7: { x: 0.51, y: 0.27, label: "E\nL\nE\nV\nA\nT\nO\nR" },
   };
 
   const stairNodes = [

@@ -45,21 +45,14 @@ function WelcomeScreen({ navigation }) {
                 <Text style={styles.text}>Kadima</Text>
             </View>
 
-            {/* Toggle 3D Bar */}
-            <View style={styles.toggleBar}>
-                <TouchableOpacity style={styles.toggleButton} onPress={handleToggle3DPress}>
-                    <Text style={styles.toggleButtonText}>Toggle 3D</Text>
-                </TouchableOpacity>
-            </View>
-
             {/* Buttons Side by Side */}
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button1} onPress={handlePathPress}>
                     <Text style={styles.buttonText}>Find Path</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button1} onPress={handleRoamPress}>
-                    <Text style={styles.buttonText}> Admin Panel </Text>
+                <TouchableOpacity style={styles.button1} onPress={handleToggle3DPress}>
+                    <Text style={styles.buttonText}> Toggle 3D</Text>
                 </TouchableOpacity>
             </View>
         </View>

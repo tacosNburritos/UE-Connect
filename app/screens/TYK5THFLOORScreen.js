@@ -455,7 +455,7 @@ const TYK5THFLOORScreen = ({ route, navigation }) => {
 //STRICTLY FOR LABELS ONLY
   const labelNodes = {
     L1: { x: 0.4, y: 0.16, label: "Roof Deck" },
-    L2: { x: 0.48, y: 0.303, label: "Elev" },
+    L2: { x: 0.52, y: 0.28, label: "E\nL\nE\nV\nA\nT\nO\nR" },
     L3: { x: 0.597, y: 0.287, label: "TYK 505" },
     L4: { x: 0.597, y: 0.35, label: "TYK 504"  },
     L5: { x: 0.5, y: 0.415, label: "Lobby" },

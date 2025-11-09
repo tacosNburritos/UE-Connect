@@ -359,6 +359,8 @@ const LCT3RDFLOORScreen = ({ route, navigation }) => {
     LF7: { x: 0.540, y: 0.665, label: "LCT 303" },
     LF8: { x: 0.540, y: 0.760, label: "LCT 301" },
     LF9: { x: 0.540, y: 0.850, label: "LCT 300" },
+    LF10: { x: 0.41, y: 0.57, label: "Elev." },
+
   };
 
   const stairNodes = [

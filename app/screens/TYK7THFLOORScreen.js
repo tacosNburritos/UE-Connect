@@ -329,6 +329,7 @@ const TYK7THFLOORScreen = ({ route, navigation }) => {
     L15: { x: 0.39, y: 0.205, label: "TYK\n708" },
     L16: { x: 0.39, y: 0.145, label: "TYK\n710" },
     L17: { x: 0.39, y: 0.087, label: "TYK\n712" },
+    L18: { x: 0.53, y: 0.27, label: "E\nL\nE\nV\nA\nT\nO\nR" },
   };
 
   const stairNodes = [

@@ -358,6 +358,7 @@ const LCT1STFLOORScreen = ({ route, navigation }) => {
     LF7: { x: 0.521, y: 0.705, label: "  Finance/\nAccounting\n   Office" },
     LF8: { x: 0.530, y: 0.830, label: "Principal's\n   Office" },
     LF10: { x: 0.540, y: 0.879, label: "CR" },
+    LF11: { x: 0.41, y: 0.57, label: "Elev." },
   };
 
   const stairNodes = [

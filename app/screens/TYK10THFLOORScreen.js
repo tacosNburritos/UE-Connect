@@ -338,6 +338,7 @@ const mapNodes = {
     L14: { x: 0.6, y: 0.58, label: "TYK \n1005" },
     L15: { x: 0.6, y: 0.64, label: "TYK \n1003" },
     L16: { x: 0.6, y: 0.7, label: "TYK \n1001" },
+    L17: { x: 0.53, y: 0.25, label: "E\nL\nV\nA\nT\nO\nR" },
   };
 
   const stairNodes = [
