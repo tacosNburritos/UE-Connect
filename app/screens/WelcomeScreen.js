@@ -11,12 +11,14 @@ import {
   Dimensions,
   ScrollView,
   Animated,
+  PanResponder,
 } from "react-native";
 
 function WelcomeScreen({ navigation }) {
   const { width, height } = Dimensions.get("window");
   const [selectedBuilding, setSelectedBuilding] = useState(null);
   const [showOutlines, setShowOutlines] = useState(true); // toggle for button visibility
+  const [modalPage, setModalPage] = useState(1); // For multi-page modal (ID 7)
 
   // Blinking animation
   const fadeAnim = useRef(new Animated.Value(0.5)).current;
@@ -37,6 +39,26 @@ function WelcomeScreen({ navigation }) {
     ).start();
   }, [fadeAnim]);
 
+  // PanResponder for swipe gesture (for two-page modal)
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (evt, gestureState) => {
+        return Math.abs(gestureState.dx) > 20;
+      },
+      onPanResponderRelease: (evt, gestureState) => {
+        if (selectedBuilding && selectedBuilding.id === 7) {
+          if (gestureState.dx < -20) {
+            // swipe left → next page
+            setModalPage((prev) => Math.min(prev + 1, 2));
+          } else if (gestureState.dx > 20) {
+            // swipe right → previous page
+            setModalPage((prev) => Math.max(prev - 1, 1));
+          }
+        }
+      },
+    })
+  ).current;
+
   const buildings = [
     {
       id: 1,
@@ -46,7 +68,7 @@ function WelcomeScreen({ navigation }) {
       width: "22%",
       height: "28%",
       description: "The Tan Yan Kee Academic Building primarily accommodates Business Administration and Fine Arts students. It also hosts several General Education classes and lecture halls, making it one of the most frequently used academic buildings on campus.",
-      // image: require("../images/tyk.png"),
+      image: require("../images/tyk.jpg"),
     },
     {
       id: 2,
@@ -57,6 +79,7 @@ function WelcomeScreen({ navigation }) {
       height: "10%",
       description:
         "This building serves as the central hub for all Engineering programs and computer-related courses. It features multiple laboratories, classrooms, and project spaces designed to support technical learning and hands-on innovation.",
+        image: require("../images/tyk.jpg"),
     },
     {
       id: 3,
@@ -66,6 +89,7 @@ function WelcomeScreen({ navigation }) {
       width: "19%",
       height: "25%",
       description: "The Dr. Lucio C. Tan Building is where most Senior High School (K–12) classes are held. It offers a well-equipped environment tailored for academic preparation and extracurricular learning among younger students.",
+      image: require("../images/tyk.jpg"),
     },
     {
       id: 4,
@@ -76,6 +100,7 @@ function WelcomeScreen({ navigation }) {
       height: "16%",
       description:
         "One of the oldest structures on campus, used for various classes.",
+        image: require("../images/tyk.jpg"),
     },
     {
       id: 5,
@@ -86,6 +111,7 @@ function WelcomeScreen({ navigation }) {
       height: "10%",
       description:
         "This building caters to Hospitality Management students, featuring specialized rooms and facilities for culinary arts and Home Economics. It also includes the Mock Hotel, where students gain hands-on experience in hotel and restaurant operations",
+        image: require("../images/tyk.jpg"),
     },
     {
       id: 6,
@@ -96,6 +122,7 @@ function WelcomeScreen({ navigation }) {
       height: "5%",
       description:
         "The University Gymnasium serves as a venue for Physical Education classes, sports practices, and major school events. It provides space for both academic and recreational activities, fostering health and wellness within the student community.",
+        image: require("../images/tyk.jpg"),
     },
     {
       id: 7,
@@ -106,11 +133,13 @@ function WelcomeScreen({ navigation }) {
       height: "10%",
       description:
         "The Administration Building houses is the main point of contact for inquiries, containing the following offices:\n\nCASHIER: Handles tuition and fee payments. Manages student records and enrollment.\n\nADMISSIONS: Oversees the application and admission process for new students.\n\nOJT OFFICE: Coordinates on-the-job training programs for students.",
+        image: require("../images/tyk.jpg"),
     },
   ];
 
   const handleBuildingPress = (building) => {
     setSelectedBuilding(building);
+    if (building.id === 7) setModalPage(1); // reset to first page
   };
 
   const handleCloseModal = () => {
@@ -229,28 +258,116 @@ function WelcomeScreen({ navigation }) {
         animationType="none"
         onRequestClose={handleCloseModal}
       >
-        <View style={styles.modalOverlay}>
+        <View style={styles.modalOverlay} {...panResponder.panHandlers}>
           <View style={styles.modalContent}>
             <ScrollView contentContainerStyle={{ alignItems: "center" }}>
               {selectedBuilding && (
                 <>
-                  <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
-                  <Image
-                    source={selectedBuilding.image}
-                    style={styles.modalImage}
-                    resizeMode="cover"
-                  />
-                  <Text style={styles.modalDescription}>
-                    {selectedBuilding.description}
-                  </Text>
+                  {selectedBuilding.id === 7 ? (
+                    // Two-page modal for Administration Building
+                    <>
+                      {modalPage === 1 && (
+                    <>
+                      <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                      {/* Main building image */}
+
+                      {/* Main image */}
+                      <Image
+                        source={require("../images/tyk.jpg")} // replace with your image path
+                        style={[styles.modalImage, { marginTop: 10 }]}
+                        resizeMode="cover"
+                      />
+                      <Text style={styles.modalDescription}>
+                        {/* Optional description for the additional image */}
+                        The Administration Building houses is the main point of contact for inquiries, containing different sorts of offices.
+                      </Text>
+                      <TouchableOpacity
+                        style={[styles.closeButton, { marginTop: 10 }]}
+                        onPress={() => setModalPage(2)}
+                      >
+                        <Text style={styles.closeButtonText}>Next</Text>
+                      </TouchableOpacity>
+                    </>
+                  )}
+                  {modalPage === 2 && (
+
+                        <>
+                        {/* Main image */}
+                      <Image
+                        source={require("../images/tyk.jpg")} // replace with your image path
+                        style={[styles.modalImage, { marginTop: 10 }]}
+                        resizeMode="cover"
+                      />
+                          <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                          <Text style={styles.modalDescription}>
+                            CASHIER: Handles tuition and fee payments. Manages student records and enrollment.
+                               {"\n\n"}
+                            ADMISSIONS: Oversees the application and admission process for new students.
+                          </Text>
+            
+                            <TouchableOpacity
+                            style={[styles.closeButton, { marginTop: 10 }]}
+                            onPress={() => setModalPage(3)}
+                          >
+                            <Text style={styles.closeButtonText}>Next</Text>
+                          </TouchableOpacity>
+                        
+                        </>
+                      )}
+
+                      {modalPage === 3 && (
+
+                        <>
+                        {/* Main image */}
+                      <Image
+                        source={require("../images/tyk.jpg")} // replace with your image path
+                        style={[styles.modalImage, { marginTop: 10 }]}
+                        resizeMode="cover"
+                      />
+                          <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                          <Text style={styles.modalDescription}>
+                            OJT OFFICE: Coordinates on-the-job training programs for students.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity
+                              style={styles.closeButton}
+                              onPress={() => setModalPage(2)}
+                            >
+                              <Text style={styles.closeButtonText}>Previous</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                              style={styles.closeButton}
+                              onPress={handleCloseModal}
+                            >
+                              <Text style={styles.closeButtonText}>Close</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      
+                    </>
+                  ) : (
+                    // Single-page modal for other buildings
+                    <>
+                      <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                      <Image
+                        source={selectedBuilding.image}
+                        style={styles.modalImage}
+                        resizeMode="cover"
+                      />
+                      <Text style={styles.modalDescription}>
+                        {selectedBuilding.description}
+                      </Text>
+                      <TouchableOpacity
+                        style={styles.closeButton}
+                        onPress={handleCloseModal}
+                      >
+                        <Text style={styles.closeButtonText}>Close</Text>
+                      </TouchableOpacity>
+                    </>
+                  )}
                 </>
               )}
-              <TouchableOpacity
-                style={styles.closeButton}
-                onPress={handleCloseModal}
-              >
-                <Text style={styles.closeButtonText}>Close</Text>
-              </TouchableOpacity>
             </ScrollView>
           </View>
         </View>
