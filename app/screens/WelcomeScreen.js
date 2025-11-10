@@ -27,12 +27,12 @@ function WelcomeScreen({ navigation }) {
       Animated.sequence([
         Animated.timing(fadeAnim, {
           toValue: 1,
-          duration: 1000,
+          duration: 400,
           useNativeDriver: true,
         }),
         Animated.timing(fadeAnim, {
           toValue: 0.5,
-          duration: 1000,
+          duration: 800,
           useNativeDriver: true,
         }),
       ])
@@ -89,7 +89,7 @@ function WelcomeScreen({ navigation }) {
       width: "19%",
       height: "25%",
       description: "The Dr. Lucio C. Tan Building is where most Senior High School (K–12) classes are held. It offers a well-equipped environment tailored for academic preparation and extracurricular learning among younger students.",
-      image: require("../images/tyk.jpg"),
+      image: require("../images/LCT.jpg"),
     },
     {
       id: 4,
@@ -281,12 +281,20 @@ function WelcomeScreen({ navigation }) {
                         {/* Optional description for the additional image */}
                         The Administration Building houses is the main point of contact for inquiries, containing different sorts of offices.
                       </Text>
+                        <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                      <TouchableOpacity
+                            style={[styles.closeButton, { marginTop: 10 }]}
+                            onPress={handleCloseModal}
+                          >
+                            <Text style={styles.closeButtonText}>Close</Text>
+                          </TouchableOpacity>
                       <TouchableOpacity
                         style={[styles.closeButton, { marginTop: 10 }]}
                         onPress={() => setModalPage(2)}
                       >
                         <Text style={styles.closeButtonText}>Next</Text>
                       </TouchableOpacity>
+                      </View>
                     </>
                   )}
                   {modalPage === 2 && (
@@ -304,12 +312,27 @@ function WelcomeScreen({ navigation }) {
                                {"\n\n"}
                             ADMISSIONS: Oversees the application and admission process for new students.
                           </Text>
-            
+                          
+                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity
+                              style={styles.closeButton}
+                              onPress={() => setModalPage(1)}
+                            >
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                              style={styles.closeButton}
+                              onPress=
+                              {() => setModalPage(3)}
+                            >
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
                             <TouchableOpacity
                             style={[styles.closeButton, { marginTop: 10 }]}
-                            onPress={() => setModalPage(3)}
+                            onPress={handleCloseModal}
                           >
-                            <Text style={styles.closeButtonText}>Next</Text>
+                            <Text style={styles.closeButtonText}>Close</Text>
                           </TouchableOpacity>
                         
                         </>
@@ -333,7 +356,7 @@ function WelcomeScreen({ navigation }) {
                               style={styles.closeButton}
                               onPress={() => setModalPage(2)}
                             >
-                              <Text style={styles.closeButtonText}>Previous</Text>
+                              <Text style={styles.closeButtonText}>Back</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                               style={styles.closeButton}
