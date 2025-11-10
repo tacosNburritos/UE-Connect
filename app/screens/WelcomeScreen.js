@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   ImageBackground,
   StyleSheet,
@@ -10,12 +10,32 @@ import {
   Modal,
   Dimensions,
   ScrollView,
+  Animated,
 } from "react-native";
 
 function WelcomeScreen({ navigation }) {
   const { width, height } = Dimensions.get("window");
   const [selectedBuilding, setSelectedBuilding] = useState(null);
   const [showOutlines, setShowOutlines] = useState(true); // toggle for button visibility
+
+  // Blinking animation
+  const fadeAnim = useRef(new Animated.Value(0.5)).current;
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(fadeAnim, {
+          toValue: 0.5,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
+  }, [fadeAnim]);
 
   const buildings = [
     {
@@ -25,8 +45,8 @@ function WelcomeScreen({ navigation }) {
       left: "3%",
       width: "22%",
       height: "28%",
-      description: "Houses classrooms and laboratories for various programs.",
-  
+      description: "The Tan Yan Kee Academic Building primarily accommodates Business Administration and Fine Arts students. It also hosts several General Education classes and lecture halls, making it one of the most frequently used academic buildings on campus.",
+      // image: require("../images/tyk.png"),
     },
     {
       id: 2,
@@ -36,8 +56,7 @@ function WelcomeScreen({ navigation }) {
       width: "80%",
       height: "10%",
       description:
-        "Main building for engineering students, containing classrooms and laboratories.",
-
+        "This building serves as the central hub for all Engineering programs and computer-related courses. It features multiple laboratories, classrooms, and project spaces designed to support technical learning and hands-on innovation.",
     },
     {
       id: 3,
@@ -46,8 +65,7 @@ function WelcomeScreen({ navigation }) {
       right: "2%",
       width: "19%",
       height: "25%",
-      description: "Academic building used by business and IT students.",
-
+      description: "The Dr. Lucio C. Tan Building is where most Senior High School (K–12) classes are held. It offers a well-equipped environment tailored for academic preparation and extracurricular learning among younger students.",
     },
     {
       id: 4,
@@ -67,7 +85,7 @@ function WelcomeScreen({ navigation }) {
       width: "13%",
       height: "10%",
       description:
-        "One of the oldest structures on campus, used for various classes.",
+        "This building caters to Hospitality Management students, featuring specialized rooms and facilities for culinary arts and Home Economics. It also includes the Mock Hotel, where students gain hands-on experience in hotel and restaurant operations",
     },
     {
       id: 6,
@@ -77,9 +95,9 @@ function WelcomeScreen({ navigation }) {
       width: "30%",
       height: "5%",
       description:
-        "One of the oldest structures on campus, used for various classes.",
+        "The University Gymnasium serves as a venue for Physical Education classes, sports practices, and major school events. It provides space for both academic and recreational activities, fostering health and wellness within the student community.",
     },
-      {
+    {
       id: 7,
       name: "Administration Building",
       top: "24%",
@@ -87,7 +105,7 @@ function WelcomeScreen({ navigation }) {
       width: "25%",
       height: "10%",
       description:
-        "One of the oldest structures on campus, used for various classes.\nrewrbniwebr",
+        "The Administration Building houses is the main point of contact for inquiries, containing the following offices:\n\nCASHIER: Handles tuition and fee payments. Manages student records and enrollment.\n\nADMISSIONS: Oversees the application and admission process for new students.\n\nOJT OFFICE: Coordinates on-the-job training programs for students.",
     },
   ];
 
@@ -124,7 +142,7 @@ function WelcomeScreen({ navigation }) {
 
   {/* Building buttons overlay */}
   {buildings.map((building) => (
-    <TouchableOpacity
+    <Animated.View
       key={building.id}
       style={[
         styles.buildingButton,
@@ -134,15 +152,18 @@ function WelcomeScreen({ navigation }) {
           right: building.right,
           width: building.width,
           height: building.height,
-          backgroundColor: showOutlines
-            ? "rgba(255, 0, 0, 0.3)"
-            : "transparent",
+          backgroundColor: "rgba(255,255,255,0.3)", // transparent white
           borderWidth: showOutlines ? 1 : 0,
-          borderColor: showOutlines ? "red" : "transparent",
+          borderColor: showOutlines ? "white" : "transparent",
+          opacity: fadeAnim, // blinking
         },
       ]}
-      onPress={() => handleBuildingPress(building)}
-    />
+    >
+      <TouchableOpacity
+        style={{ flex: 1 }}
+        onPress={() => handleBuildingPress(building)}
+      />
+    </Animated.View>
   ))}
 </View>
 
@@ -163,20 +184,12 @@ function WelcomeScreen({ navigation }) {
         <Text style={styles.text}>Kadima</Text>
       </View>
 
-      {/* Toggle outlines for testing */}
-      <TouchableOpacity
-        onPress={() => setShowOutlines(!showOutlines)}
-        style={styles.toggleOutlineButton}
-      >
-        <Text style={{ color: "white", fontWeight: "bold" }}>
-          {showOutlines ? "Hide" : "Show"} Buttons
-        </Text>
-      </TouchableOpacity>
+  
 
       {/* Building buttons */}
       {buildings.map((building) => (
-        <TouchableOpacity
-          key={building.id}
+        <Animated.View
+          key={building.id + "_duplicate"}
           style={[
             styles.buildingButton,
             {
@@ -185,15 +198,17 @@ function WelcomeScreen({ navigation }) {
               right: building.right,
               width: building.width,
               height: building.height,
-              backgroundColor: showOutlines
-                ? "rgba(255, 0, 0, 0.3)"
-                : "transparent",
-              borderWidth: showOutlines ? 1 : 0,
-              borderColor: showOutlines ? "red" : "transparent",
+              backgroundColor: "rgba(255, 255, 255, 0.21)", // transparent white
+              borderColor: showOutlines ? "white" : "transparent",
+              opacity: fadeAnim, // blinking
             },
           ]}
-          onPress={() => handleBuildingPress(building)}
-        />
+        >
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => handleBuildingPress(building)}
+          />
+        </Animated.View>
       ))}
 
       {/* Buttons */}
@@ -350,7 +365,7 @@ const styles = StyleSheet.create({
   },
   modalDescription: {
     fontSize: 16,
-    textAlign: "center",
+    textAlign: "justify",
     marginBottom: 15,
   },
   closeButton: {
@@ -364,18 +379,17 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   mapContainer: {
-  position: "absolute",
-  top: 120, // right below header
-  left: 0,
-  right: 0,
-  bottom: 0,
-},
-mapImage: {
-  width: "100%",
-  height: "100%",
-  position: "absolute",
-},
-
+    position: "absolute",
+    top: 120, // right below header
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  mapImage: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+  },
 });
 
 export default WelcomeScreen;
