@@ -79,7 +79,7 @@ function WelcomeScreen({ navigation }) {
       height: "10%",
       description:
         "This building serves as the central hub for all Engineering programs and computer-related courses. It features multiple laboratories, classrooms, and project spaces designed to support technical learning and hands-on innovation.",
-        image: require("../images/tyk.jpg"),
+        image: require("../images/EN.jpg"),
     },
     {
       id: 3,
@@ -100,7 +100,7 @@ function WelcomeScreen({ navigation }) {
       height: "16%",
       description:
         "One of the oldest structures on campus, used for various classes.",
-        image: require("../images/tyk.jpg"),
+        image: require("../images/OLDACAD.jpg"),
     },
     {
       id: 5,
@@ -111,7 +111,7 @@ function WelcomeScreen({ navigation }) {
       height: "10%",
       description:
         "This building caters to Hospitality Management students, featuring specialized rooms and facilities for culinary arts and Home Economics. It also includes the Mock Hotel, where students gain hands-on experience in hotel and restaurant operations",
-        image: require("../images/tyk.jpg"),
+        image: require("../images/HRM.jpg"),
     },
     {
       id: 6,
@@ -122,7 +122,7 @@ function WelcomeScreen({ navigation }) {
       height: "5%",
       description:
         "The University Gymnasium serves as a venue for Physical Education classes, sports practices, and major school events. It provides space for both academic and recreational activities, fostering health and wellness within the student community.",
-        image: require("../images/tyk.jpg"),
+        image: require("../images/GYM.jpg"),
     },
     {
       id: 7,
@@ -133,7 +133,7 @@ function WelcomeScreen({ navigation }) {
       height: "10%",
       description:
         "The Administration Building houses is the main point of contact for inquiries, containing the following offices:\n\nCASHIER: Handles tuition and fee payments. Manages student records and enrollment.\n\nADMISSIONS: Oversees the application and admission process for new students.\n\nOJT OFFICE: Coordinates on-the-job training programs for students.",
-        image: require("../images/tyk.jpg"),
+        image: require("../images/OJT.jpg"),
     },
   ];
 
@@ -273,7 +273,7 @@ function WelcomeScreen({ navigation }) {
 
                       {/* Main image */}
                       <Image
-                        source={require("../images/tyk.jpg")} // replace with your image path
+                        source={require("../images/ADMIN.jpg")} // replace with your image path
                         style={[styles.modalImage, { marginTop: 10 }]}
                         resizeMode="cover"
                       />
@@ -301,9 +301,10 @@ function WelcomeScreen({ navigation }) {
 
                         <>
                         {/* Main image */}
+                
                       <Image
-                        source={require("../images/tyk.jpg")} // replace with your image path
-                        style={[styles.modalImage, { marginTop: 10 }]}
+                        source={require("../images/ADMISSION.jpg")} // replace with your image path
+                        style={[styles.modalImage, { marginTop: 0 }]}
                         resizeMode="cover"
                       />
                           <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
@@ -343,7 +344,7 @@ function WelcomeScreen({ navigation }) {
                         <>
                         {/* Main image */}
                       <Image
-                        source={require("../images/tyk.jpg")} // replace with your image path
+                        source={require("../images/OJT.jpg")} // replace with your image path
                         style={[styles.modalImage, { marginTop: 10 }]}
                         resizeMode="cover"
                       />
