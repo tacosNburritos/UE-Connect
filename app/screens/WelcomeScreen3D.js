@@ -137,7 +137,7 @@ function WelcomeScreen3D({ navigation }) {
     scene.add(new THREE.Mesh(skyGeo, skyMat));
 
     // Load GLB
-    const asset = Asset.fromModule(require("../assets/models/campus_low.glb"));
+    const asset = Asset.fromModule(require("../assets/models/new campus.glb"));
     await asset.downloadAsync();
 
     const loader = new GLTFLoader();

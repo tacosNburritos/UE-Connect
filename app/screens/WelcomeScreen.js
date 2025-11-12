@@ -62,7 +62,7 @@ function WelcomeScreen({ navigation }) {
   const buildings = [
     {
       id: 1,
-      name: "Tan Yan Kee Academic Building",
+      name: "Tan Yan Kee Building",
       top: "34%",
       left: "3%",
       width: "22%",
@@ -252,150 +252,122 @@ function WelcomeScreen({ navigation }) {
       </View>
 
       {/* Building Modal */}
-      <Modal
-        visible={!!selectedBuilding}
-        transparent={true}
-        animationType="none"
-        onRequestClose={handleCloseModal}
-      >
-        <View style={styles.modalOverlay} {...panResponder.panHandlers}>
-          <View style={styles.modalContent}>
-            <ScrollView contentContainerStyle={{ alignItems: "center" }}>
-              {selectedBuilding && (
-                <>
-                  {selectedBuilding.id === 7 ? (
-                    // Two-page modal for Administration Building
-                    <>
-                      {modalPage === 1 && (
-                    <>
-                      <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
-                      {/* Main building image */}
-
-                      {/* Main image */}
-                      <Image
-                        source={require("../images/ADMIN.jpg")} // replace with your image path
-                        style={[styles.modalImage, { marginTop: 10 }]}
-                        resizeMode="cover"
-                      />
-                      <Text style={styles.modalDescription}>
-                        {/* Optional description for the additional image */}
-                        The Administration Building houses is the main point of contact for inquiries, containing different sorts of offices.
-                      </Text>
-                        <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
-                      <TouchableOpacity
-                            style={[styles.closeButton, { marginTop: 10 }]}
-                            onPress={handleCloseModal}
-                          >
-                            <Text style={styles.closeButtonText}>Close</Text>
-                          </TouchableOpacity>
+     <Modal
+  visible={!!selectedBuilding}
+  transparent={true}
+  animationType="fade"
+  onRequestClose={handleCloseModal}
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    style={styles.modalOverlay}
+    onPress={handleCloseModal} //  tap outside to close
+    {...panResponder.panHandlers}
+  >
+    <TouchableOpacity
+      activeOpacity={1}
+      style={styles.modalContent}
+      onPress={(e) => e.stopPropagation()} // prevent closing when tapping inside modal
+    >
+      <ScrollView contentContainerStyle={{ alignItems: "center" }}>
+        {selectedBuilding && (
+          <>
+            {selectedBuilding.id === 7 ? (
+              <>
+                {modalPage === 1 && (
+                  <>
+                    <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                    <Image
+                      source={require("../images/ADMIN.jpg")}
+                      style={[styles.modalImage, { marginTop: 10 }]}
+                      resizeMode="cover"
+                    />
+                    <Text style={styles.modalDescription}>
+                      The Administration Building houses is the main point of contact for inquiries, containing different sorts of offices.
+                    </Text>
+                    <View style={{ flexDirection: "row", justifyContent: "flex-end", width: "80%" }}>
                       <TouchableOpacity
                         style={[styles.closeButton, { marginTop: 10 }]}
                         onPress={() => setModalPage(2)}
                       >
                         <Text style={styles.closeButtonText}>Next</Text>
                       </TouchableOpacity>
-                      </View>
-                    </>
-                  )}
-                  {modalPage === 2 && (
+                    </View>
+                  </>
+                )}
 
-                        <>
-                        {/* Main image */}
-                
-                      <Image
-                        source={require("../images/ADMISSION.jpg")} // replace with your image path
-                        style={[styles.modalImage, { marginTop: 0 }]}
-                        resizeMode="cover"
-                      />
-                          <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
-                          <Text style={styles.modalDescription}>
-                            CASHIER: Handles tuition and fee payments. Manages student records and enrollment.
-                               {"\n\n"}
-                            ADMISSIONS: Oversees the application and admission process for new students.
-                          </Text>
-                          
-                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
-                            <TouchableOpacity
-                              style={styles.closeButton}
-                              onPress={() => setModalPage(1)}
-                            >
-                              <Text style={styles.closeButtonText}>Back</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                              style={styles.closeButton}
-                              onPress=
-                              {() => setModalPage(3)}
-                            >
-                              <Text style={styles.closeButtonText}>Next</Text>
-                            </TouchableOpacity>
-                          </View>
-                            <TouchableOpacity
-                            style={[styles.closeButton, { marginTop: 10 }]}
-                            onPress={handleCloseModal}
-                          >
-                            <Text style={styles.closeButtonText}>Close</Text>
-                          </TouchableOpacity>
-                        
-                        </>
-                      )}
+                {modalPage === 2 && (
+                  <>
+                    <Image
+                      source={require("../images/ADMISSION.jpg")}
+                      style={[styles.modalImage, { marginTop: 0 }]}
+                      resizeMode="cover"
+                    />
+                    <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                    <Text style={styles.modalDescription}>
+                      CASHIER: Handles tuition and fee payments. Manages student records and enrollment.
+                      {"\n\n"}
+                      ADMISSIONS: Oversees the application and admission process for new students.
+                    </Text>
 
-                      {modalPage === 3 && (
-
-                        <>
-                        {/* Main image */}
-                      <Image
-                        source={require("../images/OJT.jpg")} // replace with your image path
-                        style={[styles.modalImage, { marginTop: 10 }]}
-                        resizeMode="cover"
-                      />
-                          <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
-                          <Text style={styles.modalDescription}>
-                            OJT OFFICE: Coordinates on-the-job training programs for students.
-                          </Text>
-                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
-                            <TouchableOpacity
-                              style={styles.closeButton}
-                              onPress={() => setModalPage(2)}
-                            >
-                              <Text style={styles.closeButtonText}>Back</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                              style={styles.closeButton}
-                              onPress={handleCloseModal}
-                            >
-                              <Text style={styles.closeButtonText}>Close</Text>
-                            </TouchableOpacity>
-                          </View>
-                        </>
-                      )}
-                      
-                    </>
-                  ) : (
-                    // Single-page modal for other buildings
-                    <>
-                      <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
-                      <Image
-                        source={selectedBuilding.image}
-                        style={styles.modalImage}
-                        resizeMode="cover"
-                      />
-                      <Text style={styles.modalDescription}>
-                        {selectedBuilding.description}
-                      </Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
                       <TouchableOpacity
                         style={styles.closeButton}
-                        onPress={handleCloseModal}
+                        onPress={() => setModalPage(1)}
                       >
-                        <Text style={styles.closeButtonText}>Close</Text>
+                        <Text style={styles.closeButtonText}>Back</Text>
                       </TouchableOpacity>
-                    </>
-                  )}
-                </>
-              )}
-            </ScrollView>
-          </View>
-        </View>
-      </Modal>
+                      <TouchableOpacity
+                        style={styles.closeButton}
+                        onPress={() => setModalPage(3)}
+                      >
+                        <Text style={styles.closeButtonText}>Next</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </>
+                )}
+
+                {modalPage === 3 && (
+                  <>
+                    <Image
+                      source={require("../images/OJT.jpg")}
+                      style={[styles.modalImage, { marginTop: 10 }]}
+                      resizeMode="cover"
+                    />
+                    <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                    <Text style={styles.modalDescription}>
+                      OJT OFFICE: Coordinates on-the-job training programs for students.
+                    </Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                      <TouchableOpacity
+                        style={styles.closeButton}
+                        onPress={() => setModalPage(2)}
+                      >
+                        <Text style={styles.closeButtonText}>Back</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                <Image
+                  source={selectedBuilding.image}
+                  style={styles.modalImage}
+                  resizeMode="cover"
+                />
+                <Text style={styles.modalDescription}>
+                  {selectedBuilding.description}
+                </Text>
+              </>
+            )}
+          </>
+        )}
+      </ScrollView>
+    </TouchableOpacity>
+  </TouchableOpacity>
+</Modal>
     </View>
   );
 }
