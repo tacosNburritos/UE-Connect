@@ -46,10 +46,10 @@ function WelcomeScreen({ navigation }) {
         return Math.abs(gestureState.dx) > 20;
       },
       onPanResponderRelease: (evt, gestureState) => {
-        if (selectedBuilding && selectedBuilding.id === 7) {
+        if (selectedBuilding && [1, 2, 7].includes(selectedBuilding.id)) {
           if (gestureState.dx < -20) {
             // swipe left → next page
-            setModalPage((prev) => Math.min(prev + 1, 2));
+            setModalPage((prev) => Math.min(prev + 1, 3));
           } else if (gestureState.dx > 20) {
             // swipe right → previous page
             setModalPage((prev) => Math.max(prev - 1, 1));
@@ -67,7 +67,8 @@ function WelcomeScreen({ navigation }) {
       left: "3%",
       width: "22%",
       height: "28%",
-      description: "The Tan Yan Kee Academic Building primarily accommodates Business Administration and Fine Arts students. It also hosts several General Education classes and lecture halls, making it one of the most frequently used academic buildings on campus.",
+      description:
+        "The Tan Yan Kee Academic Building primarily accommodates Business Administration and Fine Arts students. It also hosts several General Education classes and lecture halls, making it one of the most frequently used academic buildings on campus.",
       image: require("../images/tyk.jpg"),
     },
     {
@@ -79,7 +80,7 @@ function WelcomeScreen({ navigation }) {
       height: "10%",
       description:
         "This building serves as the central hub for all Engineering programs and computer-related courses. It features multiple laboratories, classrooms, and project spaces designed to support technical learning and hands-on innovation.",
-        image: require("../images/EN.jpg"),
+      image: require("../images/EN.jpg"),
     },
     {
       id: 3,
@@ -88,7 +89,8 @@ function WelcomeScreen({ navigation }) {
       right: "2%",
       width: "19%",
       height: "25%",
-      description: "The Dr. Lucio C. Tan Building is where most Senior High School (K–12) classes are held. It offers a well-equipped environment tailored for academic preparation and extracurricular learning among younger students.",
+      description:
+        "The Dr. Lucio C. Tan Building is where most Senior High School (K–12) classes are held. It offers a well-equipped environment tailored for academic preparation and extracurricular learning among younger students.",
       image: require("../images/LCT.jpg"),
     },
     {
@@ -98,9 +100,8 @@ function WelcomeScreen({ navigation }) {
       right: "3%",
       width: "12%",
       height: "16%",
-      description:
-        "One of the oldest structures on campus, used for various classes.",
-        image: require("../images/OLDACAD.jpg"),
+      description: "One of the oldest structures on campus, used for various classes.",
+      image: require("../images/OLDACAD.jpg"),
     },
     {
       id: 5,
@@ -111,7 +112,7 @@ function WelcomeScreen({ navigation }) {
       height: "10%",
       description:
         "This building caters to Hospitality Management students, featuring specialized rooms and facilities for culinary arts and Home Economics. It also includes the Mock Hotel, where students gain hands-on experience in hotel and restaurant operations",
-        image: require("../images/HRM.jpg"),
+      image: require("../images/HRM.jpg"),
     },
     {
       id: 6,
@@ -122,7 +123,7 @@ function WelcomeScreen({ navigation }) {
       height: "5%",
       description:
         "The University Gymnasium serves as a venue for Physical Education classes, sports practices, and major school events. It provides space for both academic and recreational activities, fostering health and wellness within the student community.",
-        image: require("../images/GYM.jpg"),
+      image: require("../images/GYM.jpg"),
     },
     {
       id: 7,
@@ -131,15 +132,25 @@ function WelcomeScreen({ navigation }) {
       left: "16%",
       width: "25%",
       height: "10%",
-      description:
-        "The Administration Building houses is the main point of contact for inquiries, containing the following offices:\n\nCASHIER: Handles tuition and fee payments. Manages student records and enrollment.\n\nADMISSIONS: Oversees the application and admission process for new students.\n\nOJT OFFICE: Coordinates on-the-job training programs for students.",
-        image: require("../images/OJT.jpg"),
+      description:'',
+       
+      image: require("../images/OJT.jpg"),
+    },
+    {
+      id: 8,
+      name: "Old Elementary Building",
+      top: "18%",
+      right: "10%",
+      width: "19%",
+      height: "7%",
+      description: "What was once a building dedicated for elementary students is now an old building used for various administrative purposes.",
+      image: require("../images/ELEM.jpg"),
     },
   ];
 
   const handleBuildingPress = (building) => {
     setSelectedBuilding(building);
-    if (building.id === 7) setModalPage(1); // reset to first page
+    if ([1, 2, 7].includes(building.id)) setModalPage(1); // reset to first page
   };
 
   const handleCloseModal = () => {
@@ -156,66 +167,41 @@ function WelcomeScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="transparent"
-        translucent={true}
-      />
-     <View style={styles.mapContainer}>
-  {/* Background map image */}
-  <Image
-    source={require("../images/background v2.png")}
-    style={styles.mapImage}
-    resizeMode="cover"
-  />
-
-  {/* Building buttons overlay */}
-  {buildings.map((building) => (
-    <Animated.View
-      key={building.id}
-      style={[
-        styles.buildingButton,
-        {
-          top: building.top,
-          left: building.left,
-          right: building.right,
-          width: building.width,
-          height: building.height,
-          backgroundColor: "rgba(255,255,255,0.3)", // transparent white
-          borderWidth: showOutlines ? 1 : 0,
-          borderColor: showOutlines ? "white" : "transparent",
-          opacity: fadeAnim, // blinking
-        },
-      ]}
-    >
-      <TouchableOpacity
-        style={{ flex: 1 }}
-        onPress={() => handleBuildingPress(building)}
-      />
-    </Animated.View>
-  ))}
-</View>
-
-      <View style={styles.imageContainer}>
-        <Image
-          source={require("../images/background v2.png")}
-          style={styles.placeholder}
-          resizeMode="cover"
-        />
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent={true} />
+      <View style={styles.mapContainer}>
+        <Image source={require("../images/background v2.png")} style={styles.mapImage} resizeMode="cover" />
+        {buildings.map((building) => (
+          <Animated.View
+            key={building.id}
+            style={[
+              styles.buildingButton,
+              {
+                top: building.top,
+                left: building.left,
+                right: building.right,
+                width: building.width,
+                height: building.height,
+                backgroundColor: "rgba(255,255,255,0.3)",
+                borderWidth: showOutlines ? 1 : 0,
+                borderColor: showOutlines ? "white" : "transparent",
+                opacity: fadeAnim,
+              },
+            ]}
+          >
+            <TouchableOpacity style={{ flex: 1 }} onPress={() => handleBuildingPress(building)} />
+          </Animated.View>
+        ))}
       </View>
 
-      {/* Header */}
+      <View style={styles.imageContainer}>
+        <Image source={require("../images/background v2.png")} style={styles.placeholder} resizeMode="cover" />
+      </View>
+
       <View style={styles.header}>
-        <Image
-          source={require("../assets/LOGO 2 white no text.png")}
-          style={styles.logo_header}
-        />
+        <Image source={require("../assets/LOGO 2 white no text.png")} style={styles.logo_header} />
         <Text style={styles.text}>Kadima</Text>
       </View>
 
-  
-
-      {/* Building buttons */}
       {buildings.map((building) => (
         <Animated.View
           key={building.id + "_duplicate"}
@@ -227,20 +213,16 @@ function WelcomeScreen({ navigation }) {
               right: building.right,
               width: building.width,
               height: building.height,
-              backgroundColor: "rgba(255, 255, 255, 0.21)", // transparent white
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
               borderColor: showOutlines ? "white" : "transparent",
-              opacity: fadeAnim, // blinking
+              opacity: fadeAnim,
             },
           ]}
         >
-          <TouchableOpacity
-            style={{ flex: 1 }}
-            onPress={() => handleBuildingPress(building)}
-          />
+          <TouchableOpacity style={{ flex: 1 }} onPress={() => handleBuildingPress(building)} />
         </Animated.View>
       ))}
 
-      {/* Buttons */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button1} onPress={handlePathPress}>
           <Text style={styles.buttonText}>Find Path</Text>
@@ -252,137 +234,319 @@ function WelcomeScreen({ navigation }) {
       </View>
 
       {/* Building Modal */}
-     <Modal
-  visible={!!selectedBuilding}
-  transparent={true}
-  animationType="fade"
-  onRequestClose={handleCloseModal}
->
-  <TouchableOpacity
-    activeOpacity={1}
-    style={styles.modalOverlay}
-    onPress={handleCloseModal} //  tap outside to close
-    {...panResponder.panHandlers}
-  >
-    <TouchableOpacity
-      activeOpacity={1}
-      style={styles.modalContent}
-      onPress={(e) => e.stopPropagation()} // prevent closing when tapping inside modal
-    >
-      <ScrollView contentContainerStyle={{ alignItems: "center" }}>
-        {selectedBuilding && (
-          <>
-            {selectedBuilding.id === 7 ? (
-              <>
-                {modalPage === 1 && (
-                  <>
-                    <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
-                    <Image
-                      source={require("../images/ADMIN.jpg")}
-                      style={[styles.modalImage, { marginTop: 10 }]}
-                      resizeMode="cover"
-                    />
-                    <Text style={styles.modalDescription}>
-                      The Administration Building houses is the main point of contact for inquiries, containing different sorts of offices.
-                    </Text>
-                    <View style={{ flexDirection: "row", justifyContent: "flex-end", width: "80%" }}>
-                      <TouchableOpacity
-                        style={[styles.closeButton, { marginTop: 10 }]}
-                        onPress={() => setModalPage(2)}
-                      >
-                        <Text style={styles.closeButtonText}>Next</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </>
-                )}
+      <Modal
+        visible={!!selectedBuilding}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={handleCloseModal}
+      >
+        <TouchableOpacity
+          activeOpacity={1}
+          style={styles.modalOverlay}
+          onPress={handleCloseModal}
+          {...panResponder.panHandlers}
+        >
+          <TouchableOpacity
+            activeOpacity={1}
+            style={styles.modalContent}
+            onPress={(e) => e.stopPropagation()}
+          >
+            <ScrollView contentContainerStyle={{ alignItems: "center" }}>
+              {selectedBuilding && (
+                <>
+                  {/* MULTI-PAGE MODALS */}
+                  {selectedBuilding.id === 7 && (
+                    <>
+                    {/* PANG ADMIN TOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO */}
+                      {/* Logic*/}
+                      {modalPage === 1 && (
+                        <>
+                          <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                          <Image
+                            source={require("../images/ADMIN.jpg")}
+                            style={[styles.modalImage, { marginTop: 10 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalDescription}>
+                            Here lies the cashier office that handles tuition and fee payments. Manages student records and enrollment.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "flex-end", width: "80%" }}>
+                            <TouchableOpacity
+                              style={[styles.closeButton, { marginTop: 10 }]}
+                              onPress={() => setModalPage(2)}
+                            >
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      {modalPage === 2 && (
+                        <>
+                          <Image
+                            source={require("../images/ADMISSION.jpg")}
+                            style={[styles.modalImage, { marginTop: 0 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}>Admissions Office</Text>
+                          <Text style={styles.modalDescription}>
+                            
+                            Oversees the application and admission process for new students.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(1)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(3)}>
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      {modalPage === 3 && (
+                        <>
+                          <Image
+                            source={require("../images/DRRM Office.jpg")}
+                            style={[styles.modalImage, { marginTop: 0 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}>DRRM Office</Text>
+                          <Text style={styles.modalDescription}>
+                            Holds the records of students' diplomas and certificates.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(2)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(4)}>
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                       {modalPage === 4 && (
+                        <>
+                          <Image
+                            source={require("../images/COMP.jpg")}
+                            style={[styles.modalImage, { marginTop: 0 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}>Comptroller's Department</Text>
+                          <Text style={styles.modalDescription}>
+                            Manages the university's financial operations and budgeting.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(3)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(5)}>
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      {modalPage === 5 && (
+                        <>
+                          <Image
+                            source={require("../images/OJT.jpg")}
+                            style={[styles.modalImage, { marginTop: 10 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}>OJT & Job Placement Office</Text>
+                          <Text style={styles.modalDescription}>
+                            Coordinates on-the-job training programs for students.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(4)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                    </>
+                  )}
+                   {selectedBuilding.id === 4 && (
+                    <>
+                    {/* PANG OLD ACAD*/}
+                      {/* Logic*/}
+                      {modalPage === 1 && (
+                        <>
+                          <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                          <Image
+                            source={require("../images/OLDACAD.jpg")}
+                            style={[styles.modalImage, { marginTop: 10 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalDescription}>
+                            Here lies the cashier office that handles tuition and fee payments. Manages student records and enrollment.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "flex-end", width: "80%" }}>
+                            <TouchableOpacity
+                              style={[styles.closeButton, { marginTop: 10 }]}
+                              onPress={() => setModalPage(2)}
+                            >
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      {modalPage === 2 && (
+                        <>
+                          <Image
+                            source={require("../images/SAO.jpg")}
+                            style={[styles.modalImage, { marginTop: 10 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}>Student Affair Office</Text>
+                          <Text style={styles.modalDescription}>
+                            This office is responsible for student welfare, activities, and support services.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(1)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                    </>
+                  )}
 
-                {modalPage === 2 && (
-                  <>
-                    <Image
-                      source={require("../images/ADMISSION.jpg")}
-                      style={[styles.modalImage, { marginTop: 0 }]}
-                      resizeMode="cover"
-                    />
-                    <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
-                    <Text style={styles.modalDescription}>
-                      CASHIER: Handles tuition and fee payments. Manages student records and enrollment.
-                      {"\n\n"}
-                      ADMISSIONS: Oversees the application and admission process for new students.
-                    </Text>
+                  {/* TAN YAN KEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE */}
+                  {selectedBuilding.id === 1 && (
+                    <>
+                      {modalPage === 1 && (
+                        <>
+                          <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                          <Image
+                            source={require("../images/tyk.jpg")}
+                            style={styles.modalImage}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalDescription}>
+                            The Tan Yan Kee Building features lecture halls, art related class, and classrooms used for general education.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "flex-end", width: "80%" }}>
+                            <TouchableOpacity
+                              style={[styles.closeButton, { marginTop: 10 }]}
+                              onPress={() => setModalPage(2)}
+                            >
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      {modalPage === 2 && (
+                        <>
+                          <Image
+                            source={require("../images/CAS FACULTY.jpg")}
+                            style={styles.modalImage}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}>CAS Faculty</Text>
+                          <Text style={styles.modalDescription}>
+                            Located in TYK 4TH FLOOR, where all the College of Arts and Sciences faculty professors are located and have their offices.
+                          </Text>
+                         <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(1)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(3)}>
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                       {modalPage === 3 && (
+                        <>
+                          <Image
+                            source={require("../images/ART GALLERY.jpg")}
+                            style={styles.modalImage}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}>TYK Art Gallery</Text>
+                          <Text style={styles.modalDescription}>
+                            Located in TYK 5TH FLOOR, where students' artworks are displayed and exhibited.
+                          </Text>
+                         <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(2)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                    </>
+                  )}
 
-                    <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
-                      <TouchableOpacity
-                        style={styles.closeButton}
-                        onPress={() => setModalPage(1)}
-                      >
-                        <Text style={styles.closeButtonText}>Back</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        style={styles.closeButton}
-                        onPress={() => setModalPage(3)}
-                      >
-                        <Text style={styles.closeButtonText}>Next</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </>
-                )}
+                  {/* ENGINEERINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG */}
+                  {selectedBuilding.id === 2 && (
+                    <>
+                      {modalPage === 1 && (
+                        <>
+                          <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                          <Image
+                            source={require("../images/EN.jpg")}
+                            style={styles.modalImage}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalDescription}>
+                            The College of Engineering building hosts laboratories and classrooms for all Engineering programs.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "flex-end", width: "80%" }}>
+                            <TouchableOpacity
+                              style={[styles.closeButton, { marginTop: 10 }]}
+                              onPress={() => setModalPage(2)}
+                            >
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      {modalPage === 2 && (
+                        <>
+                          <Image
+                            source={require("../images/CLR.jpg")}
+                            style={styles.modalImage}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}>Computer Laboratories</Text>
+                          <Text style={styles.modalDescription}>
+                            Includes advanced facilities for computer, electrical, and mechanical engineering students.
+                          </Text>
+                         <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(1)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                    </>
+                  )}
 
-                {modalPage === 3 && (
-                  <>
-                    <Image
-                      source={require("../images/OJT.jpg")}
-                      style={[styles.modalImage, { marginTop: 10 }]}
-                      resizeMode="cover"
-                    />
-                    <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
-                    <Text style={styles.modalDescription}>
-                      OJT OFFICE: Coordinates on-the-job training programs for students.
-                    </Text>
-                    <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
-                      <TouchableOpacity
-                        style={styles.closeButton}
-                        onPress={() => setModalPage(2)}
-                      >
-                        <Text style={styles.closeButtonText}>Back</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </>
-                )}
-              </>
-            ) : (
-              <>
-                <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
-                <Image
-                  source={selectedBuilding.image}
-                  style={styles.modalImage}
-                  resizeMode="cover"
-                />
-                <Text style={styles.modalDescription}>
-                  {selectedBuilding.description}
-                </Text>
-              </>
-            )}
-          </>
-        )}
-      </ScrollView>
-    </TouchableOpacity>
-  </TouchableOpacity>
-</Modal>
+                  {/* DEFAULT SINGLE PAGE */}
+                  {[3, 5, 6, 8].includes(selectedBuilding.id) && (
+                    <>
+                      <Text style={styles.modalTitle}>{selectedBuilding.name}</Text>
+                      <Image
+                        source={selectedBuilding.image}
+                        style={styles.modalImage}
+                        resizeMode="cover"
+                      />
+                      <Text style={styles.modalDescription}>{selectedBuilding.description}</Text>
+                    </>
+                  )}
+                </>
+              )}
+            </ScrollView>
+          </TouchableOpacity>
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-  },
-  imageContainer: {
-    flex: 1,
-  },
-  placeholder: {
-    width: "100%",
-    height: "100%",
-  },
+  background: { flex: 1 },
+  imageContainer: { flex: 1 },
+  placeholder: { width: "100%", height: "100%" },
   header: {
     position: "absolute",
     top: 0,
@@ -402,17 +566,8 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 10,
   },
-  logo_header: {
-    width: 50,
-    height: 50,
-    marginEnd: 10,
-  },
-  text: {
-    color: "white",
-    fontSize: 40,
-    fontWeight: "bold",
-    textAlign: "left",
-  },
+  logo_header: { width: 50, height: 50, marginEnd: 10 },
+  text: { color: "white", fontSize: 40, fontWeight: "bold", textAlign: "left" },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -430,26 +585,8 @@ const styles = StyleSheet.create({
     elevation: 5,
     justifyContent: "center",
   },
-  buttonText: {
-    color: "white",
-    fontSize: 25,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  toggleOutlineButton: {
-    position: "absolute",
-    top: 130,
-    right: 15,
-    backgroundColor: "#b51509",
-    borderRadius: 20,
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-    zIndex: 10,
-  },
-  buildingButton: {
-    position: "absolute",
-    borderRadius: 10,
-  },
+  buttonText: { color: "white", fontSize: 25, fontWeight: "bold", textAlign: "center" },
+  buildingButton: { position: "absolute", borderRadius: 10 },
   modalOverlay: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.6)",
@@ -457,52 +594,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
-  modalContent: {
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 20,
-    width: "90%",
-    alignItems: "center",
-  },
-  modalTitle: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 10,
-    color: "#b51509",
-  },
-  modalImage: {
-    width: "100%",
-    height: 200,
-    borderRadius: 10,
-    marginBottom: 15,
-  },
-  modalDescription: {
-    fontSize: 16,
-    textAlign: "justify",
-    marginBottom: 15,
-  },
-  closeButton: {
-    backgroundColor: "#b51509",
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-  },
-  closeButtonText: {
-    color: "white",
-    fontWeight: "bold",
-  },
-  mapContainer: {
-    position: "absolute",
-    top: 120, // right below header
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-  mapImage: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-  },
+  modalContent: { backgroundColor: "white", borderRadius: 20, padding: 20, width: "90%", alignItems: "center" },
+  modalTitle: { fontSize: 22, fontWeight: "bold", marginBottom: 10, color: "#b51509" },
+  modalImage: { width: "100%", height: 200, borderRadius: 10, marginBottom: 15 },
+  modalDescription: { fontSize: 16, textAlign: "justify", marginBottom: 15 },
+  closeButton: { backgroundColor: "#b51509", borderRadius: 10, paddingVertical: 10, paddingHorizontal: 20 },
+  closeButtonText: { color: "white", fontWeight: "bold" },
+  mapContainer: { position: "absolute", top: 120, left: 0, right: 0, bottom: 0 },
+  mapImage: { width: "100%", height: "100%", position: "absolute" },
 });
 
 export default WelcomeScreen;
