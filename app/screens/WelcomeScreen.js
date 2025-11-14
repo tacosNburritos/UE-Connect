@@ -404,6 +404,69 @@ function WelcomeScreen({ navigation }) {
                             <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(1)}>
                               <Text style={styles.closeButtonText}>Back</Text>
                             </TouchableOpacity>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(3)}>
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      {modalPage === 3 && (
+                        <>
+                          <Image
+                            source={require("../images/OUTREACH.jpg")}
+                            style={[styles.modalImage, { marginTop: 10 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}>Office of Community Outreach </Text>
+                          <Text style={styles.modalDescription}>
+                            This office is responsible for student welfare, activities, and support services.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(2)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(4)}>
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      {modalPage === 4 && (
+                        <>
+                          <Image
+                            source={require("../images/IT.jpg")}
+                            style={[styles.modalImage, { marginTop: 10 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}> I.T. Department </Text>
+                          <Text style={styles.modalDescription}>
+                            Manages the university's IT infrastructure and support services including printing of registration forms, and other documents.
+                          </Text>
+                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(3)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(5)}>
+                              <Text style={styles.closeButtonText}>Next</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </>
+                      )}
+                      {modalPage === 5 && (
+                        <>
+                          <Image
+                            source={require("../images/GUIDANCE.jpg")}
+                            style={[styles.modalImage, { marginTop: 10 }]}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.modalTitle}> Guidance Office </Text>
+                          <Text style={styles.modalDescription}>
+                            Provides counseling and support services to students.
+                          </Text>
+                           <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(4)}>
+                              <Text style={styles.closeButtonText}>Back</Text>
+                            </TouchableOpacity>
                           </View>
                         </>
                       )}
@@ -509,7 +572,7 @@ function WelcomeScreen({ navigation }) {
                           />
                           <Text style={styles.modalTitle}>Computer Laboratories</Text>
                           <Text style={styles.modalDescription}>
-                            Includes advanced facilities for computer, electrical, and mechanical engineering students.
+                            Located in 2ND FLOOR. Includes advanced facilities for computer, electrical, and mechanical engineering students.
                           </Text>
                          <View style={{ flexDirection: "row", justifyContent: "space-between", width: "80%" }}>
                             <TouchableOpacity style={styles.closeButton} onPress={() => setModalPage(1)}>
